@@ -2,17 +2,56 @@ import Link from "next/link";
 
 const EVENTS = [
   {
-    date: "DD . MM . 26",
+    date: "30 . 06 . 27",
+    title: "Jantar de boas-vindas",
+    time: "À noite",
+    venue: "L'Espai",
+    address: "Plaça de l'Església, 2B, Tossa de Mar",
+    mapsUrl: "https://maps.google.com/?q=Plaça+Església+2B+Tossa+de+Mar",
+    dressCode: null,
+    dressNote: null,
+  },
+  {
+    date: "01 . 07 . 27",
     title: "Casamento",
-    time: "Às 15h30",
-    venue: "Nome do local",
-    address: "Endereço completo do local",
-    mapsUrl: "https://maps.google.com",
+    time: "Cerimônia e festa",
+    venue: "Convent de Blanes",
+    address: "Passeig de Carles Faust, 4, 17300 Blanes, Girona",
+    mapsUrl: "https://maps.google.com/?q=El+Convent+de+Blanes+Passeig+Carles+Faust+4",
     dressCode: "Passeio completo / Social",
     dressNote:
-      "A cerimônia acontecerá em gramado; recomendamos saltos grossos ou sapatos sem salto.",
+      "A cerimônia será em espaço ao ar livre. Recomendamos saltos grossos, plataformas ou sapatos sem salto; evitem saltos finos ou agulha.",
   },
-  // Adicione mais eventos (pré-wedding, coquetel etc.) seguindo o mesmo formato
+  {
+    date: "02 . 07 . 27",
+    title: "Hangover party",
+    time: "À tarde / noite",
+    venue: "Hotel Santa Marta",
+    address: "Tossa de Mar",
+    mapsUrl: "https://maps.google.com/?q=Hotel+Santa+Marta+Tossa+de+Mar",
+    dressCode: null,
+    dressNote: null,
+  },
+  {
+    date: "03 . 07 . 27",
+    title: "Wine tasting e jantar",
+    time: "16h — Wine tasting · Noite — Jantar",
+    venue: "Celler Perelada · Cidade medieval",
+    address: "Segunda etapa: Begur / Palafrugell",
+    mapsUrl: "https://maps.google.com/?q=Celler+Perelada+Peralada",
+    dressCode: null,
+    dressNote: null,
+  },
+  {
+    date: "04 . 07 . 27",
+    title: "Passeio de barco",
+    time: "Durante o dia",
+    venue: "Costa Brava",
+    address: "Begur / Palafrugell",
+    mapsUrl: "https://maps.google.com/?q=Palafrugell+Costa+Brava",
+    dressCode: null,
+    dressNote: null,
+  },
 ];
 
 export default function Program() {
@@ -25,7 +64,10 @@ export default function Program() {
 
         <div className="space-y-16">
           {EVENTS.map((event, i) => (
-            <article key={i} className="border-b border-charcoal/10 pb-12 last:border-0">
+            <article
+              key={i}
+              className="border-b border-charcoal/10 pb-12 last:border-0"
+            >
               <p className="text-sm uppercase tracking-widest text-charcoal/60 mb-2">
                 {event.date}
               </p>
@@ -43,17 +85,19 @@ export default function Program() {
               >
                 Ver no mapa
               </Link>
-              <div className="mt-4 pt-4 border-t border-charcoal/10">
-                <p className="text-sm font-medium text-charcoal/80 mb-1">
-                  Dress code
-                </p>
-                <p className="text-charcoal/80">{event.dressCode}</p>
-                {event.dressNote && (
-                  <p className="text-sm text-charcoal/60 mt-2">
-                    {event.dressNote}
+              {event.dressCode && (
+                <div className="mt-4 pt-4 border-t border-charcoal/10">
+                  <p className="text-sm font-medium text-charcoal/80 mb-1">
+                    Dress code
                   </p>
-                )}
-              </div>
+                  <p className="text-charcoal/80">{event.dressCode}</p>
+                  {event.dressNote && (
+                    <p className="text-sm text-charcoal/60 mt-2">
+                      {event.dressNote}
+                    </p>
+                  )}
+                </div>
+              )}
             </article>
           ))}
         </div>

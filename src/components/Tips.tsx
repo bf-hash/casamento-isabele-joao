@@ -1,15 +1,15 @@
 import Link from "next/link";
 
 const TIPS = [
-  { label: "Hospedagem", href: "#" },
-  { label: "Beleza (cabelo e make)", href: "#" },
-  { label: "Restaurantes", href: "#" },
-  { label: "Passeios", href: "#" },
+  { label: "Hospedagem", href: "#hospedagem" },
+  { label: "Beleza (cabelo e make)", href: "#tips" },
+  { label: "Restaurantes", href: "#tips" },
+  { label: "Passeios", href: "#tips" },
 ];
 
 export default function Tips() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-sand/50">
+    <section className="px-6 py-20 md:py-28 bg-cream" id="tips">
       <div className="max-w-2xl mx-auto">
         <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal text-center mb-12">
           Dicas
@@ -25,9 +25,10 @@ export default function Tips() {
             </Link>
           ))}
         </div>
-        <p className="text-center text-charcoal/60 text-sm mt-6">
-          Os links acima podem apontar para páginas internas ou externas. Crie
-          seções específicas se quiser.
+        <p className="text-center text-charcoal/60 text-sm mt-8 max-w-md mx-auto">
+          A <strong>Hospedagem</strong> tem sugestões de hotéis em Tossa de Mar
+          (30/06–02/07) e em Begur / Palafrugell (02–05/07). Em breve, mais
+          dicas de beleza, restaurantes e passeios na Costa Brava.
         </p>
       </div>
     </section>

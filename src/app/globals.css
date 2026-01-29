@@ -4,10 +4,15 @@
 
 :root {
   --cream: #f8f5f0;
+  --sand: #e8e2d9;
+  --stone: #c4beb5;
+  --charcoal: #2c2c2c;
+  --lemon: #e5d44c;
+  --rose: #c9a9a6;
+  --olive: #7d8b5e;
   --sage: #9caf88;
   --terracotta: #c17f59;
-  --charcoal: #2c2c2c;
-  --sand: #e8e2d9;
+  --orange: #e07c4a;
 }
 
 html {

@@ -42,17 +42,16 @@ export default function Countdown({ date }: { date: Date }) {
     { label: "dias", value: timeLeft.days },
     { label: "horas", value: timeLeft.hours },
     { label: "min", value: timeLeft.minutes },
-    { label: "seg", value: timeLeft.seconds },
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+    <div className="flex flex-wrap justify-center gap-8 sm:gap-12">
       {items.map(({ label, value }) => (
         <div key={label} className="text-center">
-          <div className="font-serif text-3xl sm:text-4xl font-semibold text-charcoal tabular-nums">
+          <div className="font-serif text-4xl sm:text-5xl font-semibold text-charcoal tabular-nums">
             {String(value).padStart(2, "0")}
           </div>
-          <div className="text-sm uppercase tracking-wider text-charcoal/70 mt-1">
+          <div className="text-xs uppercase tracking-[0.2em] text-charcoal/60 mt-2">
             {label}
           </div>
         </div>

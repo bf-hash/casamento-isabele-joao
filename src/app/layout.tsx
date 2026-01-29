@@ -17,7 +17,7 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Isabele & João | Casamento",
   description:
-    "Sejam muito bem-vindos ao nosso site de casamento. Estamos felizes em compartilhar esse momento com vocês!",
+    "01.07.2027 — Convent de Blanes, Espanha. Costa Brava: Tossa de Mar, Begur e Palafrugell. Sejam muito bem-vindos!",
 };
 
 export default function RootLayout({

@@ -1,24 +1,40 @@
 # Design System — Isabele & João
 
-Esta pasta é para você organizar:
+## Tema do casamento
 
-- **Fotos**: hero, pré-wedding, detalhes do casamento etc.
-- **Paleta**: se tiver referências de cores além das já usadas (cream, sage, terracotta, charcoal, sand).
-- **Tipografia**: se quiser trocar Cormorant Garamond ou Outfit por outras fontes.
-- **Referências**: screenshots ou links de sites que você gostou.
+**Jardim Mediterrâneo – Limão Siciliano, Rosa e Verde**
+
+- Inspiração: verão mediterrâneo da Costa Brava, leve, natural e elegante.
+- Paleta: limão siciliano, rosa, verde oliva/ervas, **terracotta** e **laranja** (assentos), sobre off‑white, areia e pedra.
+- Decoração: oliveira, tomilho, alecrim, flores claras, limões naturais; laranja para assentos.
+- Resultado: ambiente solar, perfumado, romântico, atemporal e sofisticado.
+
+## Cores (Tailwind)
+
+| Token       | Hex       | Uso                          |
+|-------------|-----------|------------------------------|
+| `cream`     | `#F8F5F0` | Fundo principal              |
+| `sand`      | `#E8E2D9` | Backgrounds alternados       |
+| `stone`     | `#C4BEB5` | Pedra, neutros               |
+| `charcoal`  | `#2C2C2C` | Texto, header/footer         |
+| `lemon`     | `#E5D44C` | Limão siciliano (destaques)  |
+| `rose`      | `#C9A9A6` | Rosa (destaques)             |
+| `olive`     | `#7D8B5E` | Verde oliva / ervas          |
+| `sage`      | `#9CAF88` | Verde suave (secundário)     |
+| `terracotta`| `#C17F59` | Terracotta — decoração, links, botões |
+| `orange`    | `#E07C4A` | Laranja — assentos           |
 
 ## Onde as fotos são usadas
 
-- **Hero**: fundo da primeira tela (atualmente há um placeholder do Unsplash).
-- **Boas-vindas**: opcional — pode ter uma foto do casal.
-- **Galeria**: ainda não existe; podemos adicionar uma seção de fotos quando você tiver imagens.
+- **Hero**: fundo da primeira tela (placeholder do Unsplash até ter foto).
+- **Boas-vindas / Galeria**: opcional; podemos acrescentar seção de fotos quando houver imagens.
 
-## Cores atuais (Tailwind)
+## Tipografia
 
-- `cream` — #F8F5F0 (fundo principal)
-- `sage` — #9CAF88 (verde suave)
-- `terracotta` — #C17F59 (destaques, botões)
-- `charcoal` — #2C2C2C (texto, header/footer escuro)
-- `sand` — #E8E2D9 (backgrounds alternados)
+- **Serif**: Cormorant Garamond (títulos).
+- **Sans**: Outfit (corpo, UI).
 
-Substitua conforme seu design system.
+## Referências
+
+- Site de referência: [Maria Carla e Otávio](https://www.mariacarlaeotavio.com.br/).
+- Substitua ou complemente com suas próprias referências (screenshots, links).

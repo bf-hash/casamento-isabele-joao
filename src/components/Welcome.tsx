@@ -2,18 +2,22 @@ export default function Welcome() {
   return (
     <section className="px-6 py-20 md:py-28 bg-cream">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal mb-6">
-          Sejam muito bem-vindos ao nosso site de casamento
+        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal mb-4">
+          Sejam muito bem-vindos ao
         </h2>
-        <div className="space-y-4 text-charcoal/85 leading-relaxed">
+        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal mb-8">
+          nosso site de casamento
+        </h2>
+        <div className="space-y-5 text-charcoal/85 leading-relaxed">
           <p>
-            [Aqui você pode contar um pouquinho da história de vocês: como se
-            conheceram, o que os une, por que escolheram o local da festa, etc.
-            Esse texto é só um placeholder — substitua pelo texto real!]
+            Escolhemos a Costa Brava como cenário do nosso “sim”. A celebração
+            será intimista e diferente: alguns dias especiais ao lado de quem
+            amamos, entre Blanes, Tossa de Mar, Begur e Palafrugell.
           </p>
           <p>
-            Estamos felizes em compartilhar esse momento com vocês e mal podemos
-            esperar para celebrar juntos.
+            Mais do que um casamento, queremos que seja uma viagem memorável.
+            Estamos felizes em compartilhar esse momento com vocês e em brindar
+            juntos a tudo o que já vivemos — e a tudo o que ainda está por vir.
           </p>
         </div>
       </div>
