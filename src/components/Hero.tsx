@@ -4,8 +4,7 @@ import Countdown from "./Countdown";
 
 const WEDDING_DATE = new Date("2027-07-01T15:00:00");
 
-const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80";
+const HERO_IMAGE = "/fotos/hero.png";
 
 export default function Hero() {
   return (
