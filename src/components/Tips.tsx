@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 const TIPS_LINKS = [
-  { label: "Onde ficar", href: "#hospedagem" },
   { label: "Beleza (cabelo e make)", href: "#tips" },
   { label: "Restaurantes", href: "#tips" },
   { label: "Passeios", href: "#tips" },
@@ -52,13 +51,6 @@ export default function Tips() {
             </Link>
           ))}
         </div>
-
-        <p className="font-serif font-light text-center text-charcoal/60 text-sm mt-8 max-w-md mx-auto">
-          <strong>Onde ficar</strong> tem sugestões para Parte 1 (Tossa de Mar,
-          30/06–02/07) e Parte 2 (Begur / Palafrugell, 02–05/07).{" "}
-          <strong>Dress code</strong> traz ideias para o casamento. Em breve,
-          mais dicas de beleza, restaurantes e passeios na Costa Brava.
-        </p>
 
         {dressCodeOpen && (
           <div

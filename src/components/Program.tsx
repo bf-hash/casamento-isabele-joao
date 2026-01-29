@@ -13,6 +13,7 @@ const PARTE_1_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
+    extraNote: null,
     image: "/fotos/lespai.jpg",
   },
   {
@@ -29,6 +30,7 @@ const PARTE_1_EVENTS = [
       "A cerimônia será em espaço ao ar livre. Recomendamos saltos grossos, plataformas ou sapatos sem salto; evitem saltos finos ou agulha.",
     transportNote:
       "Teremos vans que buscarão em Tossa de Mar e no Hotel Santa Marta (Lloret de Mar) no dia do casamento.",
+    extraNote: null,
     image: "/fotos/casamento.png",
   },
   {
@@ -42,6 +44,7 @@ const PARTE_1_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
+    extraNote: null,
     image: "/fotos/hotel-santa-marta.webp",
   },
 ];
@@ -58,6 +61,8 @@ const PARTE_2_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
+    extraNote:
+      "Para quem quiser participar, o tour é EUR 36/pessoa. À medida que as pessoas forem confirmando, vamos contratar uma van para levar de Palafrugell até a vinícola; deve ficar próximo de EUR 40 ida e volta.",
     image: "/fotos/cellar-perelada.jpg",
   },
   {
@@ -71,6 +76,7 @@ const PARTE_2_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
+    extraNote: "EUR 150 por pessoa.",
     image:
       "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=800&q=80",
   },
@@ -87,6 +93,7 @@ function EventCard({
   dressCode,
   dressNote,
   transportNote,
+  extraNote,
   image,
 }: {
   date: string;
@@ -99,6 +106,7 @@ function EventCard({
   dressCode: string | null;
   dressNote: string | null;
   transportNote: string | null;
+  extraNote: string | null;
   image: string;
 }) {
   return (
@@ -159,6 +167,11 @@ function EventCard({
             {dressNote && (
               <p className="text-sm text-charcoal/60 mt-2">{dressNote}</p>
             )}
+          </div>
+        )}
+        {extraNote && (
+          <div className="mt-4 pt-4 border-t border-charcoal/10">
+            <p className="text-sm text-charcoal/80">{extraNote}</p>
           </div>
         )}
       </div>
