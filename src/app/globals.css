@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cream: #f8f5f0;
+  --sage: #9caf88;
+  --terracotta: #c17f59;
+  --charcoal: #2c2c2c;
+  --sand: #e8e2d9;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-charcoal antialiased;
+  background-color: var(--cream);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

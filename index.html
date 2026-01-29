@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Isabele & João | Casamento</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f8f5f0;
+      --sage: #9caf88;
+      --terracotta: #c17f59;
+      --charcoal: #2c2c2c;
+      --sand: #e8e2d9;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Outfit', system-ui, sans-serif;
+      color: var(--charcoal);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+    }
+    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+    .container { max-width: 42rem; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(248,245,240,.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(44,44,44,.1);
+    }
+    header .inner {
+      max-width: 64rem;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header a { color: var(--charcoal); text-decoration: none; }
+    header .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.125rem; font-weight: 600; }
+    nav { display: flex; gap: 2rem; }
+    nav a {
+      font-size: .75rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      color: rgba(44,44,44,.7);
+    }
+    nav a:hover { color: var(--charcoal); }
+    @media (max-width: 768px) {
+      nav:not(.mobile) { display: none; }
+      .menu-btn { display: block !important; }
+    }
+    .menu-btn { display: none; background: none; border: none; cursor: pointer; padding: .5rem; font-size: 1.25rem; }
+    nav.mobile { display: none; flex-direction: column; padding: 1rem 1.5rem; border-top: 1px solid rgba(44,44,44,.1); gap: 1rem; }
+    nav.mobile.open { display: flex; }
+
+    /* Hero */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 5rem 1.5rem;
+      overflow: hidden;
+    }
+    #hero .bg {
+      position: absolute;
+      inset: 0;
+      background: url(https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80) center/cover no-repeat;
+      opacity: .3;
+    }
+    #hero .overlay { position: absolute; inset: 0; background: rgba(248,245,240,.9); }
+    #hero .content { position: relative; z-index: 1; text-align: center; max-width: 36rem; }
+    #hero .sub { font-size: .75rem; letter-spacing: .3em; text-transform: uppercase; color: rgba(44,44,44,.7); margin-bottom: 1rem; }
+    #hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.25rem,5vw,3.75rem); font-weight: 600; margin: 0 0 1rem; }
+    #hero .date { font-size: 1.25rem; color: rgba(44,44,44,.8); margin-bottom: 3rem; }
+    .countdown { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 3rem; }
+    .countdown .unit { text-align: center; }
+    .countdown .val { font-family: 'Cormorant Garamond', serif; font-size: 1.875rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .countdown .lbl { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: rgba(44,44,44,.7); margin-top: .25rem; }
+    #hero .hashtag { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(44,44,44,.6); }
+
+    /* Sections */
+    section { padding: 5rem 1.5rem; }
+    section.cream { background: var(--cream); }
+    section.sand { background: rgba(232,226,217,.5); }
+    section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem,3vw,1.875rem); font-weight: 600; text-align: center; margin: 0 0 2rem; }
+    section .container { max-width: 42rem; margin: 0 auto; }
+    .welcome, .gifts .container { text-align: center; }
+    .welcome p, .howtoget p { color: rgba(44,44,44,.85); line-height: 1.7; }
+    .welcome p + p { margin-top: 1rem; }
+
+    /* Program */
+    .program h2 { margin-bottom: 3.5rem; }
+    .event { border-bottom: 1px solid rgba(44,44,44,.1); padding-bottom: 3rem; margin-bottom: 3rem; }
+    .event:last-child { border: none; margin-bottom: 0; }
+    .event .date { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(44,44,44,.6); margin-bottom: .5rem; }
+    .event h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; margin: 0 0 .5rem; }
+    .event .time, .event .venue { margin-bottom: .25rem; }
+    .event .address { font-size: .875rem; color: rgba(44,44,44,.7); margin-bottom: 1rem; }
+    .event .maps { font-size: .875rem; letter-spacing: .05em; text-transform: uppercase; color: var(--terracotta); text-decoration: none; }
+    .event .maps:hover { text-decoration: underline; }
+    .event .dress { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(44,44,44,.1); }
+    .event .dress p { margin: .25rem 0; font-size: .875rem; }
+
+    /* Buttons */
+    .btn { display: inline-block; padding: .75rem 1.5rem; font-size: .875rem; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; transition: background .2s; }
+    .btn-charcoal { background: var(--charcoal); color: var(--cream); margin-top: .5rem; }
+    .btn-charcoal:hover { background: #1a1a1a; }
+    .btn-terracotta { background: var(--terracotta); color: #fff; }
+    .btn-terracotta:hover { background: #a86d4a; }
+    .btn-wa { background: #25D366; color: #fff; font-weight: 500; }
+    .btn-wa:hover { background: #20BD5A; }
+
+    /* Tips */
+    .tips .links { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .tips .links a {
+      padding: .625rem 1.25rem;
+      border: 1px solid rgba(44,44,44,.3);
+      color: var(--charcoal);
+      font-size: .875rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .tips .links a:hover { background: var(--charcoal); color: var(--cream); }
+    .tips .note { text-align: center; font-size: .875rem; color: rgba(44,44,44,.6); }
+
+    /* RSVP */
+    #rsvp { background: var(--charcoal); color: var(--cream); }
+    #rsvp h2 { color: inherit; }
+    #rsvp p { color: rgba(248,245,240,.85); line-height: 1.7; margin-bottom: 2rem; }
+    #rsvp .btn { color: #fff; }
+
+    /* Footer */
+    footer { padding: 2rem 1.5rem; background: var(--charcoal); color: rgba(248,245,240,.7); text-align: center; font-size: .875rem; }
+    footer p { margin: 0; }
+    footer p + p { margin-top: .25rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="inner">
+      <a href="#hero" class="logo">Isabele & João</a>
+      <nav>
+        <a href="#hero">Início</a>
+        <a href="#welcome">Boas-vindas</a>
+        <a href="#program">Programação</a>
+        <a href="#howtoget">Como chegar</a>
+        <a href="#tips">Dicas</a>
+        <a href="#gifts">Presentes</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+      <button type="button" class="menu-btn" aria-label="Menu">☰</button>
+    </div>
+    <nav class="mobile" id="mobileNav">
+      <a href="#hero">Início</a>
+      <a href="#welcome">Boas-vindas</a>
+      <a href="#program">Programação</a>
+      <a href="#howtoget">Como chegar</a>
+      <a href="#tips">Dicas</a>
+      <a href="#gifts">Presentes</a>
+      <a href="#rsvp">RSVP</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero">
+      <div class="bg"></div>
+      <div class="overlay"></div>
+      <div class="content">
+        <p class="sub">Casamento</p>
+        <h1 class="serif">Isabele & João</h1>
+        <p class="date serif">06 . 12 . 2026</p>
+        <div class="countdown" id="countdown">
+          <div class="unit"><div class="val" id="cd-days">00</div><div class="lbl">dias</div></div>
+          <div class="unit"><div class="val" id="cd-hours">00</div><div class="lbl">horas</div></div>
+          <div class="unit"><div class="val" id="cd-mins">00</div><div class="lbl">min</div></div>
+          <div class="unit"><div class="val" id="cd-secs">00</div><div class="lbl">seg</div></div>
+        </div>
+        <p class="hashtag">#isabeleejoao</p>
+      </div>
+    </section>
+
+    <section id="welcome" class="cream">
+      <div class="container welcome">
+        <h2 class="serif">Sejam muito bem-vindos ao nosso site de casamento</h2>
+        <p>[Aqui você pode contar um pouquinho da história de vocês: como se conheceram, o que os une, por que escolheram o local da festa, etc. Esse texto é só um placeholder — substitua pelo texto real!]</p>
+        <p>Estamos felizes em compartilhar esse momento com vocês e mal podemos esperar para celebrar juntos.</p>
+      </div>
+    </section>
+
+    <section id="program" class="sand">
+      <div class="container">
+        <h2 class="serif">Programação</h2>
+        <article class="event">
+          <p class="date">DD . MM . 26</p>
+          <h3 class="serif">Casamento</h3>
+          <p class="time">Às 15h30</p>
+          <p class="venue">Nome do local</p>
+          <p class="address">Endereço completo do local</p>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="maps">Ver no mapa</a>
+          <div class="dress">
+            <p><strong>Dress code</strong></p>
+            <p>Passeio completo / Social</p>
+            <p style="color: rgba(44,44,44,.6); margin-top: .5rem;">A cerimônia acontecerá em gramado; recomendamos saltos grossos ou sapatos sem salto.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="howtoget" class="cream">
+      <div class="container">
+        <h2 class="serif">Como chegar</h2>
+        <p>[Descreva aqui as melhores formas de chegar: aeroporto mais próximo, transfer, Uber, carro, transporte público etc. Use os exemplos dos sites que você mandou como referência.]</p>
+        <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn-charcoal">Ver no Google Maps</a>
+      </div>
+    </section>
+
+    <section id="tips" class="sand">
+      <div class="container">
+        <h2 class="serif">Dicas</h2>
+        <div class="links">
+          <a href="#">Hospedagem</a>
+          <a href="#">Beleza (cabelo e make)</a>
+          <a href="#">Restaurantes</a>
+          <a href="#">Passeios</a>
+        </div>
+        <p class="note">Os links acima podem apontar para páginas internas ou externas. Crie seções específicas se quiser.</p>
+      </div>
+    </section>
+
+    <section id="gifts" class="cream">
+      <div class="container">
+        <h2 class="serif">Presentes</h2>
+        <p>A sua presença é o nosso maior presente. Caso deseje nos presentear, deixamos abaixo o link da nossa lista virtual.</p>
+        <a href="https://noivos.casar.com" target="_blank" rel="noopener" class="btn btn-terracotta">Lista virtual</a>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="container">
+        <h2 class="serif">Confirme sua presença</h2>
+        <p>Por favor, confirme sua presença através do WhatsApp. Clique no botão abaixo para enviar uma mensagem.</p>
+        <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Confirmo%20minha%20presen%C3%A7a%20no%20casamento%20de%20Isabele%20e%20Jo%C3%A3o." target="_blank" rel="noopener" class="btn btn-wa">Confirmar pelo WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Isabele & João — Casamento</p>
+    <p>#isabeleejoao</p>
+  </footer>
+
+  <script>
+    (function () {
+      var end = new Date('2026-12-06T15:30:00');
+      function pad(n) { return String(n).padStart(2, '0'); }
+      function update() {
+        var now = Date.now();
+        var d = end - now;
+        if (d <= 0) {
+          document.getElementById('cd-days').textContent = '00';
+          document.getElementById('cd-hours').textContent = '00';
+          document.getElementById('cd-mins').textContent = '00';
+          document.getElementById('cd-secs').textContent = '00';
+          return;
+        }
+        var days = Math.floor(d / 864e5);
+        var hours = Math.floor((d % 864e5) / 36e5);
+        var mins = Math.floor((d % 36e5) / 6e4);
+        var secs = Math.floor((d % 6e4) / 1e3);
+        document.getElementById('cd-days').textContent = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-mins').textContent = pad(mins);
+        document.getElementById('cd-secs').textContent = pad(secs);
+      }
+      update();
+      setInterval(update, 1000);
+    })();
+
+    document.querySelector('.menu-btn').addEventListener('click', function () {
+      document.getElementById('mobileNav').classList.toggle('open');
+      this.textContent = document.getElementById('mobileNav').classList.contains('open') ? '✕' : '☰';
+    });
+    document.querySelectorAll('#mobileNav a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        document.getElementById('mobileNav').classList.remove('open');
+        document.querySelector('.menu-btn').textContent = '☰';
+      });
+    });
+  </script>
+</body>
+</html>
