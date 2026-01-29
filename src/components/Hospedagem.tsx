@@ -102,10 +102,10 @@ export default function Hospedagem() {
   return (
     <section className="px-6 py-20 md:py-28 bg-cream" id="hospedagem">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal text-center mb-4">
+        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-4">
           Onde ficar
         </h2>
-        <p className="text-center text-charcoal/75 text-sm mb-12">
+        <p className="font-serif font-light text-center text-charcoal/75 text-sm mb-12 tracking-wide">
           <span className="font-medium">$</span> econômico ·{" "}
           <span className="font-medium">$$</span> médio ·{" "}
           <span className="font-medium">$$$</span> upscale
@@ -113,7 +113,7 @@ export default function Hospedagem() {
 
         <div className="space-y-12">
           <div>
-            <h3 className="font-serif text-lg font-semibold text-charcoal mb-1">
+            <h3 className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/90 mb-1">
               Parte 1 — Tossa de Mar
             </h3>
             <p className="text-sm text-charcoal/70 mb-6">
@@ -128,14 +128,14 @@ export default function Hospedagem() {
               href="https://www.booking.com/searchresults.html?ss=Tossa+de+Mar&checkin=2027-06-30&checkout=2027-07-03"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 text-sm uppercase tracking-wider text-terracotta hover:underline"
+              className="font-serif font-light inline-block mt-4 text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
             >
               Ver ofertas na Booking
             </Link>
           </div>
 
           <div>
-            <h3 className="font-serif text-lg font-semibold text-charcoal mb-1">
+            <h3 className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/90 mb-1">
               Parte 2 — Begur & Palafrugell
             </h3>
             <p className="text-sm text-charcoal/70 mb-6">
@@ -150,7 +150,7 @@ export default function Hospedagem() {
               href="https://www.booking.com/searchresults.html?ss=Palafrugell%2C+Begur&checkin=2027-07-02&checkout=2027-07-06"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-4 text-sm uppercase tracking-wider text-terracotta hover:underline"
+              className="font-serif font-light inline-block mt-4 text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
             >
               Ver ofertas na Booking
             </Link>

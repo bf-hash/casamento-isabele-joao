@@ -26,13 +26,16 @@
 
 ## Onde as fotos são usadas
 
-- **Hero**: fundo da primeira tela (placeholder do Unsplash até ter foto).
+- **Hero**: fundo da primeira tela (`/fotos/hero.png`).
 - **Boas-vindas / Galeria**: opcional; podemos acrescentar seção de fotos quando houver imagens.
 
 ## Tipografia
 
-- **Serif**: Cormorant Garamond (títulos).
-- **Sans**: Outfit (corpo, UI).
+Estética inspirada em menu de casamento elegante: script delicado + serif limpo, maiúsculas com letter-spacing, bastante espaço em branco.
+
+- **Script**: Great Vibes — nomes (“Isabele & João”), frases curtas (“Sejam muito bem-vindos ao”), assinaturas.
+- **Serif**: Cormorant Garamond (300–700) — títulos em maiúsculas + tracking, corpo de texto, labels. Uso de `font-light` e `tracking-[0.15em]` / `tracking-[0.2em]` nos títulos.
+- **Sans**: Outfit — UI, botões quando necessário.
 
 ## Referências
 

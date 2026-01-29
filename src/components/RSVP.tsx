@@ -10,10 +10,10 @@ export default function RSVP() {
   return (
     <section className="px-6 py-20 md:py-28 bg-charcoal text-cream">
       <div className="max-w-2xl mx-auto text-center">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold mb-6">
+        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] mb-6">
           Confirme sua presença
         </h2>
-        <p className="text-cream/85 leading-relaxed mb-8">
+        <p className="font-serif font-light text-cream/85 leading-relaxed mb-8">
           Por favor, confirme sua presença através do WhatsApp. Clique no botão
           abaixo para enviar uma mensagem.
         </p>

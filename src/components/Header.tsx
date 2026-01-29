@@ -19,7 +19,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-charcoal/10">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-serif text-lg font-semibold text-charcoal">
+        <a href="#hero" className="font-script text-xl text-charcoal">
           Isabele & João
         </a>
 
@@ -28,7 +28,7 @@ export default function Header() {
             <a
               key={label}
               href={href}
-              className="text-sm uppercase tracking-wider text-charcoal/70 hover:text-charcoal transition-colors"
+              className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/70 hover:text-charcoal transition-colors"
             >
               {label}
             </a>
@@ -52,7 +52,7 @@ export default function Header() {
               key={label}
               href={href}
               onClick={() => setOpen(false)}
-              className="text-sm uppercase tracking-wider text-charcoal/70 hover:text-charcoal"
+              className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/70 hover:text-charcoal"
             >
               {label}
             </a>

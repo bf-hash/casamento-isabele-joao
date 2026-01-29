@@ -11,7 +11,7 @@ export default function Tips() {
   return (
     <section className="px-6 py-20 md:py-28 bg-cream" id="tips">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal text-center mb-12">
+        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-12">
           Dicas
         </h2>
         <div className="flex flex-wrap justify-center gap-4">
@@ -19,13 +19,13 @@ export default function Tips() {
             <Link
               key={label}
               href={href}
-              className="px-5 py-2.5 border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-cream transition-colors text-sm uppercase tracking-wider"
+              className="font-serif font-light px-5 py-2.5 border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-cream transition-colors text-sm uppercase tracking-[0.12em]"
             >
               {label}
             </Link>
           ))}
         </div>
-        <p className="text-center text-charcoal/60 text-sm mt-8 max-w-md mx-auto">
+        <p className="font-serif font-light text-center text-charcoal/60 text-sm mt-8 max-w-md mx-auto">
           <strong>Onde ficar</strong> tem sugestões para Parte 1 (Tossa de Mar,
           30/06–02/07) e Parte 2 (Begur / Palafrugell, 02–05/07). Em breve,
           mais dicas de beleza, restaurantes e passeios na Costa Brava.

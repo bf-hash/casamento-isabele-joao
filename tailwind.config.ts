@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        script: ["var(--font-script)", "cursive"],
         sans: ["var(--font-outfit)", "system-ui", "sans-serif"],
       },
       colors: {

@@ -8,14 +8,14 @@ export default function HowToGet() {
   return (
     <section className="px-6 py-20 md:py-28 bg-sand/50">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal text-center mb-6">
+        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-6">
           Como chegar
         </h2>
-        <p className="text-charcoal/60 text-sm text-center mb-10">
+        <p className="font-serif font-light text-charcoal/60 text-sm text-center mb-10 tracking-wide">
           Costa Brava · Blanes, Tossa de Mar, Begur e Palafrugell
         </p>
 
-        <div className="space-y-8 text-charcoal/85 leading-relaxed">
+        <div className="space-y-8 font-serif font-light text-charcoal/85 leading-relaxed">
           <div>
             <h3 className="font-semibold text-charcoal mb-2">De avião</h3>
             <p>
@@ -66,7 +66,7 @@ export default function HowToGet() {
             href={CONVENT_MAPS}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-charcoal text-cream text-sm uppercase tracking-wider hover:bg-charcoal/90 transition-colors"
+            className="font-serif font-light inline-block px-6 py-3 bg-charcoal text-cream text-sm uppercase tracking-[0.1em] hover:bg-charcoal/90 transition-colors"
           >
             Convent de Blanes no Google Maps
           </Link>
@@ -74,7 +74,7 @@ export default function HowToGet() {
             href={BLANES_TURISM}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 border border-charcoal/30 text-charcoal text-sm uppercase tracking-wider hover:bg-charcoal/5 transition-colors"
+            className="font-serif font-light inline-block px-6 py-3 border border-charcoal/30 text-charcoal text-sm uppercase tracking-[0.1em] hover:bg-charcoal/5 transition-colors"
           >
             Turismo Blanes
           </Link>

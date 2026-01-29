@@ -12,8 +12,7 @@ const PARTE_1_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
-    image:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&q=80",
+    image: "/fotos/lespai.jpg",
   },
   {
     date: "01 . 07 . 27",
@@ -41,8 +40,7 @@ const PARTE_1_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
-    image:
-      "https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=800&q=80",
+    image: "/fotos/hotel-santa-marta.webp",
   },
 ];
 
@@ -57,8 +55,7 @@ const PARTE_2_EVENTS = [
     dressCode: null,
     dressNote: null,
     transportNote: null,
-    image:
-      "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=800&q=80",
+    image: "/fotos/cellar-perelada.jpg",
   },
   {
     date: "04 . 07 . 27",
@@ -110,10 +107,10 @@ function EventCard({
         />
       </div>
       <div className="p-5 sm:p-6">
-        <p className="text-xs uppercase tracking-widest text-charcoal/60 mb-1">
+        <p className="font-serif font-light text-xs uppercase tracking-[0.15em] text-charcoal/60 mb-1">
           {date}
         </p>
-        <h3 className="font-serif text-xl sm:text-2xl font-semibold text-charcoal mb-2">
+        <h3 className="font-serif font-medium text-xl sm:text-2xl text-charcoal mb-2 tracking-wide">
           {title}
         </h3>
         <p className="text-charcoal/80 mb-2">{time}</p>
@@ -123,7 +120,7 @@ function EventCard({
           href={mapsUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block text-sm uppercase tracking-wider text-terracotta hover:underline mb-4"
+            className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline mb-4"
         >
           Ver no mapa
         </Link>
@@ -160,7 +157,7 @@ function ParteSection({
 }) {
   return (
     <div>
-      <h3 className="font-serif text-lg sm:text-xl font-semibold text-charcoal mb-6 pb-2 border-b border-charcoal/15">
+      <h3 className="font-serif font-light text-sm sm:text-base uppercase tracking-[0.15em] text-charcoal/80 mb-6 pb-2 border-b border-charcoal/15">
         {label}
       </h3>
       <div className="space-y-10">
@@ -176,7 +173,7 @@ export default function Program() {
   return (
     <section className="px-6 py-20 md:py-28 bg-sand/50" id="program">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-charcoal text-center mb-16">
+        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-16">
           Programação
         </h2>
 
