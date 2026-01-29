@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const TIPS = [
-  { label: "Hospedagem", href: "#hospedagem" },
+  { label: "Onde ficar", href: "#hospedagem" },
   { label: "Beleza (cabelo e make)", href: "#tips" },
   { label: "Restaurantes", href: "#tips" },
   { label: "Passeios", href: "#tips" },
@@ -26,9 +26,9 @@ export default function Tips() {
           ))}
         </div>
         <p className="text-center text-charcoal/60 text-sm mt-8 max-w-md mx-auto">
-          A <strong>Hospedagem</strong> tem sugestões de hotéis em Tossa de Mar
-          (30/06–02/07) e em Begur / Palafrugell (02–05/07). Em breve, mais
-          dicas de beleza, restaurantes e passeios na Costa Brava.
+          <strong>Onde ficar</strong> tem sugestões para Parte 1 (Tossa de Mar,
+          30/06–02/07) e Parte 2 (Begur / Palafrugell, 02–05/07). Em breve,
+          mais dicas de beleza, restaurantes e passeios na Costa Brava.
         </p>
       </div>
     </section>

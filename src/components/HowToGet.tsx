@@ -28,41 +28,35 @@ export default function HowToGet() {
 
           <div>
             <h3 className="font-semibold text-charcoal mb-2">
-              Barcelona → Blanes / Tossa de Mar
+              Até Tossa de Mar (Parte 1)
             </h3>
             <p>
-              <strong>Trem:</strong> R2 Nord do aeroporto até Barcelona Sants,
-              depois trem até Blanes (cerca de 1h40, a partir de €8). De Blanes,
-              há ônibus ou táxi para Tossa de Mar.
+              <strong>Barcelona → Tossa de Mar:</strong> ~90 km. Trem R2 Nord do
+              aeroporto até Barcelona Sants, depois trem até Blanes (cerca de
+              1h40, a partir de €8). De Blanes, táxi até Tossa de Mar.
             </p>
             <p className="mt-2">
-              <strong>Ônibus:</strong> A Sagales opera ônibus do aeroporto de
-              Barcelona até Blanes e paradas na Costa Brava.
-            </p>
-            <p className="mt-2">
-              <strong>Carro:</strong> Aluguel no aeroporto. Blanes fica a ~70 km
-              de Barcelona; Tossa de Mar a ~90 km. Ótima opção para explorar a
-              região.
+              <strong>Girona → Tossa de Mar:</strong> ~45 km. O aeroporto de
+              Girona fica mais perto; o mais prático é alugar carro ou usar
+              transfer.
             </p>
           </div>
 
           <div>
             <h3 className="font-semibold text-charcoal mb-2">
-              Girona → Blanes / Tossa / Begur
+              De Tossa de Mar até Begur / Palafrugell (Parte 2)
             </h3>
             <p>
-              O aeroporto de Girona fica mais perto da Costa Brava. De lá, o
-              mais prático é alugar carro ou usar transfer. Girona → Blanes ~45
-              km; → Begur / Palafrugell ~50 km.
+              ~50 km. As cidades são bem conectadas por estrada. Para a segunda
+              etapa (dias 3 e 4), o carro facilita muito o deslocamento.
             </p>
           </div>
 
-          <div>
-            <h3 className="font-semibold text-charcoal mb-2">Entre as cidades</h3>
-            <p>
-              Blanes, Tossa de Mar, Begur e Palafrugell são bem conectadas por
-              estrada. Para a segunda etapa (Begur / Palafrugell), o carro
-              facilita muito. Também há ônibus regionais entre as localidades.
+          <div className="rounded-lg border border-charcoal/15 bg-cream/80 p-4">
+            <p className="text-charcoal font-medium mb-1">Recomendação</p>
+            <p className="text-charcoal/85 text-sm">
+              Recomendamos alugar um carro para explorar a região com liberdade,
+              principalmente entre Tossa de Mar e Begur / Palafrugell.
             </p>
           </div>
         </div>

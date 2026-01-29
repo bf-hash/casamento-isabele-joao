@@ -1,8 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Convite from "@/components/Convite";
 import Welcome from "@/components/Welcome";
-import Tema from "@/components/Tema";
 import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
 import Hospedagem from "@/components/Hospedagem";
@@ -19,11 +17,9 @@ export default function Home() {
         <section id="hero">
           <Hero />
         </section>
-        <Convite />
         <section id="welcome">
           <Welcome />
         </section>
-        <Tema />
         <section id="program">
           <Program />
         </section>

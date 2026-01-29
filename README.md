@@ -11,9 +11,25 @@ npm run dev
 
 Acesse [http://localhost:3000](http://localhost:3000).
 
-## Deploy (Vercel)
+## Colocar em produção (Vercel)
 
-1. **Suba o projeto para o GitHub**
+1. **Envie as alterações para o GitHub**
+   ```bash
+   git add -A && git commit -m "Atualizações do site"
+   git push origin main
+   ```
+
+2. **Deploy na Vercel**
+   - **Opção A – Dashboard:** acesse [vercel.com](https://vercel.com) → **Add New…** → **Project** → **Import** o repositório `bf-hash/casamento-isabele-joao`. Clique em **Deploy**.
+   - **Opção B – CLI:** `npm install -g vercel` (ou use `npx`), depois `npm run deploy` na pasta do projeto. Siga o assistente (login, link ao projeto).
+
+O site ficará em um URL tipo `casamento-isabele-joao.vercel.app`. Domínio próprio em **Settings → Domains**.
+
+---
+
+## Deploy (detalhes)
+
+1. **Suba o projeto para o GitHub** (se ainda não tiver)
    - Crie um repositório novo (ex.: `casamento-isabele-joao`).
    - Na pasta do projeto:
      ```bash

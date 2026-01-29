@@ -5,10 +5,9 @@ import { useState } from "react";
 const LINKS = [
   { label: "Início", href: "#hero" },
   { label: "Boas-vindas", href: "#welcome" },
-  { label: "Tema", href: "#tema" },
   { label: "Programação", href: "#program" },
   { label: "Como chegar", href: "#howtoget" },
-  { label: "Hospedagem", href: "#hospedagem" },
+  { label: "Onde ficar", href: "#hospedagem" },
   { label: "Dicas", href: "#tips" },
   { label: "Presentes", href: "#gifts" },
   { label: "RSVP", href: "#rsvp" },
