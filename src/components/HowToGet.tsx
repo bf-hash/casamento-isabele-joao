@@ -1,9 +1,3 @@
-import Link from "next/link";
-
-const CONVENT_MAPS =
-  "https://www.google.com/maps/place/El+Convent+de+Blanes/@41.6742564,2.7903136,17z";
-const BLANES_TURISM = "https://www.blanescostabrava.cat";
-
 export default function HowToGet() {
   return (
     <section className="px-6 py-20 md:py-28 bg-sand/50">
@@ -58,25 +52,6 @@ export default function HowToGet() {
               principalmente entre Tossa de Mar e Begur / Palafrugell.
             </p>
           </div>
-        </div>
-
-        <div className="mt-10 flex flex-wrap gap-4 justify-center">
-          <Link
-            href={CONVENT_MAPS}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-serif font-light inline-block px-6 py-3 bg-charcoal text-cream text-sm uppercase tracking-[0.1em] hover:bg-charcoal/90 transition-colors"
-          >
-            Convent de Blanes no Google Maps
-          </Link>
-          <Link
-            href={BLANES_TURISM}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-serif font-light inline-block px-6 py-3 border border-charcoal/30 text-charcoal text-sm uppercase tracking-[0.1em] hover:bg-charcoal/5 transition-colors"
-          >
-            Turismo Blanes
-          </Link>
         </div>
       </div>
     </section>

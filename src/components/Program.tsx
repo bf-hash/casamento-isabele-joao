@@ -9,6 +9,7 @@ const PARTE_1_EVENTS = [
     venue: "L'Espai",
     address: "Plaça de l'Església, 2B, Tossa de Mar",
     mapsUrl: "https://maps.google.com/?q=Plaça+Església+2B+Tossa+de+Mar",
+    venueUrl: null,
     dressCode: null,
     dressNote: null,
     transportNote: null,
@@ -22,6 +23,7 @@ const PARTE_1_EVENTS = [
     address: "Passeig de Carles Faust, 4, 17300 Blanes, Girona",
     mapsUrl:
       "https://maps.google.com/?q=El+Convent+de+Blanes+Passeig+Carles+Faust+4",
+    venueUrl: "https://elconventblanes.com/en/",
     dressCode: "Passeio completo / Social",
     dressNote:
       "A cerimônia será em espaço ao ar livre. Recomendamos saltos grossos, plataformas ou sapatos sem salto; evitem saltos finos ou agulha.",
@@ -36,6 +38,7 @@ const PARTE_1_EVENTS = [
     venue: "Hotel Santa Marta",
     address: "Lloret de Mar · hotelsantamarta.es",
     mapsUrl: "https://www.google.com/maps/search/Hotel+Santa+Marta+Lloret+de+Mar",
+    venueUrl: null,
     dressCode: null,
     dressNote: null,
     transportNote: null,
@@ -51,6 +54,7 @@ const PARTE_2_EVENTS = [
     venue: "Celler Perelada · Cidade medieval",
     address: "Segunda etapa: Begur / Palafrugell",
     mapsUrl: "https://maps.google.com/?q=Celler+Perelada+Peralada",
+    venueUrl: null,
     dressCode: null,
     dressNote: null,
     transportNote: null,
@@ -63,6 +67,7 @@ const PARTE_2_EVENTS = [
     venue: "Costa Brava",
     address: "Begur / Palafrugell",
     mapsUrl: "https://maps.google.com/?q=Palafrugell+Costa+Brava",
+    venueUrl: null,
     dressCode: null,
     dressNote: null,
     transportNote: null,
@@ -78,6 +83,7 @@ function EventCard({
   venue,
   address,
   mapsUrl,
+  venueUrl,
   dressCode,
   dressNote,
   transportNote,
@@ -89,6 +95,7 @@ function EventCard({
   venue: string;
   address: string;
   mapsUrl: string;
+  venueUrl: string | null;
   dressCode: string | null;
   dressNote: string | null;
   transportNote: string | null;
@@ -115,14 +122,26 @@ function EventCard({
         <p className="text-charcoal/80 mb-2">{time}</p>
         <p className="font-medium text-charcoal mb-1">{venue}</p>
         <p className="text-sm text-charcoal/70 mb-4">{address}</p>
-        <Link
-          href={mapsUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-            className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline mb-4"
-        >
-          Ver no mapa
-        </Link>
+        <div className="flex flex-wrap gap-4 gap-y-1 mb-4">
+          <Link
+            href={mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+          >
+            Ver no mapa
+          </Link>
+          {venueUrl && (
+            <Link
+              href={venueUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+            >
+              Site do local
+            </Link>
+          )}
+        </div>
         {transportNote && (
           <div className="mt-4 pt-4 border-t border-charcoal/10">
             <p className="text-sm font-medium text-charcoal/80 mb-1">
