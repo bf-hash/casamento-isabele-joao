@@ -40,25 +40,37 @@ const TOSSA_HOTELS = [
     price: "$$$" as const,
     note: "Junto à praia",
   },
+  {
+    name: "Hostal Boutique Es Menut",
+    price: "$$" as const,
+    note: "4★, Vila Vella, hostalesmenut.com",
+    url: "https://www.hostalesmenut.com/",
+  },
+  {
+    name: "Zel Costa Brava",
+    price: "$$$" as const,
+    note: "Resort à beira-mar, Cala Giverola (Meliá)",
+    url: "https://www.melia.com/en/hotels/spain/costa-brava/zel-costa-brava",
+  },
+  {
+    name: "Hostal Boutique Sa Nansa",
+    price: "$$" as const,
+    note: "Centro, frente à igreja, hostalsanansa.com",
+    url: "https://hostalsanansa.com/en/",
+  },
 ];
 
-const BEGUR_PALAFRUGELL_HOTELS = [
-  { name: "Hotel Llafranc", price: "$" as const, note: "Llafranc, 3★" },
-  {
-    name: "Hotel Alga",
-    price: "$$" as const,
-    note: "4★, Calella de Palafrugell, 200 m da praia",
-  },
-  {
-    name: "Hotel Sa Punta",
-    price: "$$" as const,
-    note: "Begur, zona tranquila",
-  },
-  {
-    name: "Hotel Eetu Begur (Meliá)",
-    price: "$$$" as const,
-    note: "Baía de Aiguablava, Only Adults, spa",
-  },
+const BEGUR_PALAFRUGELL_LINKS = [
+  { name: "La Bionda Begur", url: "https://www.instagram.com/labiondabegur?igsh=MWl2b3ZlYXdxOW8wdg==" },
+  { name: "La Bionda", url: "https://www.booking.com/hotel/es/la-bionda.en.html?aid=1765178&no_rooms=1&group_adults=2" },
+  { name: "Aiguaclara", url: "https://www.booking.com/hotel/es/aiguaclara.en.html?aid=1765178&no_rooms=1&group_adults=2" },
+  { name: "Can Vilobi", url: "https://www.instagram.com/canvilobi?igsh=cDVrOTM4YzF4ajY0" },
+  { name: "Encís d'Empordà", url: "https://www.instagram.com/encisdemporda?igsh=MWRta2l2Zm8wMTAxZg==" },
+  { name: "Mas Valentí 1511", url: "https://www.booking.com/hotel/es/mas-valenti-1511.en.html?aid=1765178&no_rooms=1&group_adults=2" },
+  { name: "El Far Sant Sebastià", url: "https://www.instagram.com/elfarsantsebastia?igsh=MWE4cDdjcTV5bXlsMQ==" },
+  { name: "Casa Peya Hotel", url: "https://www.instagram.com/casapeyahotel?igsh=MTFzeW9wbDlwNjI0Zw==" },
+  { name: "Castell d'Empordà", url: "https://hotelcastellemporda.com/en/" },
+  { name: "Can Mascort", url: "https://canmascortecohotel.com/en/" },
 ];
 
 function HotelCard({
@@ -104,6 +116,21 @@ function HotelCard({
   );
 }
 
+function LinkRow({ name, url }: { name: string; url: string }) {
+  return (
+    <div className="py-3 border-b border-charcoal/10 last:border-0">
+      <Link
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-terracotta hover:underline"
+      >
+        {name}
+      </Link>
+    </div>
+  );
+}
+
 export default function Hospedagem() {
   return (
     <section className="px-6 py-20 md:py-28 bg-cream" id="hospedagem">
@@ -131,14 +158,24 @@ export default function Hospedagem() {
                 <HotelCard key={h.name} {...h} />
               ))}
             </div>
-            <Link
-              href="https://www.booking.com/searchresults.html?ss=Tossa+de+Mar&checkin=2027-06-30&checkout=2027-07-03"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-serif font-light mt-4 inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
-            >
-              Ver todos os hotéis em Tossa (Booking)
-            </Link>
+            <div className="mt-4 flex flex-wrap gap-4 gap-y-1">
+              <Link
+                href="https://www.booking.com/searchresults.html?ss=Tossa+de+Mar&checkin=2027-06-30&checkout=2027-07-03"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+              >
+                Ver todos os hotéis em Tossa (Booking)
+              </Link>
+              <Link
+                href="https://www.google.com/travel/search?q=TOSSA%20DE%20MAR%20HOTELS&g2lb=4965990%2C72248050%2C72248051%2C72471280%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C72958624%2C73059275%2C73064764%2C73249150%2C121522132&hl=en-BR&gl=br&ssta=1&ts=CAESCgoCCAMKAggDEAAaVQo3EjUyJTB4MTJiYjFhYTdhYzExYWFhMToweGEyNjE0ZjRhZWM4MzM0Y2Q6DFRvc3NhIERlIE1hchIaEhQKBwjqDxABGB4SBwjqDxABGB8YATICEAAqBwoFOgNCUkw&qs=CAEyKENob0l0NUNhaHJQdTZLX29BUm9OTDJjdk1URm9NR013WWpGdWNCQUI4BkIJEVJxFhfHvi_gQgkRSG2P-aY2eWVCCRFKKBVCOWNl2lpNMkuqAUgQASoKIgZob3RlbHMoDDIfEAEiG0QJuo7eWNzpfH4xysmxBCQvuZS_e5vUiR1iPDIXEAIiE3Rvc3NhIGRlIG1hciBob3RlbHM&ap=aAE&ictx=111&ved=2ahUKEwirtNukzrGSAxUYNbkGHUZhEV0QyvcEegQIAxBI"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+              >
+                Hotéis em Tossa (Google Travel)
+              </Link>
+            </div>
           </div>
 
           <div>
@@ -149,8 +186,8 @@ export default function Hospedagem() {
               2 — 5 de julho · Wine tasting, jantar medieval e passeio de barco
             </p>
             <div className="divide-y divide-charcoal/10 rounded-lg border border-charcoal/10 bg-sand/30 p-4">
-              {BEGUR_PALAFRUGELL_HOTELS.map((h) => (
-                <HotelCard key={h.name} {...h} />
+              {BEGUR_PALAFRUGELL_LINKS.map((item) => (
+                <LinkRow key={item.url} name={item.name} url={item.url} />
               ))}
             </div>
             <Link
