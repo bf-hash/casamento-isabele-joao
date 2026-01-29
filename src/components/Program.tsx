@@ -26,17 +26,16 @@ const PARTE_1_EVENTS = [
     dressNote:
       "A cerimônia será em espaço ao ar livre. Recomendamos saltos grossos, plataformas ou sapatos sem salto; evitem saltos finos ou agulha.",
     transportNote:
-      "Teremos vans que buscarão em Tossa de Mar e no Hotel Santa Marta no dia do casamento.",
-    image:
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80",
+      "Teremos vans que buscarão em Tossa de Mar e no Hotel Santa Marta (Lloret de Mar) no dia do casamento.",
+    image: "/fotos/casamento.png",
   },
   {
     date: "02 . 07 . 27",
     title: "Hangover party",
     time: "À tarde / noite",
     venue: "Hotel Santa Marta",
-    address: "Tossa de Mar",
-    mapsUrl: "https://maps.google.com/?q=Hotel+Santa+Marta+Tossa+de+Mar",
+    address: "Lloret de Mar · hotelsantamarta.es",
+    mapsUrl: "https://www.google.com/maps/search/Hotel+Santa+Marta+Lloret+de+Mar",
     dressCode: null,
     dressNote: null,
     transportNote: null,
