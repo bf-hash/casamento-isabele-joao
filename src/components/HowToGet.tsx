@@ -31,9 +31,8 @@ export default function HowToGet() {
               Até Tossa de Mar (Parte 1)
             </h3>
             <p>
-              <strong>Barcelona → Tossa de Mar:</strong> ~90 km. Trem R2 Nord do
-              aeroporto até Barcelona Sants, depois trem até Blanes (cerca de
-              1h40, a partir de €8). De Blanes, táxi até Tossa de Mar.
+              <strong>Barcelona → Tossa de Mar:</strong> ~90 km. O mais prático
+              é alugar carro ou usar transfer.
             </p>
             <p className="mt-2">
               <strong>Girona → Tossa de Mar:</strong> ~45 km. O aeroporto de

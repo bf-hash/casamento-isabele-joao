@@ -179,11 +179,11 @@ export default function Program() {
 
         <div className="space-y-16">
           <ParteSection
-            label="Parte 1 — Pré-wedding, casamento e pós"
+            label="Parte 1 — Pré-wedding, casamento e pós · Dias 30/6, 1/07 e 02/07"
             events={PARTE_1_EVENTS}
           />
           <ParteSection
-            label="Parte 2 — Dias 3 e 4"
+            label="Parte 2 — Dias 3/07 e 04/07"
             events={PARTE_2_EVENTS}
           />
         </div>
