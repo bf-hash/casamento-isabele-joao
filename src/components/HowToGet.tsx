@@ -1,25 +1,20 @@
-import { IconMapPin, IconPlane } from "./Icons";
-
 export default function HowToGet() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-marfim">
+    <section className="px-6 py-24 md:py-32 bg-marfim">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col items-center gap-3 mb-6">
-          <div className="flex items-center gap-3">
-            <IconPlane className="w-6 h-6 text-navy/70" />
-            <IconMapPin className="w-6 h-6 text-navy/70" />
-          </div>
-          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal text-center">
+        <div className="text-center mb-16">
+          <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
+          <h2 className="font-display font-medium text-2xl sm:text-3xl uppercase tracking-[0.2em] text-charcoal">
             Como chegar
           </h2>
         </div>
-        <p className="font-serif font-light text-charcoal/60 text-xs text-center mb-8 tracking-[0.1em] uppercase">
+        <p className="font-serif font-light text-charcoal/60 text-sm text-center mb-12 tracking-[0.1em] uppercase">
           Costa Brava · Blanes, Tossa de Mar, Begur e Palafrugell
         </p>
 
-        <div className="space-y-6 font-serif font-light text-sm text-charcoal/85 leading-relaxed">
+        <div className="space-y-8 font-serif font-light text-base text-charcoal/90 leading-relaxed">
           <div>
-            <h3 className="font-display font-medium text-sm uppercase tracking-[0.1em] text-charcoal mb-2">De avião</h3>
+            <h3 className="font-display font-medium text-sm uppercase tracking-[0.1em] text-terracotta/90 mb-3">De avião</h3>
             <p>
               A rota mais prática é voar até o{" "}
               <strong>Aeroporto de Barcelona-El Prat (BCN)</strong> ou o{" "}
@@ -29,7 +24,7 @@ export default function HowToGet() {
           </div>
 
           <div>
-            <h3 className="font-display font-medium text-sm uppercase tracking-[0.1em] text-charcoal mb-2">
+            <h3 className="font-display font-medium text-sm uppercase tracking-[0.1em] text-terracotta/90 mb-3">
               Até Tossa de Mar (Parte 1)
             </h3>
             <p>
@@ -43,9 +38,9 @@ export default function HowToGet() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-verde-salvia/40 bg-marfim/90 p-4">
-            <p className="font-display font-medium text-xs uppercase tracking-[0.1em] text-charcoal mb-1">Recomendação</p>
-            <p className="font-serif font-light text-sm text-charcoal/85 leading-relaxed">
+          <div className="rounded-2xl bg-white/80 p-6 border-l-4 border-terracotta/50">
+            <p className="font-display font-medium text-xs uppercase tracking-[0.1em] text-charcoal mb-2">Recomendação</p>
+            <p className="font-serif font-light text-base text-charcoal/90 leading-relaxed">
               Recomendamos alugar um carro para explorar a região com liberdade,
               principalmente entre Tossa de Mar e Begur / Palafrugell.
             </p>

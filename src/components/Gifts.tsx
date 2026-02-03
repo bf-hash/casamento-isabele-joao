@@ -1,19 +1,16 @@
 import Link from "next/link";
-import { IconGift } from "./Icons";
 
-const LISTA_VIRTUAL_URL = "https://noivos.casar.com"; // Substitua pelo link da lista
+const LISTA_VIRTUAL_URL = "https://noivos.casar.com";
 
 export default function Gifts() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-bege-areia/50">
+    <section className="px-6 py-24 md:py-32 bg-marfim">
       <div className="max-w-2xl mx-auto text-center">
-        <div className="flex flex-col items-center gap-3 mb-6">
-          <IconGift className="w-6 h-6 text-navy/70" />
-          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal">
-            Presentes
-          </h2>
-        </div>
-        <p className="font-serif font-light text-sm text-charcoal/85 leading-relaxed mb-6">
+        <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
+        <h2 className="font-display font-medium text-2xl sm:text-3xl uppercase tracking-[0.2em] text-charcoal mb-12">
+          Presentes
+        </h2>
+        <p className="font-serif font-light text-lg text-charcoal/90 leading-relaxed mb-10">
           A sua presença é o nosso maior presente. Caso deseje nos presentear,
           deixamos abaixo o link da nossa lista virtual.
         </p>
@@ -21,7 +18,7 @@ export default function Gifts() {
           href={LISTA_VIRTUAL_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="font-serif font-light inline-block px-5 py-2.5 bg-terracotta text-marfim text-xs uppercase tracking-[0.1em] hover:bg-coral transition-colors"
+          className="inline-block px-8 py-4 bg-charcoal text-marfim font-serif font-light text-sm uppercase tracking-[0.15em] hover:bg-terracotta transition-colors"
         >
           Lista virtual
         </Link>

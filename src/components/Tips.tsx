@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { IconFlower } from "./Icons";
 
 const gTravel = (q: string) =>
   `https://www.google.com/travel/search?q=${encodeURIComponent(q)}`;
@@ -69,26 +68,26 @@ export default function Tips() {
   };
 
   return (
-    <section className="px-6 py-20 md:py-28 bg-marfim" id="tips">
+    <section className="px-6 py-24 md:py-32 bg-[#f5f0e8]" id="tips">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col items-center gap-3 mb-10">
-          <IconFlower className="w-6 h-6 text-navy/70" />
-          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal text-center">
+        <div className="text-center mb-16">
+          <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
+          <h2 className="font-display font-medium text-2xl sm:text-3xl uppercase tracking-[0.2em] text-charcoal">
             Dicas
           </h2>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-3">
           <button
             type="button"
             onClick={() => openSection("dresscode", setDressCodeOpen)}
-            className="font-serif font-light px-4 py-2 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-xs uppercase tracking-[0.1em]"
+            className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
           >
             Dress code
           </button>
           <button
             type="button"
             onClick={() => openSection("ondeficar", setOndeFicarOpen)}
-            className="font-serif font-light px-4 py-2 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-xs uppercase tracking-[0.1em]"
+            className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
           >
             Onde ficar
           </button>
@@ -96,7 +95,7 @@ export default function Tips() {
             <Link
               key={label}
               href={href}
-              className="font-serif font-light px-4 py-2 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-xs uppercase tracking-[0.1em]"
+              className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
             >
               {label}
             </Link>
@@ -140,11 +139,11 @@ export default function Tips() {
               </p>
             </div>
 
-            <div className="mt-10 grid grid-cols-3 gap-3">
+            <div className="mt-12 grid grid-cols-3 gap-4">
               {DRESSCODE_IMAGES.map((src, i) => (
                 <div
                   key={i}
-                  className="aspect-[3/4] relative rounded-lg overflow-hidden border border-charcoal/10"
+                  className="aspect-[3/4] relative rounded-xl overflow-hidden"
                 >
                   <Image
                     src={src}
@@ -178,7 +177,7 @@ export default function Tips() {
             </p>
             <h4 className="font-display font-medium text-xs uppercase tracking-[0.1em] text-charcoal mb-1">Tossa de Mar</h4>
             <p className="font-serif font-light text-sm text-charcoal/70 mb-4">30 de junho — 2 de julho</p>
-            <div className="divide-y divide-charcoal/10 rounded-lg border border-verde-salvia/30 bg-marfim/60 p-4">
+            <div className="divide-y divide-charcoal/10 rounded-2xl bg-white/80 p-6">
               {TOSSA_HOTELS.map((h) => (
                 <HotelCard key={h.name} {...h} />
               ))}

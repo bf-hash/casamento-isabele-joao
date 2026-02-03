@@ -2,25 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-/**
- * Costa Brava Wedding — Paleta Mediterrânea
- * Base em tons quentes + acentos românticos (rosa, pêssego) + detalhes frescos (lavanda, verde sálvia)
- */
 :root {
   --marfim: #fefae0;
   --bege-areia: #e8c5a5;
-  --caramelo: #d4a574;
-  --amarelo-sol: #f5c842;
-  --laranja-terracota: #ff8c42;
-  --coral: #ff6b6b;
   --terracotta: #d4705b;
-  --rosa-garden: #e8a0a0;
-  --pessego: #ffd4b8;
-  --lavanda: #b4a7d6;
-  --verde-oliva: #7a9b76;
-  --verde-salvia: #a8b89f;
+  --coral: #e85c5c;
   --charcoal: #2c2c2c;
-  --navy: #192956;
+  --charcoal-soft: #4a4a4a;
 }
 
 html {
@@ -30,6 +18,13 @@ html {
 body {
   @apply font-serif text-charcoal antialiased;
   background-color: var(--marfim);
+}
+
+/* Decorative line */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
 }
 
 @layer utilities {

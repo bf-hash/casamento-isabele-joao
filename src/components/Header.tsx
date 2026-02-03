@@ -16,21 +16,21 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-marfim/95 backdrop-blur-sm border-b border-charcoal/10">
-      <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-marfim/98 backdrop-blur-md border-b border-charcoal/5">
+      <div className="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
         <a
           href="#hero"
-          className="font-display font-medium text-base uppercase tracking-[0.12em] text-charcoal"
+          className="font-display font-semibold text-sm uppercase tracking-[0.2em] text-charcoal hover:text-terracotta transition-colors"
         >
           Isabele &amp; João
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-10">
           {LINKS.map(({ label, href }) => (
             <a
               key={label}
               href={href}
-              className="font-serif font-light text-xs uppercase tracking-[0.1em] text-charcoal/70 hover:text-charcoal transition-colors"
+              className="font-serif font-light text-xs uppercase tracking-[0.15em] text-charcoal/60 hover:text-terracotta transition-colors duration-200"
             >
               {label}
             </a>

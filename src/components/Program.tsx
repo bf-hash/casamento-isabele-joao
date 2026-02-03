@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { IconCalendar } from "./Icons";
 
 const PARTE_1_EVENTS = [
   {
@@ -78,8 +77,8 @@ function EventCard({
   image: string;
 }) {
   return (
-    <article className="rounded-xl overflow-hidden border border-charcoal/10 bg-marfim shadow-sm">
-      <div className="aspect-[4/3] relative bg-bege-areia/30">
+    <article className="overflow-hidden bg-white rounded-2xl shadow-[0_4px_24px_-4px_rgba(44,44,44,0.08)]">
+      <div className="aspect-[4/3] relative overflow-hidden">
         <Image
           src={image}
           alt=""
@@ -88,11 +87,11 @@ function EventCard({
           sizes="(max-width: 768px) 100vw, 600px"
         />
       </div>
-      <div className="p-5 sm:p-6">
-        <p className="font-serif font-light text-xs uppercase tracking-[0.12em] text-charcoal/60 mb-1">
+      <div className="p-6 sm:p-8">
+        <p className="font-serif font-light text-xs uppercase tracking-[0.15em] text-terracotta/80 mb-2">
           {date}
         </p>
-        <h3 className="font-display font-medium text-lg sm:text-xl text-charcoal mb-1 tracking-[0.05em]">
+        <h3 className="font-display font-semibold text-xl sm:text-2xl text-charcoal mb-2 tracking-[0.03em]">
           {title}
         </h3>
         <p className="font-serif font-light text-sm text-charcoal/80 mb-2">{time}</p>
@@ -103,7 +102,7 @@ function EventCard({
             href={mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+            className="font-serif font-medium text-sm uppercase tracking-[0.1em] text-terracotta hover:text-coral transition-colors"
           >
             Ver no mapa
           </Link>
@@ -112,7 +111,7 @@ function EventCard({
               href={venueUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-serif font-light inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
+              className="font-serif font-medium text-sm uppercase tracking-[0.1em] text-terracotta hover:text-coral transition-colors"
             >
               Site do local
             </Link>
@@ -156,7 +155,7 @@ function ParteSection({
 }) {
   return (
     <div>
-      <h3 className="font-serif font-light text-xs sm:text-sm uppercase tracking-[0.12em] text-charcoal/75 mb-5 pb-2 border-b border-charcoal/15">
+      <h3 className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/70 mb-8">
         {label}
       </h3>
       <div className="space-y-10">
@@ -170,11 +169,11 @@ function ParteSection({
 
 export default function Program() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-bege-areia/50" id="program">
+    <section className="px-6 py-24 md:py-32 bg-[#f5f0e8]" id="program">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col items-center gap-3 mb-12">
-          <IconCalendar className="w-6 h-6 text-navy/70" />
-          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal text-center">
+        <div className="text-center mb-16">
+          <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
+          <h2 className="font-display font-medium text-2xl sm:text-3xl uppercase tracking-[0.2em] text-charcoal">
             Programação
           </h2>
         </div>
@@ -184,7 +183,7 @@ export default function Program() {
             label="Pré-wedding, casamento e pós · Dias 30/6, 1/07 e 02/07"
             events={PARTE_1_EVENTS}
           />
-          <div className="rounded-lg border border-charcoal/10 bg-marfim/60 p-6 sm:p-8">
+          <div className="rounded-2xl bg-white p-8 sm:p-10 shadow-[0_4px_24px_-4px_rgba(44,44,44,0.06)]">
             <p className="font-serif font-light text-sm sm:text-base text-charcoal/85 leading-relaxed">
               Para quem quiser estender a celebração, seguiremos por mais dois
               dias com muito vinho e praia, um pouco ao norte da Costa Brava.

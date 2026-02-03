@@ -45,13 +45,13 @@ export default function Countdown({ date }: { date: Date }) {
   ];
 
   return (
-    <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+    <div className="flex justify-center gap-8 sm:gap-14">
       {items.map(({ label, value }) => (
         <div key={label} className="text-center">
-          <div className="font-display font-medium text-2xl sm:text-3xl text-charcoal tabular-nums tracking-[0.05em]">
+          <div className="font-display font-medium text-3xl sm:text-4xl text-white tabular-nums tracking-wider drop-shadow">
             {String(value).padStart(2, "0")}
           </div>
-          <div className="font-serif font-light text-xs uppercase tracking-[0.2em] text-charcoal/60 mt-1">
+          <div className="font-serif font-light text-[11px] uppercase tracking-[0.25em] text-white/75 mt-1">
             {label}
           </div>
         </div>
