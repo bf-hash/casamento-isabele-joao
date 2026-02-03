@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { IconHotel } from "./Icons";
 
 const gTravel = (q: string) =>
   `https://www.google.com/travel/search?q=${encodeURIComponent(q)}`;
@@ -181,11 +182,14 @@ function HotelCard({
 
 export default function Hospedagem() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-cream" id="hospedagem">
+    <section className="px-6 py-20 md:py-28 bg-bege-areia/40" id="hospedagem">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-4">
-          Onde ficar
-        </h2>
+        <div className="flex flex-col items-center gap-3 mb-4">
+          <IconHotel className="w-8 h-8 text-navy/80" />
+          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+            Onde ficar
+          </h2>
+        </div>
         <p className="font-serif font-light text-center text-charcoal/75 text-sm mb-12 tracking-wide">
           <span className="font-medium">$</span> econômico ·{" "}
           <span className="font-medium">$$</span> médio ·{" "}
@@ -200,7 +204,7 @@ export default function Hospedagem() {
             <p className="text-sm text-charcoal/70 mb-6">
               30 de junho — 2 de julho
             </p>
-            <div className="divide-y divide-charcoal/10 rounded-lg border border-charcoal/10 bg-sand/30 p-4">
+            <div className="divide-y divide-charcoal/10 rounded-lg border border-verde-salvia/30 bg-marfim/60 p-4">
               {TOSSA_HOTELS.map((h) => (
                 <HotelCard key={h.name} {...h} />
               ))}
@@ -222,7 +226,7 @@ export default function Hospedagem() {
             <p className="text-sm text-charcoal/70 mb-6">
               2 — 5 de julho · Wine tasting, jantar medieval e passeio de barco
             </p>
-            <div className="divide-y divide-charcoal/10 rounded-lg border border-charcoal/10 bg-sand/30 p-4">
+            <div className="divide-y divide-charcoal/10 rounded-lg border border-verde-salvia/30 bg-marfim/60 p-4">
               {BEGUR_HOTELS.map((h) => (
                 <HotelCard key={h.name} {...h} />
               ))}

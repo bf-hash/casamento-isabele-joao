@@ -13,7 +13,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-25"
         style={{ backgroundImage: `url(${HERO_IMAGE})` }}
       />
-      <div className="absolute inset-0 bg-cream/92" />
+      <div className="absolute inset-0 bg-marfim/92" />
 
       <div className="relative z-10 text-center max-w-2xl mx-auto">
         <p className="font-serif font-light text-sm uppercase tracking-[0.35em] text-charcoal/70 mb-3">

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { IconCalendar } from "./Icons";
 
 const PARTE_1_EVENTS = [
   {
@@ -110,8 +111,8 @@ function EventCard({
   image: string;
 }) {
   return (
-    <article className="rounded-xl overflow-hidden border border-charcoal/10 bg-cream shadow-sm">
-      <div className="aspect-[4/3] relative bg-sand/50">
+    <article className="rounded-xl overflow-hidden border border-charcoal/10 bg-marfim shadow-sm">
+      <div className="aspect-[4/3] relative bg-bege-areia/30">
         <Image
           src={image}
           alt=""
@@ -202,11 +203,14 @@ function ParteSection({
 
 export default function Program() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-sand/50" id="program">
+    <section className="px-6 py-20 md:py-28 bg-bege-areia/40" id="program">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-16">
-          Programação
-        </h2>
+        <div className="flex flex-col items-center gap-4 mb-16">
+          <IconCalendar className="w-8 h-8 text-navy/80" />
+          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+            Programação
+          </h2>
+        </div>
 
         <div className="space-y-16">
           <ParteSection

@@ -1,10 +1,18 @@
+import { IconMapPin, IconPlane } from "./Icons";
+
 export default function HowToGet() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-sand/50">
+    <section className="px-6 py-20 md:py-28 bg-bege-areia/40">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-6">
-          Como chegar
-        </h2>
+        <div className="flex flex-col items-center gap-3 mb-6">
+          <div className="flex items-center gap-4">
+            <IconPlane className="w-7 h-7 text-navy/80" />
+            <IconMapPin className="w-7 h-7 text-navy/80" />
+          </div>
+          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+            Como chegar
+          </h2>
+        </div>
         <p className="font-serif font-light text-charcoal/60 text-sm text-center mb-10 tracking-wide">
           Costa Brava · Blanes, Tossa de Mar, Begur e Palafrugell
         </p>
@@ -45,7 +53,7 @@ export default function HowToGet() {
             </p>
           </div>
 
-          <div className="rounded-lg border border-charcoal/15 bg-cream/80 p-4">
+          <div className="rounded-lg border border-verde-salvia/40 bg-marfim/90 p-4">
             <p className="text-charcoal font-medium mb-1">Recomendação</p>
             <p className="text-charcoal/85 text-sm">
               Recomendamos alugar um carro para explorar a região com liberdade,

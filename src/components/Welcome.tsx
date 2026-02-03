@@ -1,6 +1,6 @@
 export default function Welcome() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-cream" id="welcome">
+    <section className="px-6 py-20 md:py-28 bg-marfim" id="welcome">
       <div className="max-w-2xl mx-auto text-center">
         <p className="font-script text-2xl sm:text-3xl text-charcoal mb-2">
           Sejam muito bem-vindos ao

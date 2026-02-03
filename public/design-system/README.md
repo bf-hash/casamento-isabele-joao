@@ -1,43 +1,68 @@
 # Design System — Isabele & João
 
-## Tema do casamento
+**Costa Brava Wedding Mood Board — Verão Mediterrâneo | Natural & Orgânico**
 
-**Jardim Mediterrâneo – Limão Siciliano, Rosa e Verde**
+## Inspiração
 
-- Inspiração: verão mediterrâneo da Costa Brava, leve, natural e elegante.
-- Paleta: limão siciliano, rosa, verde oliva/ervas, **terracotta** e **laranja** (assentos), sobre off‑white, areia e pedra.
-- Decoração: oliveira, tomilho, alecrim, flores claras, limões naturais; laranja para assentos.
-- Resultado: ambiente solar, perfumado, romântico, atemporal e sofisticado.
+- **Mood:** Mediterrâneo autêntico • Natural & orgânico • Romântico • Quente & vibrante • Garden party • Descontraído elegante • Sunset vibes • Flora local • Cores saturadas • Aromático • Costa Brava
+- **Direção:** Base mediterrânea com acentos de rosa, coral e lavanda. Tons quentes (amarelos, laranjas) + românticos (rosas, pêssegos) + frescos (lavanda, verde sálvia).
 
-## Cores (Tailwind)
+## Paleta de cores (Tailwind)
 
-| Token       | Hex       | Uso                          |
-|-------------|-----------|------------------------------|
-| `cream`     | `#F8F5F0` | Fundo principal              |
-| `sand`      | `#E8E2D9` | Backgrounds alternados       |
-| `stone`     | `#C4BEB5` | Pedra, neutros               |
-| `charcoal`  | `#2C2C2C` | Texto, header/footer         |
-| `lemon`     | `#E5D44C` | Limão siciliano (destaques)  |
-| `rose`      | `#C9A9A6` | Rosa (destaques)             |
-| `olive`     | `#7D8B5E` | Verde oliva / ervas          |
-| `sage`      | `#9CAF88` | Verde suave (secundário)     |
-| `terracotta`| `#C17F59` | Terracotta — decoração, links, botões |
-| `orange`    | `#E07C4A` | Laranja — assentos           |
+| Token | Hex | Pantone | Uso |
+|-------|-----|---------|-----|
+| `marfim` | `#FEFAE0` | 7499 C | Fundo principal |
+| `bege-areia` | `#E8C5A5` | 719 C | Backgrounds alternados |
+| `caramelo` | `#D4A574` | 728 C | Neutros quentes |
+| `amarelo-sol` | `#F5C842` | 123 C | Destaques vibrantes |
+| `laranja-terracota` | `#FF8C42` | 1495 C | Acentos quentes |
+| `coral` | `#FF6B6B` | 178 C | Acentos vibrantes |
+| `terracotta` | `#D4705B` | 7598 C | Botões, links |
+| `rosa-garden` | `#E8A0A0` | 693 C | Toques românticos |
+| `pessego` | `#FFD4B8` | 162 C | Suaves |
+| `lavanda` | `#B4A7D6` | 2567 C | Frescor |
+| `verde-oliva` | `#7A9B76` | 5625 C | RSVP, footer (natural) |
+| `verde-salvia` | `#A8B89F` | 5595 C | Bordas, detalhes |
+| `charcoal` | `#2C2C2C` | — | Texto, estrutura |
 
-## Onde as fotos são usadas
+### Aliases (compatibilidade)
 
-- **Hero**: fundo da primeira tela (`/fotos/hero.png`).
-- **Boas-vindas / Galeria**: opcional; podemos acrescentar seção de fotos quando houver imagens.
+- `cream` → marfim
+- `sand` → bege-areia
+- `sage` → verde-salvia
+- `olive` → verde-oliva
+
+## Uso no site
+
+- **Fundo principal:** `bg-marfim`
+- **Seções alternadas:** `bg-bege-areia/40`
+- **Botões primários:** `bg-terracotta` com `hover:bg-coral`
+- **Botões secundários (Dicas):** `border-terracotta/50` com `hover:bg-terracotta`
+- **RSVP e Footer:** `bg-verde-oliva` (natural mediterrâneo)
+- **Links:** `text-terracotta` com `hover:underline`
+- **Caixas de destaque:** `border-verde-salvia/40`, `bg-marfim/90`
 
 ## Tipografia
 
-Estética inspirada em menu de casamento elegante: script delicado + serif limpo, maiúsculas com letter-spacing, bastante espaço em branco.
+- **Script:** Great Vibes — nomes, assinaturas
+- **Serif:** Cormorant Garamond (300–700) — títulos, corpo, labels
+- **Sans:** Outfit — UI, botões quando necessário
 
-- **Script**: Great Vibes — nomes (“Isabele & João”), frases curtas (“Sejam muito bem-vindos ao”), assinaturas.
-- **Serif**: Cormorant Garamond (300–700) — títulos em maiúsculas + tracking, corpo de texto, labels. Uso de `font-light` e `tracking-[0.15em]` / `tracking-[0.2em]` nos títulos.
-- **Sans**: Outfit — UI, botões quando necessário.
+## Ícones hand-drawn
+
+Estilo inspirado no menu de referência (`menu-reference.jpeg`): outline-based, sketchy, monocromático (navy #192956 em fundo claro).
+
+- **Uso:** ícones decorativos nas seções (Programação, Como chegar, Onde ficar, Dicas, Presentes, RSVP)
+- **Componente:** `src/components/Icons.tsx`
+- **Ícones:** Calendar, MapPin, Hotel, Flower, Gift, Message, Plane, Wine, Boat, Lemon
+- **Cor:** `text-navy/80` em seções claras; `text-marfim/90` em seção RSVP (verde-oliva)
+
+## Flores mediterrâneas (referência decoração)
+
+Dálias, rosas garden, lavanda, gerberas, ranúnculos, bougainvillea, oleandro, cosmos, zínias, craspédia, statice, alecrim florido, etc.
 
 ## Referências
 
-- Site de referência: [Maria Carla e Otávio](https://www.mariacarlaeotavio.com.br/).
-- Substitua ou complemente com suas próprias referências (screenshots, links).
+- **PDF:** Costa Brava Wedding Mood Board.pdf
+- **Menu:** `menu-reference.jpeg` — ícones hand-drawn, navy em cream
+- **Sites:** Maria Carla e Otávio, Dane Amanda, Natane e Igor, Ana e Paul

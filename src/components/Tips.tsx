@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { IconFlower } from "./Icons";
 
 const TIPS_LINKS = [
   { label: "Beleza (cabelo e make)", href: "#tips" },
@@ -28,16 +29,19 @@ export default function Tips() {
   };
 
   return (
-    <section className="px-6 py-20 md:py-28 bg-cream" id="tips">
+    <section className="px-6 py-20 md:py-28 bg-marfim" id="tips">
       <div className="max-w-2xl mx-auto">
-        <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center mb-12">
-          Dicas
-        </h2>
+        <div className="flex flex-col items-center gap-3 mb-12">
+          <IconFlower className="w-8 h-8 text-navy/80" />
+          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+            Dicas
+          </h2>
+        </div>
         <div className="flex flex-wrap justify-center gap-4">
           <button
             type="button"
             onClick={openDressCode}
-            className="font-serif font-light px-5 py-2.5 border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-cream transition-colors text-sm uppercase tracking-[0.12em]"
+            className="font-serif font-light px-5 py-2.5 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-sm uppercase tracking-[0.12em]"
           >
             Dress code
           </button>
@@ -45,7 +49,7 @@ export default function Tips() {
             <Link
               key={label}
               href={href}
-              className="font-serif font-light px-5 py-2.5 border border-charcoal/30 text-charcoal hover:bg-charcoal hover:text-cream transition-colors text-sm uppercase tracking-[0.12em]"
+              className="font-serif font-light px-5 py-2.5 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-sm uppercase tracking-[0.12em]"
             >
               {label}
             </Link>
