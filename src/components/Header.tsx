@@ -7,7 +7,6 @@ const LINKS = [
   { label: "Boas-vindas", href: "#welcome" },
   { label: "Programação", href: "#program" },
   { label: "Como chegar", href: "#howtoget" },
-  { label: "Onde ficar", href: "#hospedagem" },
   { label: "Dicas", href: "#tips" },
   { label: "Presentes", href: "#gifts" },
   { label: "RSVP", href: "#rsvp" },

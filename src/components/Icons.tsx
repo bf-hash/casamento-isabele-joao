@@ -1,16 +1,18 @@
+import type { ReactNode, SVGProps } from "react";
+
 /**
  * Ícones hand-drawn — estilo do menu Costa Brava
  * Outline-based, monocromático (navy/charcoal em fundo claro)
  */
 
-const iconProps = {
+const iconProps: SVGProps<SVGSVGElement> = {
   xmlns: "http://www.w3.org/2000/svg",
   viewBox: "0 0 24 24",
   fill: "none",
   stroke: "currentColor",
   strokeWidth: 1.5,
-  strokeLinecap: "round" as const,
-  strokeLinejoin: "round" as const,
+  strokeLinecap: "round",
+  strokeLinejoin: "round",
   "aria-hidden": true,
 };
 
@@ -19,7 +21,7 @@ function IconWrapper({
   children,
 }: {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <svg

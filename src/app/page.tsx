@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
 import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
-import Hospedagem from "@/components/Hospedagem";
 import Tips from "@/components/Tips";
 import Gifts from "@/components/Gifts";
 import RSVP from "@/components/RSVP";
@@ -26,7 +25,6 @@ export default function Home() {
         <section id="howtoget">
           <HowToGet />
         </section>
-        <Hospedagem />
         <section id="tips">
           <Tips />
         </section>
