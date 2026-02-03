@@ -50,39 +50,6 @@ const PARTE_1_EVENTS = [
   },
 ];
 
-const PARTE_2_EVENTS = [
-  {
-    date: "03 . 07 . 27",
-    title: "Wine tasting e jantar",
-    time: "16h — Wine tasting · Noite — Jantar",
-    venue: "Celler Perelada · Cidade medieval",
-    address: "Segunda etapa: Begur / Palafrugell",
-    mapsUrl: "https://maps.google.com/?q=Celler+Perelada+Peralada",
-    venueUrl: null,
-    dressCode: null,
-    dressNote: null,
-    transportNote: null,
-    extraNote:
-      "Para quem quiser participar, o tour é EUR 36/pessoa. À medida que as pessoas forem confirmando, vamos contratar uma van para levar de Palafrugell até a vinícola; deve ficar próximo de EUR 40 ida e volta.",
-    image: "/fotos/cellar-perelada.jpg",
-  },
-  {
-    date: "04 . 07 . 27",
-    title: "Passeio de barco",
-    time: "Durante o dia",
-    venue: "Costa Brava",
-    address: "Begur / Palafrugell",
-    mapsUrl: "https://maps.google.com/?q=Palafrugell+Costa+Brava",
-    venueUrl: null,
-    dressCode: null,
-    dressNote: null,
-    transportNote: null,
-    extraNote: "EUR 150 por pessoa.",
-    image:
-      "https://images.unsplash.com/photo-1505144808419-1957a94ca61e?w=800&q=80",
-  },
-];
-
 function EventCard({
   date,
   title,
@@ -122,15 +89,15 @@ function EventCard({
         />
       </div>
       <div className="p-5 sm:p-6">
-        <p className="font-serif font-light text-xs uppercase tracking-[0.15em] text-charcoal/60 mb-1">
+        <p className="font-serif font-light text-xs uppercase tracking-[0.12em] text-charcoal/60 mb-1">
           {date}
         </p>
-        <h3 className="font-serif font-medium text-xl sm:text-2xl text-charcoal mb-2 tracking-wide">
+        <h3 className="font-display font-medium text-lg sm:text-xl text-charcoal mb-1 tracking-[0.05em]">
           {title}
         </h3>
-        <p className="text-charcoal/80 mb-2">{time}</p>
-        <p className="font-medium text-charcoal mb-1">{venue}</p>
-        <p className="text-sm text-charcoal/70 mb-4">{address}</p>
+        <p className="font-serif font-light text-sm text-charcoal/80 mb-2">{time}</p>
+        <p className="font-serif font-medium text-sm text-charcoal mb-1">{venue}</p>
+        <p className="font-serif font-light text-sm text-charcoal/70 mb-4">{address}</p>
         <div className="flex flex-wrap gap-4 gap-y-1 mb-4">
           <Link
             href={mapsUrl}
@@ -153,7 +120,7 @@ function EventCard({
         </div>
         {transportNote && (
           <div className="mt-4 pt-4 border-t border-charcoal/10">
-            <p className="text-sm font-medium text-charcoal/80 mb-1">
+            <p className="font-serif font-medium text-xs uppercase tracking-[0.08em] text-charcoal/80 mb-1">
               Transporte
             </p>
             <p className="text-sm text-charcoal/80">{transportNote}</p>
@@ -161,7 +128,7 @@ function EventCard({
         )}
         {dressCode && (
           <div className="mt-4 pt-4 border-t border-charcoal/10">
-            <p className="text-sm font-medium text-charcoal/80 mb-1">
+            <p className="font-serif font-medium text-xs uppercase tracking-[0.08em] text-charcoal/80 mb-1">
               Dress code
             </p>
             <p className="text-charcoal/80">{dressCode}</p>
@@ -189,7 +156,7 @@ function ParteSection({
 }) {
   return (
     <div>
-      <h3 className="font-serif font-light text-sm sm:text-base uppercase tracking-[0.15em] text-charcoal/80 mb-6 pb-2 border-b border-charcoal/15">
+      <h3 className="font-serif font-light text-xs sm:text-sm uppercase tracking-[0.12em] text-charcoal/75 mb-5 pb-2 border-b border-charcoal/15">
         {label}
       </h3>
       <div className="space-y-10">
@@ -203,24 +170,27 @@ function ParteSection({
 
 export default function Program() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-bege-areia/40" id="program">
+    <section className="px-6 py-20 md:py-28 bg-bege-areia/50" id="program">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col items-center gap-4 mb-16">
-          <IconCalendar className="w-8 h-8 text-navy/80" />
-          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+        <div className="flex flex-col items-center gap-3 mb-12">
+          <IconCalendar className="w-6 h-6 text-navy/70" />
+          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal text-center">
             Programação
           </h2>
         </div>
 
         <div className="space-y-16">
           <ParteSection
-            label="Parte 1 — Pré-wedding, casamento e pós · Dias 30/6, 1/07 e 02/07"
+            label="Pré-wedding, casamento e pós · Dias 30/6, 1/07 e 02/07"
             events={PARTE_1_EVENTS}
           />
-          <ParteSection
-            label="Parte 2 — Dias 3/07 e 04/07"
-            events={PARTE_2_EVENTS}
-          />
+          <div className="rounded-lg border border-charcoal/10 bg-marfim/60 p-6 sm:p-8">
+            <p className="font-serif font-light text-sm sm:text-base text-charcoal/85 leading-relaxed">
+              Para quem quiser estender a celebração, seguiremos por mais dois
+              dias com muito vinho e praia, um pouco ao norte da Costa Brava.
+              Enviaremos mais informações em breve.
+            </p>
+          </div>
         </div>
       </div>
     </section>

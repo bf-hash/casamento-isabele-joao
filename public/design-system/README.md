@@ -42,11 +42,13 @@
 - **Links:** `text-terracotta` com `hover:underline`
 - **Caixas de destaque:** `border-verde-salvia/40`, `bg-marfim/90`
 
-## Tipografia
+## Tipografia (estilo convite elegante)
 
-- **Script:** Great Vibes — nomes, assinaturas
-- **Serif:** Cormorant Garamond (300–700) — títulos, corpo, labels
-- **Sans:** Outfit — UI, botões quando necessário
+- **Display:** Playfair Display (400–700) — nomes em maiúsculas, títulos de seção
+- **Script:** Italianno — apenas o “&” entre os nomes
+- **Serif:** Cormorant Garamond (300–400) — corpo de texto, labels
+
+Hierarquia: nomes grandes em display + script para “&”; títulos em display maiúsculas com tracking; corpo em serif light; muito espaço entre linhas.
 
 ## Ícones hand-drawn
 

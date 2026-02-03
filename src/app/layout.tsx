@@ -1,23 +1,27 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Great_Vibes, Outfit } from "next/font/google";
+import {
+  Cormorant_Garamond,
+  Italianno,
+  Playfair_Display,
+} from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
 });
 
-const greatVibes = Great_Vibes({
+const italianno = Italianno({
   variable: "--font-script",
   subsets: ["latin"],
   weight: ["400"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const playfair = Playfair_Display({
+  variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -32,8 +36,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${greatVibes.variable} ${outfit.variable}`}>
-      <body className="min-h-screen font-sans">{children}</body>
+    <html
+      lang="pt-BR"
+      className={`${cormorant.variable} ${italianno.variable} ${playfair.variable}`}
+    >
+      <body className="min-h-screen font-serif">{children}</body>
     </html>
   );
 }

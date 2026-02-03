@@ -28,7 +28,7 @@ html {
 }
 
 body {
-  @apply font-sans text-charcoal antialiased;
+  @apply font-serif text-charcoal antialiased;
   background-color: var(--marfim);
 }
 

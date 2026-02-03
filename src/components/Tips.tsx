@@ -31,9 +31,9 @@ export default function Tips() {
   return (
     <section className="px-6 py-20 md:py-28 bg-marfim" id="tips">
       <div className="max-w-2xl mx-auto">
-        <div className="flex flex-col items-center gap-3 mb-12">
-          <IconFlower className="w-8 h-8 text-navy/80" />
-          <h2 className="font-serif font-light text-xl sm:text-2xl uppercase tracking-[0.2em] text-charcoal text-center">
+        <div className="flex flex-col items-center gap-3 mb-10">
+          <IconFlower className="w-6 h-6 text-navy/70" />
+          <h2 className="font-display font-medium text-base sm:text-lg uppercase tracking-[0.2em] text-charcoal text-center">
             Dicas
           </h2>
         </div>
@@ -41,7 +41,7 @@ export default function Tips() {
           <button
             type="button"
             onClick={openDressCode}
-            className="font-serif font-light px-5 py-2.5 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-sm uppercase tracking-[0.12em]"
+            className="font-serif font-light px-4 py-2 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-xs uppercase tracking-[0.1em]"
           >
             Dress code
           </button>
@@ -49,7 +49,7 @@ export default function Tips() {
             <Link
               key={label}
               href={href}
-              className="font-serif font-light px-5 py-2.5 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-sm uppercase tracking-[0.12em]"
+              className="font-serif font-light px-4 py-2 border border-terracotta/50 text-charcoal hover:bg-terracotta hover:text-marfim transition-colors text-xs uppercase tracking-[0.1em]"
             >
               {label}
             </Link>
@@ -62,7 +62,7 @@ export default function Tips() {
             id="dresscode"
           >
             <div className="flex items-center justify-between gap-4 mb-6">
-              <h3 className="font-serif font-light text-lg sm:text-xl uppercase tracking-[0.15em] text-charcoal">
+              <h3 className="font-display font-medium text-base uppercase tracking-[0.1em] text-charcoal">
                 Dress code
               </h3>
               <button
@@ -73,14 +73,14 @@ export default function Tips() {
                 Fechar
               </button>
             </div>
-            <p className="font-serif font-light text-charcoal/85 leading-relaxed mb-6">
+            <p className="font-serif font-light text-sm text-charcoal/85 leading-relaxed mb-6">
               Nosso casamento será no Convent de Blanes, à beira-mar na Costa
               Brava. A cerimônia acontece em espaço ao ar livre, com vibe leve e
               praia. O dress code é <strong>passeio completo / social</strong>:
               elegante, mas confortável para o verão mediterrâneo.
             </p>
 
-            <div className="space-y-4 font-serif font-light text-charcoal/85 leading-relaxed text-sm">
+            <div className="space-y-3 font-serif font-light text-sm text-charcoal/85 leading-relaxed">
               <p>
                 <strong>Ideias:</strong> vestidos fluidos, midi ou longos;
                 ternos em tecidos leves (linen, algodão); cores claras, neutros ou

@@ -19,8 +19,11 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-marfim/95 backdrop-blur-sm border-b border-charcoal/10">
       <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="font-script text-xl text-charcoal">
-          Isabele & João
+        <a
+          href="#hero"
+          className="font-display font-medium text-base uppercase tracking-[0.12em] text-charcoal"
+        >
+          Isabele &amp; João
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -28,7 +31,7 @@ export default function Header() {
             <a
               key={label}
               href={href}
-              className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/70 hover:text-charcoal transition-colors"
+              className="font-serif font-light text-xs uppercase tracking-[0.1em] text-charcoal/70 hover:text-charcoal transition-colors"
             >
               {label}
             </a>

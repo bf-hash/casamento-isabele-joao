@@ -15,8 +15,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         serif: ["var(--font-cormorant)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
         script: ["var(--font-script)", "cursive"],
-        sans: ["var(--font-outfit)", "system-ui", "sans-serif"],
       },
       colors: {
         // Neutros mediterrâneos (base)
