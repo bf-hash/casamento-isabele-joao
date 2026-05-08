@@ -1,198 +1,433 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { GravuraLaranja } from "./Illustrations";
 
-const gTravel = (q: string) =>
-  `https://www.google.com/travel/search?q=${encodeURIComponent(q)}`;
+const TIP_TABS = [
+  "Dress code",
+  "Onde ficar",
+  "Dicas Barcelona",
+  "Passeios Costa Brava",
+];
 
-const TOSSA_GOOGLE_ALL =
-  "https://www.google.com/travel/search?q=TOSSA+DE+MAR+HOTELS&g2lb=4965990%2C72248050%2C72248051%2C72471280%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C72958624%2C73059275%2C73064764%2C73249150%2C121522132&hl=en-BR&gl=br&ssta=1&ts=CAESCgoCCAMKAggDEAAaVQo3EjUyJTB4MTJiYjFhYTdhYzExYWFhMToweGEyNjE0ZjRhZWM4MzM0Y2Q6DFRvc3NhIERlIE1hchIaEhQKBwjqDxABGB4SBwjqDxABGB8YATICEAAqBwoFOgNCUkw&qs=CAEyKENob0l0NUNhaHJQdTZLX29BUm9OTDJjdk1URm9NR013WWpGdWNCQUI4BkIJEVJxFhfHvi_gQgkRSG2P-aY2eWVCCRFKKBVCOWNl2lpNMkuqAUgQASoKIgZob3RlbHMoDDIfEAEiG0QJuo7eWNzpfH4xysmxBCQvuZS_e5vUiR1iPDIXEAIiE3Rvc3NhIGRlIG1hciBob3RlbHM&ap=aAE&ictx=111&ved=2ahUKEwirtNukzrGSAxUYNbkGHUZhEV0QyvcEegQIAxBI";
-
-type Price = "$" | "$$" | "$$$";
-
-const TOSSA_HOTELS: {
+interface Hotel {
   name: string;
-  price: Price;
-  note: string;
+  price: string;
   url: string;
-}[] = [
-  { name: "Hotel Diana", price: "$$", note: "4★, centro histórico, na praia", url: gTravel("Hotel Diana Tossa de Mar") },
-  { name: "GHT Costa Brava & Spa", price: "$$", note: "4★ Sup, spa", url: gTravel("GHT Costa Brava Spa Tossa de Mar") },
-  { name: "Hotel Delfín 4 Sup", price: "$$", note: "2 min da Platja Gran", url: gTravel("Hotel Delfín 4 Sup Tossa de Mar") },
-  { name: "Hostal Boutique Es Menut", price: "$$", note: "4★, Vila Vella", url: gTravel("Hostal Boutique Es Menut Tossa de Mar") },
-  { name: "Hostal Boutique Sa Nansa", price: "$$", note: "Centro, frente à igreja", url: gTravel("Hostal Boutique Sa Nansa Tossa de Mar") },
-  { name: "Hotel Santa Marta", price: "$$$", note: "Lloret de Mar · Pré-wedding (hotelsantamarta.es)", url: gTravel("Hotel Santa Marta Lloret de Mar") },
-  { name: "Mamma Mia Hotel Boutique", price: "$$$", note: "Only Adults, 3 min da praia", url: gTravel("Mamma Mia Hotel Boutique Tossa de Mar") },
-  { name: "Elisabeth By The Sea", price: "$$$", note: "5★, spa, praia privada", url: gTravel("Elisabeth By The Sea Tossa de Mar") },
-  { name: "Golden Mar Menuda", price: "$$$", note: "Junto à praia", url: gTravel("Golden Mar Menuda Tossa de Mar") },
-  { name: "Zel Costa Brava", price: "$$$", note: "Resort à beira-mar, Cala Giverola (Meliá)", url: gTravel("Zel Costa Brava Meliá Tossa de Mar") },
+  featured?: boolean;
+}
+
+const TOSSA_HOTELS: Hotel[] = [
+  {
+    name: "Hotel Santa Marta",
+    price: "$$$",
+    url: "https://hotelsantamarta.es/",
+    featured: true,
+  },
+  {
+    name: "Hotel Diana",
+    price: "$$",
+    url: "https://www.hotelesdante.com/en/home/hotel-diana/",
+  },
+  {
+    name: "GHT Costa Brava & Spa",
+    price: "$$",
+    url: "https://www.ghthotels.com/",
+  },
+  {
+    name: "Hotel Delfín",
+    price: "$$",
+    url: "https://www.hotelesdante.com/en/home/hotel-delfin/",
+  },
+  {
+    name: "Hostal Boutique Es Menut",
+    price: "$$",
+    url: "https://www.google.com/maps/search/Hostal+Boutique+Es+Menut+Tossa+de+Mar",
+  },
+  {
+    name: "Hostal Boutique Sa Nansa",
+    price: "$$",
+    url: "https://www.google.com/maps/search/Hostal+Boutique+Sa+Nansa+Tossa+de+Mar",
+  },
+  {
+    name: "Mamma Mia Hotel Boutique",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Mamma+Mia+Hotel+Boutique+Tossa+de+Mar",
+  },
+  {
+    name: "Elisabeth By The Sea",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Elisabeth+By+The+Sea+Tossa+de+Mar",
+  },
+  {
+    name: "Zel Costa Brava",
+    price: "$$$",
+    url: "https://www.zelhotels.com/",
+  },
 ];
 
-const TIPS_LINKS = [
-  { label: "Beleza (cabelo e make)", href: "#tips" },
-  { label: "Restaurantes", href: "#tips" },
-  { label: "Passeios", href: "#tips" },
+const BEGUR_HOTELS: Hotel[] = [
+  {
+    name: "Aita Begur",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Aita+Hotel+Begur",
+  },
+  {
+    name: "Can Mascort",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Can+Mascort+Begur",
+  },
 ];
 
-function HotelCard({ name, price, note, url }: { name: string; price: Price; note: string; url: string }) {
+interface ListItem {
+  name: string;
+  note: string;
+}
+
+const BCN_HOTELS: ListItem[] = [
+  { name: "Hotel Casa Bonay", note: "Boutique no Eixample · rooftop bar" },
+  { name: "Yurbban Passage", note: "Design hotel · Gótico, perto de tudo" },
+  {
+    name: "Hotel Neri Relais & Châteaux",
+    note: "5★ · Barri Gòtic",
+  },
+  {
+    name: "The Serras",
+    note: "5★ · Port Vell, terraço com vista pro mar",
+  },
+];
+
+const BCN_RESTAURANTS: ListItem[] = [
+  { name: "Cal Pep", note: "Tapas clássicas · Born" },
+  { name: "Bar Cañete", note: "Balcão de frutos do mar · Raval" },
+  { name: "Cervecería Catalana", note: "Tapas no Eixample" },
+  {
+    name: "Compartir Barcelona",
+    note: "Dos chefs do Celler de Can Roca",
+  },
+  { name: "La Boqueria", note: "Mercado · ideal pra almoço informal" },
+];
+
+const COSTA_TOSSA_RESTAURANTS: ListItem[] = [
+  {
+    name: "La Cuina de Can Simon",
+    note: "Cozinha catalã refinada · Vila Vella",
+  },
+  { name: "Es Molí", note: "Frutos do mar com vista · Tossa" },
+  { name: "Restaurante Bahia", note: "Na praia · paella e peixe grelhado" },
+];
+
+const COSTA_BEGUR_RESTAURANTS: ListItem[] = [
+  {
+    name: "Restaurant Sa Punta",
+    note: "Elegante · vista pra Platja de Pals",
+  },
+  { name: "Tragamar", note: "Calella de Palafrugell · pé na água" },
+  { name: "Mas Lazuli", note: "Hotel-restaurante com horta própria" },
+  { name: "Bar La Riera", note: "Tapas em Begur · vinho natural" },
+];
+
+const BEACHES: ListItem[] = [
+  {
+    name: "Cala Giverola",
+    note: "Perto de Tossa · cercada por pinheiros, água turquesa",
+  },
+  {
+    name: "Platja Gran",
+    note: "Praia principal de Tossa · muralha medieval ao fundo",
+  },
+  {
+    name: "Cala Pola",
+    note: "Pequena e escondida entre Tossa e Lloret",
+  },
+  {
+    name: "Cala Sa Boadella",
+    note: "Lloret · mais tranquila, acesso a pé",
+  },
+  {
+    name: "Platja de Sa Tuna",
+    note: "Begur · casas de pescadores, perfeita",
+  },
+  {
+    name: "Cala Aiguablava",
+    note: "Begur · água incrivelmente azul",
+  },
+  {
+    name: "Platja del Castell",
+    note: "Palamós · uma das últimas virgens da Costa Brava",
+  },
+  {
+    name: "Calella de Palafrugell",
+    note: "Vilarejo com calas pequenas lado a lado",
+  },
+];
+
+function HotelList({ hotels }: { hotels: Hotel[] }) {
   return (
-    <div className="flex flex-wrap items-baseline justify-between gap-2 py-3 border-b border-charcoal/10 last:border-0">
-      <div>
-        <Link href={url} target="_blank" rel="noopener noreferrer" className="font-serif font-medium text-sm text-terracotta hover:underline">
-          {name}
-        </Link>
-        <p className="font-serif font-light text-sm text-charcoal/70 mt-0.5">{note}</p>
-      </div>
-      <span className={`font-serif text-sm font-medium tabular-nums ${price === "$" ? "text-charcoal/70" : price === "$$" ? "text-terracotta" : "text-charcoal"}`}>
-        {price}
-      </span>
-    </div>
+    <ul className="ij-hotel-list">
+      {hotels.map((h) => (
+        <li key={h.name} className={h.featured ? "ij-hotel-featured" : ""}>
+          <div>
+            <a
+              href={h.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ij-hotel-name"
+            >
+              {h.name}
+            </a>
+            {h.featured && (
+              <span className="ij-hotel-badge">Onde ficaremos</span>
+            )}
+          </div>
+          <span
+            className={`ij-hotel-price ij-hotel-price-${h.price.length}`}
+          >
+            {h.price}
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-const DRESSCODE_IMAGES = [
-  "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&q=80",
-  "https://images.unsplash.com/photo-1529634801-b267fcfd36ce?w=600&q=80",
-  "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80",
-];
+function SimpleList({ items }: { items: ListItem[] }) {
+  return (
+    <ul className="ij-hotel-list">
+      {items.map((h) => (
+        <li key={h.name}>
+          <div>
+            <span className="ij-hotel-name" style={{ cursor: "default" }}>
+              {h.name}
+            </span>
+            <p className="ij-hotel-note">{h.note}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function Tips() {
-  const [dressCodeOpen, setDressCodeOpen] = useState(false);
-  const [ondeFicarOpen, setOndeFicarOpen] = useState(false);
-
-  const openSection = (id: string, setter: (v: boolean) => void) => {
-    setter(true);
-    setTimeout(() => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }), 50);
-  };
+  const [tab, setTab] = useState<string | null>(null);
 
   return (
-    <section className="px-6 py-24 md:py-32 bg-[#f5f0e8]" id="tips">
-      <div className="max-w-2xl mx-auto">
-        <div className="text-center mb-16">
-          <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
-          <h2 className="font-display font-medium text-2xl sm:text-3xl uppercase tracking-[0.2em] text-charcoal">
-            Dicas
-          </h2>
+    <section id="tips" className="ij-section ij-section-paper">
+      <div className="ij-center">
+        <GravuraLaranja size={90} />
+        <div style={{ height: 28 }} />
+        <div className="ij-section-header">
+          <span className="ij-section-eyebrow">Dicas</span>
+          <h2>O que é bom saber</h2>
         </div>
-        <div className="flex flex-wrap justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => openSection("dresscode", setDressCodeOpen)}
-            className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
-          >
-            Dress code
-          </button>
-          <button
-            type="button"
-            onClick={() => openSection("ondeficar", setOndeFicarOpen)}
-            className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
-          >
-            Onde ficar
-          </button>
-          {TIPS_LINKS.map(({ label, href }) => (
-            <Link
-              key={label}
-              href={href}
-              className="font-serif font-light px-5 py-2.5 rounded-full border border-charcoal/20 text-charcoal hover:bg-charcoal hover:text-marfim transition-all text-xs uppercase tracking-[0.12em]"
-            >
-              {label}
-            </Link>
-          ))}
-        </div>
-
-        {dressCodeOpen && (
-          <div
-            className="mt-10 pt-10 border-t border-charcoal/10"
-            id="dresscode"
-          >
-            <div className="flex items-center justify-between gap-4 mb-6">
-              <h3 className="font-display font-medium text-base uppercase tracking-[0.1em] text-charcoal">
-                Dress code
-              </h3>
-              <button
-                type="button"
-                onClick={() => setDressCodeOpen(false)}
-                className="font-serif font-light text-sm uppercase tracking-[0.1em] text-charcoal/60 hover:text-charcoal"
-              >
-                Fechar
-              </button>
-            </div>
-            <p className="font-serif font-light text-sm text-charcoal/85 leading-relaxed mb-6">
-              Nosso casamento será no Convent de Blanes, à beira-mar na Costa
-              Brava. A cerimônia acontece em espaço ao ar livre, com vibe leve e
-              praia. O dress code é <strong>passeio completo / social</strong>:
-              elegante, mas confortável para o verão mediterrâneo.
-            </p>
-
-            <div className="space-y-3 font-serif font-light text-sm text-charcoal/85 leading-relaxed">
-              <p>
-                <strong>Ideias:</strong> vestidos fluidos, midi ou longos;
-                ternos em tecidos leves (linen, algodão); cores claras, neutros ou
-                tons mediterrânicos. Evitem roupas muito formais ou pesadas.
-              </p>
-              <p>
-                <strong>Calçado:</strong> a cerimônia será em gramado. Recomendamos
-                saltos grossos, plataformas ou sapatos sem salto. Evitem saltos
-                finos ou agulha, que podem afundar.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-3 gap-4">
-              {DRESSCODE_IMAGES.map((src, i) => (
-                <div
-                  key={i}
-                  className="aspect-[3/4] relative rounded-xl overflow-hidden"
-                >
-                  <Image
-                    src={src}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 33vw, 200px"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {ondeFicarOpen && (
-          <div className="mt-10 pt-10 border-t border-charcoal/10" id="ondeficar">
-            <div className="flex items-center justify-between gap-4 mb-6">
-              <h3 className="font-display font-medium text-base uppercase tracking-[0.1em] text-charcoal">
-                Onde ficar
-              </h3>
-              <button
-                type="button"
-                onClick={() => setOndeFicarOpen(false)}
-                className="font-serif font-light text-sm uppercase tracking-[0.1em] text-charcoal/60 hover:text-charcoal"
-              >
-                Fechar
-              </button>
-            </div>
-            <p className="font-serif font-light text-center text-charcoal/70 text-xs mb-6 uppercase tracking-[0.1em]">
-              <span className="font-medium">$</span> econômico · <span className="font-medium">$$</span> médio · <span className="font-medium">$$$</span> upscale
-            </p>
-            <h4 className="font-display font-medium text-xs uppercase tracking-[0.1em] text-charcoal mb-1">Tossa de Mar</h4>
-            <p className="font-serif font-light text-sm text-charcoal/70 mb-4">30 de junho — 2 de julho</p>
-            <div className="divide-y divide-charcoal/10 rounded-2xl bg-white/80 p-6">
-              {TOSSA_HOTELS.map((h) => (
-                <HotelCard key={h.name} {...h} />
-              ))}
-            </div>
-            <Link
-              href={TOSSA_GOOGLE_ALL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-serif font-light mt-4 inline-block text-sm uppercase tracking-[0.1em] text-terracotta hover:underline"
-            >
-              Ver todos os hotéis em Tossa (Google Travel)
-            </Link>
-          </div>
-        )}
       </div>
+
+      <div className="ij-tips-tabs">
+        {TIP_TABS.map((t) => (
+          <button
+            key={t}
+            className={`ij-pill ${tab === t ? "is-active" : ""}`}
+            onClick={() => setTab(tab === t ? null : t)}
+          >
+            {t}
+          </button>
+        ))}
+      </div>
+
+      {tab === "Dress code" && (
+        <div className="ij-tips-panel">
+          <div className="ij-tips-panel-head">
+            <h3>Dress code</h3>
+            <button className="ij-tips-close" onClick={() => setTab(null)}>
+              Fechar
+            </button>
+          </div>
+          <p style={{ textAlign: "center", marginBottom: 24 }}>
+            <strong>Passeio completo / Social</strong>
+            <br />
+            Elegante, mas confortável para o verão mediterrâneo.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: 12,
+              marginBottom: 28,
+            }}
+          >
+            {[
+              "vestido fluido midi ou longo, cores claras ou mediterrânicas",
+              "terno em tecido leve, sem gravata",
+              "sapatos confortáveis — plataforma, rasteirinha elegante, salto bloco",
+              "Convent de Blanes — convento histórico com chão irregular e vista mar",
+            ].map((desc) => (
+              <div
+                key={desc}
+                style={{
+                  background: "var(--olive-tint)",
+                  aspectRatio: "3/4",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  gap: 6,
+                  padding: 16,
+                  textAlign: "center",
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-display)",
+                    fontSize: 11,
+                    textTransform: "uppercase",
+                    letterSpacing: "0.15em",
+                    color: "var(--olive-soft)",
+                  }}
+                >
+                  foto
+                </span>
+                <span
+                  style={{
+                    fontFamily: "monospace",
+                    fontSize: 10,
+                    color: "var(--ink-quiet)",
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {desc}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ fontSize: 14 }}>
+            <strong>Para elas:</strong> vestidos fluidos, midi ou longos. Cores
+            claras, neutros ou tons mediterrânicos.
+          </p>
+          <p style={{ fontSize: 14 }}>
+            <strong>Para eles:</strong> terno em tecido leve. Gravata não é
+            necessária.
+          </p>
+          <p
+            style={{
+              fontSize: 14,
+              fontStyle: "italic",
+              color: "var(--ink-quiet)",
+            }}
+          >
+            A cerimônia será em um convento histórico com chão irregular. Evitem
+            saltos finos ou agulha — recomendamos saltos grossos, plataformas ou
+            sapatos sem salto.
+          </p>
+        </div>
+      )}
+
+      {tab === "Onde ficar" && (
+        <div className="ij-tips-panel">
+          <div className="ij-tips-panel-head">
+            <h3>Onde ficar</h3>
+            <button className="ij-tips-close" onClick={() => setTab(null)}>
+              Fechar
+            </button>
+          </div>
+          <p className="ij-tips-legend">
+            <strong>$</strong> econômico · <strong>$$</strong> médio ·{" "}
+            <strong>$$$</strong> upscale
+          </p>
+          <p className="ij-tips-region">
+            Tossa de Mar · 30 de junho — 1 de julho
+          </p>
+          <HotelList hotels={TOSSA_HOTELS} />
+          <div className="ij-tips-divider" />
+          <p className="ij-tips-region">
+            Begur &amp; Palafrugell · 2 — 3 de julho
+          </p>
+          <p className="ij-tips-region-note">
+            A Costa Brava é comprida — as atividades dos últimos dois dias serão
+            mais ao norte, na região de Begur e Palafrugell (~1h–1h30 de carro
+            de Tossa).
+          </p>
+          <HotelList hotels={BEGUR_HOTELS} />
+        </div>
+      )}
+
+      {tab === "Dicas Barcelona" && (
+        <div className="ij-tips-panel">
+          <div className="ij-tips-panel-head">
+            <h3>Dias em Barcelona</h3>
+            <button className="ij-tips-close" onClick={() => setTab(null)}>
+              Fechar
+            </button>
+          </div>
+          <p>
+            Muitos voos do Brasil fazem conexão ou chegam em Barcelona. Se
+            puderem, aproveitem para passar uns dias na cidade antes ou depois do
+            casamento.
+          </p>
+          <p className="ij-tips-region" style={{ marginTop: 20 }}>
+            Onde ficar
+          </p>
+          <SimpleList items={BCN_HOTELS} />
+          <p className="ij-tips-region" style={{ marginTop: 20 }}>
+            Onde comer
+          </p>
+          <SimpleList items={BCN_RESTAURANTS} />
+          <p className="ij-tips-region" style={{ marginTop: 20 }}>
+            O que fazer
+          </p>
+          <p>
+            Sagrada Família, Parc Güell, bairro Gótico, passeio pela
+            Barceloneta, El Born para compras e bares. Reserve ingressos com
+            antecedência para a Sagrada Família.
+          </p>
+        </div>
+      )}
+
+      {tab === "Passeios Costa Brava" && (
+        <div className="ij-tips-panel">
+          <div className="ij-tips-panel-head">
+            <h3>Passeios Costa Brava</h3>
+            <button className="ij-tips-close" onClick={() => setTab(null)}>
+              Fechar
+            </button>
+          </div>
+
+          <p className="ij-tips-region">Restaurantes</p>
+          <p>
+            A região tem gastronomia catalã incrível — de chiringuitos na praia a
+            restaurantes estrelados.
+          </p>
+          <p className="ij-tips-region" style={{ marginTop: 20 }}>
+            Tossa de Mar &amp; arredores
+          </p>
+          <SimpleList items={COSTA_TOSSA_RESTAURANTS} />
+          <p className="ij-tips-region" style={{ marginTop: 20 }}>
+            Begur &amp; Palafrugell
+          </p>
+          <SimpleList items={COSTA_BEGUR_RESTAURANTS} />
+
+          <div className="ij-tips-divider" />
+
+          <p className="ij-tips-region">Praias</p>
+          <p>
+            A Costa Brava tem algumas das praias mais bonitas da Europa. Água
+            cristalina, falésias e calas escondidas.
+          </p>
+          <SimpleList items={BEACHES} />
+          <p
+            style={{
+              marginTop: 16,
+              fontStyle: "italic",
+              fontSize: 13,
+              color: "var(--ink-quiet)",
+            }}
+          >
+            Dica: alugue um carro para explorar as calas. Muitas são acessíveis
+            só de carro + caminhada curta.
+          </p>
+        </div>
+      )}
     </section>
   );
 }

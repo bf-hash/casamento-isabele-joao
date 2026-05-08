@@ -1,10 +1,5 @@
 import type { Config } from "tailwindcss";
 
-/**
- * Costa Brava Wedding Mood Board — Verão Mediterrâneo
- * Paleta: base mediterrânea com acentos de rosa, coral e lavanda.
- * Tons quentes (amarelos, laranjas) + românticos (rosas, pêssegos) + frescos (lavanda, verde sálvia).
- */
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -14,35 +9,48 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        display: ["var(--font-display)", "Georgia", "serif"],
-        script: ["var(--font-script)", "cursive"],
+        display: ["var(--font-cormorant)", "EB Garamond", "Garamond", "serif"],
+        body: ["var(--font-inter)", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
       },
       colors: {
-        // Neutros mediterrâneos (base)
-        marfim: "#FEFAE0",    // Pantone 7499 C — fundo principal
-        "bege-areia": "#E8C5A5", // Pantone 719 C — backgrounds alternados
-        caramelo: "#D4A574",   // Pantone 728 C
-        // Cores quentes
-        "amarelo-sol": "#F5C842",   // Pantone 123 C
-        "laranja-terracota": "#FF8C42", // Pantone 1495 C
-        coral: "#FF6B6B",     // Pantone 178 C — acentos vibrantes
-        terracotta: "#D4705B", // Pantone 7598 C — botões, links
-        // Cores românticas
-        "rosa-garden": "#E8A0A0",   // Pantone 693 C
-        pessego: "#FFD4B8",   // Pantone 162 C
-        // Cores frescas
-        lavanda: "#B4A7D6",   // Pantone 2567 C
-        "verde-oliva": "#7A9B76",   // Pantone 5625 C
-        "verde-salvia": "#A8B89F",  // Pantone 5595 C
-        // Texto e estrutura
-        charcoal: "#2C2C2C",
-        navy: "#192956", // Ícones hand-drawn (referência menu)
-        // Legacy aliases (para compatibilidade)
-        cream: "#FEFAE0",
-        sand: "#E8C5A5",
-        sage: "#A8B89F",
-        olive: "#7A9B76",
+        olive: "#5C3D2E",
+        "olive-deep": "#3E2518",
+        "olive-soft": "#9B7A68",
+        "olive-tint": "#F2EAE4",
+        terracotta: "#D4743A",
+        "terracotta-deep": "#B85A28",
+        caramel: "#C4962A",
+        sun: "#f1de78",
+        sea: "#A2C2BD",
+        sky: "#DDECEC",
+        paper: "#F6F1E7",
+        "paper-warm": "#EDE5D3",
+        marfim: "#FBF8F1",
+        ink: "#2A2A22",
+        "ink-soft": "#5C5A4E",
+        "ink-quiet": "#8C8A7E",
+      },
+      letterSpacing: {
+        eyebrow: "0.28em",
+        display: "0.18em",
+        "display-tight": "0.06em",
+      },
+      borderRadius: {
+        sm: "2px",
+        md: "6px",
+        lg: "12px",
+        xl: "24px",
+        pill: "999px",
+      },
+      boxShadow: {
+        1: "0 1px 2px 0 rgb(60 50 30 / 0.06)",
+        2: "0 8px 24px -8px rgb(60 50 30 / 0.12)",
+        3: "0 20px 60px -20px rgb(60 50 30 / 0.20)",
+      },
+      maxWidth: {
+        content: "1120px",
+        narrow: "720px",
+        prose: "600px",
       },
     },
   },

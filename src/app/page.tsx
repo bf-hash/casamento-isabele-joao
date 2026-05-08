@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
+import { GravuraCitrusDivider } from "@/components/Illustrations";
 import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
 import Tips from "@/components/Tips";
@@ -10,32 +11,28 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <>
+    <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
       <Header />
       <main>
-        <section id="hero">
-          <Hero />
-        </section>
-        <section id="welcome">
-          <Welcome />
-        </section>
-        <section id="program">
-          <Program />
-        </section>
-        <section id="howtoget">
-          <HowToGet />
-        </section>
-        <section id="tips">
-          <Tips />
-        </section>
-        <section id="gifts">
-          <Gifts />
-        </section>
-        <section id="rsvp">
-          <RSVP />
-        </section>
+        <Hero />
+        <Welcome />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: 0,
+            background: "#FAFAF8",
+          }}
+        >
+          <GravuraCitrusDivider width={360} />
+        </div>
+        <Program />
+        <HowToGet />
+        <Tips />
+        <Gifts />
+        <RSVP />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
