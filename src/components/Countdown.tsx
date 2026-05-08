@@ -1,59 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-interface TimeLeft {
-  days: number;
-  hours: number;
-  minutes: number;
-  seconds: number;
+const TARGET = new Date("2027-07-01T15:00:00");
+
+function calc() {
+  const diff = Math.max(0, TARGET.getTime() - Date.now());
+  return {
+    d: Math.floor(diff / 864e5),
+    h: Math.floor((diff % 864e5) / 36e5),
+    m: Math.floor((diff % 36e5) / 6e4),
+    s: Math.floor((diff % 6e4) / 1e3),
+  };
 }
 
-export default function Countdown({ date }: { date: Date }) {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+const UNITS: [keyof ReturnType<typeof calc>, string][] = [
+  ["d", "dias"],
+  ["h", "horas"],
+  ["m", "min"],
+  ["s", "seg"],
+];
+
+export default function Countdown() {
+  const [t, setT] = useState<ReturnType<typeof calc> | null>(null);
 
   useEffect(() => {
-    const calc = () => {
-      const now = new Date().getTime();
-      const target = date.getTime();
-      const diff = target - now;
+    setT(calc());
+    const id = setInterval(() => setT(calc()), 1000);
+    return () => clearInterval(id);
+  }, []);
 
-      if (diff <= 0) {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-        return;
-      }
-
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((diff % (1000 * 60)) / 1000),
-      });
-    };
-
-    calc();
-    const t = setInterval(calc, 1000);
-    return () => clearInterval(t);
-  }, [date]);
-
-  if (!timeLeft) return null;
-
-  const items = [
-    { label: "dias", value: timeLeft.days },
-    { label: "horas", value: timeLeft.hours },
-    { label: "min", value: timeLeft.minutes },
-  ];
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
-    <div className="flex justify-center gap-8 sm:gap-14">
-      {items.map(({ label, value }) => (
-        <div key={label} className="text-center">
-          <div className="font-display font-medium text-3xl sm:text-4xl text-white tabular-nums tracking-wider drop-shadow">
-            {String(value).padStart(2, "0")}
+    <div className="ij-countdown">
+      {UNITS.map(([k, lbl]) => (
+        <div className="ij-countdown-unit" key={k}>
+          <div className="ij-countdown-val">
+            {t ? pad(t[k]) : "--"}
           </div>
-          <div className="font-serif font-light text-[11px] uppercase tracking-[0.25em] text-white/75 mt-1">
-            {label}
-          </div>
+          <div className="ij-countdown-lbl">{lbl}</div>
         </div>
       ))}
     </div>

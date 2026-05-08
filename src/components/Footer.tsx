@@ -1,12 +1,24 @@
+import Image from "next/image";
+
 export default function Footer() {
   return (
-    <footer className="px-6 py-12 bg-charcoal text-marfim/80 text-center">
-      <p className="font-display font-medium text-sm uppercase tracking-[0.2em]">
-        Isabele &amp; João
-      </p>
-      <p className="font-serif font-light text-xs uppercase tracking-[0.15em] mt-2 text-marfim/60">
-        01 . 07 . 2027 · Costa Brava
-      </p>
+    <footer className="ij-footer">
+      <Image
+        src="/assets/monogram-olive.png"
+        alt="I&J"
+        width={64}
+        height={64}
+        className="ij-footer-mono"
+      />
+      <div className="date-marker" style={{ fontSize: 14 }}>
+        01 . 07 . 2027
+      </div>
+      <div className="ij-footer-place">
+        Convent de Blanes · Costa Brava, Espanha
+      </div>
+      <div className="ij-footer-love">
+        com amor, Isabele <em className="amp">&amp;</em> João
+      </div>
     </footer>
   );
 }

@@ -1,66 +1,82 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
-const LINKS = [
-  { label: "Início", href: "#hero" },
-  { label: "Boas-vindas", href: "#welcome" },
-  { label: "Programação", href: "#program" },
-  { label: "Como chegar", href: "#howtoget" },
-  { label: "Dicas", href: "#tips" },
-  { label: "Presentes", href: "#gifts" },
-  { label: "RSVP", href: "#rsvp" },
+const NAV_ITEMS: [string, string][] = [
+  ["welcome", "Início"],
+  ["program", "Programação"],
+  ["howtoget", "Como chegar"],
+  ["tips", "Dicas"],
+  ["gifts", "Presentes"],
+  ["rsvp", "RSVP"],
 ];
 
+function scrollTo(id: string) {
+  const el = document.getElementById(id);
+  if (el) {
+    const y = el.getBoundingClientRect().top + window.scrollY - 70;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+}
+
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const go = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    scrollTo(id);
+    setMobileOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-marfim/98 backdrop-blur-md border-b border-charcoal/5">
-      <div className="max-w-4xl mx-auto px-6 py-5 flex items-center justify-between">
-        <a
-          href="#hero"
-          className="font-display font-semibold text-sm uppercase tracking-[0.2em] text-charcoal hover:text-terracotta transition-colors"
-        >
-          Isabele &amp; João
+    <nav className="ij-nav">
+      <div className="ij-nav-inner">
+        <a href="#top" className="ij-nav-mono" onClick={go("top")}>
+          <Image
+            src="/assets/monogram-olive.png"
+            alt="I&J"
+            width={36}
+            height={36}
+            style={{ height: 36, width: "auto" }}
+          />
         </a>
-
-        <nav className="hidden md:flex items-center gap-10">
-          {LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="font-serif font-light text-xs uppercase tracking-[0.15em] text-charcoal/60 hover:text-terracotta transition-colors duration-200"
-            >
-              {label}
-            </a>
+        <ul className="ij-nav-links">
+          {NAV_ITEMS.map(([id, label]) => (
+            <li key={id}>
+              <a href={`#${id}`} onClick={go(id)}>
+                {label}
+              </a>
+            </li>
           ))}
-        </nav>
-
+        </ul>
+        <a href="#rsvp" onClick={go("rsvp")} className="ij-nav-cta">
+          Confirmar
+        </a>
         <button
-          type="button"
-          onClick={() => setOpen(!open)}
-          className="md:hidden p-2 text-charcoal"
+          className="ij-nav-burger"
+          onClick={() => setMobileOpen((o) => !o)}
           aria-label="Menu"
         >
-          {open ? "✕" : "☰"}
+          {mobileOpen ? "✕" : "☰"}
         </button>
       </div>
-
-      {open && (
-        <nav className="md:hidden border-t border-charcoal/10 px-6 py-4 flex flex-col gap-4">
-          {LINKS.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              onClick={() => setOpen(false)}
-              className="font-serif font-light text-sm uppercase tracking-[0.12em] text-charcoal/70 hover:text-charcoal"
-            >
+      {mobileOpen && (
+        <div className="ij-nav-mobile">
+          {NAV_ITEMS.map(([id, label]) => (
+            <a key={id} href={`#${id}`} onClick={go(id)}>
               {label}
             </a>
           ))}
-        </nav>
+          <a
+            href="#rsvp"
+            onClick={go("rsvp")}
+            style={{ color: "var(--terracotta)", fontWeight: 600 }}
+          >
+            Confirmar presença
+          </a>
+        </div>
       )}
-    </header>
+    </nav>
   );
 }
