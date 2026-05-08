@@ -14,10 +14,10 @@ export default function Hero() {
       </div>
       <div className="ij-hero-art">
         <Image
-          src="/assets/el-convent-watercolor.png"
+          src="/assets/el-convent-watercolor.jpg"
           alt="El Convent de Blanes — Costa Brava"
-          width={1400}
-          height={700}
+          width={1600}
+          height={1248}
           priority
           style={{ width: "100%", height: "auto", display: "block" }}
         />
