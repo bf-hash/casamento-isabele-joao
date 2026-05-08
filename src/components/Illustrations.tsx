@@ -3,7 +3,7 @@ const G = { stroke: "currentColor", fill: "none", strokeLinecap: "round" as cons
 {/* Pré-wedding: cocktail glass with citrus slice + umbrella */}
 export function GravuraSun({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Glass body — martini/coupe shape */}
       <path d="M36 36 L54 68 Q60 74, 66 68 L84 36" stroke="#1B2A4A" strokeWidth="1.2"/>
       <path d="M36 36 L84 36" stroke="#1B2A4A" strokeWidth="1"/>
@@ -34,7 +34,7 @@ export function GravuraSun({ size = 100 }: { size?: number }) {
 {/* Casamento: interlocked rings with orange blossom on top */}
 export function GravuraAlliance({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Left ring */}
       <circle cx="48" cy="58" r="18" stroke="#1B2A4A" strokeWidth="1.2"/>
       <circle cx="48" cy="58" r="15" stroke="#1B2A4A" strokeWidth="0.4" opacity="0.25"/>
@@ -66,7 +66,7 @@ export function GravuraAlliance({ size = 100 }: { size?: number }) {
 {/* Dia de recuperação: sunglasses + sun + lemon slice (lazy day vibes) */}
 export function GravuraPool({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Sunglasses */}
       <path d="M28 52 Q28 42, 42 42 Q52 42, 52 52 Q52 60, 42 60 Q28 60, 28 52 Z" stroke="#1B2A4A" strokeWidth="1.1"/>
       <path d="M68 52 Q68 42, 82 42 Q92 42, 92 52 Q92 60, 82 60 Q68 60, 68 52 Z" stroke="#1B2A4A" strokeWidth="1.1"/>
@@ -97,7 +97,7 @@ export function GravuraPool({ size = 100 }: { size?: number }) {
 {/* Vinícola: wine bottle + glass + grape cluster */}
 export function GravuraWine({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Wine bottle */}
       <path d="M34 30 L34 40 Q28 46, 28 56 L28 92 Q28 96, 32 96 L44 96 Q48 96, 48 92 L48 56 Q48 46, 42 40 L42 30" stroke="#1B2A4A" strokeWidth="1.1"/>
       <path d="M34 30 L42 30" stroke="#1B2A4A" strokeWidth="1"/>
@@ -131,7 +131,7 @@ export function GravuraWine({ size = 100 }: { size?: number }) {
 {/* Como chegar: airplane with citrus trail */}
 export function GravuraAviao({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Airplane body */}
       <path d="M28 68 L52 56 L78 44 Q88 40, 94 42 Q98 44, 94 48 L78 52 L52 62 L38 78 L34 74 L44 62 L28 68 Z" stroke="#1B2A4A" strokeWidth="1.2"/>
       {/* Wing */}
@@ -157,7 +157,7 @@ export function GravuraAviao({ size = 100 }: { size?: number }) {
 {/* RSVP: envelope with citrus wax seal + orange blossom sprig */}
 export function GravuraEnvelope({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Envelope */}
       <rect x="24" y="38" width="72" height="50" rx="2" stroke="#1B2A4A" strokeWidth="1.2"/>
       <path d="M24 38 L60 64 L96 38" stroke="#1B2A4A" strokeWidth="1.2"/>
@@ -188,7 +188,7 @@ export function GravuraEnvelope({ size = 100 }: { size?: number }) {
 {/* Presentes: gift box with citrus ribbon bow + orange blossom */}
 export function GravuraPresente({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Box body */}
       <rect x="30" y="52" width="60" height="40" rx="1" stroke="#1B2A4A" strokeWidth="1.2"/>
       {/* Box lid */}
@@ -219,7 +219,7 @@ export function GravuraPresente({ size = 100 }: { size?: number }) {
 
 export function GravuraOlive({ size = 120 }: { size?: number }) {
   return (
-    <svg width={size} height={size * 0.45} viewBox="0 0 200 90" fill="none" {...G}>
+    <svg width={size} height={size * 0.45} viewBox="0 0 200 90" {...G}>
       {/* Main branch */}
       <path d="M25 55 Q55 32, 100 42 Q145 52, 175 30" stroke="#6B8E4E" strokeWidth="1"/>
       {/* Leaves — chartreuse fill, green stroke */}
@@ -253,7 +253,7 @@ export function GravuraOlive({ size = 120 }: { size?: number }) {
 
 export function GravuraLaranja({ size = 100 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 120 120" fill="none" {...G}>
+    <svg width={size} height={size} viewBox="0 0 120 120" {...G}>
       {/* Main orange */}
       <circle cx="60" cy="58" r="26" stroke="#f1722e" strokeWidth="1.2" fill="#f1722e" fillOpacity="0.08"/>
       <circle cx="60" cy="58" r="20" stroke="#f1722e" strokeWidth="0.4" opacity="0.25"/>
@@ -290,7 +290,7 @@ export function GravuraLaranja({ size = 100 }: { size?: number }) {
 
 export function GravuraCitrusDivider({ width = 360 }: { width?: number }) {
   return (
-    <svg width={width} height={56} viewBox="0 0 400 56" fill="none" {...G}>
+    <svg width={width} height={56} viewBox="0 0 400 56" {...G}>
       {/* ── Left branch ── */}
       <path d="M16 30 Q50 26, 80 28 Q110 30, 140 27 Q160 25, 175 28" stroke="#bcc41c" strokeWidth="0.8"/>
       {/* Left leaves — chartreuse */}
