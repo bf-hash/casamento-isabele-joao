@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 :root {
-  --marfim: #fefae0;
-  --bege-areia: #e8c5a5;
-  --terracotta: #d4705b;
-  --coral: #e85c5c;
+  --marfim: #fff8e7;
+  --bege-areia: #f5e6cc;
+  --grapefruit: #ed7169;
+  --clementine: #f1722e;
+  --lemon-drop: #f1de78;
+  --chartreuse: #bcc41c;
+  --terracotta: #f1722e;
+  --coral: #ed7169;
   --charcoal: #2c2c2c;
   --charcoal-soft: #4a4a4a;
 }

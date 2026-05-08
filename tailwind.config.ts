@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Costa Brava Wedding Mood Board — Verão Mediterrâneo
- * Paleta: base mediterrânea com acentos de rosa, coral e lavanda.
- * Tons quentes (amarelos, laranjas) + românticos (rosas, pêssegos) + frescos (lavanda, verde sálvia).
+ * Summer Citrus Wedding Mood Board
+ * Paleta: cítricos vibrantes — grapefruit, clementine, lemon drop, chartreuse.
+ * Tons quentes e frescos sobre base creme suave.
  */
 const config: Config = {
   content: [
@@ -19,30 +19,38 @@ const config: Config = {
         script: ["var(--font-script)", "cursive"],
       },
       colors: {
-        // Neutros mediterrâneos (base)
-        marfim: "#FEFAE0",    // Pantone 7499 C — fundo principal
-        "bege-areia": "#E8C5A5", // Pantone 719 C — backgrounds alternados
-        caramelo: "#D4A574",   // Pantone 728 C
-        // Cores quentes
-        "amarelo-sol": "#F5C842",   // Pantone 123 C
-        "laranja-terracota": "#FF8C42", // Pantone 1495 C
-        coral: "#FF6B6B",     // Pantone 178 C — acentos vibrantes
-        terracotta: "#D4705B", // Pantone 7598 C — botões, links
-        // Cores românticas
-        "rosa-garden": "#E8A0A0",   // Pantone 693 C
-        pessego: "#FFD4B8",   // Pantone 162 C
-        // Cores frescas
-        lavanda: "#B4A7D6",   // Pantone 2567 C
-        "verde-oliva": "#7A9B76",   // Pantone 5625 C
-        "verde-salvia": "#A8B89F",  // Pantone 5595 C
+        // Summer Citrus — cores principais
+        grapefruit: "#ED7169",
+        clementine: "#F1722E",
+        "lemon-drop": "#F1DE78",
+        chartreuse: "#BCC41C",
+        emberglow: "#E27A5F", // Pantone 17-1547 TCX
+
+        // Neutros (base creme cítrica)
+        marfim: "#FFF8E7",        // creme limão suave — fundo principal
+        "bege-areia": "#F5E6CC",  // areia clara — backgrounds alternados
+        caramelo: "#E8B976",
+        pessego: "#FFD4B8",
+
+        // Aliases mapeados para Summer Citrus (compatibilidade com componentes existentes)
+        terracotta: "#F1722E",        // = clementine (links, botões, divisores)
+        coral: "#ED7169",             // = grapefruit (acentos, hover)
+        "amarelo-sol": "#F1DE78",     // = lemon drop
+        "laranja-terracota": "#F1722E", // = clementine
+        "rosa-garden": "#ED7169",     // = grapefruit
+        lavanda: "#F1DE78",           // remapeado p/ lemon drop
+        "verde-oliva": "#BCC41C",     // = chartreuse
+        "verde-salvia": "#BCC41C",    // = chartreuse
+
         // Texto e estrutura
         charcoal: "#2C2C2C",
-        navy: "#192956", // Ícones hand-drawn (referência menu)
-        // Legacy aliases (para compatibilidade)
-        cream: "#FEFAE0",
-        sand: "#E8C5A5",
-        sage: "#A8B89F",
-        olive: "#7A9B76",
+        navy: "#192956",
+
+        // Legacy aliases
+        cream: "#FFF8E7",
+        sand: "#F5E6CC",
+        sage: "#BCC41C",
+        olive: "#BCC41C",
       },
     },
   },

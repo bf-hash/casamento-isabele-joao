@@ -68,7 +68,7 @@ export default function Tips() {
   };
 
   return (
-    <section className="px-6 py-24 md:py-32 bg-[#f5f0e8]" id="tips">
+    <section className="px-6 py-24 md:py-32 bg-[#fdf3d6]" id="tips">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-16">
           <div className="w-16 h-px bg-terracotta/40 mx-auto mb-8" />
