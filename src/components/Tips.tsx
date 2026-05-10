@@ -6,6 +6,7 @@ import { GravuraLaranja } from "./Illustrations";
 const TIP_TABS = [
   "Dress code",
   "Onde ficar",
+  "Hair & Make",
   "Dicas Barcelona",
   "Passeios Costa Brava",
 ];
@@ -19,20 +20,9 @@ interface Hotel {
 
 const TOSSA_HOTELS: Hotel[] = [
   {
-    name: "Hotel Santa Marta",
-    price: "$$$",
-    url: "https://hotelsantamarta.es/",
-    featured: true,
-  },
-  {
     name: "Hotel Diana",
     price: "$$",
     url: "https://www.hotelesdante.com/en/home/hotel-diana/",
-  },
-  {
-    name: "GHT Costa Brava & Spa",
-    price: "$$",
-    url: "https://www.ghthotels.com/",
   },
   {
     name: "Hotel Delfín",
@@ -50,6 +40,11 @@ const TOSSA_HOTELS: Hotel[] = [
     url: "https://www.google.com/maps/search/Hostal+Boutique+Sa+Nansa+Tossa+de+Mar",
   },
   {
+    name: "Casa Granados",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Casa+Granados+Tossa+de+Mar",
+  },
+  {
     name: "Mamma Mia Hotel Boutique",
     price: "$$$",
     url: "https://www.google.com/maps/search/Mamma+Mia+Hotel+Boutique+Tossa+de+Mar",
@@ -60,6 +55,12 @@ const TOSSA_HOTELS: Hotel[] = [
     url: "https://www.google.com/maps/search/Elisabeth+By+The+Sea+Tossa+de+Mar",
   },
   {
+    name: "Hotel Santa Marta",
+    price: "$$$",
+    url: "https://hotelsantamarta.es/",
+    featured: true,
+  },
+  {
     name: "Zel Costa Brava",
     price: "$$$",
     url: "https://www.zelhotels.com/",
@@ -68,14 +69,24 @@ const TOSSA_HOTELS: Hotel[] = [
 
 const BEGUR_HOTELS: Hotel[] = [
   {
-    name: "Aita Begur",
+    name: "Alta House",
     price: "$$$",
-    url: "https://www.google.com/maps/search/Aita+Hotel+Begur",
+    url: "https://www.google.com/maps/search/Alta+House+Begur",
   },
   {
-    name: "Can Mascort",
+    name: "Aiguablava",
     price: "$$$",
-    url: "https://www.google.com/maps/search/Can+Mascort+Begur",
+    url: "https://www.google.com/maps/search/Hotel+Aiguablava+Begur",
+  },
+  {
+    name: "Can Macot",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Can+Macot+Begur",
+  },
+  {
+    name: "Finca Vitoria",
+    price: "$$$",
+    url: "https://www.google.com/maps/search/Finca+Vitoria+Begur",
   },
 ];
 
@@ -336,7 +347,7 @@ export default function Tips() {
             <strong>$$$</strong> upscale
           </p>
           <p className="ij-tips-region">
-            Tossa de Mar · 30 de junho — 1 de julho
+            Tossa de Mar · 30 de junho — 2 de julho
           </p>
           <HotelList hotels={TOSSA_HOTELS} />
           <div className="ij-tips-divider" />
@@ -349,6 +360,101 @@ export default function Tips() {
             de Tossa).
           </p>
           <HotelList hotels={BEGUR_HOTELS} />
+        </div>
+      )}
+
+      {tab === "Hair & Make" && (
+        <div className="ij-tips-panel">
+          <div className="ij-tips-panel-head">
+            <h3>Hair &amp; Make</h3>
+            <button className="ij-tips-close" onClick={() => setTab(null)}>
+              Fechar
+            </button>
+          </div>
+          <p>
+            Organizamos um salão que irá atender no dia do casamento no{" "}
+            <strong>Hotel Santa Marta</strong> (Lloret de Mar).
+          </p>
+          <p>
+            Todos que quiserem agendar um horário podem mandar uma mensagem para{" "}
+            <strong>xxx</strong>.
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: 16,
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: 20,
+            }}
+          >
+            <div
+              style={{
+                border: "1px solid var(--hairline-strong)",
+                padding: "20px 28px",
+                textAlign: "center",
+                flex: "0 1 200px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  color: "var(--olive)",
+                  margin: "0 0 8px",
+                  fontWeight: 500,
+                }}
+              >
+                Cabelo
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 24,
+                  fontWeight: 500,
+                  color: "var(--olive)",
+                  margin: 0,
+                }}
+              >
+                €150
+              </p>
+            </div>
+            <div
+              style={{
+                border: "1px solid var(--hairline-strong)",
+                padding: "20px 28px",
+                textAlign: "center",
+                flex: "0 1 200px",
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 11,
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                  color: "var(--olive)",
+                  margin: "0 0 8px",
+                  fontWeight: 500,
+                }}
+              >
+                Maquiagem
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: 24,
+                  fontWeight: 500,
+                  color: "var(--olive)",
+                  margin: 0,
+                }}
+              >
+                €150
+              </p>
+            </div>
+          </div>
         </div>
       )}
 
