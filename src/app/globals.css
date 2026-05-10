@@ -170,6 +170,17 @@ html {
   color: var(--ink-soft);
   font-size: 17px;
 }
+.ij-hero-photo {
+  width: 100%;
+  position: relative;
+}
+.ij-hero-photo::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 120px; z-index: 1;
+  background: linear-gradient(to bottom, #FFFFFF, transparent);
+}
+.ij-hero-photo img {
+  width: 100%; height: auto; display: block;
+}
 
 /* ---- COUNTDOWN ---- */
 .ij-countdown {

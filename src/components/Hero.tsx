@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Countdown from "./Countdown";
 import { GravuraCitrusDivider } from "./Illustrations";
 
@@ -17,6 +18,16 @@ export default function Hero() {
         <div className="ij-hero-ornament-bottom">
           <GravuraCitrusDivider width={280} />
         </div>
+      </div>
+      <div className="ij-hero-photo">
+        <Image
+          src="/assets/el-convent-watercolor.jpg"
+          alt="El Convent de Blanes — Costa Brava"
+          width={1600}
+          height={1248}
+          priority
+          style={{ width: "100%", height: "auto", display: "block" }}
+        />
       </div>
     </section>
   );
