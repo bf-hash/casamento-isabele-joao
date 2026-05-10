@@ -126,26 +126,24 @@ html {
 /* ---- HERO ---- */
 .ij-hero {
   display: flex; flex-direction: column; align-items: center;
-  min-height: 100vh;
-  overflow: hidden;
   background: #FFFFFF;
   position: relative;
 }
 .ij-hero-body {
-  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
   text-align: center;
-  padding: 96px 24px 40px;
+  padding: 80px 24px 72px;
   max-width: min(94vw, 800px);
-  flex-shrink: 0;
   position: relative;
-  z-index: 1;
 }
-.ij-hero-eyebrow {
-  font-family: var(--font-display);
-  font-size: 12px; font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--eyebrow);
+.ij-hero-ornament-top {
+  margin-bottom: 12px;
+  opacity: 0.7;
+}
+.ij-hero-ornament-bottom {
+  margin-top: 16px;
+  opacity: 0.7;
+  transform: scaleY(-1);
 }
 .ij-hero-name {
   font-family: var(--font-display);
@@ -161,9 +159,8 @@ html {
 .ij-hero-name .amp { font-style: italic; font-weight: 400; }
 .ij-hero-date {
   font-family: var(--font-display);
-  font-size: 16px; font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
+  font-size: 15px; font-weight: 500;
+  letter-spacing: 0.3em;
   color: var(--olive);
   white-space: nowrap;
 }
@@ -173,16 +170,6 @@ html {
   color: var(--ink-soft);
   font-size: 17px;
 }
-.ij-hero-art {
-  width: 100%;
-  position: relative;
-  margin-top: auto;
-}
-.ij-hero-art::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 100px; z-index: 1;
-  background: linear-gradient(to bottom, #FFFFFF, transparent);
-}
-.ij-hero-art img { width: 100%; height: auto; display: block; }
 
 /* ---- COUNTDOWN ---- */
 .ij-countdown {
