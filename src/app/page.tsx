@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Welcome from "@/components/Welcome";
-import { GravuraCitrusDivider } from "@/components/Illustrations";
 import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
 import Tips from "@/components/Tips";
@@ -16,16 +15,6 @@ export default function Home() {
       <main>
         <Hero />
         <Welcome />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: 0,
-            background: "#FAFAF8",
-          }}
-        >
-          <GravuraCitrusDivider width={360} />
-        </div>
         <Program />
         <HowToGet />
         <Tips />

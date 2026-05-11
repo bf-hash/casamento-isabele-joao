@@ -17,7 +17,7 @@ export default function Footer() {
         Convent de Blanes · Costa Brava, Espanha
       </div>
       <div className="ij-footer-love">
-        com amor, Isabele <em className="amp">&amp;</em> João
+        com amor, Isabele <span className="amp">&</span> João
       </div>
     </footer>
   );
