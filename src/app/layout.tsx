@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -15,6 +15,12 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
+const pinyon = Pinyon_Script({
+  variable: "--font-pinyon",
+  subsets: ["latin"],
+  weight: "400",
+});
+
 export const metadata: Metadata = {
   title: "Isabele & João | Casamento",
   description:
@@ -27,8 +33,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable}`}>
-      <body className="min-h-screen font-body bg-white text-ink antialiased">
+    <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable} ${pinyon.variable}`}>
+      <body className="min-h-screen font-body text-ink antialiased" style={{ background: "#FFFFFF" }}>
         {children}
       </body>
     </html>
