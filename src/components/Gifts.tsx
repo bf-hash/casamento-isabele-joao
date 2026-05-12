@@ -66,7 +66,7 @@ const GIFTS = [
     id: "festival",
     emoji: "🎶",
     image: "/fotos/presentes/festival.jpeg",
-    name: "Festival Eletrônica",
+    name: "Festival em Barcelona",
     price: 450,
     cardLink: "",
   },
