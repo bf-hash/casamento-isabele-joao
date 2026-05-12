@@ -49,8 +49,7 @@ const EVENTS: EventData[] = [
     title: "Dia de recuperação",
     time: "Dia livre",
     description:
-      "Sabemos que todos estarão mortos depois da festa — então estaremos relaxando na piscina do Santa Marta no fim do dia. Para quem quiser desbravar a região, deixaremos dicas na seção de Dicas.",
-    note: "Dia por conta própria — sem programação organizada.",
+      "Sabemos que todos estarão acabados da festa, então deixamos esse dia livre. Para os sobreviventes, estaremos na piscina do hotel Santa Marta no fim do dia tomando bons drinks.",
     illustration: "pool",
     accentColor: "#92AAC3",
   },
