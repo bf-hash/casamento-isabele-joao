@@ -604,6 +604,266 @@ html {
 .ij-hotel-price-3 { color: var(--olive-deep); }
 
 /* ---- GIFTS ---- */
+.ij-gifts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+.ij-gifts-grid > * {
+  height: 100%;
+}
+.ij-gift-card {
+  position: relative;
+  border: 1px solid var(--hairline-strong);
+  padding: 36px 24px 28px;
+  text-align: center;
+  background: rgba(255,255,255,0.7);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ij-gift-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(27,42,74,0.06);
+}
+.ij-gift-card::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+}
+.ij-gift-card-image {
+  width: calc(100% + 50px);
+  margin: -37px -25px 16px;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+}
+.ij-gift-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.ij-gift-card-emoji {
+  font-size: 40px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.ij-gift-card-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+.ij-gift-card-price {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--terracotta);
+  margin: 0 0 20px;
+}
+.ij-gift-card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+}
+.ij-gift-btn {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border-radius: var(--r-md);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--dur-fast) var(--ease);
+  line-height: 1;
+}
+.ij-gift-btn--pix {
+  background: var(--olive);
+  color: var(--marfim);
+}
+.ij-gift-btn--pix:hover {
+  background: var(--olive-deep);
+  transform: translateY(-1px);
+}
+.ij-gift-btn--card {
+  background: var(--terracotta);
+  color: var(--marfim);
+  display: inline-flex;
+  align-items: center;
+}
+.ij-gift-btn--card:hover {
+  background: var(--terracotta-deep);
+  color: var(--marfim);
+  transform: translateY(-1px);
+}
+.ij-gift-btn--soon {
+  background: var(--periwinkle-soft);
+  color: var(--paper);
+  cursor: default;
+  opacity: 0.7;
+}
+.ij-gift-btn--soon:hover {
+  background: var(--periwinkle-soft);
+  transform: none;
+}
+
+/* Gift Modal / PIX */
+.ij-gift-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(27,42,74,0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: ij-fade-in 0.25s var(--ease);
+}
+@keyframes ij-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.ij-gift-modal {
+  background: var(--paper);
+  border: 1px solid var(--hairline-strong);
+  max-width: 420px;
+  width: 100%;
+  padding: 48px 36px 40px;
+  text-align: center;
+  position: relative;
+  animation: ij-slide-up 0.3s var(--ease);
+}
+@keyframes ij-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.ij-gift-modal::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--hairline);
+  pointer-events: none;
+}
+.ij-gift-modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: none; border: none;
+  font-size: 24px; color: var(--ink-quiet);
+  cursor: pointer; z-index: 2;
+  transition: color var(--dur-fast);
+  line-height: 1;
+}
+.ij-gift-modal-close:hover { color: var(--ink); }
+.ij-gift-modal-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0 auto 16px;
+}
+.ij-gift-modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.ij-gift-modal-emoji {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.ij-gift-modal-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin: 0 0 6px;
+}
+.ij-gift-modal-price {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--terracotta);
+  margin: 0 0 28px;
+}
+.ij-gift-modal-pix {
+  background: var(--olive-tint);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-md);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.ij-gift-modal-pix-label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--ink-quiet);
+  margin-bottom: 10px;
+}
+.ij-gift-modal-pix-key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.ij-gift-modal-pix-key code {
+  font-size: 15px;
+  color: var(--olive);
+  font-weight: 500;
+  word-break: break-all;
+}
+.ij-gift-modal-copy {
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  background: var(--olive);
+  color: var(--marfim);
+  border: none;
+  border-radius: var(--r-md);
+  cursor: pointer;
+  transition: background var(--dur-fast);
+  white-space: nowrap;
+}
+.ij-gift-modal-copy:hover { background: var(--olive-deep); }
+.ij-gift-modal-pix-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.ij-gift-modal-hint {
+  font-size: 13px;
+  color: var(--ink-quiet);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 100%;
+}
+
 .ij-gifts-cta {
   margin-top: 20px;
   display: inline-flex; align-items: center; gap: 10px;
@@ -620,6 +880,15 @@ html {
   line-height: 1;
 }
 .ij-gifts-cta:hover { background: var(--terracotta-deep); color: var(--marfim); transform: translateY(-1px); }
+
+@media (max-width: 900px) {
+  .ij-gifts-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 540px) {
+  .ij-gifts-grid { grid-template-columns: 1fr; gap: 16px; max-width: 360px; }
+  .ij-gift-card { padding: 28px 20px 24px; }
+  .ij-gift-modal { padding: 36px 24px 32px; }
+}
 
 /* ---- RSVP ---- */
 .ij-rsvp-wrap {
