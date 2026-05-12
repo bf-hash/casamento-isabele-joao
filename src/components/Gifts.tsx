@@ -79,14 +79,6 @@ const GIFTS = [
     cardLink: "",
   },
   {
-    id: "spa",
-    emoji: "🧖",
-    image: "",
-    name: "Dia de spa",
-    price: 500,
-    cardLink: "",
-  },
-  {
     id: "jamon",
     emoji: "🍖",
     image: "/fotos/presentes/jamon.jpeg",
