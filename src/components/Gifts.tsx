@@ -167,8 +167,8 @@ function PixModal({
         </div>
 
         <p className="ij-gift-modal-hint">
-          Após o PIX, envie o comprovante pelo WhatsApp para confirmarmos
-          seu presente {"❤️"}
+          Depois do PIX, envie o comprovante pelo WhatsApp para que possamos
+          confirmar seu presente {"❤️"}
         </p>
       </div>
     </div>
@@ -197,9 +197,9 @@ export default function Gifts() {
         </ScrollReveal>
         <ScrollReveal delay={2}>
           <p className="ij-prose" style={{ marginBottom: 40 }}>
-            A presença de vocês já é o melhor presente do mundo. Mas caso
-            queiram dar algo, escolhemos uma lista só com o que somos melhor
-            fazendo (comer, beber e viajar)
+            A presença de vocês já é o melhor presente do mundo. Mas, se
+            quiserem nos mimar, montamos uma lista com aquilo que sabemos
+            fazer de melhor: comer, beber e viajar.
           </p>
         </ScrollReveal>
 

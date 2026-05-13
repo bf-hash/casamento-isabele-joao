@@ -24,8 +24,8 @@ export default function RSVP() {
         <ScrollReveal delay={2}>
           <div className="ij-caixa" style={{ maxWidth: 520 }}>
             <p className="ij-prose" style={{ margin: "0 auto 28px" }}>
-              Por favor, confirme sua presença através do WhatsApp. Clique no
-              botão abaixo para enviar uma mensagem.
+              Conte-nos se podemos contar com vocês. Basta clicar no botão
+              abaixo para nos enviar uma mensagem pelo WhatsApp.
             </p>
             <a
               href={WHATSAPP_URL}

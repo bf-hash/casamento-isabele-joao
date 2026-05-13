@@ -313,12 +313,12 @@ export default function Tips() {
           </div>
 
           <p style={{ fontSize: 14 }}>
-            <strong>Para elas:</strong> vestidos fluidos, midi ou longos. Cores
-            claras, neutros ou tons mediterrânicos.
+            <strong>Para elas:</strong> vestidos fluidos, midi ou longos, em
+            cores claras, neutras ou tons mediterrâneos.
           </p>
           <p style={{ fontSize: 14 }}>
-            <strong>Para eles:</strong> terno em tecido leve. Gravata não é
-            necessária.
+            <strong>Para eles:</strong> terno em tecido leve. Gravata é
+            opcional.
           </p>
           <p
             style={{
@@ -327,8 +327,8 @@ export default function Tips() {
               color: "var(--ink-quiet)",
             }}
           >
-            A cerimônia será em um convento histórico com chão irregular. Evitem
-            saltos finos ou agulha — recomendamos saltos grossos, plataformas ou
+            A cerimônia acontece em um convento histórico com piso irregular.
+            Evitem saltos finos ou agulha — prefiram salto bloco, plataforma ou
             sapatos sem salto.
           </p>
         </div>
@@ -355,9 +355,9 @@ export default function Tips() {
             Begur &amp; Palafrugell · 2 — 3 de julho
           </p>
           <p className="ij-tips-region-note">
-            A Costa Brava é comprida — as atividades dos últimos dois dias serão
-            mais ao norte, na região de Begur e Palafrugell (~1h–1h30 de carro
-            de Tossa).
+            A Costa Brava é extensa — as atividades dos dois últimos dias
+            acontecem mais ao norte, na região de Begur e Palafrugell (~1h a
+            1h30 de carro de Tossa).
           </p>
           <HotelList hotels={BEGUR_HOTELS} />
         </div>
@@ -372,11 +372,11 @@ export default function Tips() {
             </button>
           </div>
           <p>
-            Organizamos um salão que irá atender no dia do casamento no{" "}
+            Reservamos um salão que vai atender no dia do casamento no{" "}
             <strong>Hotel Santa Marta</strong> (Lloret de Mar).
           </p>
           <p>
-            Todos que quiserem agendar um horário podem mandar uma mensagem para{" "}
+            Para agendar um horário, é só mandar uma mensagem para{" "}
             <strong>xxx</strong>.
           </p>
           <div
@@ -467,8 +467,8 @@ export default function Tips() {
             </button>
           </div>
           <p>
-            Muitos voos do Brasil fazem conexão ou chegam em Barcelona. Se
-            puderem, aproveitem para passar uns dias na cidade antes ou depois do
+            Muitos voos do Brasil chegam ou fazem conexão em Barcelona. Se
+            puderem, vale passar alguns dias na cidade antes ou depois do
             casamento.
           </p>
           <p className="ij-tips-region" style={{ marginTop: 20 }}>
@@ -483,9 +483,9 @@ export default function Tips() {
             O que fazer
           </p>
           <p>
-            Sagrada Família, Parc Güell, bairro Gótico, passeio pela
-            Barceloneta, El Born para compras e bares. Reserve ingressos com
-            antecedência para a Sagrada Família.
+            Sagrada Família, Parc Güell, Bairro Gótico, um passeio pela
+            Barceloneta e o El Born para compras e bares. Reservem os ingressos
+            da Sagrada Família com antecedência.
           </p>
         </div>
       )}
@@ -501,8 +501,8 @@ export default function Tips() {
 
           <p className="ij-tips-region">Restaurantes</p>
           <p>
-            A região tem gastronomia catalã incrível — de chiringuitos na praia a
-            restaurantes estrelados.
+            A gastronomia catalã da região é impressionante — vai dos
+            chiringuitos pé na areia a restaurantes estrelados.
           </p>
           <p className="ij-tips-region" style={{ marginTop: 20 }}>
             Tossa de Mar &amp; arredores
@@ -517,7 +517,7 @@ export default function Tips() {
 
           <p className="ij-tips-region">Praias</p>
           <p>
-            A Costa Brava tem algumas das praias mais bonitas da Europa. Água
+            A Costa Brava reúne algumas das praias mais bonitas da Europa: água
             cristalina, falésias e calas escondidas.
           </p>
           <SimpleList items={BEACHES} />
@@ -529,8 +529,8 @@ export default function Tips() {
               color: "var(--ink-quiet)",
             }}
           >
-            Dica: alugue um carro para explorar as calas. Muitas são acessíveis
-            só de carro + caminhada curta.
+            Dica: aluguem um carro para explorar as calas — muitas só são
+            acessíveis de carro e uma caminhada curta.
           </p>
         </div>
       )}

@@ -12,13 +12,13 @@ export default function Welcome() {
         </ScrollReveal>
         <ScrollReveal delay={2}>
           <p className="ij-prose">
-            Estamos muito felizes em convidá-los para nosso casamento na Costa
-            Brava, Espanha. Esse é um dos lugares onde nos sentimos mais em casa e
-            passamos momentos muito especiais com amigos e família ao longo dos
-            nossos 8 anos juntos.
+            É com muita alegria que convidamos vocês para nosso casamento na
+            Costa Brava, Espanha. É um dos lugares onde mais nos sentimos em
+            casa — e onde vivemos momentos inesquecíveis com amigos e família ao
+            longo dos nossos 8 anos juntos.
           </p>
           <p className="ij-prose ij-prose-strong">
-            Vamos fazer muita festa, comer bem e beber muito vinho juntos!
+            Vamos fazer festa, comer bem e beber muito vinho juntos!
           </p>
         </ScrollReveal>
         <Image

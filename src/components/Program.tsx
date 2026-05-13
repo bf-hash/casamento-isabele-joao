@@ -40,7 +40,7 @@ const EVENTS: EventData[] = [
       "https://maps.google.com/?q=El+Convent+de+Blanes+Passeig+Carles+Faust+4",
     venueUrl: "https://elconventblanes.com/en/",
     transportNote:
-      "Teremos vans que buscarão em Tossa de Mar e no Hotel Santa Marta (Lloret de Mar) no dia do casamento.",
+      "No dia do casamento, teremos vans saindo de Tossa de Mar e do Hotel Santa Marta (Lloret de Mar).",
     illustration: "alliance",
     accentColor: "#EE7170",
   },
@@ -49,7 +49,7 @@ const EVENTS: EventData[] = [
     title: "Dia de recuperação",
     time: "Dia livre",
     description:
-      "Sabemos que todos estarão acabados da festa, então deixamos esse dia livre. Para os sobreviventes, estaremos na piscina do hotel Santa Marta no fim do dia tomando bons drinks.",
+      "Sabemos que todos vão estar exaustos depois da festa, então deixamos o dia livre. Para os sobreviventes, estaremos na piscina do Hotel Santa Marta no fim da tarde, tomando bons drinks.",
     illustration: "pool",
     accentColor: "#92AAC3",
   },
@@ -57,7 +57,7 @@ const EVENTS: EventData[] = [
     date: "03 . 07 . 27",
     title: "Vinícola & jantar",
     description:
-      "Passeio na vinícola Perelada com um jantar para fechar com chave de ouro na região de Begur.",
+      "Passeio pela vinícola Perelada seguido de um jantar de despedida na região de Begur.",
     illustration: "wine",
     accentColor: "#8EA83A",
   },
