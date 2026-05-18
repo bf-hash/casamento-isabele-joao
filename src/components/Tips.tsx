@@ -376,9 +376,20 @@ export default function Tips() {
             <strong>Hotel Santa Marta</strong> (Lloret de Mar).
           </p>
           <p>
-            Todos que quiserem agendar um horário podem mandar uma mensagem para{" "}
-            <strong>xxx</strong>.
+            Todos que quiserem agendar um horário podem mandar uma mensagem
+            clicando no botão abaixo.
           </p>
+          <div style={{ textAlign: "center", marginTop: 16 }}>
+            <a
+              href="https://wa.me/56920403095?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20sal%C3%A3o%20para%20o%20casamento%20da%20Isabele%20%26%20Jo%C3%A3o%20%F0%9F%92%87%E2%80%8D%E2%99%80%EF%B8%8F"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ij-rsvp-btn"
+              style={{ display: "inline-block", maxWidth: 320 }}
+            >
+              Agendar pelo WhatsApp
+            </a>
+          </div>
           <div
             style={{
               display: "flex",
