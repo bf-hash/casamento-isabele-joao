@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${inter.variable} ${pinyon.variable}`}>
-      <body className="min-h-screen font-body text-ink antialiased" style={{ background: "#FFFFFF" }}>
+      <body className="min-h-screen font-display text-ink antialiased" style={{ background: "#FFFFFF" }}>
         {children}
       </body>
     </html>

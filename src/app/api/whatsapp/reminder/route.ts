@@ -1,9 +1,9 @@
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import { sendWhatsAppMessage } from "@/lib/kapso";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { data: guests, error } = await supabase
+  const { data: guests, error } = await getSupabase()
     .from("guests")
     .select("*")
     .eq("rsvp_confirmed", false)
