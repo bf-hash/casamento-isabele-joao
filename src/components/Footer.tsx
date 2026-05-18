@@ -10,7 +10,7 @@ export default function Footer() {
         height={64}
         className="ij-footer-mono"
       />
-      <div className="date-marker" style={{ fontSize: 14 }}>
+      <div className="date-marker">
         01 . 07 . 2027
       </div>
       <div className="ij-footer-place">

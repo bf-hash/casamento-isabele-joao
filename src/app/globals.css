@@ -149,6 +149,9 @@ html {
   letter-spacing: 0.15em; color: var(--olive); font-weight: 500;
   text-decoration: none;
 }
+.ij-nav-mobile .ij-nav-cta-mobile {
+  color: var(--terracotta); font-weight: 600;
+}
 @media (max-width: 900px) {
   .ij-nav-links, .ij-nav-cta { display: none; }
   .ij-nav-burger { display: block; margin-left: auto; }

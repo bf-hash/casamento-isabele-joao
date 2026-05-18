@@ -71,7 +71,7 @@ export default function Header() {
           <a
             href="#rsvp"
             onClick={go("rsvp")}
-            style={{ color: "var(--terracotta)", fontWeight: 600 }}
+            className="ij-nav-cta-mobile"
           >
             Confirmar presença
           </a>

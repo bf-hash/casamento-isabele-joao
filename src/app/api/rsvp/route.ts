@@ -1,10 +1,10 @@
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const { data, error } = await supabase.from("rsvps").insert({
+  const { data, error } = await getSupabase().from("rsvps").insert({
     name: body.name,
     attending: body.attending,
     guest_count: body.guestCount,
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("rsvps")
     .select("*")
     .order("created_at", { ascending: false });

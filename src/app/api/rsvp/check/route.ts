@@ -1,4 +1,4 @@
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     return NextResponse.json({ exists: false });
   }
 
-  const { data } = await supabase
+  const { data } = await getSupabase()
     .from("rsvps")
     .select("name, attending")
     .ilike("name", name)

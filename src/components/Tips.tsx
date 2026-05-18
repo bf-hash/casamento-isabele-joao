@@ -300,7 +300,7 @@ export default function Tips() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "monospace",
+                    fontFamily: "var(--font-body)",
                     fontSize: 10,
                     color: "var(--ink-quiet)",
                     lineHeight: 1.4,
