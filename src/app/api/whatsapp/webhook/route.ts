@@ -11,19 +11,24 @@ export async function POST(request: Request) {
   }
 
   const from = message.from;
-  const text = message.text?.body || message.kapso?.content || "";
+  const text = (message.text?.body || message.kapso?.content || "").toLowerCase();
   const contactName = body.conversation?.kapso?.contact_name || "";
 
-  await supabase.from("salon_requests").insert({
-    phone: from,
-    name: contactName,
-    message: text,
-  });
+  const salonKeywords = ["salao", "salão", "hair", "make", "cabelo", "maquiagem", "escova", "penteado"];
+  const isSalonRequest = salonKeywords.some((kw) => text.includes(kw));
 
-  await sendWhatsAppMessage(
-    from,
-    "Obrigada! Em breve confirmaremos seu horário ✨"
-  );
+  if (isSalonRequest) {
+    await supabase.from("salon_requests").insert({
+      phone: from,
+      name: contactName,
+      message: text,
+    });
+
+    await sendWhatsAppMessage(
+      from,
+      "Obrigada! Em breve confirmaremos seu horário ✨"
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }
