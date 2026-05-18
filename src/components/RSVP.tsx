@@ -4,7 +4,7 @@ import { useState } from "react";
 import { GravuraEnvelope } from "./Illustrations";
 import ScrollReveal from "./ScrollReveal";
 
-type Step = "name" | "confirm" | "guests" | "dietary" | "message" | "done" | "declined" | "declined_done";
+type Step = "name" | "confirm" | "guests" | "dietary" | "message" | "done" | "declined" | "declined_done" | "already_confirmed";
 
 interface Guest {
   name: string;
@@ -19,6 +19,24 @@ export default function RSVP() {
   const [ownDietary, setOwnDietary] = useState("");
   const [message, setMessage] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [checking, setChecking] = useState(false);
+
+  const handleNameContinue = async () => {
+    setChecking(true);
+    try {
+      const res = await fetch(`/api/rsvp/check?name=${encodeURIComponent(name.trim())}`);
+      const data = await res.json();
+      if (data.exists && data.attending) {
+        setStep("already_confirmed");
+        setChecking(false);
+        return;
+      }
+    } catch {
+      // if check fails, proceed normally
+    }
+    setChecking(false);
+    setStep("confirm");
+  };
 
   const handleConfirm = (attending: boolean) => {
     if (attending) {
@@ -87,7 +105,7 @@ export default function RSVP() {
           <div className="ij-rsvp-form-wrap">
             <div className="ij-rsvp-form-inner">
               {/* Progress */}
-              {step !== "done" && step !== "declined_done" && (
+              {step !== "done" && step !== "declined_done" && step !== "already_confirmed" && (
                 <div className="ij-rsvp-progress">
                   {["name", "confirm", "guests", "dietary", "message"].map(
                     (s, i) => (
@@ -118,16 +136,16 @@ export default function RSVP() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     onKeyDown={(e) => {
-                      if (e.key === "Enter" && name.trim()) setStep("confirm");
+                      if (e.key === "Enter" && name.trim()) handleNameContinue();
                     }}
                     autoFocus
                   />
                   <button
                     className="ij-rsvp-btn"
-                    disabled={!name.trim()}
-                    onClick={() => setStep("confirm")}
+                    disabled={!name.trim() || checking}
+                    onClick={handleNameContinue}
                   >
-                    Continuar
+                    {checking ? "Verificando..." : "Continuar"}
                   </button>
                 </div>
               )}
@@ -335,6 +353,24 @@ export default function RSVP() {
                     {"Obrigado, "}{name}{"! Mal podemos esperar para celebrar com você"}
                     {guestCount > 0 && " e seus acompanhantes"} na Costa Brava.
                   </p>
+                </div>
+              )}
+
+              {/* Step: Already Confirmed */}
+              {step === "already_confirmed" && (
+                <div className="ij-rsvp-step ij-rsvp-step--done">
+                  <div className="ij-rsvp-done-icon">&#10003;</div>
+                  <h3 className="ij-rsvp-step-title">{"Presença já confirmada!"}</h3>
+                  <p className="ij-rsvp-step-desc">
+                    {name}{", sua presença já foi confirmada. Obrigado!"}
+                  </p>
+                  <button
+                    className="ij-rsvp-back"
+                    style={{ marginTop: 16 }}
+                    onClick={() => { setName(""); setStep("name"); }}
+                  >
+                    Confirmar outro nome
+                  </button>
                 </div>
               )}
 
