@@ -25,18 +25,9 @@ export default function HowToGet() {
               A rota mais prática é voar até o{" "}
               <strong>Aeroporto de Barcelona-El Prat (BCN)</strong> ou o{" "}
               <strong>Aeroporto de Girona-Costa Brava (GRO)</strong>. Do Brasil,
-              há voos com conexão em Lisboa, Madrid ou outras capitais europeias.
-            </p>
-            <p
-              style={{
-                fontSize: 14,
-                fontStyle: "italic",
-                color: "var(--ink-quiet)",
-                marginTop: 8,
-              }}
-            >
-              Dica: se pararem em Valência, aproveitem as laranjas — as melhores
-              do Mediterrâneo.
+              a <strong>LATAM</strong> opera voo direto de São Paulo (GRU) para
+              Barcelona; também há opções com conexão em Lisboa, Madrid ou
+              outras capitais europeias.
             </p>
           </div>
           <div className="ij-howto-block">
@@ -51,7 +42,6 @@ export default function HowToGet() {
             </p>
           </div>
           <div className="ij-recommendation">
-            <p className="ij-recommendation-label">Recomendação</p>
             <p>
               Recomendamos alugar um carro para explorar a região com liberdade,
               principalmente entre Tossa de Mar e Begur / Palafrugell.
