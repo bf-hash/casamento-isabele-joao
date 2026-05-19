@@ -225,11 +225,8 @@ export default function Tips() {
   return (
     <section id="tips" className="ij-section ij-section-paper">
       <div className="ij-center">
-        <GravuraLaranja size={90} />
-        <div style={{ height: 16 }} />
         <div className="ij-section-header">
-          <span className="ij-section-eyebrow ij-section-eyebrow--coral">Dicas</span>
-          <h2>O que é bom saber</h2>
+          <h2>Dicas</h2>
         </div>
       </div>
 

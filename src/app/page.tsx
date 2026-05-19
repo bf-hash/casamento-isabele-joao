@@ -7,6 +7,7 @@ import Tips from "@/components/Tips";
 import Gifts from "@/components/Gifts";
 import RSVP from "@/components/RSVP";
 import Footer from "@/components/Footer";
+import OrangesDivider from "@/components/OrangesDivider";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Welcome />
         <Program />
         <HowToGet />
+        <OrangesDivider />
         <Tips />
         <Gifts />
         <RSVP />
