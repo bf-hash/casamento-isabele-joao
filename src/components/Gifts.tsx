@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { GravuraPresente } from "./Illustrations";
 import ScrollReveal from "./ScrollReveal";
 
 const GIFTS = [
@@ -180,71 +179,60 @@ export default function Gifts() {
 
   return (
     <section id="gifts" className="ij-section ij-section-warm">
-      <div className="ij-center">
+      <div className="ij-gifts-head">
         <ScrollReveal>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <GravuraPresente size={90} />
+          <div className="ij-section-header" style={{ alignItems: "flex-start", textAlign: "left" }}>
+            <span className="ij-section-eyebrow">Presentes</span>
+            <h2>
+              Presenteie
+              <br />
+              uma memória
+            </h2>
           </div>
         </ScrollReveal>
-        <div style={{ height: 16 }} />
         <ScrollReveal delay={1}>
-          <div className="ij-section-header">
-            <span className="ij-section-eyebrow ij-section-eyebrow--periwinkle">
-              Presentes
-            </span>
-            <h2>Lista de presentes</h2>
-          </div>
-        </ScrollReveal>
-        <ScrollReveal delay={2}>
-          <p className="ij-prose" style={{ marginBottom: 40 }}>
-            A presença de vocês já é o melhor presente do mundo. Mas caso
-            queiram dar algo, escolhemos uma lista só com o que somos melhor
-            fazendo (comer, beber e viajar)
+          <p className="ij-gifts-intro">
+            A presença de vocês já é o melhor presente do mundo. Mas caso queiram dar algo, escolhemos uma lista só
+            com o que somos melhor fazendo (comer, beber e viajar).
           </p>
         </ScrollReveal>
+      </div>
 
-        <div className="ij-gifts-grid">
-          {GIFTS.map((gift, i) => (
-            <ScrollReveal key={gift.id} delay={Math.min(i % 3, 2)}>
-              <div className="ij-gift-card">
-                {gift.image ? (
-                  <div className="ij-gift-card-image">
-                    <Image src={gift.image} alt={gift.name} width={300} height={180} />
-                  </div>
-                ) : (
-                  <div className="ij-gift-card-emoji">{gift.emoji}</div>
-                )}
-                <h3 className="ij-gift-card-name">{gift.name}</h3>
-                <p className="ij-gift-card-price">{formatBRL(gift.price)}</p>
-                <div className="ij-gift-card-actions">
-                  <button
-                    className="ij-gift-btn ij-gift-btn--pix"
-                    onClick={() => setPixGift(gift)}
-                  >
-                    PIX
-                  </button>
-                  {gift.cardLink ? (
-                    <a
-                      href={gift.cardLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-gift-btn ij-gift-btn--card"
-                    >
-                      Cartão
-                    </a>
-                  ) : (
-                    <span
-                      className="ij-gift-btn ij-gift-btn--card ij-gift-btn--soon"
-                      title="Link de pagamento em breve"
-                    >
-                      Cartão
-                    </span>
-                  )}
-                </div>
+      <div className="ij-gifts-grid">
+        {GIFTS.map((gift, i) => (
+          <div className="ij-gift-card" key={gift.id} style={{ transitionDelay: `${Math.min(i % 4, 3) * 60}ms` }}>
+            {gift.image ? (
+              <div className="ij-gift-card-image">
+                <Image src={gift.image} alt={gift.name} width={300} height={300} />
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ) : (
+              <div className="ij-gift-card-emoji">{gift.emoji}</div>
+            )}
+            <div className="ij-gift-card-body">
+              <h3 className="ij-gift-card-name">{gift.name}</h3>
+              <p className="ij-gift-card-price">{formatBRL(gift.price)}</p>
+              <div className="ij-gift-card-actions">
+                <button className="ij-gift-btn ij-gift-btn--pix" onClick={() => setPixGift(gift)}>
+                  PIX
+                </button>
+                {gift.cardLink ? (
+                  <a
+                    href={gift.cardLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ij-gift-btn ij-gift-btn--card"
+                  >
+                    Cartão
+                  </a>
+                ) : (
+                  <span className="ij-gift-btn ij-gift-btn--card ij-gift-btn--soon" title="Link de pagamento em breve">
+                    Cartão
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
 
       {pixGift && <PixModal gift={pixGift} onClose={() => setPixGift(null)} />}

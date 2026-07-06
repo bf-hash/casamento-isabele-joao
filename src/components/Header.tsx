@@ -1,18 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import Link from "next/link";
+import Logo from "./Logo";
 
-const NAV_ITEMS: [string, string][] = [
-  ["welcome", "Início"],
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+const HOME_NAV: NavItem[] = [
+  ["top", "Início"],
+  ["welcome", "Boas-vindas"],
   ["program", "Programação"],
   ["howtoget", "Como chegar"],
   ["tips", "Dicas"],
   ["gifts", "Presentes"],
   ["rsvp", "RSVP"],
+].map(([id, label]) => ({ label, href: `#${id}` }));
+
+const ROTEIROS_NAV: NavItem[] = [
+  { label: "Início", href: "/#top" },
+  { label: "Barcelona", href: "#barcelona" },
+  { label: "Costa Brava", href: "#costa-brava" },
 ];
 
-function scrollTo(id: string) {
+function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (el) {
     const y = el.getBoundingClientRect().top + window.scrollY - 70;
@@ -20,39 +33,68 @@ function scrollTo(id: string) {
   }
 }
 
-export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
+function NavLink({
+  href,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  className?: string;
+  onClick?: () => void;
+  children: React.ReactNode;
+}) {
+  const isSamePageAnchor = href.startsWith("#");
 
-  const go = (id: string) => (e: React.MouseEvent) => {
-    e.preventDefault();
-    scrollTo(id);
-    setMobileOpen(false);
-  };
+  if (isSamePageAnchor) {
+    return (
+      <a
+        href={href}
+        className={className}
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToId(href.slice(1));
+          onClick?.();
+        }}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
+
+export default function Header({ variant = "home" }: { variant?: "home" | "roteiros" }) {
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const navItems = variant === "roteiros" ? ROTEIROS_NAV : HOME_NAV;
+  const brandHref = variant === "roteiros" ? "/#top" : "#top";
+  const ctaHref = variant === "roteiros" ? "/#rsvp" : "#rsvp";
+
+  const close = () => setMobileOpen(false);
 
   return (
     <nav className="ij-nav">
       <div className="ij-nav-inner">
-        <a href="#top" className="ij-nav-mono" onClick={go("top")}>
-          <Image
-            src="/assets/monogram-olive.png"
-            alt="I&J"
-            width={36}
-            height={36}
-            style={{ height: 36, width: "auto" }}
-          />
-        </a>
+        <NavLink href={brandHref} className="ij-nav-mono" onClick={close}>
+          <Logo size={36} />
+        </NavLink>
         <ul className="ij-nav-links">
-          {NAV_ITEMS.map(([id, label]) => (
-            <li key={id}>
-              <a href={`#${id}`} onClick={go(id)}>
-                {label}
-              </a>
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <NavLink href={item.href} onClick={close}>
+                {item.label}
+              </NavLink>
             </li>
           ))}
         </ul>
-        <a href="#rsvp" onClick={go("rsvp")} className="ij-nav-cta">
+        <NavLink href={ctaHref} className="ij-nav-cta">
           Confirmar
-        </a>
+        </NavLink>
         <button
           className="ij-nav-burger"
           onClick={() => setMobileOpen((o) => !o)}
@@ -63,18 +105,14 @@ export default function Header() {
       </div>
       {mobileOpen && (
         <div className="ij-nav-mobile">
-          {NAV_ITEMS.map(([id, label]) => (
-            <a key={id} href={`#${id}`} onClick={go(id)}>
-              {label}
-            </a>
+          {navItems.map((item) => (
+            <NavLink key={item.href} href={item.href} onClick={close}>
+              {item.label}
+            </NavLink>
           ))}
-          <a
-            href="#rsvp"
-            onClick={go("rsvp")}
-            className="ij-nav-cta-mobile"
-          >
+          <NavLink href={ctaHref} className="ij-nav-cta-mobile" onClick={close}>
             Confirmar presença
-          </a>
+          </NavLink>
         </div>
       )}
     </nav>
