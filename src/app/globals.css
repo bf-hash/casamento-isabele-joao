@@ -597,9 +597,12 @@ a { text-decoration: none; color: inherit; }
    ============================================================ */
 .ij-rsvp-form-wrap {
   max-width: 560px; width: 100%; margin: 0 auto;
+  height: 470px;
   padding: clamp(36px, 5vw, 56px);
   text-align: center;
   background: var(--bg); border: 1px solid var(--line);
+  display: flex; flex-direction: column; justify-content: center;
+  overflow-y: auto;
 }
 .ij-rsvp-progress { display: flex; justify-content: center; gap: 8px; margin-bottom: 30px; }
 .ij-rsvp-progress-dot { width: 7px; height: 7px; background: var(--line); transition: background 0.3s var(--ease), transform 0.3s var(--ease); }
@@ -630,7 +633,7 @@ a { text-decoration: none; color: inherit; }
 .ij-rsvp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .ij-rsvp-btn--yes { background: var(--coastal-blue); }
 .ij-rsvp-btn--no { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); }
-.ij-rsvp-btn--no:hover:not(:disabled) { border-color: var(--ink-soft); color: var(--ink); }
+.ij-rsvp-btn--no:hover:not(:disabled) { background: transparent; border-color: var(--coastal-blue); color: var(--coastal-blue); }
 .ij-rsvp-back { margin-top: 10px; background: none; border: none; font-family: var(--font-body); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-quiet); cursor: pointer; transition: color var(--dur-fast); padding: 6px 12px; }
 .ij-rsvp-back:hover { color: var(--ink); }
 .ij-rsvp-choice { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 320px; }
