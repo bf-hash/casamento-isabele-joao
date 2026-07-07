@@ -56,8 +56,8 @@ const EVENTS: EventData[] = [
 export default function Program() {
   return (
     <section id="program" className="ij-section ij-section-warm">
-      <ScrollReveal>
-        <div className="ij-section-header">
+      <ScrollReveal asChild>
+        <header className="ij-prog-head">
           <span className="ij-section-eyebrow">Programação</span>
           <h2>
             Quatro dias
@@ -65,11 +65,11 @@ export default function Program() {
             à beira-mar
           </h2>
           <p className="ij-section-sub">Costa Brava, Espanha</p>
-        </div>
+        </header>
       </ScrollReveal>
       <div className="ij-timeline">
-        {EVENTS.map((e, i) => (
-          <ScrollReveal key={e.title} delay={Math.min(i, 2)}>
+        {EVENTS.map((e) => (
+          <ScrollReveal key={e.title} asChild>
             <article className="ij-event">
               <div className="ij-event-date">
                 <div className="ij-event-date-num">{e.day}</div>

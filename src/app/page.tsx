@@ -20,7 +20,6 @@ export default function Home() {
         <SectionDivider />
         <Program />
         <HowToGet />
-        <SectionDivider />
         <Tips />
         <Gifts />
         <RSVP />

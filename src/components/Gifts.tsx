@@ -178,10 +178,10 @@ export default function Gifts() {
   const [pixGift, setPixGift] = useState<(typeof GIFTS)[number] | null>(null);
 
   return (
-    <section id="gifts" className="ij-section ij-section-warm">
-      <div className="ij-gifts-head">
-        <ScrollReveal>
-          <div className="ij-section-header" style={{ alignItems: "flex-start", textAlign: "left" }}>
+    <section id="gifts" className="ij-section ij-section-paper">
+      <ScrollReveal asChild>
+        <header className="ij-gifts-head">
+          <div>
             <span className="ij-section-eyebrow">Presentes</span>
             <h2>
               Presenteie
@@ -189,18 +189,16 @@ export default function Gifts() {
               uma memória
             </h2>
           </div>
-        </ScrollReveal>
-        <ScrollReveal delay={1}>
           <p className="ij-gifts-intro">
             A presença de vocês já é o melhor presente do mundo. Mas caso queiram dar algo, escolhemos uma lista só
             com o que somos melhor fazendo (comer, beber e viajar).
           </p>
-        </ScrollReveal>
-      </div>
+        </header>
+      </ScrollReveal>
 
-      <div className="ij-gifts-grid">
-        {GIFTS.map((gift, i) => (
-          <div className="ij-gift-card" key={gift.id} style={{ transitionDelay: `${Math.min(i % 4, 3) * 60}ms` }}>
+      <ScrollReveal className="ij-gifts-grid">
+        {GIFTS.map((gift) => (
+          <div className="ij-gift-card" key={gift.id}>
             {gift.image ? (
               <div className="ij-gift-card-image">
                 <Image src={gift.image} alt={gift.name} width={300} height={300} />
@@ -233,7 +231,7 @@ export default function Gifts() {
             </div>
           </div>
         ))}
-      </div>
+      </ScrollReveal>
 
       {pixGift && <PixModal gift={pixGift} onClose={() => setPixGift(null)} />}
     </section>

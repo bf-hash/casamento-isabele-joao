@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
 
@@ -11,7 +11,6 @@ interface NavItem {
 
 const HOME_NAV: NavItem[] = [
   ["top", "Início"],
-  ["welcome", "Boas-vindas"],
   ["program", "Programação"],
   ["howtoget", "Como chegar"],
   ["tips", "Dicas"],
@@ -71,14 +70,22 @@ function NavLink({
 
 export default function Header({ variant = "home" }: { variant?: "home" | "roteiros" }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const navItems = variant === "roteiros" ? ROTEIROS_NAV : HOME_NAV;
   const brandHref = variant === "roteiros" ? "/#top" : "#top";
   const ctaHref = variant === "roteiros" ? "/#rsvp" : "#rsvp";
 
   const close = () => setMobileOpen(false);
 
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="ij-nav">
+    <nav className={`ij-nav${scrolled ? " ij-nav-scrolled" : ""}`}>
       <div className="ij-nav-inner">
         <NavLink href={brandHref} className="ij-nav-mono" onClick={close}>
           <Logo size={36} />

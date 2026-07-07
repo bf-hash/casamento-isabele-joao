@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${jost.variable}`}>
-      <body className="min-h-screen font-display text-ink antialiased" style={{ background: "var(--bg)" }}>
+      <body className="min-h-screen font-body text-ink antialiased" style={{ background: "var(--bg)" }}>
         {children}
       </body>
     </html>

@@ -85,18 +85,16 @@ export default function RSVP() {
 
   return (
     <section id="rsvp" className="ij-section ij-section-warm">
-      <div className="ij-center">
-        <ScrollReveal delay={1}>
+      <ScrollReveal asChild>
+        <div className="ij-rsvp-inner">
           <div className="ij-section-header">
-            <span className="ij-section-eyebrow ij-section-eyebrow--centered">Confirmação</span>
+            <span className="ij-section-eyebrow ij-section-eyebrow--centered">RSVP</span>
             <h2>
               Confirme
               <br />
               sua presença
             </h2>
           </div>
-        </ScrollReveal>
-        <ScrollReveal delay={2}>
           <div className="ij-rsvp-form-wrap">
             <div className="ij-rsvp-form-inner">
               {/* Progress */}
@@ -379,8 +377,8 @@ export default function RSVP() {
               )}
             </div>
           </div>
-        </ScrollReveal>
-      </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

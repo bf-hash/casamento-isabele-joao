@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import ScrollReveal from "./ScrollReveal";
 
 const TABS = [
   { id: "dress", label: "Dress Code" },
@@ -75,23 +76,27 @@ export default function Tips() {
   const [tab, setTab] = useState<TabId>("dress");
 
   return (
-    <section id="tips" className="ij-section ij-section-paper">
-      <div className="ij-section-header">
-        <span className="ij-section-eyebrow ij-section-eyebrow--centered">Dicas</span>
-        <h2>
-          Para aproveitar
-          <br />
-          <span className="ij-serif-it">cada detalhe</span>
-        </h2>
-      </div>
+    <section id="tips" className="ij-section ij-section-warm">
+      <ScrollReveal asChild>
+        <div className="ij-section-header">
+          <span className="ij-section-eyebrow ij-section-eyebrow--centered">Dicas</span>
+          <h2>
+            Para aproveitar
+            <br />
+            <span className="ij-serif-it">cada detalhe</span>
+          </h2>
+        </div>
+      </ScrollReveal>
 
-      <div className="ij-tips-tabs">
-        {TABS.map((t) => (
-          <button key={t.id} className={`ij-tab ${tab === t.id ? "is-active" : ""}`} onClick={() => setTab(t.id)}>
-            {t.label}
-          </button>
-        ))}
-      </div>
+      <ScrollReveal asChild>
+        <div className="ij-tips-tabs">
+          {TABS.map((t) => (
+            <button key={t.id} className={`ij-tab ${tab === t.id ? "is-active" : ""}`} onClick={() => setTab(t.id)}>
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </ScrollReveal>
 
       {tab === "dress" && (
         <div className="ij-tips-panel">
@@ -195,14 +200,16 @@ export default function Tips() {
         </div>
       )}
 
-      <div className="ij-tips-more">
-        <Link className="ij-tips-more-card" href="/roteiros">
-          <span className="ij-tmc-k">Barcelona &amp; Costa Brava</span>
-          <span className="ij-tmc-name">Roteiros</span>
-          <span className="ij-tmc-desc">Para além do casamento — onde ficar, comer e explorar o litoral.</span>
-          <span className="ij-tmc-go">Abrir página →</span>
-        </Link>
-      </div>
+      <ScrollReveal asChild>
+        <div className="ij-tips-more">
+          <Link className="ij-tips-more-card" href="/roteiros">
+            <span className="ij-tmc-k">Barcelona &amp; Costa Brava</span>
+            <span className="ij-tmc-name">Roteiros</span>
+            <span className="ij-tmc-desc">Para além do casamento — onde ficar, comer e explorar o litoral.</span>
+            <span className="ij-tmc-go">Abrir página →</span>
+          </Link>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }
