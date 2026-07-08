@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { GravuraEnvelope } from "./Illustrations";
 import ScrollReveal from "./ScrollReveal";
 
 type Step = "name" | "confirm" | "guests" | "dietary" | "message" | "done" | "declined" | "declined_done" | "already_confirmed";
@@ -86,22 +85,16 @@ export default function RSVP() {
 
   return (
     <section id="rsvp" className="ij-section ij-section-warm">
-      <div className="ij-center">
-        <ScrollReveal>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <GravuraEnvelope size={90} />
-          </div>
-        </ScrollReveal>
-        <div style={{ height: 16 }} />
-        <ScrollReveal delay={1}>
+      <ScrollReveal asChild>
+        <div className="ij-rsvp-inner">
           <div className="ij-section-header">
-            <span className="ij-section-eyebrow ij-section-eyebrow--sun">
-              {"Confirmação"}
-            </span>
-            <h2>{"Confirme sua presença"}</h2>
+            <span className="ij-section-eyebrow ij-section-eyebrow--centered">RSVP</span>
+            <h2>
+              Confirme
+              <br />
+              sua presença
+            </h2>
           </div>
-        </ScrollReveal>
-        <ScrollReveal delay={2}>
           <div className="ij-rsvp-form-wrap">
             <div className="ij-rsvp-form-inner">
               {/* Progress */}
@@ -138,7 +131,6 @@ export default function RSVP() {
                     onKeyDown={(e) => {
                       if (e.key === "Enter" && name.trim()) handleNameContinue();
                     }}
-                    autoFocus
                   />
                   <button
                     className="ij-rsvp-btn"
@@ -157,7 +149,7 @@ export default function RSVP() {
                     {"Você confirma presença?"}
                   </h3>
                   <p className="ij-rsvp-step-desc">
-                    {name}, {"você poderá estar conosco na Costa Brava?"}
+                    <em className="ij-brand-name">{name}</em>, {"você poderá estar conosco na Costa Brava?"}
                   </p>
                   <div className="ij-rsvp-choice">
                     <button
@@ -350,7 +342,7 @@ export default function RSVP() {
                   <div className="ij-rsvp-done-icon">&#10003;</div>
                   <h3 className="ij-rsvp-step-title">{"Presença confirmada!"}</h3>
                   <p className="ij-rsvp-step-desc">
-                    {"Obrigado, "}{name}{"! Mal podemos esperar para celebrar com você"}
+                    {"Obrigado, "}<em className="ij-brand-name">{name}</em>{"! Mal podemos esperar para celebrar com você"}
                     {guestCount > 0 && " e seus acompanhantes"} na Costa Brava.
                   </p>
                 </div>
@@ -362,7 +354,7 @@ export default function RSVP() {
                   <div className="ij-rsvp-done-icon">&#10003;</div>
                   <h3 className="ij-rsvp-step-title">{"Presença já confirmada!"}</h3>
                   <p className="ij-rsvp-step-desc">
-                    {name}{", sua presença já foi confirmada. Obrigado!"}
+                    <em className="ij-brand-name">{name}</em>{", sua presença já foi confirmada. Obrigado!"}
                   </p>
                   <button
                     className="ij-rsvp-back"
@@ -379,14 +371,14 @@ export default function RSVP() {
                 <div className="ij-rsvp-step ij-rsvp-step--done">
                   <h3 className="ij-rsvp-step-title">{"Sentiremos sua falta!"}</h3>
                   <p className="ij-rsvp-step-desc">
-                    {"Obrigado pela mensagem, "}{name}{". Esperamos que possamos nos encontrar em breve!"}
+                    {"Obrigado pela mensagem, "}<em className="ij-brand-name">{name}</em>{". Esperamos que possamos nos encontrar em breve!"}
                   </p>
                 </div>
               )}
             </div>
           </div>
-        </ScrollReveal>
-      </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

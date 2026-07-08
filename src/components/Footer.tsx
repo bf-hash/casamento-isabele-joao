@@ -1,23 +1,23 @@
-import Image from "next/image";
+import Logo from "./Logo";
 
 export default function Footer() {
   return (
     <footer className="ij-footer">
-      <Image
-        src="/assets/monogram-olive.png"
-        alt="I&J"
-        width={64}
-        height={64}
-        className="ij-footer-mono"
-      />
-      <div className="date-marker">
-        01 . 07 . 2027
+      <div className="ij-footer-inner">
+        <div className="ij-footer-mono">
+          <Logo size={120} color="#F3EFE7" />
+        </div>
+        <p className="ij-footer-date">01 . 07 . 2027</p>
+        <p className="ij-footer-place">Convent de Blanes · Costa Brava, Espanha</p>
+        <div className="ij-footer-divider" />
+        <p className="ij-footer-love">
+          com amor, Isabele <em className="amp">&amp;</em> João
+        </p>
       </div>
-      <div className="ij-footer-place">
-        Convent de Blanes · Costa Brava, Espanha
-      </div>
-      <div className="ij-footer-love">
-        com amor, Isabele <span className="amp">&</span> João
+      <div className="ij-footer-word">Isabele &amp; João</div>
+      <div className="ij-footer-bar">
+        <span>Costa Brava · 2027</span>
+        <span>Feito com carinho</span>
       </div>
     </footer>
   );

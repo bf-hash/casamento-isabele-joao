@@ -7,18 +7,19 @@ import Tips from "@/components/Tips";
 import Gifts from "@/components/Gifts";
 import RSVP from "@/components/RSVP";
 import Footer from "@/components/Footer";
-import OrangesDivider from "@/components/OrangesDivider";
+import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
-    <div style={{ minHeight: "100vh", background: "#FFFFFF" }}>
+    <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
       <Header />
       <main>
         <Hero />
+        <SectionDivider />
         <Welcome />
+        <SectionDivider />
         <Program />
         <HowToGet />
-        <OrangesDivider />
         <Tips />
         <Gifts />
         <RSVP />
