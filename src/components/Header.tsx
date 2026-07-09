@@ -18,12 +18,6 @@ const HOME_NAV: NavItem[] = [
   ["rsvp", "RSVP"],
 ].map(([id, label]) => ({ label, href: `#${id}` }));
 
-const ROTEIROS_NAV: NavItem[] = [
-  { label: "Início", href: "/#top" },
-  { label: "Barcelona", href: "#barcelona" },
-  { label: "Costa Brava", href: "#costa-brava" },
-];
-
 function scrollToId(id: string) {
   const el = document.getElementById(id);
   if (el) {
@@ -68,12 +62,12 @@ function NavLink({
   );
 }
 
-export default function Header({ variant = "home" }: { variant?: "home" | "roteiros" }) {
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navItems = variant === "roteiros" ? ROTEIROS_NAV : HOME_NAV;
-  const brandHref = variant === "roteiros" ? "/#top" : "#top";
-  const ctaHref = variant === "roteiros" ? "/#rsvp" : "#rsvp";
+  const navItems = HOME_NAV;
+  const brandHref = "#top";
+  const ctaHref = "#rsvp";
 
   const close = () => setMobileOpen(false);
 

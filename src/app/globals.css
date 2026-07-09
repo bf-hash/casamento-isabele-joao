@@ -126,28 +126,6 @@ a { text-decoration: none; color: inherit; }
 .ij-prose + .ij-prose { margin-top: 16px; }
 .ij-prose-strong { font-weight: 400; color: var(--ink); }
 
-/* placeholder swatch (dress code) */
-.ij-ph {
-  position: relative;
-  background: var(--cream);
-  border: 1px solid var(--line);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-  aspect-ratio: 3 / 4;
-}
-.ij-ph::before {
-  content: "";
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(135deg, transparent 0 16px, rgba(52,48,43,0.035) 16px 17px);
-}
-.ij-ph-label {
-  position: relative; z-index: 2;
-  font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--ink-quiet);
-  background: var(--bg); padding: 7px 13px; border: 1px solid var(--line);
-  text-align: center; max-width: 80%;
-}
-
 /* ---- SECTIONS ---- */
 .ij-section { padding: var(--section-y) var(--pad-x); }
 .ij-section-paper { background: var(--bg); }
@@ -509,16 +487,15 @@ a { text-decoration: none; color: inherit; }
 .ij-tips-sub { font-family: var(--font-display); font-style: italic; font-size: 26px; color: var(--coastal-blue); margin: 0 0 4px; }
 .ij-dress-head h3 { font-family: var(--font-display); font-weight: 300; font-size: clamp(30px, 4vw, 46px); margin: 0; color: var(--ink); }
 .ij-dress-head p { color: var(--ink-soft); font-size: 16px; margin: 0; }
-.ij-dress-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(14px, 1.6vw, 24px); }
-.ij-dress-cap { font-size: 13.5px; line-height: 1.5; color: var(--ink-soft); margin: 14px 0 0; }
-.ij-dress-foot { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 70px); margin-top: 48px; }
-.ij-dress-foot-k { font-family: var(--font-body); font-weight: 400; font-size: 11px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--coastal-blue); margin-bottom: 10px; }
-.ij-dress-foot p { margin: 0; color: var(--ink-soft); font-size: 16px; }
-.ij-dress-note {
-  margin-top: 40px; text-align: center; max-width: 760px; margin-inline: auto;
-  font-family: var(--font-display); font-style: italic; font-size: 19px; line-height: 1.7; color: var(--ink);
+.ij-dress-boards { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 44px); align-items: start; }
+.ij-dress-board { margin: 0; }
+.ij-dress-board-lbl {
+  font-family: var(--font-body); font-weight: 400; font-size: 12px; letter-spacing: 0.28em;
+  text-transform: uppercase; color: var(--coastal-blue); margin: 0 0 16px;
+  display: flex; align-items: center; gap: 0.9em;
 }
-.ij-dress-note::before, .ij-dress-note::after { content: ""; display: block; width: 40px; height: 1px; background: var(--coastal-blue); margin: 18px auto; }
+.ij-dress-board-lbl::before { content: ""; width: 5px; height: 5px; background: var(--coastal-blue); transform: rotate(45deg); flex: none; }
+.ij-dress-board-img { width: 100%; height: auto; display: block; }
 
 .ij-hotel-areas { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 80px); padding-block: clamp(20px, 4vh, 40px); }
 .ij-hotel-area-head { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
@@ -776,7 +753,7 @@ a { text-decoration: none; color: inherit; }
    ============================================================ */
 @media (max-width: 900px) {
   .ij-arrive { grid-template-columns: 1fr; gap: 44px; }
-  .ij-dress-head, .ij-dress-foot { grid-template-columns: 1fr; gap: 20px; }
+  .ij-dress-head { grid-template-columns: 1fr; gap: 20px; }
   .ij-hotel-areas { grid-template-columns: 1fr; }
   .ij-gifts-head { grid-template-columns: 1fr; }
   .ij-gifts-intro { text-align: left; }
@@ -799,7 +776,7 @@ a { text-decoration: none; color: inherit; }
   .ij-event-date-dot { display: none; }
   .ij-event-art { grid-area: art; width: 76px; height: 76px; align-self: start; margin-top: 2px; }
   .ij-countdown-val { font-size: 30px; }
-  .ij-dress-grid { grid-template-columns: repeat(2, 1fr); }
+  .ij-dress-boards { grid-template-columns: 1fr; }
   .ij-tip-cols { grid-template-columns: 1fr; }
   .ij-rest-grid, .ij-beach-grid { grid-template-columns: repeat(2, 1fr); }
   .ij-beach-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--line-soft); }
