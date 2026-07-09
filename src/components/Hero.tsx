@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section id="top" className="ij-hero">
       <div className="ij-hero-copy">
-        <p className="ij-hero-dates">30 · 06 A 03 · 07 DE 2027</p>
+        <p className="ij-hero-dates">30 de junho a 3 de julho de 2027</p>
         <h1 className="ij-hero-name">
           <span className="ij-hero-name-ln">ISABELE</span>
           <span className="ij-hero-name-ln">

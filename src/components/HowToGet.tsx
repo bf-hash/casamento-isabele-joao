@@ -9,12 +9,7 @@ export default function HowToGet() {
           <img src="/assets/mapa-costa-brava.svg" alt="Mapa ilustrado Costa Brava" />
         </ScrollReveal>
         <ScrollReveal>
-          <span className="ij-section-eyebrow">Como chegar</span>
-          <h2>
-            A caminho
-            <br />
-            do mar
-          </h2>
+          <h2>Como chegar</h2>
           <div className="ij-howto-block">
             <h4>De avião</h4>
             <h3 className="ij-howto-block-title">Barcelona ou Girona</h3>
@@ -32,8 +27,7 @@ export default function HowToGet() {
             <h3 className="ij-howto-block-title">Recomendamos alugar um carro</h3>
             <p>
               De Barcelona até Tossa de Mar: cerca de 1h30 (~90 km). De Girona, aproximadamente 45 minutos (~45 km).
-              Estradas tranquilas e vistas que valem a viagem — vale ainda mais para explorar Tossa de Mar e
-              Begur / Palafrugell com liberdade.
+              Estradas tranquilas e vistas que valem a viagem, além de liberdade para explorar a região.
             </p>
           </div>
         </ScrollReveal>

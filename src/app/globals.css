@@ -736,7 +736,7 @@ a { text-decoration: none; color: inherit; }
 .ij-tip-note { margin-top: 20px; font-family: var(--font-display); font-style: italic; font-size: 16px; color: var(--ink-soft); padding-top: 18px; border-top: 1px solid var(--line); }
 
 .ij-rest-section { margin-bottom: clamp(34px, 5vh, 56px); }
-.ij-rest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.ij-rest-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 0 28px; }
 .ij-rest-item { padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
 .ij-rest-name { font-family: var(--font-display); font-size: 19px; margin-bottom: 4px; color: var(--ink); }
 .ij-rest-desc { font-size: 13px; color: var(--ink-quiet); line-height: 1.5; }
@@ -747,6 +747,13 @@ a { text-decoration: none; color: inherit; }
 .ij-beach-item:nth-last-child(-n+4) { border-bottom: none; }
 .ij-beach-name { font-family: var(--font-display); font-size: 19px; margin-bottom: 4px; color: var(--ink); }
 .ij-beach-desc { font-size: 13px; color: var(--ink-quiet); line-height: 1.5; }
+
+/* Destination sub-groups (Barcelona / Costa Brava tabs) */
+.ij-dest-group { margin-top: clamp(24px, 3.4vh, 38px); }
+.ij-dest-group-label { font-family: var(--font-display); font-style: italic; font-size: clamp(19px, 2.3vw, 24px); color: var(--ink); margin: 0 0 8px; }
+.ij-rest-name.ij-rest-link { display: inline-block; text-decoration: none; color: var(--ink); transition: color var(--dur-fast); }
+.ij-rest-name.ij-rest-link:hover { color: var(--coastal-blue); }
+.ij-hotel-note-inline { display: block; font-size: 13px; color: var(--ink-quiet); line-height: 1.5; margin-top: 3px; }
 
 /* ============================================================
    RESPONSIVE

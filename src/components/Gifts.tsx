@@ -105,7 +105,7 @@ const GIFTS = [
     id: "executiva",
     emoji: "✈️",
     image: "/fotos/presentes/executiva.jpeg",
-    name: "Executiva",
+    name: "Passagem",
     price: 2000,
     cardLink: "",
   },
@@ -182,12 +182,7 @@ export default function Gifts() {
       <ScrollReveal asChild>
         <header className="ij-gifts-head">
           <div>
-            <span className="ij-section-eyebrow">Presentes</span>
-            <h2>
-              Presenteie
-              <br />
-              uma memória
-            </h2>
+            <h2>Presentes</h2>
           </div>
           <p className="ij-gifts-intro">
             A presença de vocês já é o melhor presente do mundo. Mas caso queiram dar algo, escolhemos uma lista só
