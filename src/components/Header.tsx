@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 
 interface NavItem {
@@ -37,9 +38,8 @@ function NavLink({
   onClick?: () => void;
   children: React.ReactNode;
 }) {
-  const isSamePageAnchor = href.startsWith("#");
-
-  if (isSamePageAnchor) {
+  // Same-page anchor (on the home page): smooth-scroll to the section.
+  if (href.startsWith("#")) {
     return (
       <a
         href={href}
@@ -55,6 +55,16 @@ function NavLink({
     );
   }
 
+  // Cross-page anchor (e.g. "/#program" from the checkout pages): let the
+  // browser navigate back to the home page and jump to the section natively.
+  if (href.includes("#")) {
+    return (
+      <a href={href} className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+
   return (
     <Link href={href} className={className} onClick={onClick}>
       {children}
@@ -65,9 +75,14 @@ function NavLink({
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const navItems = HOME_NAV;
-  const brandHref = "#top";
-  const ctaHref = "#rsvp";
+  const pathname = usePathname();
+  const onHome = pathname === "/";
+  // On the home page keep the in-page smooth-scroll anchors; on any other page
+  // (e.g. the gift checkout) point back to the home page section.
+  const toHref = (hash: string) => (onHome ? hash : `/${hash}`);
+  const navItems = HOME_NAV.map((item) => ({ ...item, href: toHref(item.href) }));
+  const brandHref = toHref("#top");
+  const ctaHref = toHref("#rsvp");
 
   const close = () => setMobileOpen(false);
 
