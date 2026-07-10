@@ -563,18 +563,15 @@ a { text-decoration: none; color: inherit; }
 .ij-gift-card-body { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
 .ij-gift-card-name { font-family: var(--font-display); font-weight: 400; font-size: 21px; line-height: 1.15; margin: 0 0 6px; color: var(--ink); }
 .ij-gift-card-price { font-family: var(--font-body); font-weight: 400; font-size: 13px; letter-spacing: 0.1em; color: var(--ink-soft); margin: 0 0 18px; }
-.ij-gift-card-actions { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ij-gift-card-actions { margin-top: auto; display: grid; grid-template-columns: 1fr; gap: 8px; }
 .ij-gift-btn {
   font-family: var(--font-body); font-weight: 400; cursor: pointer;
   font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
-  padding: 10px 6px; border: none; transition: all var(--dur-fast); text-align: center;
+  padding: 12px 6px; border: none; transition: all var(--dur-fast); text-align: center;
+  text-decoration: none; display: block;
 }
-.ij-gift-btn--pix { background: var(--coastal-blue); color: #fff; }
-.ij-gift-btn--pix:hover { background: var(--coastal-blue-deep); }
-.ij-gift-btn--card { background: transparent; color: var(--ink); border: 1px solid var(--line); }
-.ij-gift-btn--card:hover { border-color: var(--coastal-blue); color: var(--coastal-blue); }
-.ij-gift-btn--soon { opacity: 0.5; cursor: default; }
-.ij-gift-btn--soon:hover { border-color: var(--line); color: var(--ink); }
+.ij-gift-btn--want { background: var(--coastal-blue); color: #fff; }
+.ij-gift-btn--want:hover { background: var(--coastal-blue-deep); }
 
 /* Gift modal */
 .ij-gift-overlay {
@@ -614,6 +611,50 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 1024px) { .ij-gifts-grid { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) { .ij-gifts-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } .ij-gift-card-image, .ij-gift-card-emoji { height: 200px; } }
 @media (max-width: 420px) { .ij-gifts-grid { grid-template-columns: 1fr; } }
+
+/* ============================================================
+   CHECKOUT DE PRESENTE (/presente/[id])
+   ============================================================ */
+.ij-checkout-section { min-height: 100vh; }
+.ij-checkout-inner {
+  max-width: 1000px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 6vw, 80px); align-items: center;
+}
+.ij-checkout-summary { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.ij-checkout-summary-image { width: 100%; max-width: 420px; aspect-ratio: 1; overflow: hidden; border: 1px solid var(--line); margin-bottom: 26px; }
+.ij-checkout-summary-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ij-checkout-summary-emoji { font-size: 72px; margin-bottom: 26px; }
+.ij-checkout-summary-eyebrow { font-family: var(--font-body); font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.24em; color: var(--coastal-blue); }
+.ij-checkout-summary-name { font-family: var(--font-display); font-weight: 300; font-size: clamp(28px, 4vw, 44px); line-height: 1.1; color: var(--ink); margin: 12px 0 0; }
+.ij-checkout-summary-price { font-family: var(--font-display); font-size: clamp(22px, 3vw, 30px); color: var(--coastal-blue); margin: 10px 0 0; }
+.ij-checkout-form { width: 100%; max-width: 440px; margin: 0 auto; text-align: center; }
+.ij-checkout-progress { margin-bottom: 28px; }
+
+/* Métodos de pagamento */
+.ij-pay-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 380px; margin: 6px 0 4px; }
+.ij-pay-method {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 10px; background: var(--bg); border: 1px solid var(--line); cursor: pointer;
+  font-family: var(--font-body); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
+  transition: all var(--dur-fast) var(--ease);
+}
+.ij-pay-method:hover { border-color: var(--coastal-blue); color: var(--coastal-blue); }
+.ij-pay-method.is-active { border-color: var(--coastal-blue); background: var(--coastal-blue); color: #fff; }
+.ij-pay-method-icon { font-size: 12px; }
+.ij-pay-panel { width: 100%; max-width: 380px; background: var(--cream); border: 1px solid var(--line); padding: 20px; margin-top: 8px; }
+.ij-pay-panel-label { display: block; font-family: var(--font-body); font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: var(--ink-quiet); margin-bottom: 10px; }
+.ij-pay-panel-key { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+.ij-pay-panel-key code { font-size: 15px; color: var(--ink); font-weight: 500; word-break: break-all; }
+.ij-pay-copy { font-family: var(--font-body); font-size: 10px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.12em; padding: 7px 14px; background: var(--coastal-blue); color: #fff; border: none; cursor: pointer; transition: background var(--dur-fast); white-space: nowrap; }
+.ij-pay-copy:hover { background: var(--coastal-blue-deep); }
+.ij-pay-panel-name { display: block; font-family: var(--font-display); font-size: 13px; color: var(--ink-soft); font-style: italic; }
+.ij-pay-panel-soon { font-size: 13px; color: var(--ink-quiet); line-height: 1.6; margin: 12px 0 0; }
+
+@media (max-width: 820px) {
+  .ij-checkout-inner { grid-template-columns: 1fr; gap: 40px; }
+  .ij-checkout-summary-image { max-width: 300px; }
+}
 
 /* ============================================================
    RSVP
