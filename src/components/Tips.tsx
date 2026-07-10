@@ -361,56 +361,19 @@ const WA_HOSPEDAGEM = `https://wa.me/12028603255?text=${encodeURIComponent(
 // Ponto de referência do Hotel Santa Marta
 const SANTA_MARTA_MAPS = maps("Hotel Santa Marta Lloret de Mar");
 
-// Mapa: Google Maps real (embed) com uma marcação "à mão" da região recomendada
-// por cima. Sistema de coordenadas do overlay: (0,0) = centro do mapa = Hotel
-// Santa Marta (q do embed), zoom 14 (≈7,1 m/px). Os offsets em pixels de tela são
-// calculados por Mercator, então a marcação cai na geografia certa.
-const GMAP_SRC =
-  "https://maps.google.com/maps?q=41.6928,2.8267&z=14&hl=pt&output=embed";
 const GMAP_LINK =
   "https://www.google.com/maps/search/?api=1&query=Hotel%20Santa%20Marta%20Lloret%20de%20Mar";
-// Elipse "à mão" da faixa costeira recomendada (Cala Treumal · Sa Boadella ·
-// Sta. Cristina, em direção aos Jardins de Santa Clotilde). Gerada na origem;
-// posicionada e girada no JSX para acompanhar a costa.
-const ZONE =
-  "M40.7,76.7C27.3,77.0 -14.2,81.0 -39.4,78.2C-64.6,75.5 -90.6,68.3 -110.5,60.1C-130.3,52.0 -149.0,40.8 -158.6,29.2C-168.3,17.6 -171.3,3.2 -168.2,-9.3C-165.1,-21.7 -154.9,-35.2 -140.1,-45.5C-125.3,-55.8 -102.6,-65.4 -79.4,-71.1C-56.2,-76.8 -26.8,-80.2 -1.0,-79.9C24.8,-79.7 51.3,-74.8 75.4,-69.5C99.4,-64.1 128.6,-57.6 143.1,-47.7C157.5,-37.8 158.9,-22.6 162.2,-9.9C165.5,2.9 170.4,16.9 163.0,28.9C155.6,41.0 137.4,53.5 117.6,62.5C97.8,71.6 70.4,80.3 44.1,83.2C17.9,86.0 -13.5,83.0 -40.1,79.6C-66.7,76.2 -102.9,65.7 -115.5,62.9";
 
 function StayMap() {
   return (
     <figure className="ij-stay-map">
-      <div className="ij-gmap">
-        <iframe
-          className="ij-gmap-frame"
-          src={GMAP_SRC}
-          title="Mapa da região do Hotel Santa Marta"
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        />
-        {/* Overlay fixo (não escala) centrado no centro do mapa */}
-        <svg className="ij-gmap-overlay" width="760" height="440" viewBox="-380 -220 760 440" aria-hidden>
-          <g className="ij-gmap-circles">
-            <g transform="translate(-55,20) rotate(-36)">
-              <path d={ZONE} />
-            </g>
-          </g>
-          <text className="ij-gmap-clbl" x="-150" y="118" textAnchor="middle">Sa Boadella · Sta. Cristina · Cala Treumal</text>
-          {/* chip do hotel, logo acima do pin do Google (que fica no centro) */}
-          <g transform="translate(0,-56)">
-            <rect x="-118" y="-13" width="236" height="26" rx="13" fill="#fff" />
-            <text className="ij-gmap-hotel" x="0" y="4" textAnchor="middle">🏨 Hotel Santa Marta · vamos ficar aqui</text>
-          </g>
-        </svg>
-      </div>
-
-      <figcaption className="ij-map-legend">
-        <span>
-          <i className="ij-map-key ij-map-key--pin" aria-hidden />
-          Hotel Santa Marta (onde ficaremos)
-        </span>
-        <span>
-          <i className="ij-map-key ij-map-key--circle" aria-hidden />
-          Região recomendada
-        </span>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="ij-stay-photo"
+        src="/fotos/mapa-hospedagem.png"
+        alt="Mapa da região: Hotel Santa Marta (onde vamos ficar) e o local do casamento"
+      />
+      <figcaption className="ij-stay-photo-cap">
         <a href={GMAP_LINK} target="_blank" rel="noopener noreferrer" className="ij-gmap-open">
           Abrir no Google Maps ↗
         </a>
@@ -517,9 +480,7 @@ export default function Tips() {
 
             <div className="ij-stay-note">
               <p>
-                Não recomendamos ficar em <strong>Blanes</strong> ou <strong>Lloret de Mar</strong>. Circulamos no
-                mapa a região em volta do Hotel Santa Marta (Cala Treumal, Sa Boadella e Santa Cristina) — é onde
-                tem os melhores hotéis e airbnbs.
+                Circulamos no mapa a região onde tem os melhores hotéis e airbnbs.
               </p>
               <p>
                 Também há <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Dois
@@ -554,7 +515,6 @@ export default function Tips() {
                 (qualquer hotel por ali). Alguns favoritos:
               </p>
               <HotelList hotels={TOSSA_ALT_HOTELS} />
-              <p className="ij-hotel-legend">$ econômico &nbsp;·&nbsp; $$ médio &nbsp;·&nbsp; $$$ upscale</p>
             </div>
 
             <div className="ij-stay-alt">
