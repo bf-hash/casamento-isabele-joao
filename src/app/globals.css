@@ -681,6 +681,122 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 420px) { .ij-gifts-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
+   PARA SE INSPIRAR — galeria da Costa Brava (marquee horizontal)
+   ============================================================ */
+.ij-inspire-head { text-align: center; margin: 0 0 clamp(36px, 5vh, 60px); }
+.ij-inspire-head .ij-section-eyebrow { margin-bottom: 14px; }
+.ij-inspire-head h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(34px, 5.4vw, 58px);
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* Faixa full-bleed que ignora o padding lateral da seção */
+.ij-inspire-marquee {
+  position: relative;
+  margin-inline: calc(-1 * var(--pad-x));
+  padding-block: 8px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.ij-inspire-track {
+  display: flex;
+  gap: clamp(14px, 1.6vw, 24px);
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  animation: ij-inspire-scroll 72s linear infinite;
+  will-change: transform;
+}
+.ij-inspire-marquee:hover .ij-inspire-track,
+.ij-inspire-marquee:focus-within .ij-inspire-track { animation-play-state: paused; }
+@keyframes ij-inspire-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.ij-inspire-card { flex: 0 0 auto; width: clamp(196px, 22vw, 248px); }
+.ij-inspire-img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--cream-deep);
+  box-shadow: 0 20px 44px -30px rgba(52, 48, 43, 0.5);
+}
+.ij-inspire-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur) var(--ease);
+}
+.ij-inspire-card:hover .ij-inspire-img img { transform: scale(1.05); }
+.ij-inspire-name {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.ij-inspire-ig-wrap { text-align: center; margin-top: clamp(40px, 5.5vh, 64px); }
+.ij-inspire-ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 560px;
+  text-align: left;
+  padding: 15px 22px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+.ij-inspire-ig:hover {
+  border-color: var(--coastal-blue);
+  box-shadow: 0 16px 34px -26px rgba(52, 48, 43, 0.55);
+  transform: translateY(-2px);
+}
+.ij-inspire-ig-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+  color: #fff;
+  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 48%, #6228d7 100%);
+}
+.ij-inspire-ig-text { display: flex; flex-direction: column; line-height: 1.45; }
+.ij-inspire-ig-text strong {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+.ij-inspire-ig-text { font-size: 13.5px; color: var(--ink-soft); }
+
+@media (max-width: 640px) {
+  .ij-inspire-card { width: clamp(160px, 60vw, 210px); }
+  .ij-inspire-ig { flex-direction: row; align-items: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ij-inspire-marquee { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ij-inspire-track { animation: none; }
+}
+
+/* ============================================================
    CHECKOUT DE PRESENTE (/presente/[id])
    ============================================================ */
 .ij-checkout-section { min-height: 100vh; }
