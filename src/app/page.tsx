@@ -5,6 +5,7 @@ import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
 import Tips from "@/components/Tips";
 import Gifts from "@/components/Gifts";
+import Inspire from "@/components/Inspire";
 import RSVP from "@/components/RSVP";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <HowToGet />
         <Tips />
         <Gifts />
+        <Inspire />
         <RSVP />
       </main>
     </div>
