@@ -5,65 +5,51 @@ import Image from "next/image";
 import Link from "next/link";
 import { type Gift, formatBRL } from "@/lib/gifts";
 
-// TODO: Substituir pela chave PIX real dos noivos
-const PIX_KEY = "email@exemplo.com";
-const PIX_NAME = "Isabele & João";
+const COUPLE_NAME = "Isabele & João";
 
-type Step = "name" | "note" | "pay" | "done";
-type Method = "pix" | "card";
+type Step = "name" | "note" | "pay";
 
 export default function GiftCheckout({ gift }: { gift: Gift }) {
   const [step, setStep] = useState<Step>("name");
   const [name, setName] = useState("");
   const [note, setNote] = useState("");
-  const [method, setMethod] = useState<Method>("pix");
-  const [copied, setCopied] = useState(false);
   const [processing, setProcessing] = useState(false);
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(PIX_KEY);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      /* fallback silencioso */
-    }
-  };
+  const [error, setError] = useState("");
 
   const handlePay = async () => {
     setProcessing(true);
+    setError("");
 
-    // Registra a contribuição no Supabase (tabela gift_contributions).
-    // Fica com status "pending"; quando o checkout de pagamento for
-    // integrado (Mercado Pago / Pagar.me / Asaas / Stripe), o webhook do
-    // provedor atualiza o status para "paid".
     try {
-      await fetch("/api/gifts", {
+      // Registra a contribuição (status "pending") e cria a cobrança no
+      // AbacatePay. A rota devolve a URL do checkout hospedado (PIX + cartão);
+      // o webhook marca "paid" quando o pagamento for confirmado.
+      const res = await fetch("/api/gifts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           giftId: gift.id,
           giftName: gift.name,
           amount: gift.price,
-          method,
           name,
           note,
         }),
       });
-    } catch {
-      // não bloqueia o usuário se o registro falhar
+
+      const data = await res.json();
+
+      if (!res.ok || !data.checkoutUrl) {
+        throw new Error(data.error || "Não foi possível iniciar o pagamento.");
+      }
+
+      // Redireciona para o checkout seguro do AbacatePay.
+      window.location.href = data.checkoutUrl;
+    } catch (e) {
+      setError(
+        e instanceof Error ? e.message : "Não foi possível iniciar o pagamento."
+      );
+      setProcessing(false);
     }
-
-    // ------------------------------------------------------------------
-    // TODO: PLACEHOLDER DE CHECKOUT
-    // Próximo passo — gerar a cobrança no provedor de pagamento:
-    //   - method === "pix"  -> QR Code / copia-e-cola dinâmico
-    //   - method === "card" -> sessão de checkout / link de cartão
-    // O provedor devolve os dados e, via webhook, marca o status "paid".
-    // ------------------------------------------------------------------
-
-    setProcessing(false);
-    setStep("done");
   };
 
   const stepOrder: Step[] = ["name", "note", "pay"];
@@ -87,18 +73,16 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
 
         {/* Fluxo */}
         <div className="ij-checkout-form">
-          {step !== "done" && (
-            <div className="ij-rsvp-progress ij-checkout-progress">
-              {stepOrder.map((s, i) => (
-                <div
-                  key={s}
-                  className={`ij-rsvp-progress-dot ${
-                    stepOrder.indexOf(step) >= i ? "is-active" : ""
-                  }`}
-                />
-              ))}
-            </div>
-          )}
+          <div className="ij-rsvp-progress ij-checkout-progress">
+            {stepOrder.map((s, i) => (
+              <div
+                key={s}
+                className={`ij-rsvp-progress-dot ${
+                  stepOrder.indexOf(step) >= i ? "is-active" : ""
+                }`}
+              />
+            ))}
+          </div>
 
           {/* Passo 1: Nome */}
           {step === "name" && (
@@ -136,7 +120,8 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
             <div className="ij-rsvp-step">
               <h3 className="ij-rsvp-step-title">Deixe um bilhete</h3>
               <p className="ij-rsvp-step-desc">
-                Uma mensagem carinhosa para <em className="ij-brand-name">{PIX_NAME}</em> (opcional).
+                Uma mensagem carinhosa para{" "}
+                <em className="ij-brand-name">{COUPLE_NAME}</em> (opcional).
               </p>
               <textarea
                 className="ij-rsvp-textarea"
@@ -155,7 +140,7 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
             </div>
           )}
 
-          {/* Passo 3: Pagamento (placeholder) */}
+          {/* Passo 3: Pagamento */}
           {step === "pay" && (
             <div className="ij-rsvp-step">
               <h3 className="ij-rsvp-step-title">Pagamento</h3>
@@ -164,49 +149,14 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
                 {gift.name} — {formatBRL(gift.price)}.
               </p>
 
-              <div className="ij-pay-methods">
-                <button
-                  type="button"
-                  className={`ij-pay-method ${method === "pix" ? "is-active" : ""}`}
-                  onClick={() => setMethod("pix")}
-                >
-                  <span className="ij-pay-method-icon">◆</span>
-                  PIX
-                </button>
-                <button
-                  type="button"
-                  className={`ij-pay-method ${method === "card" ? "is-active" : ""}`}
-                  onClick={() => setMethod("card")}
-                >
-                  <span className="ij-pay-method-icon">▭</span>
-                  Cartão
-                </button>
+              <div className="ij-pay-panel">
+                <p className="ij-pay-panel-soon">
+                  Ao continuar, você vai para um checkout seguro onde pode pagar
+                  com <strong>PIX</strong> ou <strong>cartão de crédito</strong>.
+                </p>
               </div>
 
-              {method === "pix" && (
-                <div className="ij-pay-panel">
-                  <span className="ij-pay-panel-label">Chave PIX</span>
-                  <div className="ij-pay-panel-key">
-                    <code>{PIX_KEY}</code>
-                    <button onClick={handleCopy} className="ij-pay-copy">
-                      {copied ? "Copiado!" : "Copiar"}
-                    </button>
-                  </div>
-                  <span className="ij-pay-panel-name">{PIX_NAME}</span>
-                  <p className="ij-pay-panel-soon">
-                    Em breve: QR Code gerado automaticamente para este presente.
-                  </p>
-                </div>
-              )}
-
-              {method === "card" && (
-                <div className="ij-pay-panel">
-                  <p className="ij-pay-panel-soon">
-                    O pagamento com cartão será processado por um checkout seguro.
-                    Integração em breve.
-                  </p>
-                </div>
-              )}
+              {error && <p className="ij-pay-error">{error}</p>}
 
               <button
                 className="ij-rsvp-btn"
@@ -214,28 +164,16 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
                 onClick={handlePay}
               >
                 {processing
-                  ? "Processando..."
-                  : `Finalizar — ${formatBRL(gift.price)}`}
+                  ? "Redirecionando..."
+                  : `Ir para o pagamento — ${formatBRL(gift.price)}`}
               </button>
-              <button className="ij-rsvp-back" onClick={() => setStep("note")}>
+              <button
+                className="ij-rsvp-back"
+                onClick={() => setStep("note")}
+                disabled={processing}
+              >
                 Voltar
               </button>
-            </div>
-          )}
-
-          {/* Concluído */}
-          {step === "done" && (
-            <div className="ij-rsvp-step ij-rsvp-step--done">
-              <div className="ij-rsvp-done-icon">&#10003;</div>
-              <h3 className="ij-rsvp-step-title">Obrigado de coração!</h3>
-              <p className="ij-rsvp-step-desc">
-                <em className="ij-brand-name">{name}</em>, recebemos o seu carinho com{" "}
-                {gift.name}. Assim que o checkout estiver integrado, você poderá
-                concluir o pagamento por aqui {"❤️"}
-              </p>
-              <Link href="/#gifts" className="ij-rsvp-back" style={{ marginTop: 16 }}>
-                Voltar aos presentes
-              </Link>
             </div>
           )}
         </div>
