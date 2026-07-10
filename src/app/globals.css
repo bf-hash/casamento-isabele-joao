@@ -514,6 +514,12 @@ a { text-decoration: none; color: inherit; }
 .ij-stay-lead p strong { color: var(--coastal-blue); font-weight: 400; }
 
 .ij-stay-map { margin: clamp(32px, 5vh, 56px) 0 clamp(20px, 3vh, 32px); }
+.ij-stay-photo {
+  display: block; width: 100%; height: auto;
+  border-radius: 12px; border: 1px solid var(--line-soft);
+  box-shadow: 0 2px 18px rgba(52, 48, 43, 0.14);
+}
+.ij-stay-photo-cap { text-align: center; margin-top: 14px; }
 
 /* Google Maps real (iframe) + overlay dos círculos */
 .ij-gmap {
