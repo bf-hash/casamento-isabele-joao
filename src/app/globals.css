@@ -511,8 +511,29 @@ a { text-decoration: none; color: inherit; }
 .ij-stay-lead p strong { color: var(--coastal-blue); font-weight: 400; }
 
 .ij-stay-map { margin: clamp(32px, 5vh, 56px) 0 clamp(20px, 3vh, 32px); }
-.ij-stay-map-svg { display: block; width: 100%; height: auto; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 18px rgba(52, 48, 43, 0.12); border: 1px solid var(--line-soft); }
-.ij-stay-map-svg a { cursor: pointer; }
+
+/* Google Maps real (iframe) + overlay dos círculos */
+.ij-gmap {
+  position: relative; width: 100%; aspect-ratio: 16 / 9;
+  border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 18px rgba(52, 48, 43, 0.14); border: 1px solid var(--line-soft);
+  background: #E8EDE4;
+}
+.ij-gmap-frame { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; }
+.ij-gmap-overlay { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); pointer-events: none; overflow: visible; }
+.ij-gmap-circles path { fill: rgba(28, 28, 28, 0.04); stroke: #1C1C1C; stroke-width: 3; stroke-linecap: round; }
+.ij-gmap-clbl {
+  font-family: var(--font-body); font-weight: 600; font-size: 11px; fill: #1C1C1C;
+  paint-order: stroke; stroke: rgba(255, 255, 255, 0.9); stroke-width: 3px;
+}
+.ij-gmap-hotel { font-family: var(--font-body); font-weight: 600; font-size: 11.5px; fill: #C0392B; }
+.ij-gmap-overlay rect { filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.28)); }
+.ij-gmap-open {
+  display: inline-flex; align-items: center; font-family: var(--font-body); font-weight: 400;
+  font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coastal-blue);
+  text-decoration: none; transition: color var(--dur-fast);
+}
+.ij-gmap-open:hover { color: var(--coastal-blue-deep); }
 .ij-map-land { fill: #EFE7D7; }
 .ij-map-sea { fill: #DCE8F3; }
 .ij-map-coast { fill: none; stroke: #CDB79A; stroke-width: 2.2; }
@@ -539,8 +560,19 @@ a { text-decoration: none; color: inherit; }
 .ij-map-key--pin { width: 13px; height: 13px; border-radius: 50% 50% 50% 0; background: #EA4335; transform: rotate(-45deg); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
 
 .ij-stay-note { max-width: 620px; margin: clamp(24px, 4vh, 40px) auto 0; text-align: center; }
-.ij-stay-note p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; margin: 0; }
+.ij-stay-note p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; margin: 0 0 12px; }
+.ij-stay-note p:last-of-type { margin-bottom: 0; }
 .ij-stay-note p strong { color: var(--ink); font-weight: 400; }
+.ij-stay-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
+.ij-stay-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 11px 20px; border: 1px solid var(--line); border-radius: var(--r-pill);
+  font-family: var(--font-body); font-weight: 400; font-size: 13px; letter-spacing: 0.03em;
+  color: var(--ink); text-decoration: none; transition: color var(--dur-fast), border-color var(--dur-fast);
+}
+.ij-stay-link::after { content: "↗"; font-size: 12px; color: var(--ink-quiet); transition: color var(--dur-fast); }
+.ij-stay-link:hover { color: var(--coastal-blue); border-color: var(--coastal-blue); }
+.ij-stay-link:hover::after { color: var(--coastal-blue); }
 
 .ij-stay-alt { max-width: 620px; margin: clamp(40px, 6vh, 64px) auto 0; padding-top: clamp(32px, 5vh, 48px); border-top: 1px solid var(--line); }
 .ij-stay-alt-head { text-align: center; margin-bottom: 8px; }
