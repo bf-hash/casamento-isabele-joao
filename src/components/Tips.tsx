@@ -354,7 +354,7 @@ const TOSSA_ALT_HOTELS: Hotel[] = [
 ];
 
 // WhatsApp para ajudar com quartos/hospedagem
-const WA_HOSPEDAGEM = `https://wa.me/56920403095?text=${encodeURIComponent(
+const WA_HOSPEDAGEM = `https://wa.me/12028603255?text=${encodeURIComponent(
   "Olá! Gostaríamos de ajuda com a hospedagem para o casamento da Isabele & João 🏡",
 )}`;
 
@@ -562,7 +562,7 @@ export default function Tips() {
             <div className="ij-stay-alt">
               <div className="ij-stay-alt-head">
                 <span className="ij-section-eyebrow ij-section-eyebrow--centered">Depois · Begur &amp; Palafrugell</span>
-                <p className="ij-hotel-dates">2 — 3 de julho</p>
+                <p className="ij-hotel-dates">2 — 4 de julho</p>
               </div>
               <p>
                 A Costa Brava é comprida — as atividades dos últimos dois dias serão mais ao norte, na região de
@@ -582,7 +582,7 @@ export default function Tips() {
               de Mar). Todos que quiserem agendar um horário podem mandar uma mensagem clicando no botão abaixo.
             </p>
             <a
-              href="https://wa.me/56920403095?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20sal%C3%A3o%20para%20o%20casamento%20da%20Isabele%20%26%20Jo%C3%A3o%20%F0%9F%92%87%E2%80%8D%E2%99%80%EF%B8%8F"
+              href="https://wa.me/12028603255?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20sal%C3%A3o%20para%20o%20casamento%20da%20Isabele%20%26%20Jo%C3%A3o%20%F0%9F%92%87%E2%80%8D%E2%99%80%EF%B8%8F"
               target="_blank"
               rel="noopener noreferrer"
               className="ij-btn-solid"
