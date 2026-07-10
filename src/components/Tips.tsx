@@ -563,8 +563,9 @@ export default function Tips() {
                 <p className="ij-hotel-dates">2 — 4 de julho</p>
               </div>
               <p>
-                A Costa Brava é comprida — as atividades dos últimos dois dias serão mais ao norte, na região de
-                Begur e Palafrugell (~1h–1h30 de carro de Tossa).
+                A Costa Brava é comprida e o rolê de sábado será mais ao norte, na região de Begur e Palafrugell
+                (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
+                opções:
               </p>
               <HotelList hotels={BEGUR_HOTELS} />
             </div>
