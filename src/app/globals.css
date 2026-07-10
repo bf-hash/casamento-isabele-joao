@@ -314,12 +314,12 @@ a { text-decoration: none; color: inherit; }
   margin-top: auto;
   width: 100vw;
   margin-inline: calc(50% - 50vw);
-  height: clamp(340px, 46vh, 560px);
+  height: clamp(380px, 62vh, 720px);
   background: url('/assets/el-convent-watercolor.jpg') no-repeat center bottom;
-  background-size: cover;
-  opacity: 0.9;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 24%, #000 100%);
+  background-size: contain;
+  opacity: 0.95;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 100%);
   pointer-events: none;
 }
 .ij-hero-dates {
@@ -804,7 +804,7 @@ a { text-decoration: none; color: inherit; }
   .ij-hero { min-height: auto; padding-top: 120px; }
   .ij-hero-copy { width: 100%; }
   .ij-countdown { margin-inline: auto; }
-  .ij-hero-art { height: min(52vh, 440px); margin-top: clamp(24px, 5vh, 44px); }
+  .ij-hero-art { height: auto; aspect-ratio: 1600 / 1248; margin-top: clamp(24px, 5vh, 44px); }
   .ij-hero-cta-mobile { display: inline-flex; align-items: center; justify-content: center; margin-top: 30px; height: 46px; padding: 0 30px; background: var(--coastal-blue); color: #fff; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
   .ij-event { grid-template-columns: 1fr auto; grid-template-areas: "date art" "body body"; gap: 6px 14px; }
   .ij-event-date { grid-area: date; }
