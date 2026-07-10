@@ -33,34 +33,35 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
   const handlePay = async () => {
     setProcessing(true);
 
+    // Registra a contribuição no Supabase (tabela gift_contributions).
+    // Fica com status "pending"; quando o checkout de pagamento for
+    // integrado (Mercado Pago / Pagar.me / Asaas / Stripe), o webhook do
+    // provedor atualiza o status para "paid".
+    try {
+      await fetch("/api/gifts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          giftId: gift.id,
+          giftName: gift.name,
+          amount: gift.price,
+          method,
+          name,
+          note,
+        }),
+      });
+    } catch {
+      // não bloqueia o usuário se o registro falhar
+    }
+
     // ------------------------------------------------------------------
-    // PLACEHOLDER DE CHECKOUT
-    // Aqui vamos integrar o provedor de pagamento (ex.: Mercado Pago,
-    // Stripe, Pagar.me, Asaas...). O provedor deve gerar:
-    //   - method === "pix"  -> um QR Code / copia-e-cola dinâmico
-    //   - method === "card" -> uma sessão de checkout / link de cartão
-    // e devemos registrar { giftId, name, note, amount } no backend.
-    //
-    // Exemplo de como será a chamada:
-    //
-    // const res = await fetch("/api/gifts/checkout", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     giftId: gift.id,
-    //     amount: gift.price,
-    //     method,
-    //     name,
-    //     note,
-    //   }),
-    // });
-    // const data = await res.json();
-    // if (method === "card") { window.location.href = data.checkoutUrl; return; }
-    // // pix: exibir data.qrCode / data.copiaECola
+    // TODO: PLACEHOLDER DE CHECKOUT
+    // Próximo passo — gerar a cobrança no provedor de pagamento:
+    //   - method === "pix"  -> QR Code / copia-e-cola dinâmico
+    //   - method === "card" -> sessão de checkout / link de cartão
+    // O provedor devolve os dados e, via webhook, marca o status "paid".
     // ------------------------------------------------------------------
 
-    // Por enquanto apenas simulamos a conclusão do fluxo.
-    await new Promise((r) => setTimeout(r, 600));
     setProcessing(false);
     setStep("done");
   };
