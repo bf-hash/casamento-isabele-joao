@@ -361,20 +361,19 @@ const WA_HOSPEDAGEM = `https://wa.me/12028603255?text=${encodeURIComponent(
 // Ponto de referência do Hotel Santa Marta
 const SANTA_MARTA_MAPS = maps("Hotel Santa Marta Lloret de Mar");
 
-// Mapa: Google Maps real (embed) com os círculos "à mão" das áreas recomendadas
+// Mapa: Google Maps real (embed) com uma marcação "à mão" da região recomendada
 // por cima. Sistema de coordenadas do overlay: (0,0) = centro do mapa = Hotel
-// Santa Marta (q do embed), zoom 12. Offsets em pixels de tela calculados por
-// Mercator (≈28,55 m/px nesta latitude), então os círculos caem na geografia certa.
+// Santa Marta (q do embed), zoom 14 (≈7,1 m/px). Os offsets em pixels de tela são
+// calculados por Mercator, então a marcação cai na geografia certa.
 const GMAP_SRC =
-  "https://maps.google.com/maps?q=41.6928,2.8267&z=12&hl=pt&output=embed";
+  "https://maps.google.com/maps?q=41.6928,2.8267&z=14&hl=pt&output=embed";
 const GMAP_LINK =
   "https://www.google.com/maps/search/?api=1&query=Hotel%20Santa%20Marta%20Lloret%20de%20Mar";
-const CIRCLE_1 =
-  "M25.5,10.8C24.9,13.3 25.0,21.5 21.8,25.4C18.6,29.2 12.0,32.4 6.3,33.9C0.7,35.4 -6.2,35.6 -11.9,34.4C-17.5,33.3 -23.4,30.5 -27.5,27.2C-31.5,23.8 -35.1,19.0 -36.2,14.5C-37.3,9.9 -36.2,4.5 -34.2,0.1C-32.2,-4.3 -28.7,-9.0 -24.2,-12.0C-19.7,-14.9 -13.0,-17.3 -7.3,-17.5C-1.6,-17.7 5.1,-15.7 10.0,-13.2C14.9,-10.8 19.2,-7.0 22.1,-3.0C25.1,1.0 28.0,6.3 27.8,11.0C27.5,15.6 24.3,21.0 20.6,24.7C17.0,28.3 8.3,31.3 5.8,32.6";
-const CIRCLE_2 =
-  "M262.7,-65.0C259.8,-62.4 253.0,-53.5 245.6,-49.7C238.2,-45.9 227.8,-42.8 218.2,-42.2C208.7,-41.6 196.4,-42.7 188.4,-45.9C180.3,-49.1 174.2,-55.7 169.9,-61.3C165.6,-67.0 161.8,-73.8 162.4,-79.8C163.0,-85.9 167.8,-92.9 173.6,-97.7C179.4,-102.6 188.4,-106.8 197.3,-109.1C206.2,-111.3 218.1,-112.7 227.0,-111.2C235.9,-109.7 244.2,-104.4 250.7,-99.9C257.2,-95.3 263.7,-89.7 265.9,-83.9C268.1,-78.0 267.3,-70.4 263.9,-64.7C260.5,-59.0 253.0,-53.5 245.4,-49.8C237.8,-46.2 222.7,-44.0 218.2,-42.8";
-const CIRCLE_3 =
-  "M298.0,-137.1C301.1,-137.0 311.2,-138.6 316.7,-136.6C322.1,-134.6 326.9,-129.7 330.6,-125.1C334.3,-120.6 338.4,-114.9 338.9,-109.4C339.3,-104.0 336.6,-97.3 333.3,-92.4C330.1,-87.6 324.9,-82.8 319.5,-80.4C314.0,-78.1 306.8,-77.6 300.8,-78.2C294.8,-78.8 288.3,-81.0 283.4,-84.3C278.5,-87.6 273.6,-92.7 271.7,-97.9C269.8,-103.0 270.3,-109.9 272.0,-115.2C273.6,-120.5 277.3,-125.6 281.6,-129.6C285.8,-133.6 291.7,-137.9 297.5,-139.1C303.4,-140.3 310.9,-138.8 316.7,-136.7C322.5,-134.6 329.9,-128.1 332.6,-126.4";
+// Elipse "à mão" da faixa costeira recomendada (Cala Treumal · Sa Boadella ·
+// Sta. Cristina, em direção aos Jardins de Santa Clotilde). Gerada na origem;
+// posicionada e girada no JSX para acompanhar a costa.
+const ZONE =
+  "M40.7,76.7C27.3,77.0 -14.2,81.0 -39.4,78.2C-64.6,75.5 -90.6,68.3 -110.5,60.1C-130.3,52.0 -149.0,40.8 -158.6,29.2C-168.3,17.6 -171.3,3.2 -168.2,-9.3C-165.1,-21.7 -154.9,-35.2 -140.1,-45.5C-125.3,-55.8 -102.6,-65.4 -79.4,-71.1C-56.2,-76.8 -26.8,-80.2 -1.0,-79.9C24.8,-79.7 51.3,-74.8 75.4,-69.5C99.4,-64.1 128.6,-57.6 143.1,-47.7C157.5,-37.8 158.9,-22.6 162.2,-9.9C165.5,2.9 170.4,16.9 163.0,28.9C155.6,41.0 137.4,53.5 117.6,62.5C97.8,71.6 70.4,80.3 44.1,83.2C17.9,86.0 -13.5,83.0 -40.1,79.6C-66.7,76.2 -102.9,65.7 -115.5,62.9";
 
 function StayMap() {
   return (
@@ -383,22 +382,20 @@ function StayMap() {
         <iframe
           className="ij-gmap-frame"
           src={GMAP_SRC}
-          title="Mapa da região — Hotel Santa Marta e áreas recomendadas"
+          title="Mapa da região do Hotel Santa Marta"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
         />
         {/* Overlay fixo (não escala) centrado no centro do mapa */}
         <svg className="ij-gmap-overlay" width="760" height="440" viewBox="-380 -220 760 440" aria-hidden>
           <g className="ij-gmap-circles">
-            <path d={CIRCLE_1} />
-            <path d={CIRCLE_2} />
-            <path d={CIRCLE_3} />
+            <g transform="translate(-55,20) rotate(-36)">
+              <path d={ZONE} />
+            </g>
           </g>
-          <text className="ij-gmap-clbl" x="-5" y="52" textAnchor="middle">Sa Boadella · Sta. Cristina</text>
-          <text className="ij-gmap-clbl" x="215" y="-32" textAnchor="middle">Cala Bona · Montgoda</text>
-          <text className="ij-gmap-clbl" x="304" y="-66" textAnchor="middle">Tossa de Mar</text>
+          <text className="ij-gmap-clbl" x="-150" y="118" textAnchor="middle">Sa Boadella · Sta. Cristina · Cala Treumal</text>
           {/* chip do hotel, logo acima do pin do Google (que fica no centro) */}
-          <g transform="translate(-5,-58)">
+          <g transform="translate(0,-56)">
             <rect x="-118" y="-13" width="236" height="26" rx="13" fill="#fff" />
             <text className="ij-gmap-hotel" x="0" y="4" textAnchor="middle">🏨 Hotel Santa Marta · vamos ficar aqui</text>
           </g>
@@ -412,7 +409,7 @@ function StayMap() {
         </span>
         <span>
           <i className="ij-map-key ij-map-key--circle" aria-hidden />
-          Áreas recomendadas
+          Região recomendada
         </span>
         <a href={GMAP_LINK} target="_blank" rel="noopener noreferrer" className="ij-gmap-open">
           Abrir no Google Maps ↗
@@ -521,7 +518,8 @@ export default function Tips() {
             <div className="ij-stay-note">
               <p>
                 Não recomendamos ficar em <strong>Blanes</strong> ou <strong>Lloret de Mar</strong>. Circulamos no
-                mapa algumas áreas que têm bons airbnbs e hotéis na região.
+                mapa a região em volta do Hotel Santa Marta (Cala Treumal, Sa Boadella e Santa Cristina) — é onde
+                tem os melhores hotéis e airbnbs.
               </p>
               <p>
                 Também há <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Dois
