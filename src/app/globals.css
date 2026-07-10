@@ -130,6 +130,9 @@ a { text-decoration: none; color: inherit; }
 .ij-section { padding: var(--section-y) var(--pad-x); }
 .ij-section-paper { background: var(--bg); }
 .ij-section-warm { background: var(--cream); }
+/* Boas-vindas: bloco mais enxuto que as demais seções */
+.ij-welcome { padding-block: clamp(56px, 8vh, 104px); }
+.ij-welcome .ij-section-header { margin-bottom: clamp(24px, 3.5vh, 40px); }
 
 .ij-section-header {
   text-align: center;
