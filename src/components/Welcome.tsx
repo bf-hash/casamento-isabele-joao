@@ -2,7 +2,7 @@ import ScrollReveal from "./ScrollReveal";
 
 export default function Welcome() {
   return (
-    <section id="welcome" className="ij-section ij-section-paper">
+    <section id="welcome" className="ij-section ij-section-paper ij-welcome">
       <div className="ij-center">
         <ScrollReveal>
           <div className="ij-section-header">

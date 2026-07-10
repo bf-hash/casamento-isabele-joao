@@ -6,8 +6,6 @@ import HowToGet from "@/components/HowToGet";
 import Tips from "@/components/Tips";
 import Gifts from "@/components/Gifts";
 import RSVP from "@/components/RSVP";
-import Footer from "@/components/Footer";
-import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
@@ -15,16 +13,13 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <SectionDivider />
         <Welcome />
-        <SectionDivider />
         <Program />
         <HowToGet />
         <Tips />
         <Gifts />
         <RSVP />
       </main>
-      <Footer />
     </div>
   );
 }
