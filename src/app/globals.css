@@ -511,7 +511,8 @@ a { text-decoration: none; color: inherit; }
 .ij-stay-lead p strong { color: var(--coastal-blue); font-weight: 400; }
 
 .ij-stay-map { margin: clamp(32px, 5vh, 56px) 0 clamp(20px, 3vh, 32px); }
-.ij-stay-map-svg { display: block; width: 100%; height: auto; }
+.ij-stay-map-svg { display: block; width: 100%; height: auto; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 18px rgba(52, 48, 43, 0.12); border: 1px solid var(--line-soft); }
+.ij-stay-map-svg a { cursor: pointer; }
 .ij-map-land { fill: #EFE7D7; }
 .ij-map-sea { fill: #DCE8F3; }
 .ij-map-coast { fill: none; stroke: #CDB79A; stroke-width: 2.2; }
@@ -534,10 +535,8 @@ a { text-decoration: none; color: inherit; }
 .ij-map-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 26px; margin-top: 22px; }
 .ij-map-legend span { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-body); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
 .ij-map-key { width: 22px; height: 0; flex: none; }
-.ij-map-key--zone { border-top: 2px dashed #5B86C6; }
-.ij-map-key--star { width: 16px; height: 16px; border: none; }
-.ij-map-key--no { width: 14px; height: 14px; border-radius: 50%; border: 1.6px solid #B9AF9F; position: relative; }
-.ij-map-key--no::after { content: ""; position: absolute; inset: -1px 6px; border-left: 1.6px solid #B9AF9F; transform: rotate(45deg); }
+.ij-map-key--circle { width: 16px; height: 16px; border-radius: 50%; border: 2.4px solid #1C1C1C; }
+.ij-map-key--pin { width: 13px; height: 13px; border-radius: 50% 50% 50% 0; background: #EA4335; transform: rotate(-45deg); box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); }
 
 .ij-stay-note { max-width: 620px; margin: clamp(24px, 4vh, 40px) auto 0; text-align: center; }
 .ij-stay-note p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; margin: 0; }
