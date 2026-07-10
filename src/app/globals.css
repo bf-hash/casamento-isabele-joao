@@ -7,7 +7,7 @@
   --bg: #FAFAF8;
   --cream: #F3EFE7;
   --cream-deep: #ECE6DA;
-  --ink: #34302B;
+  --ink: #2A3140;
   --ink-soft: #6E665C;
   --ink-quiet: #A39A8D;
   --line: rgba(52, 48, 43, 0.14);
@@ -143,7 +143,7 @@ a { text-decoration: none; color: inherit; }
 .ij-arrive h2 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(38px, 5.6vw, 70px);
+  font-size: clamp(30px, 4vw, 50px);
   line-height: 1.06;
   letter-spacing: 0.01em;
   color: var(--ink);
@@ -167,7 +167,7 @@ a { text-decoration: none; color: inherit; }
 .ij-prog-head h2 {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(40px, 6vw, 78px);
+  font-size: clamp(30px, 4vw, 50px);
   line-height: 1.05;
   letter-spacing: 0.01em;
   color: var(--ink);
@@ -619,7 +619,7 @@ a { text-decoration: none; color: inherit; }
 .ij-gifts-head { display: grid; grid-template-columns: 1fr minmax(280px, 440px); align-items: end; gap: 30px 60px; margin: 0 0 clamp(48px, 7vh, 72px); }
 .ij-gifts-head h2 {
   font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(40px, 6vw, 78px); line-height: 1.05; letter-spacing: 0.01em;
+  font-size: clamp(30px, 4vw, 50px); line-height: 1.05; letter-spacing: 0.01em;
   color: var(--ink); margin: 14px 0 0;
 }
 .ij-gifts-intro { color: var(--ink-soft); font-size: 16px; margin: 0; padding-bottom: 8px; text-align: right; }
@@ -694,7 +694,7 @@ a { text-decoration: none; color: inherit; }
 .ij-inspire-head h2 {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(34px, 5.4vw, 58px);
+  font-size: clamp(30px, 4vw, 50px);
   line-height: 1.05;
   color: var(--ink);
   margin: 0;
