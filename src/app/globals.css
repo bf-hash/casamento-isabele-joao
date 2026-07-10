@@ -503,6 +503,51 @@ a { text-decoration: none; color: inherit; }
 .ij-hotel-badge { font-family: var(--font-body); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-quiet); display: block; margin-top: 2px; }
 .ij-hotel-legend { font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-quiet); margin: 4px 0 0; }
 
+/* ── Onde ficar: hospedagem + mapa ilustrado ── */
+.ij-stay { max-width: 940px; margin-inline: auto; padding-block: clamp(16px, 3vh, 32px); }
+.ij-stay-lead { text-align: center; max-width: 620px; margin-inline: auto; }
+.ij-stay-lead .ij-hotel-dates { margin: 10px 0 18px; font-size: 21px; }
+.ij-stay-lead p { color: var(--ink-soft); font-size: 17px; line-height: 1.8; margin: 0 0 28px; }
+.ij-stay-lead p strong { color: var(--coastal-blue); font-weight: 400; }
+
+.ij-stay-map { margin: clamp(32px, 5vh, 56px) 0 clamp(20px, 3vh, 32px); }
+.ij-stay-map-svg { display: block; width: 100%; height: auto; }
+.ij-map-land { fill: #EFE7D7; }
+.ij-map-sea { fill: #DCE8F3; }
+.ij-map-coast { fill: none; stroke: #CDB79A; stroke-width: 2.2; }
+.ij-map-road { fill: none; stroke: #D6B24E; stroke-width: 2; stroke-dasharray: 1.5 7; stroke-linecap: round; opacity: 0.85; }
+.ij-map-zone { fill: rgba(91, 134, 198, 0.08); stroke: #5B86C6; stroke-width: 2; stroke-dasharray: 5 5; }
+.ij-map-zone-lbl { font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase; fill: #3D6BAF; }
+.ij-map-town { font-family: var(--font-display); font-size: 20px; fill: var(--ink); }
+.ij-map-town-off { font-family: var(--font-display); font-size: 19px; fill: #A9A090; }
+.ij-map-dot { fill: var(--ink-soft); }
+.ij-map-dot-off { fill: #C6BDB0; }
+.ij-map-no { fill: none; stroke: #B9AF9F; stroke-width: 1.6; }
+.ij-map-star { fill: #D6A93E; stroke: #fff; stroke-width: 1.4; }
+.ij-map-hotel-lbl { font-family: var(--font-display); font-style: italic; font-size: 18px; fill: #3D6BAF; }
+.ij-map-hotel-sub { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; fill: var(--ink-quiet); }
+.ij-map-lead { fill: none; stroke: #D6A93E; stroke-width: 1.4; }
+.ij-map-sea-lbl { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.34em; text-transform: uppercase; fill: #9DB6D6; }
+.ij-map-tag { fill: #D6B24E; }
+.ij-map-tag-txt { font-family: var(--font-body); font-size: 10px; letter-spacing: 0.08em; fill: #6B5A22; }
+
+.ij-map-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 26px; margin-top: 22px; }
+.ij-map-legend span { display: inline-flex; align-items: center; gap: 9px; font-family: var(--font-body); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.ij-map-key { width: 22px; height: 0; flex: none; }
+.ij-map-key--zone { border-top: 2px dashed #5B86C6; }
+.ij-map-key--star { width: 16px; height: 16px; border: none; }
+.ij-map-key--no { width: 14px; height: 14px; border-radius: 50%; border: 1.6px solid #B9AF9F; position: relative; }
+.ij-map-key--no::after { content: ""; position: absolute; inset: -1px 6px; border-left: 1.6px solid #B9AF9F; transform: rotate(45deg); }
+
+.ij-stay-note { max-width: 620px; margin: clamp(24px, 4vh, 40px) auto 0; text-align: center; }
+.ij-stay-note p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; margin: 0; }
+.ij-stay-note p strong { color: var(--ink); font-weight: 400; }
+
+.ij-stay-alt { max-width: 620px; margin: clamp(40px, 6vh, 64px) auto 0; padding-top: clamp(32px, 5vh, 48px); border-top: 1px solid var(--line); }
+.ij-stay-alt-head { text-align: center; margin-bottom: 8px; }
+.ij-stay-alt-head .ij-section-eyebrow { justify-content: center; }
+.ij-stay-alt > p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; text-align: center; margin: 12px 0 24px; }
+
 .ij-hair-tab { text-align: center; max-width: 520px; margin-inline: auto; padding-block: clamp(30px, 5vh, 56px); }
 .ij-hair-tab p { color: var(--ink-soft); font-size: 17px; line-height: 1.8; margin: 0 0 32px; }
 .ij-hair-services { margin-top: 40px; border-top: 1px solid var(--line); }

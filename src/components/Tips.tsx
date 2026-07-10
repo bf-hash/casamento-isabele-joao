@@ -339,40 +339,114 @@ function DestPanel({ dest }: { dest: Dest }) {
   );
 }
 
-const TOSSA_HOTELS: Hotel[] = [
-  { name: "Hotel Diana", price: "$$", url: "https://www.hotelesdante.com/en/home/hotel-diana/" },
-  { name: "Hotel Delfín", price: "$$", url: "https://www.hotelesdante.com/en/home/hotel-delfin/" },
-  {
-    name: "Hostal Boutique Es Menut",
-    price: "$$",
-    url: "https://www.google.com/maps/search/Hostal+Boutique+Es+Menut+Tossa+de+Mar",
-  },
-  {
-    name: "Hostal Boutique Sa Nansa",
-    price: "$$",
-    url: "https://www.google.com/maps/search/Hostal+Boutique+Sa+Nansa+Tossa+de+Mar",
-  },
-  { name: "Casa Granados", price: "$$$", url: "https://www.google.com/maps/search/Casa+Granados+Tossa+de+Mar" },
-  {
-    name: "Mamma Mia Hotel Boutique",
-    price: "$$$",
-    url: "https://www.google.com/maps/search/Mamma+Mia+Hotel+Boutique+Tossa+de+Mar",
-  },
-  {
-    name: "Elisabeth By The Sea",
-    price: "$$$",
-    url: "https://www.google.com/maps/search/Elisabeth+By+The+Sea+Tossa+de+Mar",
-  },
-  { name: "Hotel Santa Marta", price: "$$$", url: "https://hotelsantamarta.es/", featured: true },
-  { name: "Zel Costa Brava", price: "$$$", url: "https://www.zelhotels.com/" },
-];
-
 const BEGUR_HOTELS: Hotel[] = [
   { name: "Alta House", price: "$$$", url: "https://www.google.com/maps/search/Alta+House+Begur" },
   { name: "Aiguablava", price: "$$$", url: "https://www.google.com/maps/search/Hotel+Aiguablava+Begur" },
   { name: "Can Macot", price: "$$$", url: "https://www.google.com/maps/search/Can+Macot+Begur" },
   { name: "Finca Vitoria", price: "$$$", url: "https://www.google.com/maps/search/Finca+Vitoria+Begur" },
 ];
+
+// Opção alternativa: região histórica de Tossa de Mar
+const TOSSA_ALT_HOTELS: Hotel[] = [
+  { name: "Elisabeth By The Sea", price: "$$$", url: maps("Elisabeth By The Sea Tossa de Mar") },
+  { name: "Hostal Boutique Sa Nansa", price: "$$", url: maps("Hostal Boutique Sa Nansa Tossa de Mar") },
+  { name: "Casa Granados", price: "$$$", url: maps("Casa Granados Tossa de Mar") },
+];
+
+// WhatsApp para ajudar com quartos/hospedagem
+const WA_HOSPEDAGEM = `https://wa.me/56920403095?text=${encodeURIComponent(
+  "Olá! Gostaríamos de ajuda com a hospedagem para o casamento da Isabele & João 🏡",
+)}`;
+
+// Ponto de referência do Hotel Santa Marta
+const SANTA_MARTA_MAPS = maps("Hotel Santa Marta Lloret de Mar");
+
+// Mapa ilustrado da costa entre Blanes e Tossa de Mar.
+// Contorno da costa (SO → NE): Blanes · Sta. Cristina/Sa Boadella · Lloret · Cala Bona · Tossa.
+const COAST = "M0,300 C60,298 90,318 130,312 C180,304 205,346 255,340 C305,334 335,300 385,306 C435,312 458,352 508,346 C565,340 595,300 645,312 C702,323 732,362 792,352 C842,344 885,316 960,322";
+const STAR = "0,-13 3.06,-4.21 12.36,-4.02 4.95,1.61 7.64,10.52 0,5.2 -7.64,10.52 -4.95,1.61 -12.36,-4.02 -3.06,-4.21";
+
+function StayMap() {
+  return (
+    <figure className="ij-stay-map">
+      <svg
+        viewBox="0 0 960 520"
+        className="ij-stay-map-svg"
+        role="img"
+        aria-label="Mapa da costa entre Blanes e Tossa de Mar, com o Hotel Santa Marta e as áreas recomendadas"
+      >
+        <rect x="0" y="0" width="960" height="520" className="ij-map-land" />
+        <path d={`${COAST} L960,520 L0,520 Z`} className="ij-map-sea" />
+        <path d={COAST} className="ij-map-coast" />
+
+        {/* Estrada GI-682 acompanhando a costa */}
+        <path
+          d="M0,272 C60,270 90,290 130,284 C180,276 205,318 255,312 C305,306 335,272 385,278 C435,284 458,324 508,318 C565,312 595,272 645,284 C702,295 732,334 792,324 C842,316 885,288 960,294"
+          className="ij-map-road"
+        />
+        <g>
+          <rect x="452" y="236" width="52" height="17" rx="3.5" className="ij-map-tag" />
+          <text x="478" y="248.5" textAnchor="middle" className="ij-map-tag-txt">GI-682</text>
+        </g>
+
+        <text x="690" y="475" className="ij-map-sea-lbl">Mar Mediterrani</text>
+
+        {/* Áreas recomendadas (círculos tracejados) */}
+        <ellipse cx="255" cy="330" rx="66" ry="50" className="ij-map-zone" />
+        <text x="255" y="404" textAnchor="middle" className="ij-map-zone-lbl">Sa Boadella · Sta. Cristina</text>
+
+        <ellipse cx="600" cy="318" rx="74" ry="46" className="ij-map-zone" />
+        <text x="600" y="388" textAnchor="middle" className="ij-map-zone-lbl">Cala Bona · Montgoda</text>
+
+        <ellipse cx="828" cy="336" rx="60" ry="46" className="ij-map-zone" />
+        <text x="828" y="406" textAnchor="middle" className="ij-map-zone-lbl">Tossa de Mar</text>
+
+        {/* Blanes — não recomendamos */}
+        <circle cx="95" cy="314" r="4" className="ij-map-dot-off" />
+        <g transform="translate(60,286)">
+          <circle cx="0" cy="-4" r="7" className="ij-map-no" />
+          <line x1="-5" y1="1" x2="5" y2="-9" className="ij-map-no" />
+        </g>
+        <text x="76" y="291" className="ij-map-town-off">Blanes</text>
+
+        {/* Lloret de Mar — não recomendamos */}
+        <circle cx="410" cy="308" r="4" className="ij-map-dot-off" />
+        <g transform="translate(374,282)">
+          <circle cx="0" cy="-4" r="7" className="ij-map-no" />
+          <line x1="-5" y1="1" x2="5" y2="-9" className="ij-map-no" />
+        </g>
+        <text x="390" y="287" className="ij-map-town-off">Lloret de Mar</text>
+
+        {/* Hotel Santa Marta — vamos ficar aqui */}
+        <line x1="255" y1="318" x2="255" y2="150" className="ij-map-lead" />
+        <g transform="translate(255,330)">
+          <polygon points={STAR} className="ij-map-star" />
+        </g>
+        <text x="255" y="132" textAnchor="middle" className="ij-map-hotel-lbl">Hotel Santa Marta</text>
+        <text x="255" y="150" textAnchor="middle" className="ij-map-hotel-sub">Vamos ficar aqui</text>
+      </svg>
+
+      <figcaption className="ij-map-legend">
+        <span>
+          <i className="ij-map-key ij-map-key--star" aria-hidden>
+            <svg viewBox="-14 -14 28 28" width="16" height="16">
+              <polygon points={STAR} className="ij-map-star" />
+            </svg>
+          </i>
+          Onde ficaremos
+        </span>
+        <span>
+          <i className="ij-map-key ij-map-key--zone" aria-hidden />
+          Áreas recomendadas
+        </span>
+        <span>
+          <i className="ij-map-key ij-map-key--no" aria-hidden />
+          Não recomendamos
+        </span>
+      </figcaption>
+    </figure>
+  );
+}
 
 function HotelList({ hotels }: { hotels: Hotel[] }) {
   return (
@@ -450,21 +524,50 @@ export default function Tips() {
 
       {tab === "ficar" && (
         <div className="ij-tips-panel">
-          <div className="ij-hotel-areas">
-            <div className="ij-hotel-area">
-              <div className="ij-hotel-area-head">
-                <span className="ij-section-eyebrow">Tossa de Mar</span>
-                <p className="ij-hotel-dates">30 de junho — 2 de julho</p>
+          <div className="ij-stay">
+            <div className="ij-stay-lead">
+              <span className="ij-section-eyebrow ij-section-eyebrow--centered">Onde ficar</span>
+              <p className="ij-hotel-dates">30 de junho — 2 de julho</p>
+              <p>
+                Vamos ficar no{" "}
+                <a href={SANTA_MARTA_MAPS} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
+                  <strong>Hotel Santa Marta</strong>
+                </a>{" "}
+                e estamos organizando quartos para quem tiver interesse. Como a disponibilidade é difícil, quem
+                quiser pode chamar no WhatsApp que a gente ajuda.
+              </p>
+              <a href={WA_HOSPEDAGEM} target="_blank" rel="noopener noreferrer" className="ij-btn-solid">
+                Falar no WhatsApp
+              </a>
+            </div>
+
+            <StayMap />
+
+            <div className="ij-stay-note">
+              <p>
+                Não recomendamos ficar em <strong>Blanes</strong> ou <strong>Lloret de Mar</strong>. Circulamos no
+                mapa algumas áreas que têm bons airbnbs e hotéis na região.
+              </p>
+            </div>
+
+            <div className="ij-stay-alt">
+              <div className="ij-stay-alt-head">
+                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Outra opção · Tossa de Mar</span>
               </div>
-              <HotelList hotels={TOSSA_HOTELS} />
+              <p>
+                Para quem preferir, Tossa de Mar também é uma ótima opção — recomendamos ficar na região histórica
+                (qualquer hotel por ali). Alguns favoritos:
+              </p>
+              <HotelList hotels={TOSSA_ALT_HOTELS} />
               <p className="ij-hotel-legend">$ econômico &nbsp;·&nbsp; $$ médio &nbsp;·&nbsp; $$$ upscale</p>
             </div>
-            <div className="ij-hotel-area">
-              <div className="ij-hotel-area-head">
-                <span className="ij-section-eyebrow">Begur &amp; Palafrugell</span>
+
+            <div className="ij-stay-alt">
+              <div className="ij-stay-alt-head">
+                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Depois · Begur &amp; Palafrugell</span>
                 <p className="ij-hotel-dates">2 — 3 de julho</p>
               </div>
-              <p className="ij-hotel-note">
+              <p>
                 A Costa Brava é comprida — as atividades dos últimos dois dias serão mais ao norte, na região de
                 Begur e Palafrugell (~1h–1h30 de carro de Tossa).
               </p>
