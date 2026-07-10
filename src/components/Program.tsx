@@ -47,8 +47,9 @@ const EVENTS: EventData[] = [
   {
     day: "03·07",
     weekday: "Sábado",
-    title: "Vinícola & jantar",
-    description: "Passeio na vinícola Perelada com um jantar para fechar com chave de ouro na região de Begur.",
+    title: "Barco e jantar",
+    description:
+      "Passeio de barco nas calas e praias da região de Begur e um jantar para fechar com chave de ouro.",
     art: "/fotos/programacao/vinicola.webp",
   },
 ];
@@ -58,13 +59,7 @@ export default function Program() {
     <section id="program" className="ij-section ij-section-warm">
       <ScrollReveal asChild>
         <header className="ij-prog-head">
-          <span className="ij-section-eyebrow">Programação</span>
-          <h2>
-            Quatro dias
-            <br />
-            à beira-mar
-          </h2>
-          <p className="ij-section-sub">Costa Brava, Espanha</p>
+          <h2>Programação</h2>
         </header>
       </ScrollReveal>
       <div className="ij-timeline">

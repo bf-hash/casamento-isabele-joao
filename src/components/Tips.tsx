@@ -21,70 +21,318 @@ interface Hotel {
   featured?: boolean;
 }
 
-interface ListItem {
+// ---- Destination guide model (Barcelona / Costa Brava tabs) ----
+interface Place {
   name: string;
-  note: string;
+  note?: string;
+  tier?: string;
+  url: string;
 }
 
-const BCN_HOTELS: ListItem[] = [
-  { name: "Hotel Casa Bonay", note: "Boutique no Eixample · rooftop bar" },
-  { name: "Yurbban Passage", note: "Design hotel · Gótico, perto de tudo" },
-  { name: "Hotel Neri Relais & Châteaux", note: "5★ · Barri Gòtic" },
-  { name: "The Serras", note: "5★ · Port Vell, terraço com vista pro mar" },
-];
+interface Group {
+  label?: string;
+  intro?: string;
+  variant?: "grid" | "list";
+  places: Place[];
+  outro?: string;
+}
 
-const BCN_RESTAURANTS: ListItem[] = [
-  { name: "Cal Pep", note: "Tapas clássicas · Born" },
-  { name: "Bar Cañete", note: "Balcão de frutos do mar · Raval" },
-  { name: "Cervecería Catalana", note: "Tapas no Eixample" },
-  { name: "Compartir Barcelona", note: "Dos chefs do Celler de Can Roca" },
-  { name: "La Boqueria", note: "Mercado · ideal pra almoço informal" },
-];
+interface Area {
+  title: string;
+  note?: string;
+  groups: Group[];
+}
 
-const COSTA_TOSSA_RESTAURANTS: ListItem[] = [
-  { name: "La Cuina de Can Simon", note: "Cozinha catalã refinada · Vila Vella" },
-  { name: "Es Molí", note: "Frutos do mar com vista · Tossa" },
-  { name: "Restaurante Bahia", note: "Na praia · paella e peixe grelhado" },
-];
+interface Dest {
+  intro: string;
+  areas: Area[];
+}
 
-const COSTA_BEGUR_RESTAURANTS: ListItem[] = [
-  { name: "Restaurant Sa Punta", note: "Elegante · vista pra Platja de Pals" },
-  { name: "Tragamar", note: "Calella de Palafrugell · pé na água" },
-  { name: "Mas Lazuli", note: "Hotel-restaurante com horta própria" },
-  { name: "Bar La Riera", note: "Tapas em Begur · vinho natural" },
-];
+function maps(query: string) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
 
-const BEACHES: ListItem[] = [
-  { name: "Cala Giverola", note: "Perto de Tossa · cercada por pinheiros, água turquesa" },
-  { name: "Platja Gran", note: "Praia principal de Tossa · muralha medieval ao fundo" },
-  { name: "Cala Pola", note: "Pequena e escondida entre Tossa e Lloret" },
-  { name: "Cala Sa Boadella", note: "Lloret · mais tranquila, acesso a pé" },
-  { name: "Platja de Sa Tuna", note: "Begur · casas de pescadores, perfeita" },
-  { name: "Cala Aiguablava", note: "Begur · água incrivelmente azul" },
-  { name: "Platja del Castell", note: "Palamós · uma das últimas virgens da Costa Brava" },
-  { name: "Calella de Palafrugell", note: "Vilarejo com calas pequenas lado a lado" },
-];
+const COSTA_BRAVA: Dest = {
+  intro:
+    "A costa é longa e vai de Tossa de Mar até Cadaqués. Vamos compartilhar os destaques de cada lugar — se tiverem tempo, cheguem antes ou fiquem mais uns dias: são praias e cidades medievais lindas.",
+  areas: [
+    {
+      title: "Begur",
+      note: "Muito central — pertinho das praias e das cidades medievais.",
+      groups: [
+        {
+          label: "Onde ficar",
+          variant: "list",
+          places: [
+            { name: "La Bionda", tier: "$$$", url: maps("La Bionda Begur") },
+            { name: "Alta House Begur", tier: "$$", url: maps("Alta House Begur") },
+            {
+              name: "Bypillow Begur Centro",
+              tier: "$$",
+              note: "Além do hotel, também têm vários apartamentos",
+              url: maps("Bypillow Begur Centro"),
+            },
+            { name: "Finca Vitòria", tier: "$$$", url: maps("Finca Vitoria Begur") },
+            { name: "Aiguaclara", tier: "$$$", url: maps("Aiguaclara Begur") },
+          ],
+        },
+        {
+          label: "Praias",
+          places: [
+            {
+              name: "Cala Sa Tuna",
+              note: "Vila de pescadores muito fofa, com praia de água transparente e bares de frente para a praia",
+              url: maps("Cala Sa Tuna Begur"),
+            },
+            {
+              name: "Platja d'Aiguablava",
+              note: "Praia paradisíaca com um dos melhores restaurantes à beira-mar que já fomos (Toc al Mar)",
+              url: maps("Platja Aiguablava Begur"),
+            },
+            { name: "Platja Fonda", url: maps("Platja Fonda Begur") },
+            {
+              name: "El Golfet",
+              note: "Praia paradisíaca com uma trilha linda e bem fácil (5 min de caminhada), o Camí de Ronda — dá para percorrer toda a Costa Brava por ela",
+              url: maps("El Golfet Calella de Palafrugell"),
+            },
+            {
+              name: "Llafranc",
+              note: "Praia de areia linda. Chegamos fazendo o Camí de Ronda desde Calella de Palafrugell. Para comer, o Isabella's é ótimo, com bons vinhos e de frente para a praia",
+              url: maps("Llafranc Palafrugell"),
+            },
+          ],
+        },
+        {
+          label: "Onde comer e beber",
+          places: [
+            { name: "Clara Restaurant", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
+            { name: "Begurió", url: maps("Begurio Begur") },
+            { name: "Ocasia", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
+            { name: "Can Kai", note: "Sushi", url: maps("Can Kai Begur") },
+            {
+              name: "360 Rooftop by Gerard Ruiz",
+              note: "Drinks com a melhor vista de Begur",
+              url: maps("360 Rooftop Begur"),
+            },
+          ],
+        },
+        {
+          label: "Cidades por perto",
+          places: [
+            {
+              name: "Pals",
+              note: "Cidade medieval preservada e charmosa",
+              url: maps("Pals Girona"),
+            },
+            {
+              name: "Calella de Palafrugell",
+              note: "Parece a Grécia. Praia bonita e vila para almoçar e ver as lojinhas. Recomendamos o restaurante Margarita",
+              url: maps("Calella de Palafrugell"),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Cadaqués",
+      note: "Cidade do Salvador Dalí — conhecida pela arte, arquitetura, gastronomia e lojas de artesanato.",
+      groups: [
+        {
+          label: "Onde dormir",
+          places: [
+            { name: "Carpe Cadaqués", url: maps("Carpe Cadaques") },
+            { name: "Casa Marquina", url: maps("Casa Marquina Cadaques") },
+            { name: "Riba Pitxot Apartments", url: maps("Riba Pitxot Cadaques") },
+            { name: "La Casa Verda Cadaqués", url: maps("La Casa Verda Cadaques") },
+          ],
+        },
+        {
+          label: "Onde comer",
+          places: [
+            { name: "Narita", url: maps("Narita Cadaques") },
+            { name: "Oli Bar", url: maps("Oli Bar Cadaques") },
+            { name: "Casa Dionis", url: maps("Casa Dionis Cadaques") },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Tossa de Mar",
+      groups: [
+        {
+          label: "Onde comer",
+          places: [
+            {
+              name: "L'Espai",
+              note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
+              url: maps("L'Espai Tossa de Mar"),
+            },
+          ],
+        },
+      ],
+    },
+  ],
+};
 
-function TipList({ items }: { items: ListItem[] }) {
+const BARCELONA: Dest = {
+  intro: "Se passarem por Barcelona, aqui vão algumas dicas para ajudar.",
+  areas: [
+    {
+      title: "Onde ficar",
+      note: "Gostamos de ficar no Eixample ou em Gràcia — as ruas Balmes e Enric Granados têm ótimos hotéis e muitos restaurantes bons por perto. É menos cheio e turístico que o Gòtic.",
+      groups: [
+        {
+          variant: "list",
+          places: [
+            { name: "Ohla Eixample", tier: "$$$$", url: maps("Ohla Eixample Barcelona") },
+            { name: "Eurostars Barcelona Central", tier: "$$$", url: maps("Eurostars Barcelona Central") },
+            { name: "Hotel Granados 83", tier: "$$$", url: maps("Hotel Granados 83 Barcelona") },
+            { name: "Hotel Casa Luz", tier: "$$$", url: maps("Hotel Casa Luz Barcelona") },
+            { name: "Hotel Arconde", tier: "$$$", url: maps("Hotel Arconde Barcelona") },
+            { name: "Hotel Balmes", tier: "$$$", url: maps("Hotel Balmes Barcelona") },
+          ],
+        },
+      ],
+    },
+    {
+      title: "Onde comer",
+      groups: [
+        {
+          label: "Para tapas",
+          places: [
+            {
+              name: "Quimet & Quimet",
+              note: "Comida e drinks bons, em pé numa taberna bem espanhola",
+              url: maps("Quimet i Quimet Barcelona"),
+            },
+            { name: "Cañete", note: "Clássico de tapas no Raval", url: maps("Bar Canete Barcelona") },
+            {
+              name: "La Vinya del Senyor",
+              note: "Bons vinhos de frente para uma igreja medieval. Um dos nossos favoritos",
+              url: maps("La Vinya del Senyor Barcelona"),
+            },
+            {
+              name: "L'Ànima del Vi",
+              note: "Ótimo à noite: seleção de vinhos naturais e bons tapas",
+              url: maps("L'Anima del Vi Barcelona"),
+            },
+            {
+              name: "Can Paixano (La Xampanyeria)",
+              note: "O objetivo é democratizar a cava. Sem mesas — encoste no balcão para cavas por 3 euros e tapas nota 10",
+              url: maps("Can Paixano Barcelona"),
+            },
+            { name: "Bar del Pla", note: "Também dá para almoçar ou jantar", url: maps("Bar del Pla Barcelona") },
+            { name: "El Xampanyet", note: "Um clássico — mas chegue cedo!", url: maps("El Xampanyet Barcelona") },
+          ],
+        },
+        {
+          label: "Para comer e tomar vinho",
+          places: [
+            { name: "Nardí", note: "Boteco de frutos do mar", url: maps("Nardi Barcelona") },
+            {
+              name: "Monocrom",
+              note: "Um dos favoritos: o melhor steak tartare que conheço e ótima seleção de vinhos naturais",
+              url: maps("Monocrom Barcelona"),
+            },
+          ],
+        },
+        {
+          label: "Para comer sushi e frutos do mar",
+          places: [
+            { name: "Shunka", note: "Nosso sushi preferido de Barcelona", url: maps("Shunka Barcelona") },
+            { name: "Koy Shunka", note: "Ao lado do Shunka, é a versão omakase", url: maps("Koy Shunka Barcelona") },
+            {
+              name: "Sato i Tanka",
+              note: "Preço bom e ótima variedade de peixes",
+              url: maps("Sato i Tanaka Barcelona"),
+            },
+            {
+              name: "Estimar",
+              note: "Frutos do mar e peixe inteiro em ambiente refinado",
+              url: maps("Estimar Barcelona"),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: "O que fazer",
+      groups: [
+        {
+          places: [
+            {
+              name: "Museu Miró",
+              note: "E aproveitar para passear por Montjuïc",
+              url: maps("Fundacio Joan Miro Barcelona"),
+            },
+            { name: "Casa Batlló", note: "Arquitetura de Gaudí", url: maps("Casa Batllo Barcelona") },
+            { name: "Casa Milà (La Pedrera)", note: "Arquitetura de Gaudí", url: maps("Casa Mila La Pedrera Barcelona") },
+            { name: "Sagrada Família", note: "Arquitetura de Gaudí", url: maps("Sagrada Familia Barcelona") },
+            {
+              name: "Praia Nova Icária",
+              note: "Se quiserem praia, é logo depois da Barceloneta",
+              url: maps("Platja Nova Icaria Barcelona"),
+            },
+          ],
+          outro:
+            "E, claro: se perder pelo Eixample e tomar uma taça de vinho (ou um espresso) a cada esquina.",
+        },
+      ],
+    },
+  ],
+};
+
+function PlaceGrid({ places }: { places: Place[] }) {
   return (
-    <ul className="ij-tip-list">
-      {items.map((it) => (
-        <li key={it.name}>
-          <b>{it.name}</b>
-          <small>{it.note}</small>
+    <div className="ij-rest-grid">
+      {places.map((p) => (
+        <div key={p.name} className="ij-rest-item">
+          <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-rest-name ij-rest-link">
+            {p.name}
+          </a>
+          {p.note && <div className="ij-rest-desc">{p.note}</div>}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function PlaceList({ places }: { places: Place[] }) {
+  return (
+    <ul className="ij-hotel-list">
+      {places.map((p) => (
+        <li key={p.name}>
+          <span>
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-hotel-name">
+              {p.name}
+            </a>
+            {p.note && <span className="ij-hotel-note-inline">{p.note}</span>}
+          </span>
+          {p.tier && <span className="ij-hotel-tier">{p.tier}</span>}
         </li>
       ))}
     </ul>
   );
 }
 
-function RestGrid({ items }: { items: ListItem[] }) {
+function DestPanel({ dest }: { dest: Dest }) {
   return (
-    <div className="ij-rest-grid">
-      {items.map((it) => (
-        <div key={it.name} className="ij-rest-item">
-          <div className="ij-rest-name">{it.name}</div>
-          <div className="ij-rest-desc">{it.note}</div>
+    <div className="ij-tips-panel ij-dest">
+      <div className="ij-dest-head">
+        <p className="ij-dest-intro">{dest.intro}</p>
+      </div>
+      {dest.areas.map((area) => (
+        <div key={area.title} className="ij-rest-section">
+          <div className="ij-tip-col-k">{area.title}</div>
+          {area.note && <p className="ij-tip-text">{area.note}</p>}
+          {area.groups.map((g, i) => (
+            <div key={g.label ?? i} className="ij-dest-group">
+              {g.label && <div className="ij-dest-group-label">{g.label}</div>}
+              {g.intro && <p className="ij-tip-text">{g.intro}</p>}
+              {g.variant === "list" ? <PlaceList places={g.places} /> : <PlaceGrid places={g.places} />}
+              {g.outro && <p className="ij-tip-note">{g.outro}</p>}
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -151,12 +399,7 @@ export default function Tips() {
     <section id="tips" className="ij-section ij-section-warm">
       <ScrollReveal asChild>
         <div className="ij-section-header">
-          <span className="ij-section-eyebrow ij-section-eyebrow--centered">Dicas</span>
-          <h2>
-            Para aproveitar
-            <br />
-            <span className="ij-serif-it">cada detalhe</span>
-          </h2>
+          <h2>Dicas</h2>
         </div>
       </ScrollReveal>
 
@@ -260,71 +503,9 @@ export default function Tips() {
         </div>
       )}
 
-      {tab === "barcelona" && (
-        <div className="ij-tips-panel ij-dest">
-          <div className="ij-dest-head">
-            <p className="ij-dest-intro">
-              Muitos voos do Brasil fazem conexão ou chegam em Barcelona. Se puderem, aproveitem para passar uns
-              dias na cidade — vale cada hora.
-            </p>
-          </div>
+      {tab === "barcelona" && <DestPanel dest={BARCELONA} />}
 
-          <div className="ij-tip-cols">
-            <div>
-              <div className="ij-tip-col-k">Onde ficar</div>
-              <TipList items={BCN_HOTELS} />
-            </div>
-            <div>
-              <div className="ij-tip-col-k">Onde comer</div>
-              <TipList items={BCN_RESTAURANTS} />
-            </div>
-            <div>
-              <div className="ij-tip-col-k">O que fazer</div>
-              <p className="ij-tip-text">
-                Sagrada Família, Parc Güell, bairro Gótico, passeio pela Barceloneta, El Born para compras e bares.
-              </p>
-              <p className="ij-tip-text ij-tip-text--faint">
-                Reserve os ingressos da Sagrada Família com antecedência.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {tab === "costa-brava" && (
-        <div className="ij-tips-panel ij-dest">
-          <div className="ij-dest-head">
-            <p className="ij-dest-intro">
-              Entre Tossa de Mar, Begur e Palafrugell há mesas memoráveis e calas de água turquesa. Reservem um dia
-              (ou dois) para se perder pelo litoral.
-            </p>
-          </div>
-
-          <div className="ij-rest-section">
-            <div className="ij-tip-col-k">Restaurantes — Tossa de Mar</div>
-            <RestGrid items={COSTA_TOSSA_RESTAURANTS} />
-          </div>
-          <div className="ij-rest-section">
-            <div className="ij-tip-col-k">Restaurantes — Begur &amp; Palafrugell</div>
-            <RestGrid items={COSTA_BEGUR_RESTAURANTS} />
-          </div>
-          <div className="ij-beach-section">
-            <div className="ij-tip-col-k">Praias</div>
-            <div className="ij-beach-grid">
-              {BEACHES.map((b) => (
-                <div key={b.name} className="ij-beach-item">
-                  <div className="ij-beach-name">{b.name}</div>
-                  <div className="ij-beach-desc">{b.note}</div>
-                </div>
-              ))}
-            </div>
-            <p className="ij-tip-note">
-              Alugue um carro para explorar as calas — muitas são acessíveis só de carro seguido de uma caminhada
-              curta.
-            </p>
-          </div>
-        </div>
-      )}
+      {tab === "costa-brava" && <DestPanel dest={COSTA_BRAVA} />}
     </section>
   );
 }

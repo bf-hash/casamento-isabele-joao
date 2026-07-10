@@ -88,12 +88,7 @@ export default function RSVP() {
       <ScrollReveal asChild>
         <div className="ij-rsvp-inner">
           <div className="ij-section-header">
-            <span className="ij-section-eyebrow ij-section-eyebrow--centered">RSVP</span>
-            <h2>
-              Confirme
-              <br />
-              sua presença
-            </h2>
+            <h2>RSVP</h2>
           </div>
           <div className="ij-rsvp-form-wrap">
             <div className="ij-rsvp-form-inner">
