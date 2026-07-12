@@ -37,7 +37,7 @@ export async function POST(request: Request) {
   if (body.attending && whatsappNumber.length >= 10) {
     const firstName = String(body.name || "").trim().split(" ")[0];
     try {
-      await runKapsoWorkflow(KAPSO_RSVP_WORKFLOW_URL, {
+      const result = await runKapsoWorkflow(KAPSO_RSVP_WORKFLOW_URL, {
         phone_number: `+${whatsappNumber}`,
         // Variáveis disponíveis para o workflow personalizar a mensagem.
         variables: {
@@ -45,8 +45,15 @@ export async function POST(request: Request) {
           first_name: firstName,
         },
       });
-    } catch {
-      // ignora — o RSVP já foi registrado
+      console.log("[kapso] disparo do workflow de RSVP", {
+        ok: result.ok,
+        status: result.status,
+        to: `+${whatsappNumber}`,
+        response: result.data,
+      });
+    } catch (e) {
+      console.error("[kapso] erro ao disparar o workflow de RSVP", e);
+      // não relança — o RSVP já foi registrado
     }
   }
 
