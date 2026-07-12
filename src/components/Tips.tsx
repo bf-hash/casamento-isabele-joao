@@ -519,11 +519,11 @@ export default function Tips() {
 
             <div className="ij-stay-alt">
               <div className="ij-stay-alt-head">
-                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Depois · Begur &amp; Palafrugell</span>
+                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Depois · Begur</span>
                 <p className="ij-hotel-dates">2 — 4 de julho</p>
               </div>
               <p>
-                A Costa Brava é comprida e o rolê de sábado será mais ao norte, na região de Begur e Palafrugell
+                A Costa Brava é comprida e o rolê de sábado será mais ao norte, na região de Begur
                 (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
                 opções:
               </p>

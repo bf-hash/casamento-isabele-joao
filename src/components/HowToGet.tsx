@@ -17,10 +17,6 @@ export default function HowToGet() {
               Do Brasil, a <strong>LATAM</strong> opera voo direto de São Paulo (GRU) para Barcelona; também há
               opções com conexão em Lisboa, Madrid ou outras capitais europeias.
             </p>
-            <p>
-              De Barcelona até o casamento: cerca de 1h30 (~90 km). De Girona, aproximadamente 45 minutos (~45 km).
-              Estradas tranquilas e vistas que valem a viagem, além de liberdade para explorar a região.
-            </p>
           </div>
           <div className="ij-howto-block">
             <h4>Até a Costa Brava</h4>
