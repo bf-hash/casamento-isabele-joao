@@ -7,7 +7,7 @@ import { type Gift, formatBRL } from "@/lib/gifts";
 
 const COUPLE_NAME = "Isabele & João";
 
-type Step = "amount" | "name" | "note" | "pay";
+type Step = "amount" | "name" | "note" | "pay" | "done";
 
 export default function GiftCheckout({ gift }: { gift: Gift }) {
   const [step, setStep] = useState<Step>(gift.custom ? "amount" : "name");
@@ -25,9 +25,15 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
     setProcessing(true);
     setError("");
 
+    // Abre o Mercado Pago numa nova aba ainda dentro do gesto de clique (assim
+    // o bloqueador de pop-up não atrapalha). A pessoa continua no nosso site,
+    // onde mostramos a confirmação — como não recebemos retorno do pagamento,
+    // este clique é o passo final que registramos.
+    window.open(gift.cardLink, "_blank", "noopener,noreferrer");
+
     // Registra a contribuição (status "pending") para os noivos saberem de
-    // quem veio o presente. É best-effort: uma falha aqui não deve impedir o
-    // pagamento, que acontece no link hospedado do Mercado Pago.
+    // quem veio o presente. É best-effort: uma falha aqui não deve travar o
+    // fechamento do fluxo.
     try {
       await fetch("/api/gifts", {
         method: "POST",
@@ -41,11 +47,11 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
         }),
       });
     } catch {
-      // ignora — segue para o pagamento mesmo assim
+      // ignora — o pagamento já foi aberto em outra aba
     }
 
-    // Redireciona para o link de pagamento do Mercado Pago (PIX + cartão).
-    window.location.href = gift.cardLink;
+    setProcessing(false);
+    setStep("done");
   };
 
   const stepOrder: Step[] = gift.custom
@@ -75,16 +81,18 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
 
         {/* Fluxo */}
         <div className="ij-checkout-form">
-          <div className="ij-rsvp-progress ij-checkout-progress">
-            {stepOrder.map((s, i) => (
-              <div
-                key={s}
-                className={`ij-rsvp-progress-dot ${
-                  stepOrder.indexOf(step) >= i ? "is-active" : ""
-                }`}
-              />
-            ))}
-          </div>
+          {step !== "done" && (
+            <div className="ij-rsvp-progress ij-checkout-progress">
+              {stepOrder.map((s, i) => (
+                <div
+                  key={s}
+                  className={`ij-rsvp-progress-dot ${
+                    stepOrder.indexOf(step) >= i ? "is-active" : ""
+                  }`}
+                />
+              ))}
+            </div>
+          )}
 
           {/* Passo 0 (só no customizado): Valor */}
           {step === "amount" && (
@@ -193,8 +201,8 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
 
               <div className="ij-pay-panel">
                 <p className="ij-pay-panel-soon">
-                  Ao continuar, você vai para o <strong>Mercado Pago</strong>,
-                  onde pode pagar com <strong>PIX</strong> ou{" "}
+                  Ao continuar, abrimos o <strong>Mercado Pago</strong> em uma
+                  nova aba, onde você paga com <strong>PIX</strong> ou{" "}
                   <strong>cartão de crédito</strong>.
                 </p>
               </div>
@@ -207,7 +215,7 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
                 onClick={handlePay}
               >
                 {processing
-                  ? "Redirecionando..."
+                  ? "Abrindo o pagamento..."
                   : `Ir para o pagamento — ${formatBRL(amount)}`}
               </button>
               <button
@@ -217,6 +225,35 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
               >
                 Voltar
               </button>
+            </div>
+          )}
+
+          {/* Passo final: confirmação (o clique é o passo final que registramos) */}
+          {step === "done" && (
+            <div className="ij-rsvp-step ij-rsvp-step--done">
+              <div className="ij-rsvp-done-icon">&#10003;</div>
+              <h3 className="ij-rsvp-step-title">Presente registrado, obrigado!</h3>
+              <p className="ij-rsvp-step-desc">
+                Abrimos o <strong>Mercado Pago</strong> em uma nova aba para você
+                concluir o pagamento de {gift.name} — {formatBRL(amount)}. Se a
+                aba não abrir,{" "}
+                <a
+                  href={gift.cardLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ij-inline-link"
+                >
+                  clique aqui
+                </a>
+                .
+              </p>
+              <Link
+                href="/#gifts"
+                className="ij-rsvp-back"
+                style={{ marginTop: 16 }}
+              >
+                Voltar aos presentes
+              </Link>
             </div>
           )}
         </div>
