@@ -19,3 +19,22 @@ export async function sendWhatsAppMessage(to: string, body: string) {
 
   return res.json();
 }
+
+// Dispara a execução de um workflow do Kapso (endpoint /platform/v1/workflows/
+// {id}/executions). Quem monta e envia a mensagem de WhatsApp é o workflow,
+// configurado no painel do Kapso — aqui só passamos o telefone e as variáveis.
+export async function runKapsoWorkflow(
+  executionsUrl: string,
+  payload: Record<string, unknown>
+) {
+  const res = await fetch(executionsUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-API-Key": KAPSO_API_KEY,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  return res.json();
+}
