@@ -27,6 +27,10 @@ export async function runKapsoWorkflow(
   executionsUrl: string,
   payload: Record<string, unknown>
 ) {
+  if (!KAPSO_API_KEY) {
+    console.error("[kapso] KAPSO_API_KEY ausente — o disparo do workflow vai falhar.");
+  }
+
   const res = await fetch(executionsUrl, {
     method: "POST",
     headers: {
@@ -36,5 +40,17 @@ export async function runKapsoWorkflow(
     body: JSON.stringify(payload),
   });
 
-  return res.json();
+  const raw = await res.text();
+  let data: unknown = raw;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    // resposta não-JSON: mantém o texto cru
+  }
+
+  if (!res.ok) {
+    console.error("[kapso] workflow execution falhou", res.status, raw);
+  }
+
+  return { ok: res.ok, status: res.status, data };
 }
