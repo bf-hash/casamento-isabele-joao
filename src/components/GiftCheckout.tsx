@@ -7,14 +7,18 @@ import { type Gift, formatBRL } from "@/lib/gifts";
 
 const COUPLE_NAME = "Isabele & João";
 
-type Step = "name" | "note" | "pay";
+type Step = "amount" | "name" | "note" | "pay";
 
 export default function GiftCheckout({ gift }: { gift: Gift }) {
-  const [step, setStep] = useState<Step>("name");
+  const [step, setStep] = useState<Step>(gift.custom ? "amount" : "name");
   const [name, setName] = useState("");
   const [note, setNote] = useState("");
+  const [amountInput, setAmountInput] = useState("");
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
+
+  // Presentes fixos usam o preço da lista; o customizado usa o valor digitado.
+  const amount = gift.custom ? Number(amountInput) || 0 : gift.price;
 
   const handlePay = async () => {
     setProcessing(true);
@@ -30,7 +34,7 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
         body: JSON.stringify({
           giftId: gift.id,
           giftName: gift.name,
-          amount: gift.price,
+          amount,
           name,
           note,
         }),
@@ -52,7 +56,9 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
     }
   };
 
-  const stepOrder: Step[] = ["name", "note", "pay"];
+  const stepOrder: Step[] = gift.custom
+    ? ["amount", "name", "note", "pay"]
+    : ["name", "note", "pay"];
 
   return (
     <section className="ij-section ij-section-warm ij-checkout-section">
@@ -68,7 +74,11 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
           )}
           <span className="ij-checkout-summary-eyebrow">Presente escolhido</span>
           <h1 className="ij-checkout-summary-name">{gift.name}</h1>
-          <p className="ij-checkout-summary-price">{formatBRL(gift.price)}</p>
+          <p className="ij-checkout-summary-price">
+            {gift.custom && amount <= 0
+              ? "Escolha o valor"
+              : formatBRL(amount)}
+          </p>
         </aside>
 
         {/* Fluxo */}
@@ -83,6 +93,40 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
               />
             ))}
           </div>
+
+          {/* Passo 0 (só no customizado): Valor */}
+          {step === "amount" && (
+            <div className="ij-rsvp-step">
+              <h3 className="ij-rsvp-step-title">Qual valor você quer presentear?</h3>
+              <p className="ij-rsvp-step-desc">
+                Você escolhe quanto quer contribuir com este presente.
+              </p>
+              <input
+                type="number"
+                inputMode="decimal"
+                min={1}
+                step="1"
+                className="ij-rsvp-input"
+                placeholder="Ex.: 200"
+                value={amountInput}
+                onChange={(e) => setAmountInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && amount >= 1) setStep("name");
+                }}
+                autoFocus
+              />
+              <button
+                className="ij-rsvp-btn"
+                disabled={amount < 1}
+                onClick={() => setStep("name")}
+              >
+                Continuar
+              </button>
+              <Link href="/#gifts" className="ij-rsvp-back">
+                Voltar aos presentes
+              </Link>
+            </div>
+          )}
 
           {/* Passo 1: Nome */}
           {step === "name" && (
@@ -109,9 +153,15 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
               >
                 Continuar
               </button>
-              <Link href="/#gifts" className="ij-rsvp-back">
-                Voltar aos presentes
-              </Link>
+              {gift.custom ? (
+                <button className="ij-rsvp-back" onClick={() => setStep("amount")}>
+                  Voltar
+                </button>
+              ) : (
+                <Link href="/#gifts" className="ij-rsvp-back">
+                  Voltar aos presentes
+                </Link>
+              )}
             </div>
           )}
 
@@ -146,7 +196,7 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
               <h3 className="ij-rsvp-step-title">Pagamento</h3>
               <p className="ij-rsvp-step-desc">
                 <em className="ij-brand-name">{name}</em>, você está presenteando{" "}
-                {gift.name} — {formatBRL(gift.price)}.
+                {gift.name} — {formatBRL(amount)}.
               </p>
 
               <div className="ij-pay-panel">
@@ -165,7 +215,7 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
               >
                 {processing
                   ? "Redirecionando..."
-                  : `Ir para o pagamento — ${formatBRL(gift.price)}`}
+                  : `Ir para o pagamento — ${formatBRL(amount)}`}
               </button>
               <button
                 className="ij-rsvp-back"

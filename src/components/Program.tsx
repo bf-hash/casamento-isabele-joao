@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import ScrollReveal from "./ScrollReveal";
 
 interface EventData {
@@ -7,12 +8,16 @@ interface EventData {
   time?: string;
   venue?: string;
   address?: string;
-  description?: string;
+  description?: ReactNode;
   mapsUrl?: string;
   venueUrl?: string;
   transportNote?: string;
   art: string;
 }
+
+const BOAT_TOUR_WHATSAPP = `https://wa.me/12028603255?text=${encodeURIComponent(
+  "Oi! Tenho interesse em fazer o passeio de barco",
+)}`;
 
 const EVENTS: EventData[] = [
   {
@@ -48,8 +53,16 @@ const EVENTS: EventData[] = [
     day: "03·07",
     weekday: "Sábado",
     title: "Barco e jantar",
-    description:
-      "Passeio de barco nas calas e praias da região de Begur e um jantar para fechar com chave de ouro.",
+    description: (
+      <>
+        Estamos organizando um passeio de barco nas calas e praias da região de
+        Begur e um jantar para fechar com chave de ouro. Se tiver interesse,{" "}
+        <a href={BOAT_TOUR_WHATSAPP} target="_blank" rel="noopener noreferrer">
+          mande uma mensagem aqui
+        </a>
+        .
+      </>
+    ),
     art: "/fotos/programacao/vinicola.webp",
   },
 ];
