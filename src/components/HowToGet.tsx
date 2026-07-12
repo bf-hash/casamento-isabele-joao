@@ -26,7 +26,7 @@ export default function HowToGet() {
             <h4>Até a Costa Brava</h4>
             <h3 className="ij-howto-block-title">Recomendamos alugar um carro</h3>
             <p>
-              De Barcelona até Tossa de Mar: cerca de 1h30 (~90 km). De Girona, aproximadamente 45 minutos (~45 km).
+              De Barcelona até o casamento: cerca de 1h30 (~90 km). De Girona, aproximadamente 45 minutos (~45 km).
               Estradas tranquilas e vistas que valem a viagem, além de liberdade para explorar a região.
             </p>
           </div>

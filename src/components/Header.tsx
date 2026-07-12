@@ -108,16 +108,18 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <NavLink href={ctaHref} className="ij-nav-cta">
-          Confirmar
-        </NavLink>
-        <button
-          className="ij-nav-burger"
-          onClick={() => setMobileOpen((o) => !o)}
-          aria-label="Menu"
-        >
-          {mobileOpen ? "✕" : "☰"}
-        </button>
+        <div className="ij-nav-right">
+          <NavLink href={ctaHref} className="ij-nav-cta">
+            Confirmar
+          </NavLink>
+          <button
+            className="ij-nav-burger"
+            onClick={() => setMobileOpen((o) => !o)}
+            aria-label="Menu"
+          >
+            {mobileOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
       {mobileOpen && (
         <div className="ij-nav-mobile">
