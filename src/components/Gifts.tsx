@@ -32,7 +32,9 @@ export default function Gifts() {
             )}
             <div className="ij-gift-card-body">
               <h3 className="ij-gift-card-name">{gift.name}</h3>
-              <p className="ij-gift-card-price">{formatBRL(gift.price)}</p>
+              <p className="ij-gift-card-price">
+                {gift.custom ? "Escolha o valor" : formatBRL(gift.price)}
+              </p>
               <div className="ij-gift-card-actions">
                 <Link
                   href={`/presente/${gift.id}`}

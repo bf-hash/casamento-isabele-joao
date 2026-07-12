@@ -5,6 +5,8 @@ export interface Gift {
   name: string;
   price: number;
   cardLink: string;
+  // Presente sem valor fixo: quem presenteia escolhe o valor no checkout.
+  custom?: boolean;
 }
 
 export const GIFTS: Gift[] = [
@@ -111,6 +113,15 @@ export const GIFTS: Gift[] = [
     name: "Executiva",
     price: 2000,
     cardLink: "",
+  },
+  {
+    id: "customizado",
+    emoji: "🎁",
+    image: "/fotos/presentes/tacas.webp",
+    name: "Presente customizado",
+    price: 0,
+    cardLink: "",
+    custom: true,
   },
 ];
 
