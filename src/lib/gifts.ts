@@ -117,7 +117,7 @@ export const GIFTS: Gift[] = [
   {
     id: "customizado",
     emoji: "🎁",
-    image: "/fotos/presentes/tacas.webp",
+    image: "/fotos/presentes/customizado.jpeg",
     name: "Presente customizado",
     price: 0,
     cardLink: "https://link.mercadopago.com.br/isabeleejoao",

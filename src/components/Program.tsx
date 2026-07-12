@@ -31,13 +31,13 @@ const EVENTS: EventData[] = [
     day: "01·07",
     weekday: "Quinta-feira",
     title: "Casamento",
-    time: "A partir das 18h",
+    time: "A partir das 17h",
     venue: "Convent de Blanes",
     address: "Passeig de Carles Faust, 4, 17300 Blanes, Girona",
     mapsUrl: "https://maps.google.com/?q=El+Convent+de+Blanes+Passeig+Carles+Faust+4",
     venueUrl: "https://elconventblanes.com/en/",
     transportNote:
-      "Teremos vans que buscarão em Tossa de Mar e no Hotel Santa Marta (Lloret de Mar) no dia do casamento.",
+      "Teremos vans de ida e volta ao local. Mais perto confirmaremos os endereços.",
     art: "/fotos/programacao/casamento.webp",
   },
   {
