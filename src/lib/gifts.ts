@@ -39,7 +39,7 @@ export const GIFTS: Gift[] = [
     emoji: "🧀",
     image: "/fotos/presentes/queijos.jpeg",
     name: "Queijos e vinhos",
-    price: 320,
+    price: 350,
     cardLink: "",
   },
   {
@@ -47,7 +47,7 @@ export const GIFTS: Gift[] = [
     emoji: "🍽️",
     image: "/fotos/presentes/jantar.jpeg",
     name: "Jantar na lua de mel",
-    price: 350,
+    price: 600,
     cardLink: "",
   },
   {
@@ -55,7 +55,7 @@ export const GIFTS: Gift[] = [
     emoji: "🦪",
     image: "/fotos/presentes/ostras.jpeg",
     name: "Oyster and Champagne",
-    price: 350,
+    price: 400,
     cardLink: "",
   },
   {
@@ -63,7 +63,7 @@ export const GIFTS: Gift[] = [
     emoji: "🏖️",
     image: "/fotos/presentes/barranco.jpeg",
     name: "Dia no Barranco",
-    price: 400,
+    price: 700,
     cardLink: "",
   },
   {
@@ -79,7 +79,7 @@ export const GIFTS: Gift[] = [
     emoji: "🏠",
     image: "/fotos/presentes/marimekko.webp",
     name: "Casa dos sonhos Marimekko",
-    price: 500,
+    price: 800,
     cardLink: "",
   },
   {
@@ -87,7 +87,7 @@ export const GIFTS: Gift[] = [
     emoji: "🍖",
     image: "/fotos/presentes/jamon.jpeg",
     name: "Pata de Jamon",
-    price: 600,
+    price: 1000,
     cardLink: "",
   },
   {
@@ -95,7 +95,7 @@ export const GIFTS: Gift[] = [
     emoji: "⛵",
     image: "/fotos/presentes/barco.jpeg",
     name: "Passeio de barco",
-    price: 1000,
+    price: 1200,
     cardLink: "",
   },
   {
@@ -103,7 +103,7 @@ export const GIFTS: Gift[] = [
     emoji: "🏨",
     image: "/fotos/presentes/hotel.jpeg",
     name: "Noite em hotel boutique",
-    price: 1200,
+    price: 2000,
     cardLink: "",
   },
   {
@@ -111,7 +111,7 @@ export const GIFTS: Gift[] = [
     emoji: "✈️",
     image: "/fotos/presentes/executiva.jpeg",
     name: "Executiva",
-    price: 2000,
+    price: 2500,
     cardLink: "",
   },
   {
