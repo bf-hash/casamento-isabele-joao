@@ -13,6 +13,7 @@ interface Guest {
 export default function RSVP() {
   const [step, setStep] = useState<Step>("name");
   const [name, setName] = useState("");
+  const [phone, setPhone] = useState("+55 ");
   const [guestCount, setGuestCount] = useState(0);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [ownDietary, setOwnDietary] = useState("");
@@ -65,6 +66,7 @@ export default function RSVP() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name,
+          phone: phone.trim(),
           attending,
           guestCount: attending ? guestCount : 0,
           guests: attending ? guests : [],
@@ -82,6 +84,10 @@ export default function RSVP() {
 
   const canProceedGuests =
     guests.length === 0 || guests.every((g) => g.name.trim().length > 0);
+
+  // Telefone: exigimos alguns dígitos para valer como número de verdade.
+  const phoneDigits = phone.replace(/\D/g, "");
+  const phoneValid = phoneDigits.length >= 10;
 
   return (
     <section id="rsvp" className="ij-section ij-section-warm">
@@ -276,18 +282,31 @@ export default function RSVP() {
               {/* Step: Message */}
               {step === "message" && (
                 <div className="ij-rsvp-step">
-                  <h3 className="ij-rsvp-step-title">Recadinho para os noivos</h3>
-                  <p className="ij-rsvp-step-desc"> </p>
+                  <h3 className="ij-rsvp-step-title">Telefone e recadinho</h3>
+                  <p className="ij-rsvp-step-desc">
+                    Deixe seu telefone (WhatsApp) para recebermos avisos sobre o
+                    casamento.
+                  </p>
+                  <div className="ij-rsvp-dietary-group">
+                    <label className="ij-rsvp-dietary-label">Telefone (WhatsApp)</label>
+                    <input
+                      type="tel"
+                      className="ij-rsvp-input"
+                      placeholder="+55 (11) 99999-9999"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
                   <textarea
                     className="ij-rsvp-textarea"
-                    placeholder="Escreva aqui..."
+                    placeholder="Recadinho para os noivos (opcional)"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
                   />
                   <button
                     className="ij-rsvp-btn"
-                    disabled={submitting}
+                    disabled={submitting || !phoneValid}
                     onClick={() => handleSubmit(true)}
                   >
                     {submitting ? "Enviando..." : "Confirmar presença"}
@@ -306,8 +325,20 @@ export default function RSVP() {
                 <div className="ij-rsvp-step">
                   <h3 className="ij-rsvp-step-title">Sentiremos sua falta!</h3>
                   <p className="ij-rsvp-step-desc">
-                    Quer deixar uma mensagem para os noivos?
+                    Quer deixar seu telefone e uma mensagem para os noivos?
                   </p>
+                  <div className="ij-rsvp-dietary-group">
+                    <label className="ij-rsvp-dietary-label">
+                      Telefone (WhatsApp) — opcional
+                    </label>
+                    <input
+                      type="tel"
+                      className="ij-rsvp-input"
+                      placeholder="+55 (11) 99999-9999"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                    />
+                  </div>
                   <textarea
                     className="ij-rsvp-textarea"
                     placeholder="Escreva aqui..."

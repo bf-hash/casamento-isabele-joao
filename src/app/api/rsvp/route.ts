@@ -6,6 +6,7 @@ export async function POST(request: Request) {
 
   const { data, error } = await getSupabase().from("rsvps").insert({
     name: body.name,
+    phone: body.phone,
     attending: body.attending,
     guest_count: body.guestCount,
     guests: body.guests,
