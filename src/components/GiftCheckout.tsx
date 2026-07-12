@@ -21,14 +21,15 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
   const amount = gift.custom ? Number(amountInput) || 0 : gift.price;
 
   const handlePay = async () => {
+    if (!gift.cardLink) return;
     setProcessing(true);
     setError("");
 
+    // Registra a contribuição (status "pending") para os noivos saberem de
+    // quem veio o presente. É best-effort: uma falha aqui não deve impedir o
+    // pagamento, que acontece no link hospedado do Mercado Pago.
     try {
-      // Registra a contribuição (status "pending") e cria a cobrança no
-      // AbacatePay. A rota devolve a URL do checkout hospedado (PIX + cartão);
-      // o webhook marca "paid" quando o pagamento for confirmado.
-      const res = await fetch("/api/gifts", {
+      await fetch("/api/gifts", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -39,21 +40,12 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
           note,
         }),
       });
-
-      const data = await res.json();
-
-      if (!res.ok || !data.checkoutUrl) {
-        throw new Error(data.error || "Não foi possível iniciar o pagamento.");
-      }
-
-      // Redireciona para o checkout seguro do AbacatePay.
-      window.location.href = data.checkoutUrl;
-    } catch (e) {
-      setError(
-        e instanceof Error ? e.message : "Não foi possível iniciar o pagamento."
-      );
-      setProcessing(false);
+    } catch {
+      // ignora — segue para o pagamento mesmo assim
     }
+
+    // Redireciona para o link de pagamento do Mercado Pago (PIX + cartão).
+    window.location.href = gift.cardLink;
   };
 
   const stepOrder: Step[] = gift.custom
@@ -201,8 +193,9 @@ export default function GiftCheckout({ gift }: { gift: Gift }) {
 
               <div className="ij-pay-panel">
                 <p className="ij-pay-panel-soon">
-                  Ao continuar, você vai para um checkout seguro onde pode pagar
-                  com <strong>PIX</strong> ou <strong>cartão de crédito</strong>.
+                  Ao continuar, você vai para o <strong>Mercado Pago</strong>,
+                  onde pode pagar com <strong>PIX</strong> ou{" "}
+                  <strong>cartão de crédito</strong>.
                 </p>
               </div>
 

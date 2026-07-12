@@ -46,7 +46,7 @@ const EVENTS: EventData[] = [
     title: "Dia de recuperação",
     time: "Dia livre",
     description:
-      "Sabemos que todos estarão acabados da festa, então deixamos esse dia livre. Para os sobreviventes, estaremos na piscina do hotel Santa Marta no fim do dia tomando bons drinks.",
+      "Sabemos que todos estarão acabados da festa, então deixamos esse dia livre.",
     art: "/fotos/programacao/recuperacao.webp",
   },
   {
@@ -57,7 +57,12 @@ const EVENTS: EventData[] = [
       <>
         Estamos organizando um passeio de barco nas calas e praias da região de
         Begur e um jantar para fechar com chave de ouro. Se tiver interesse,{" "}
-        <a href={BOAT_TOUR_WHATSAPP} target="_blank" rel="noopener noreferrer">
+        <a
+          href={BOAT_TOUR_WHATSAPP}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ij-inline-link"
+        >
           mande uma mensagem aqui
         </a>
         .

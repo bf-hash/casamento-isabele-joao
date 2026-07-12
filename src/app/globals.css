@@ -255,8 +255,11 @@ a { text-decoration: none; color: inherit; }
 }
 .ij-nav-links a:hover { color: var(--ink); }
 .ij-nav-links a:hover::after { transform: scaleX(1); }
-.ij-nav-cta {
+.ij-nav-right {
+  display: flex; align-items: center; gap: 14px;
   justify-self: end;
+}
+.ij-nav-cta {
   padding: 12px 24px; font-size: 13px;
   font-family: var(--font-body);
   font-weight: 400;
@@ -291,9 +294,24 @@ a { text-decoration: none; color: inherit; }
   padding: 12px 26px;
 }
 @media (max-width: 900px) {
-  .ij-nav-links, .ij-nav-cta { display: none; }
+  .ij-nav-inner { grid-template-columns: 1fr auto; }
+  .ij-nav-links { display: none; }
   .ij-nav-burger { display: block; }
+  /* CTA "Confirmar" fica no topo à direita, ao lado do menu, mais compacta. */
+  .ij-nav-cta {
+    padding: 9px 16px; font-size: 11px; letter-spacing: 0.12em;
+  }
 }
+
+/* Link dentro de um parágrafo — sublinhado para deixar claro que é clicável. */
+.ij-inline-link {
+  color: var(--coastal-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color var(--dur-fast) var(--ease);
+}
+.ij-inline-link:hover { color: var(--coastal-blue-deep); }
 
 /* ============================================================
    HERO

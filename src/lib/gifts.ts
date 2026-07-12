@@ -16,7 +16,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/museu.jpeg",
     name: "Visita ao museu",
     price: 150,
-    cardLink: "",
+    cardLink: "https://mpago.la/31HKgyi",
   },
   {
     id: "degustacao",
@@ -24,7 +24,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/degustacao.jpeg",
     name: "Degustação de vinhos",
     price: 250,
-    cardLink: "",
+    cardLink: "https://mpago.la/2zy1zUV",
   },
   {
     id: "pasta",
@@ -32,7 +32,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/pasta.jpeg",
     name: "Pasta con la nona",
     price: 300,
-    cardLink: "",
+    cardLink: "https://mpago.la/1AM4Tuv",
   },
   {
     id: "queijos",
@@ -40,15 +40,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/queijos.jpeg",
     name: "Queijos e vinhos",
     price: 350,
-    cardLink: "",
-  },
-  {
-    id: "jantar",
-    emoji: "🍽️",
-    image: "/fotos/presentes/jantar.jpeg",
-    name: "Jantar na lua de mel",
-    price: 600,
-    cardLink: "",
+    cardLink: "https://mpago.la/31L7TKv",
   },
   {
     id: "oyster",
@@ -56,15 +48,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/ostras.jpeg",
     name: "Oyster and Champagne",
     price: 400,
-    cardLink: "",
-  },
-  {
-    id: "barranco",
-    emoji: "🏖️",
-    image: "/fotos/presentes/barranco.jpeg",
-    name: "Dia no Barranco",
-    price: 700,
-    cardLink: "",
+    cardLink: "https://mpago.la/1nxap9M",
   },
   {
     id: "festival",
@@ -72,7 +56,23 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/festival.jpeg",
     name: "Festival em Barcelona",
     price: 450,
-    cardLink: "",
+    cardLink: "https://mpago.la/2JBSmv3",
+  },
+  {
+    id: "jantar",
+    emoji: "🍽️",
+    image: "/fotos/presentes/jantar.jpeg",
+    name: "Jantar na lua de mel",
+    price: 600,
+    cardLink: "https://mpago.la/2YQTtk4",
+  },
+  {
+    id: "barranco",
+    emoji: "🏖️",
+    image: "/fotos/presentes/barranco.jpeg",
+    name: "Dia no Barranco",
+    price: 700,
+    cardLink: "https://mpago.la/1b7zy6Q",
   },
   {
     id: "marimekko",
@@ -80,7 +80,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/marimekko.webp",
     name: "Casa dos sonhos Marimekko",
     price: 800,
-    cardLink: "",
+    cardLink: "https://mpago.la/2da7a44",
   },
   {
     id: "jamon",
@@ -88,7 +88,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/jamon.jpeg",
     name: "Pata de Jamon",
     price: 1000,
-    cardLink: "",
+    cardLink: "https://mpago.la/1sv6Ugr",
   },
   {
     id: "barco",
@@ -96,7 +96,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/barco.jpeg",
     name: "Passeio de barco",
     price: 1200,
-    cardLink: "",
+    cardLink: "https://mpago.la/34kd34u",
   },
   {
     id: "hotel",
@@ -104,7 +104,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/hotel.jpeg",
     name: "Noite em hotel boutique",
     price: 2000,
-    cardLink: "",
+    cardLink: "https://mpago.la/1LorZ9g",
   },
   {
     id: "executiva",
@@ -112,7 +112,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/executiva.jpeg",
     name: "Executiva",
     price: 2500,
-    cardLink: "",
+    cardLink: "https://mpago.la/28cjHsw",
   },
   {
     id: "customizado",
@@ -120,7 +120,7 @@ export const GIFTS: Gift[] = [
     image: "/fotos/presentes/tacas.webp",
     name: "Presente customizado",
     price: 0,
-    cardLink: "",
+    cardLink: "https://link.mercadopago.com.br/isabeleejoao",
     custom: true,
   },
 ];
