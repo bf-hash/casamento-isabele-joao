@@ -505,7 +505,15 @@ a { text-decoration: none; color: inherit; }
   display: flex; align-items: center; gap: 0.9em;
 }
 .ij-dress-board-lbl::before { content: ""; width: 5px; height: 5px; background: var(--coastal-blue); transform: rotate(45deg); flex: none; }
-.ij-dress-board-img { width: 100%; height: auto; display: block; }
+/* Both boards share the same box so the columns line up top and bottom; the
+   taller "Para elas" collage is scaled to fit (contained, centred) without
+   cropping. */
+.ij-dress-board-img {
+  width: 100%; height: auto; display: block;
+  aspect-ratio: 1152 / 1480;
+  object-fit: contain;
+  object-position: center;
+}
 
 .ij-hotel-areas { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 80px); padding-block: clamp(20px, 4vh, 40px); }
 .ij-hotel-area-head { margin-bottom: 24px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
@@ -1034,6 +1042,7 @@ a { text-decoration: none; color: inherit; }
   .ij-event-art { grid-area: art; width: 76px; height: 76px; align-self: start; margin-top: 2px; }
   .ij-countdown-val { font-size: 24px; }
   .ij-dress-boards { grid-template-columns: 1fr; }
+  .ij-dress-board-img { aspect-ratio: auto; object-fit: fill; }
   .ij-tip-cols { grid-template-columns: 1fr; }
   .ij-rest-grid, .ij-beach-grid { grid-template-columns: repeat(2, 1fr); }
   .ij-beach-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--line-soft); }
