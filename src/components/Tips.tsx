@@ -340,10 +340,11 @@ function DestPanel({ dest }: { dest: Dest }) {
 }
 
 const BEGUR_HOTELS: Hotel[] = [
-  { name: "Alta House", price: "$$$", url: "https://www.google.com/maps/search/Alta+House+Begur" },
-  { name: "Aiguablava", price: "$$$", url: "https://www.google.com/maps/search/Hotel+Aiguablava+Begur" },
-  { name: "Can Macot", price: "$$$", url: "https://www.google.com/maps/search/Can+Macot+Begur" },
-  { name: "Finca Vitoria", price: "$$$", url: "https://www.google.com/maps/search/Finca+Vitoria+Begur" },
+  { name: "La Bionda", price: "$$$", url: maps("La Bionda Begur") },
+  { name: "Alta House Begur", price: "$$", url: maps("Alta House Begur") },
+  { name: "Bypillow Begur Centro", price: "$$", url: maps("Bypillow Begur Centro") },
+  { name: "Finca Vitòria", price: "$$$", url: maps("Finca Vitoria Begur") },
+  { name: "Aiguaclara", price: "$$$", url: maps("Aiguaclara Begur") },
 ];
 
 // Opção alternativa: região histórica de Tossa de Mar
@@ -525,7 +526,7 @@ export default function Tips() {
                 <p className="ij-hotel-dates">2 — 4 de julho</p>
               </div>
               <p>
-                A Costa Brava é comprida e o rolê de sábado será mais ao norte, na região de Begur
+                O rolê de sábado será mais ao norte, na região de Begur
                 (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
                 opções:
               </p>
