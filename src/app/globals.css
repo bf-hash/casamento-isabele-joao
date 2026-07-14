@@ -322,6 +322,13 @@ a { text-decoration: none; color: inherit; }
 /* Let the wash show through the welcome section (same colour as the page bg
    underneath, so where it has faded out nothing changes). */
 .ij-hero-welcome .ij-welcome { background: transparent; }
+/* Warm, invitation-style greeting over the watercolour: coastal blue, italic
+   and a touch larger — ties the welcome into the hero it now sits under. */
+.ij-welcome .ij-section-header h2 {
+  color: var(--coastal-blue);
+  font-style: italic;
+  font-size: clamp(38px, 5.2vw, 64px);
+}
 
 .ij-hero {
   position: relative;
