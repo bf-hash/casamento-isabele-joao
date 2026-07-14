@@ -13,8 +13,11 @@ export default function Home() {
     <div style={{ minHeight: "100vh", background: "var(--bg)" }}>
       <Header />
       <main>
-        <Hero />
-        <Welcome />
+        <div className="ij-hero-welcome">
+          <div className="ij-hero-art" aria-hidden="true" />
+          <Hero />
+          <Welcome />
+        </div>
         <Program />
         <HowToGet />
         <Tips />

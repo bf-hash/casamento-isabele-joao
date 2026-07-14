@@ -14,7 +14,6 @@ export default function Hero() {
           Confirmar presença
         </a>
       </div>
-      <div className="ij-hero-art" aria-hidden="true" />
     </section>
   );
 }
