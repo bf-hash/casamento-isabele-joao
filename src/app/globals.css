@@ -318,29 +318,29 @@ a { text-decoration: none; color: inherit; }
    ============================================================ */
 .ij-hero {
   position: relative;
-  min-height: 100vh;
+  min-height: auto;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   text-align: center;
-  padding: clamp(120px, 15vh, 180px) var(--pad-x) 0;
+  padding: clamp(120px, 15vh, 180px) var(--pad-x) clamp(90px, 13vh, 170px);
   isolation: isolate;
   overflow: hidden;
 }
 .ij-hero::before, .ij-hero::after { content: none; }
 .ij-hero-copy { width: min(680px, 100%); margin-inline: auto; position: relative; z-index: 1; }
-/* Watercolour coastline: a full-bleed band that sits BELOW the content and
-   grows to fill the remaining height down to the base of the hero, fading up
-   into the background — mirrors the printed invitation. */
+/* Watercolour coastline: a full-bleed wash that sits BEHIND everything, filling
+   the hero from the very top of the page down past the countdown, fading into
+   the background at the edges — mirrors the printed invitation. */
 .ij-hero-art {
-  flex: 0 0 auto;
-  margin-top: auto;
-  width: 100vw;
-  margin-inline: calc(50% - 50vw);
-  height: clamp(380px, 62vh, 720px);
-  background: url('/assets/el-convent-watercolor.jpg') no-repeat center bottom;
-  background-size: contain;
-  opacity: 0.95;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 16%, #000 100%);
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 100vw; height: 100%;
+  z-index: 0;
+  background: url('/assets/el-convent-watercolor.jpg') no-repeat center 12%;
+  background-size: cover;
+  opacity: 0.42;
+  filter: drop-shadow(0 28px 64px rgba(42, 49, 64, 0.34));
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 74%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 74%, transparent 100%);
   pointer-events: none;
 }
 .ij-hero-dates {
@@ -385,7 +385,7 @@ a { text-decoration: none; color: inherit; }
 }
 .ij-countdown-val {
   font-family: var(--font-display); font-weight: 300;
-  font-size: clamp(36px, 4.4vw, 54px); line-height: 1;
+  font-size: clamp(26px, 3.2vw, 38px); line-height: 1;
   color: var(--ink); font-variant-numeric: tabular-nums;
 }
 .ij-countdown-lbl {
@@ -1025,14 +1025,14 @@ a { text-decoration: none; color: inherit; }
   .ij-hero { min-height: auto; padding-top: 120px; }
   .ij-hero-copy { width: 100%; }
   .ij-countdown { margin-inline: auto; }
-  .ij-hero-art { height: auto; aspect-ratio: 1600 / 1248; margin-top: clamp(24px, 5vh, 44px); }
+  .ij-hero-art { background-size: cover; background-position: center 8%; opacity: 0.36; }
   .ij-hero-cta-mobile { display: inline-flex; align-items: center; justify-content: center; margin-top: 30px; height: 46px; padding: 0 30px; background: var(--coastal-blue); color: #fff; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
   .ij-event { grid-template-columns: 1fr auto; grid-template-areas: "date art" "body body"; gap: 6px 14px; }
   .ij-event-date { grid-area: date; }
   .ij-event-body { grid-area: body; }
   .ij-event-date-dot { display: none; }
   .ij-event-art { grid-area: art; width: 76px; height: 76px; align-self: start; margin-top: 2px; }
-  .ij-countdown-val { font-size: 30px; }
+  .ij-countdown-val { font-size: 24px; }
   .ij-dress-boards { grid-template-columns: 1fr; }
   .ij-tip-cols { grid-template-columns: 1fr; }
   .ij-rest-grid, .ij-beach-grid { grid-template-columns: repeat(2, 1fr); }
