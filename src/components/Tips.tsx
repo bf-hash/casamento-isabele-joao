@@ -446,16 +446,16 @@ export default function Tips() {
 
           <div className="ij-dress-boards">
             {[
-              ["Para elas", "/fotos/dress-code/para-elas.jpg"],
-              ["Para eles", "/fotos/dress-code/para-eles.jpg"],
-            ].map(([label, src]) => (
+              ["Para elas", "/fotos/dress-code/para-elas.png", 1152, 2048],
+              ["Para eles", "/fotos/dress-code/para-eles.jpg", 1152, 1480],
+            ].map(([label, src, w, h]) => (
               <figure key={label} className="ij-dress-board">
                 <figcaption className="ij-dress-board-lbl">{label}</figcaption>
                 <Image
-                  src={src}
-                  alt={label}
-                  width={1152}
-                  height={1480}
+                  src={src as string}
+                  alt={label as string}
+                  width={w as number}
+                  height={h as number}
                   sizes="(max-width: 640px) 100vw, 50vw"
                   className="ij-dress-board-img"
                 />
