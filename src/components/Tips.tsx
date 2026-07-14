@@ -160,6 +160,13 @@ const COSTA_BRAVA: Dest = {
       title: "Tossa de Mar",
       groups: [
         {
+          label: "Praias",
+          places: [
+            { name: "Cala Bona", url: maps("Cala Bona Tossa de Mar") },
+            { name: "Cala Pola", url: maps("Cala Pola Tossa de Mar") },
+          ],
+        },
+        {
           label: "Onde comer",
           places: [
             {
@@ -340,10 +347,11 @@ function DestPanel({ dest }: { dest: Dest }) {
 }
 
 const BEGUR_HOTELS: Hotel[] = [
-  { name: "Alta House", price: "$$$", url: "https://www.google.com/maps/search/Alta+House+Begur" },
-  { name: "Aiguablava", price: "$$$", url: "https://www.google.com/maps/search/Hotel+Aiguablava+Begur" },
-  { name: "Can Macot", price: "$$$", url: "https://www.google.com/maps/search/Can+Macot+Begur" },
-  { name: "Finca Vitoria", price: "$$$", url: "https://www.google.com/maps/search/Finca+Vitoria+Begur" },
+  { name: "La Bionda", price: "$$$", url: maps("La Bionda Begur") },
+  { name: "Alta House Begur", price: "$$", url: maps("Alta House Begur") },
+  { name: "Bypillow Begur Centro", price: "$$", url: maps("Bypillow Begur Centro") },
+  { name: "Finca Vitòria", price: "$$$", url: maps("Finca Vitoria Begur") },
+  { name: "Aiguaclara", price: "$$$", url: maps("Aiguaclara Begur") },
 ];
 
 // Opção alternativa: região histórica de Tossa de Mar
@@ -480,30 +488,53 @@ export default function Tips() {
 
             <div className="ij-stay-note">
               <p>
-                Circulamos no mapa a região onde tem os melhores hotéis e airbnbs.
-              </p>
-              <p>
-                Também há <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Dois
+                Circulamos no mapa a região que mais gostamos próximo ao casamento, há{' '}
+                <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Alguns
                 exemplos que gostamos:
               </p>
-              <div className="ij-stay-links">
-                <a
-                  href="https://www.booking.com/hotel/es/albamar-apartaments.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ij-stay-link"
-                >
-                  Albamar Apartaments
-                </a>
-                <a
-                  href="https://www.booking.com/hotel/es/pretty-garden-apartment-next-to-a-charming-beach.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ij-stay-link"
-                >
-                  Pretty Garden Apartment · à beira da praia
-                </a>
-              </div>
+              <ul className="ij-hotel-list ij-stay-examples">
+                <li>
+                  <span>
+                    <a
+                      href="https://www.booking.com/hotel/es/albamar-apartaments.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Albamar Apartaments
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.booking.com/hotel/es/pretty-garden-apartment-next-to-a-charming-beach.html"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Pretty Garden Apartment
+                    </a>
+                    <span className="ij-hotel-badge">à beira da praia</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Casa Coco
+                    </a>
+                  </span>
+                </li>
+              </ul>
+              <p className="ij-stay-obs">
+                <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
+                tão bonito quanto o resto da região.
+              </p>
             </div>
 
             <div className="ij-stay-alt">
@@ -523,7 +554,7 @@ export default function Tips() {
                 <p className="ij-hotel-dates">2 — 4 de julho</p>
               </div>
               <p>
-                A Costa Brava é comprida e o rolê de sábado será mais ao norte, na região de Begur
+                O rolê de sábado será mais ao norte, na região de Begur
                 (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
                 opções:
               </p>
