@@ -316,6 +316,20 @@ a { text-decoration: none; color: inherit; }
 /* ============================================================
    HERO
    ============================================================ */
+/* Hero + Welcome share one relative wrapper so the watercolour wash can span
+   both — from the very top of the page down past "Sejam muito bem-vindos". */
+.ij-hero-welcome { position: relative; isolation: isolate; overflow: hidden; }
+/* Let the wash show through the welcome section (same colour as the page bg
+   underneath, so where it has faded out nothing changes). */
+.ij-hero-welcome .ij-welcome { background: transparent; }
+/* Warm, invitation-style greeting over the watercolour: coastal blue, italic
+   and a touch larger — ties the welcome into the hero it now sits under. */
+.ij-welcome .ij-section-header h2 {
+  color: var(--coastal-blue);
+  font-style: italic;
+  font-size: clamp(38px, 5.2vw, 64px);
+}
+
 .ij-hero {
   position: relative;
   min-height: auto;
@@ -328,8 +342,8 @@ a { text-decoration: none; color: inherit; }
 .ij-hero::before, .ij-hero::after { content: none; }
 .ij-hero-copy { width: min(680px, 100%); margin-inline: auto; position: relative; z-index: 1; }
 /* Watercolour coastline: a full-bleed wash that sits BEHIND everything, filling
-   the hero from the very top of the page down past the countdown, fading into
-   the background at the edges — mirrors the printed invitation. */
+   the hero + welcome from the very top of the page down past the welcome
+   heading, fading into the background at the edges — mirrors the invitation. */
 .ij-hero-art {
   position: absolute;
   top: 0; left: 50%; transform: translateX(-50%);
@@ -339,8 +353,8 @@ a { text-decoration: none; color: inherit; }
   background-size: cover;
   opacity: 0.42;
   filter: drop-shadow(0 28px 64px rgba(42, 49, 64, 0.34));
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 74%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 74%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 70%, transparent 85%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 70%, transparent 85%);
   pointer-events: none;
 }
 .ij-hero-dates {
@@ -512,7 +526,7 @@ a { text-decoration: none; color: inherit; }
   width: 100%; height: auto; display: block;
   aspect-ratio: 1152 / 1480;
   object-fit: contain;
-  object-position: center;
+  object-position: left center;
 }
 
 .ij-hotel-areas { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 5vw, 80px); padding-block: clamp(20px, 4vh, 40px); }
