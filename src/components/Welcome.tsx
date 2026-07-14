@@ -12,7 +12,6 @@ export default function Welcome() {
             Estamos muito felizes em convidá-los para nosso casamento na Costa Brava, Espanha. Esse é um lugar onde
             passamos momentos muito especiais com amigos e família ao longo dos nossos 8 anos juntos.
           </p>
-          <p className="ij-prose ij-prose-strong">Vamos festejar, comer e beber bem juntos!</p>
         </ScrollReveal>
       </div>
     </section>

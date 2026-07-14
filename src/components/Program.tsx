@@ -44,7 +44,6 @@ const EVENTS: EventData[] = [
     day: "02·07",
     weekday: "Sexta-feira",
     title: "Dia de recuperação",
-    time: "Dia livre",
     description:
       "Sabemos que todos estarão acabados da festa, então deixamos esse dia livre.",
     art: "/fotos/programacao/recuperacao.webp",
