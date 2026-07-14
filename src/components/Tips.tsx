@@ -140,10 +140,10 @@ const COSTA_BRAVA: Dest = {
         {
           label: "Onde dormir",
           places: [
-            { name: "Carpe Cadaqués", url: maps("Carpe Cadaques") },
-            { name: "Casa Marquina", url: maps("Casa Marquina Cadaques") },
-            { name: "Riba Pitxot Apartments", url: maps("Riba Pitxot Cadaques") },
-            { name: "La Casa Verda Cadaqués", url: maps("La Casa Verda Cadaques") },
+            { name: "Carpe Cadaqués", url: "https://www.carpediemcadaques.com/en/accommodation/" },
+            { name: "Casa Marquina", url: "https://www.instagram.com/casamarquina/" },
+            { name: "Riba Pitxot Apartments", url: "https://ribapitxot.com/en/cadaques-holiday-apartment/plusinfo-en.php" },
+            { name: "La Casa Verda Cadaqués", url: "https://www.casaverdacadaques.com/" },
           ],
         },
         {
@@ -175,6 +175,24 @@ const COSTA_BRAVA: Dest = {
               url: maps("L'Espai Tossa de Mar"),
             },
           ],
+        },
+      ],
+    },
+    {
+      title: "Outros locais",
+      note: "Alguns lugares além da costa que valem muito a visita — ótimos para esticar a viagem antes ou depois do casamento.",
+      groups: [
+        {
+          label: "Girona",
+          intro:
+            "Cidade medieval linda, com o centro histórico super preservado, a catedral e as casas coloridas à beira do rio Onyar. Perfeita para um passeio de um dia.",
+          places: [],
+        },
+        {
+          label: "Celler Perelada",
+          intro:
+            "Uma vinícola linda — e o almoço lá é incrível. Também tem um hotel ótimo para quem quiser descansar depois do casamento.",
+          places: [{ name: "Perelada", url: "https://perelada.com/en/home" }],
         },
       ],
     },
@@ -568,8 +586,8 @@ export default function Tips() {
         <div className="ij-tips-panel">
           <div className="ij-hair-tab">
             <p>
-              Organizamos um salão que irá atender no dia do casamento no <strong>Hotel Santa Marta</strong> (Lloret
-              de Mar). Todos que quiserem agendar um horário podem mandar uma mensagem clicando no botão abaixo.
+              Organizamos um salão que irá atender no dia do casamento no <strong>Hotel Santa Marta</strong>. Todos
+              que quiserem agendar um horário podem mandar uma mensagem clicando no botão abaixo.
             </p>
             <a
               href="https://wa.me/12028603255?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio%20no%20sal%C3%A3o%20para%20o%20casamento%20da%20Isabele%20%26%20Jo%C3%A3o%20%F0%9F%92%87%E2%80%8D%E2%99%80%EF%B8%8F"
