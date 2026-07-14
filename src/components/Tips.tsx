@@ -480,10 +480,8 @@ export default function Tips() {
 
             <div className="ij-stay-note">
               <p>
-                Circulamos no mapa a região onde tem os melhores hotéis e airbnbs.
-              </p>
-              <p>
-                Também há <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Dois
+                Circulamos no mapa a região que mais gostamos próximo ao casamento, há{' '}
+                <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Dois
                 exemplos que gostamos:
               </p>
               <div className="ij-stay-links">
@@ -504,6 +502,10 @@ export default function Tips() {
                   Pretty Garden Apartment · à beira da praia
                 </a>
               </div>
+              <p className="ij-stay-obs">
+                <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
+                tão bonito quanto o resto da região.
+              </p>
             </div>
 
             <div className="ij-stay-alt">
