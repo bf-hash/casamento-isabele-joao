@@ -592,6 +592,7 @@ a { text-decoration: none; color: inherit; }
 .ij-stay-note p strong { color: var(--ink); font-weight: 400; }
 .ij-stay-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px; }
 .ij-stay-obs { margin-top: 18px !important; font-size: 14px !important; color: var(--ink-quiet) !important; }
+.ij-stay-examples { margin-top: 18px; margin-bottom: 0; text-align: left; }
 .ij-stay-link {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 11px 20px; border: 1px solid var(--line); border-radius: var(--r-pill);
