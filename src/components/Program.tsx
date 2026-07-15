@@ -51,11 +51,11 @@ const EVENTS: EventData[] = [
   {
     day: "03·07",
     weekday: "Sábado",
-    title: "Barco e jantar",
+    title: "Passeio de barco",
     description: (
       <>
         Estamos organizando um passeio de barco nas calas e praias da região de
-        Begur e um jantar para fechar com chave de ouro. Se tiver interesse,{" "}
+        Begur para fechar com chave de ouro. Se tiver interesse,{" "}
         <a
           href={BOAT_TOUR_WHATSAPP}
           target="_blank"
