@@ -526,14 +526,14 @@ export default function Tips() {
                 <li>
                   <span>
                     <a
-                      href="https://www.booking.com/hotel/es/pretty-garden-apartment-next-to-a-charming-beach.html"
+                      href="https://www.booking.com/hotel/es/can-terrats.pt-br.html"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="ij-hotel-name"
                     >
-                      Pretty Garden Apartment
+                      Can Terrats
                     </a>
-                    <span className="ij-hotel-badge">à beira da praia</span>
+                    <span className="ij-hotel-badge">2 minutos do casamento e 6 de onde será o pre wedding</span>
                   </span>
                 </li>
                 <li>
