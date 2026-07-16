@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 
 // Fotos da Costa Brava para inspirar a viagem
@@ -52,6 +53,19 @@ export default function Inspire() {
           ))}
         </ul>
       </div>
+
+      <ScrollReveal asChild>
+        <div className="ij-inspire-guide-wrap">
+          <Link href="/guia-costa-brava" className="ij-inspire-guide">
+            <span className="ij-inspire-guide-k">Slow travel guide</span>
+            <span className="ij-inspire-guide-title">Nosso guia da Costa Brava</span>
+            <span className="ij-inspire-guide-desc">
+              Praias favoritas, hotéis, restaurantes e a rota do vinho no Empordà
+            </span>
+            <span className="ij-inspire-guide-go">Ver o guia →</span>
+          </Link>
+        </div>
+      </ScrollReveal>
 
       <ScrollReveal asChild>
         <div className="ij-inspire-ig-wrap">
