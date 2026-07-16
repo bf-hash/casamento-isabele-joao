@@ -663,8 +663,8 @@ export default function Tips() {
               </div>
               <p>
                 Para quem preferir, Tossa de Mar também é uma ótima opção — recomendamos ficar na região histórica
-                (qualquer hotel por ali). Fica um pouco mais longe do casamento que as outras opções (~30min),
-                mas vale muito a pena. Alguns favoritos:
+                (qualquer hotel por ali). Fica um pouco mais longe do casamento que as outras opções (~30min).
+                Alguns favoritos:
               </p>
               <HotelList hotels={TOSSA_ALT_HOTELS} />
             </div>
