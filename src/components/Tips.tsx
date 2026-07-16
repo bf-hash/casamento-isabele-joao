@@ -616,7 +616,7 @@ export default function Tips() {
                     >
                       Apartamento moderno
                     </a>
-                    <span className="ij-hotel-badge">até 4 pessoas · 5 min a pé da praia</span>
+                    <span className="ij-hotel-badge">até 4 pessoas</span>
                   </span>
                 </li>
                 <li>
@@ -629,7 +629,7 @@ export default function Tips() {
                     >
                       Apartamento com terraço
                     </a>
-                    <span className="ij-hotel-badge">até 4 pessoas · 5 min a pé da praia</span>
+                    <span className="ij-hotel-badge">até 4 pessoas</span>
                   </span>
                 </li>
                 <li>
