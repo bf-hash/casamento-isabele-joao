@@ -16,6 +16,7 @@ function maps(query: string) {
 // ── Modelo de dados ──
 interface Place {
   name: string;
+  city?: string;
   note?: string;
   tier?: string;
   url: string;
@@ -102,65 +103,81 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Clara Restaurant", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
-          { name: "Begurió", url: maps("Begurio Begur") },
-          { name: "Ocasia", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
-          { name: "Can Kai", note: "Sushi", url: maps("Can Kai Begur") },
+          { name: "Clara Restaurant", city: "Begur", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
+          { name: "Begurió", city: "Begur", url: maps("Begurio Begur") },
+          { name: "Ocasia", city: "Begur", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
+          { name: "Can Kai", city: "Begur", note: "Sushi", url: maps("Can Kai Begur") },
           {
             name: "360 Rooftop by Gerard Ruiz",
+            city: "Begur",
             note: "Drinks com a melhor vista de Begur",
             url: maps("360 Rooftop Begur"),
           },
           {
             name: "Fitzroy Café",
-            note: "Café especial em Begur, de abril até o fim do verão",
+            city: "Begur",
+            note: "Café especial, de abril até o fim do verão",
             url: maps("Fitzroy Cafe Begur"),
           },
           {
             name: "Casa Juanita",
+            city: "Begur",
             note: "Peixe fresco no forno a lenha, tradição desde 1978",
             url: maps("Casa Juanita Begur"),
           },
-          { name: "C-Roack", note: "Clima ao ar livre descolado para os drinks da noite", url: maps("C-Roack Begur") },
+          {
+            name: "C-Roack",
+            city: "Begur",
+            note: "Clima ao ar livre descolado para os drinks da noite",
+            url: maps("C-Roack Begur"),
+          },
           {
             name: "Margarita",
-            note: "Cozinha inventiva e interior lindo · Calella de Palafrugell",
+            city: "Calella de Palafrugell",
+            note: "Cozinha inventiva e interior lindo",
             url: maps("Margarita Calella de Palafrugell"),
           },
           {
             name: "UM Pals",
-            note: "Peixe e frutos do mar fresquíssimos, à beira-mar · Platja d'el Grau",
+            city: "Pals",
+            note: "Peixe e frutos do mar fresquíssimos, à beira-mar na Platja d'el Grau",
             url: maps("UM Pals Platja del Grau"),
           },
           {
             name: "Sol Blanc",
-            note: "Casa de fazenda entre os arrozais de Pals, com jantar gastronômico",
+            city: "Pals",
+            note: "Casa de fazenda entre os arrozais, com jantar gastronômico",
             url: maps("Sol Blanc Pals"),
           },
           {
             name: "Funky Pizza",
-            note: "Pizza de forno a lenha e vinhos naturais · Pals",
+            city: "Pals",
+            note: "Pizza de forno a lenha e vinhos naturais",
             url: maps("Funky Pizza Pals"),
           },
-          { name: "Grava Pals", note: "Ótimo para café da manhã e café especial · Pals", url: maps("Grava Pals") },
+          { name: "Grava Pals", city: "Pals", note: "Ótimo para café da manhã e café especial", url: maps("Grava Pals") },
           {
             name: "Sabana Café",
-            note: "Café aconchegante para um brunch tardio · Palafrugell",
+            city: "Palafrugell",
+            note: "Café aconchegante para um brunch tardio",
             url: maps("Sabana Cafe Palafrugell"),
           },
           {
             name: "Sol i Mar",
-            note: "Delícia à beira-mar para os amantes de frutos do mar · Calella de Palafrugell",
+            city: "Calella de Palafrugell",
+            note: "Delícia à beira-mar para os amantes de frutos do mar",
             url: maps("Sol i Mar Calella de Palafrugell"),
           },
           {
             name: "Xurreria La Family",
-            note: "Para churros deliciosos a qualquer hora · Palafrugell",
+            city: "Palafrugell",
+            note: "Para churros deliciosos a qualquer hora",
             url: maps("Xurreria La Family Palafrugell"),
           },
           {
             name: "És! Carxofa",
-            note: "Restaurante no campo, ideal para paella e petiscos variados · Púbol",
+            city: "Púbol",
+            note: "Restaurante no campo, ideal para paella e petiscos variados",
             url: maps("Es Carxofa Pubol"),
           },
         ],
@@ -239,16 +256,18 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Narita", url: maps("Narita Cadaques") },
-          { name: "Oli Bar", url: maps("Oli Bar Cadaques") },
-          { name: "Casa Dionis", url: maps("Casa Dionis Cadaques") },
+          { name: "Narita", city: "Cadaqués", url: maps("Narita Cadaques") },
+          { name: "Oli Bar", city: "Cadaqués", url: maps("Oli Bar Cadaques") },
+          { name: "Casa Dionis", city: "Cadaqués", url: maps("Casa Dionis Cadaques") },
           {
             name: "Batalla",
+            city: "Cadaqués",
             note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak",
             url: maps("Batalla Cadaques"),
           },
           {
             name: "Bistro Nereta",
+            city: "Cadaqués",
             note: "Fusão nipo-espanhola, com menu que muda o tempo todo",
             url: maps("Bistro Nereta Cadaques"),
           },
@@ -277,6 +296,7 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "L'Espai",
+            city: "Tossa de Mar",
             note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
             url: maps("L'Espai Tossa de Mar"),
           },
@@ -374,6 +394,7 @@ function PlaceGrid({ places }: { places: Place[] }) {
     <div className="ij-rest-grid">
       {places.map((p) => (
         <div key={p.name} className="ij-rest-item">
+          {p.city && <span className="ij-guide-area">{p.city}</span>}
           <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-rest-name ij-rest-link">
             {p.name}
           </a>
@@ -390,6 +411,7 @@ function PlaceList({ places }: { places: Place[] }) {
       {places.map((p) => (
         <li key={p.name}>
           <span>
+            {p.city && <span className="ij-guide-area">{p.city}</span>}
             <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-hotel-name">
               {p.name}
             </a>
