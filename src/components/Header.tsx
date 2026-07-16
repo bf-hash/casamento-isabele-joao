@@ -16,7 +16,6 @@ const HOME_NAV: NavItem[] = [
   ["howtoget", "Como chegar"],
   ["tips", "Dicas"],
   ["gifts", "Presentes"],
-  ["inspire", "Inspiração"],
   ["rsvp", "RSVP"],
 ].map(([id, label]) => ({ label, href: `#${id}` }));
 

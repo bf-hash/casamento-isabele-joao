@@ -1174,6 +1174,59 @@ a { text-decoration: none; color: inherit; }
 .ij-guide-back { font-family: var(--font-body); font-size: 13px; letter-spacing: 0.06em; color: var(--ink-quiet); transition: color var(--dur-fast); }
 .ij-guide-back:hover { color: var(--coastal-blue); }
 
+/* Faixa editorial full-bleed (fotos do guia antigo entre seções) */
+.ij-guide-band {
+  margin-inline: calc(-1 * var(--pad-x));
+  margin-bottom: clamp(40px, 6vh, 72px);
+  height: clamp(220px, 40vh, 440px);
+  overflow: hidden;
+  background: var(--cream-deep);
+}
+.ij-guide-band img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Cabeçalho de região: foto editorial + nome + intro (revezando o lado) */
+.ij-guide-region { scroll-margin-top: 80px; }
+.ij-guide-region-head {
+  display: grid; grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(28px, 5vw, 76px); align-items: center;
+  max-width: var(--maxw); margin: 0 auto clamp(38px, 6vh, 68px);
+}
+.ij-guide-region-photo {
+  margin: 0; aspect-ratio: 4 / 5; overflow: hidden;
+  background: var(--cream-deep);
+  box-shadow: 0 34px 64px -44px rgba(52, 48, 43, 0.62);
+}
+.ij-guide-region-head.is-flip .ij-guide-region-photo { order: 2; }
+.ij-guide-region-head.is-flip .ij-guide-region-intro { order: 1; }
+.ij-guide-region-photo img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform var(--dur) var(--ease);
+}
+.ij-guide-region-head:hover .ij-guide-region-photo img { transform: scale(1.04); }
+.ij-guide-region-intro h2 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(40px, 5.6vw, 66px); line-height: 1.0; letter-spacing: 0.01em;
+  color: var(--ink); margin: 12px 0 0;
+}
+.ij-guide-region-note { color: var(--ink-soft); font-size: 16px; line-height: 1.85; margin: 18px 0 0; max-width: 46ch; }
+.ij-guide-region-groups { max-width: var(--maxw); margin: 0 auto; }
+.ij-guide-region-groups .ij-dest-group:first-child { margin-top: 0; }
+
+/* Painel Costa Brava dentro da aba Dicas */
+.ij-cb-lead { text-align: center; max-width: 620px; margin: 0 auto clamp(30px, 4.5vh, 48px); }
+.ij-cb-lead p {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(18px, 2.3vw, 23px); line-height: 1.7; color: var(--ink-soft); margin: 0;
+}
+.ij-cb-panel .ij-inspire-guide-wrap { margin-top: clamp(36px, 5vh, 56px); }
+
+@media (max-width: 760px) {
+  .ij-guide-region-head { grid-template-columns: 1fr; gap: 24px; }
+  .ij-guide-region-head.is-flip .ij-guide-region-photo,
+  .ij-guide-region-head.is-flip .ij-guide-region-intro { order: 0; }
+  .ij-guide-region-photo { aspect-ratio: 3 / 2; max-height: 60vh; }
+}
+
 @media (max-width: 640px) {
   .ij-guide-tips li { gap: 12px; }
   .ij-guide-outro-links { flex-direction: column; }

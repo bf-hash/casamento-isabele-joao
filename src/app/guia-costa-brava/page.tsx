@@ -1,27 +1,45 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
   title: "Guia de viagem · Costa Brava · Isabele & João",
   description:
-    "Nosso guia slow travel da Costa Brava: praias favoritas, hotéis, restaurantes e a rota do vinho no Empordà.",
+    "Nosso guia slow travel da Costa Brava: praias favoritas, hotéis, restaurantes e a rota do vinho no Empordà, organizados por região.",
 };
 
 function maps(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
 
+// ── Modelo de dados ──
 interface Place {
   name: string;
-  area?: string;
-  note: string;
+  city?: string;
+  note?: string;
+  tier?: string;
   url: string;
 }
 
-// ── Dicas para a alta temporada (essential tips) ──
+interface Group {
+  label: string;
+  intro?: string;
+  variant?: "grid" | "list";
+  places: Place[];
+}
+
+interface Region {
+  id: string;
+  kicker: string;
+  name: string;
+  note: string;
+  photo: string;
+  photoAlt: string;
+  groups: Group[];
+}
+
+// ── Dicas para a alta temporada ──
 const TIPS: string[] = [
   "Chegar à praia depois das 10h pode ser complicado — enche bastante.",
   "Leve um lanche se for almoçar cedo, ou espere passar o pico do almoço para comer nos restaurantes.",
@@ -34,62 +52,341 @@ const TIPS: string[] = [
   "Alugar uma bike ou e-bike no verão facilita muito a locomoção entre as calas.",
 ];
 
-// ── Onde ficar (stay) ──
-const HOTELS: Place[] = [
-  { name: "La Bionda", area: "Begur", note: "Boutique estiloso no coração de Begur.", url: maps("La Bionda Begur") },
-  { name: "Can Bassa", area: "Begur", note: "Boutique restaurado com quartos charmosos.", url: maps("Can Bassa Begur") },
-  { name: "Hotel Aiguaclara", area: "Begur", note: "Casa do século XIX no centro histórico de Begur.", url: maps("Hotel Aiguaclara Begur") },
-  { name: "Hotel Sant Roc", area: "Calella de Palafrugell", note: "Vistas de tirar o fôlego sobre o Mediterrâneo.", url: maps("Hotel Sant Roc Calella de Palafrugell") },
-  { name: "Can Mascot", area: "Palafrugell", note: "Hotel eco-friendly no coração de Palafrugell.", url: maps("Can Mascot Palafrugell") },
-  { name: "Arkhé Hotel Boutique", area: "Pals", note: "Hotel com foco em bem-estar, tranquilo e elegante.", url: maps("Arkhe Hotel Boutique Pals") },
-  { name: "Casa Talaia", area: "Cadaqués", note: "Casa de temporada espaçosa, perfeita para grupos.", url: maps("Casa Talaia Cadaques") },
-  { name: "Casa Nereta", area: "Cadaqués", note: "Boutique descolado, com clima descontraído.", url: maps("Casa Nereta Cadaques") },
-  { name: "Mas de Torrent", area: "Girona", note: "Refúgio de luxo no campo, entre vinhedos e oliveiras.", url: maps("Mas de Torrent Girona") },
-];
-
-// ── Onde comer e beber (eat) ──
-const EATS: Place[] = [
-  { name: "Margarita", area: "Calella de Palafrugell", note: "Comida incrível, cozinha inventiva e um interior lindo.", url: maps("Margarita Calella de Palafrugell") },
-  { name: "Clara", area: "Begur", note: "Point descolado de Begur, sabores deliciosos e ambiente aconchegante.", url: maps("Clara Restaurant Begur") },
-  { name: "Batalla", area: "Cadaqués", note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak.", url: maps("Batalla Cadaques") },
-  { name: "Bistro Nereta", area: "Cadaqués", note: "Fusão nipo-espanhola, com menu que muda o tempo todo.", url: maps("Bistro Nereta Cadaques") },
-  { name: "Sol i Mar", note: "Uma delícia à beira-mar para os amantes de frutos do mar.", url: maps("Sol i Mar Costa Brava restaurant") },
-  { name: "UM Pals", area: "Platja d'el Grau", note: "Restaurante charmoso à beira-mar, com peixe e frutos do mar fresquíssimos.", url: maps("UM Pals Platja del Grau") },
-  { name: "Sol Blanc", area: "Pals", note: "Clima de casa de fazenda entre os arrozais de Pals, com jantar gastronômico.", url: maps("Sol Blanc Pals") },
-  { name: "És! Carxofa", note: "Restaurante no campo, ideal para paella e petiscos variados.", url: maps("Es Carxofa Costa Brava") },
-  { name: "Casa Juanita", note: "Sabores tradicionais e peixe na brasa.", url: maps("Casa Juanita Costa Brava") },
-  { name: "Funky Pizza", area: "Pals", note: "Pizza de forno a lenha, vinhos naturais e café especial.", url: maps("Funky Pizza Pals") },
-  { name: "Grava Pals", area: "Pals", note: "Perfeito para café da manhã e café especial.", url: maps("Grava Pals") },
-  { name: "Safo Bar", note: "Comida orgânica e sazonal, com ótimos vinhos naturais.", url: maps("Safo Bar Costa Brava") },
-  { name: "C-Roack", note: "Clima ao ar livre descolado para os drinks da noite.", url: maps("C-Roack Costa Brava") },
-  { name: "Fitzroy Café", area: "Begur", note: "Café especial em Begur, aberto de abril até o fim do verão.", url: maps("Fitzroy Cafe Begur") },
-  { name: "Sabana Café", area: "Palafrugell", note: "Café aconchegante, perfeito para um café da manhã tardio.", url: maps("Sabana Cafe Palafrugell") },
-  { name: "Xurreria La Family", note: "Para churros deliciosos a qualquer hora.", url: maps("Xurreria La Family Costa Brava") },
-];
-
-// ── Praias (beaches) ──
-const BEACHES: Place[] = [
-  { name: "Aiguablava", area: "Begur", note: "Famosa pelas águas azul-turquesa — uma das joias da Costa Brava.", url: maps("Platja Aiguablava Begur") },
-  { name: "Sa Tuna", area: "Begur", note: "Vila de pescadores encantadora, com água transparente e bares de frente para o mar.", url: maps("Cala Sa Tuna Begur") },
-  { name: "Aiguafreda", area: "Begur", note: "Pequena enseada naturalmente reservada, protegida pela encosta.", url: maps("Aiguafreda Begur") },
-  { name: "Platja Fonda", area: "Begur", note: "Joia escondida entre falésias rochosas, longe das multidões.", url: maps("Platja Fonda Begur") },
-  { name: "El Canadell", area: "Calella de Palafrugell", note: "Praia charmosa e familiar, a verdadeira essência da Costa Brava.", url: maps("El Canadell Calella de Palafrugell") },
-  { name: "Llafranc", area: "Palafrugell", note: "Areia macia em frente a uma vila encantadora, com águas cristalinas.", url: maps("Llafranc Palafrugell") },
-  { name: "Fornells", area: "Begur", note: "Enseada linda, conectada às praias vizinhas pelo Camí de Ronda.", url: maps("Fornells Begur") },
-  { name: "Cala Canyers", area: "Palamós", note: "Pequena praia reservada perto do vilarejo de Palamós.", url: maps("Cala Canyers Palamos") },
-  { name: "Platja del Pi", area: "Platja d'Aro", note: "Faixa de 250 m escondida numa enseada entre rochas e vegetação exuberante.", url: maps("Platja del Pi Platja d'Aro") },
-  { name: "Cala El Crit", note: "Enseada cheia de lendas — a beleza compensa o acesso desafiador.", url: maps("Cala El Crit Costa Brava") },
-  { name: "Cala Estreta", note: "Praia reservada cercada de pinheiros e falésias; o acesso é a pé e vale a caminhada.", url: maps("Cala Estreta Costa Brava") },
-];
-
-// ── Rota do vinho · Empordà (wine route) ──
-const WINE: Place[] = [
-  { name: "Finca Bell-lloc", area: "Baix Empordà", note: "Degustação completa e experiência gastronômica, com opção de hospedagem.", url: maps("Finca Bell-lloc Palamos") },
-  { name: "La Vinyeta", area: "Alt Empordà", note: "Vinícola renomada, com uma ampla gama de experiências de degustação catalãs.", url: maps("La Vinyeta Mollet de Peralada") },
-  { name: "Martin Faixó", area: "Cadaqués", note: "Família de Cadaqués com 15 hectares de vinhedos; hospedagem no Mas Perafita.", url: maps("Martin Faixo Cadaques") },
-  { name: "Eccocivi", note: "Vinícola jovem e eco-friendly, com degustações numa masia catalã tradicional.", url: maps("Eccocivi winery Emporda") },
-  { name: "Sota els Àngels", note: "Vinhos biodinâmicos de mínima intervenção, na serra de Les Gavarres.", url: maps("Sota els Angels winery") },
-  { name: "Mas Comtal", note: "Propriedade familiar com 40 hectares de vinhedos orgânicos — vinhos e espumantes artesanais.", url: maps("Mas Comtal winery") },
+// ── Regiões (curadoria por região + guia, sem repetição) ──
+const REGIONS: Region[] = [
+  {
+    id: "begur",
+    kicker: "Costa Brava",
+    name: "Begur",
+    note:
+      "Muito central — pertinho das praias e das cidades medievais do Baix Empordà. Uma boa base para explorar toda a região.",
+    photo: "/fotos/guia/begur.jpg",
+    photoAlt: "Vila medieval de Begur no alto da colina",
+    groups: [
+      {
+        label: "Onde ficar",
+        variant: "list",
+        places: [
+          { name: "La Bionda", tier: "$$$", url: maps("La Bionda Begur") },
+          { name: "Alta House Begur", tier: "$$", url: maps("Alta House Begur") },
+          {
+            name: "Bypillow Begur Centro",
+            tier: "$$",
+            note: "Além do hotel, também têm vários apartamentos",
+            url: maps("Bypillow Begur Centro"),
+          },
+          { name: "Finca Vitòria", tier: "$$$", url: maps("Finca Vitoria Begur") },
+          {
+            name: "Aiguaclara",
+            tier: "$$$",
+            note: "Casa do século XIX no centro histórico de Begur",
+            url: maps("Aiguaclara Begur"),
+          },
+          { name: "Can Bassa", note: "Boutique restaurado com quartos charmosos", url: maps("Can Bassa Begur") },
+          {
+            name: "Arkhé Hotel Boutique",
+            note: "Foco em bem-estar, tranquilo e elegante · Pals",
+            url: maps("Arkhe Hotel Boutique Pals"),
+          },
+          {
+            name: "Hotel Sant Roc",
+            note: "Vistas incríveis sobre o Mediterrâneo · Calella de Palafrugell",
+            url: maps("Hotel Sant Roc Calella de Palafrugell"),
+          },
+          {
+            name: "Can Mascot",
+            note: "Hotel eco-friendly no coração de Palafrugell",
+            url: maps("Can Mascot Palafrugell"),
+          },
+        ],
+      },
+      {
+        label: "Onde comer e beber",
+        places: [
+          { name: "Clara Restaurant", city: "Begur", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
+          { name: "Begurió", city: "Begur", url: maps("Begurio Begur") },
+          { name: "Ocasia", city: "Begur", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
+          { name: "Can Kai", city: "Begur", note: "Sushi", url: maps("Can Kai Begur") },
+          {
+            name: "360 Rooftop by Gerard Ruiz",
+            city: "Begur",
+            note: "Drinks com a melhor vista de Begur",
+            url: maps("360 Rooftop Begur"),
+          },
+          {
+            name: "Fitzroy Café",
+            city: "Begur",
+            note: "Café especial, de abril até o fim do verão",
+            url: maps("Fitzroy Cafe Begur"),
+          },
+          {
+            name: "Casa Juanita",
+            city: "Begur",
+            note: "Peixe fresco no forno a lenha, tradição desde 1978",
+            url: maps("Casa Juanita Begur"),
+          },
+          {
+            name: "C-Roack",
+            city: "Begur",
+            note: "Clima ao ar livre descolado para os drinks da noite",
+            url: maps("C-Roack Begur"),
+          },
+          {
+            name: "Margarita",
+            city: "Calella de Palafrugell",
+            note: "Cozinha inventiva e interior lindo",
+            url: maps("Margarita Calella de Palafrugell"),
+          },
+          {
+            name: "UM Pals",
+            city: "Pals",
+            note: "Peixe e frutos do mar fresquíssimos, à beira-mar na Platja d'el Grau",
+            url: maps("UM Pals Platja del Grau"),
+          },
+          {
+            name: "Sol Blanc",
+            city: "Pals",
+            note: "Casa de fazenda entre os arrozais, com jantar gastronômico",
+            url: maps("Sol Blanc Pals"),
+          },
+          {
+            name: "Funky Pizza",
+            city: "Pals",
+            note: "Pizza de forno a lenha e vinhos naturais",
+            url: maps("Funky Pizza Pals"),
+          },
+          { name: "Grava Pals", city: "Pals", note: "Ótimo para café da manhã e café especial", url: maps("Grava Pals") },
+          {
+            name: "Sabana Café",
+            city: "Palafrugell",
+            note: "Café aconchegante para um brunch tardio",
+            url: maps("Sabana Cafe Palafrugell"),
+          },
+          {
+            name: "Sol i Mar",
+            city: "Calella de Palafrugell",
+            note: "Delícia à beira-mar para os amantes de frutos do mar",
+            url: maps("Sol i Mar Calella de Palafrugell"),
+          },
+          {
+            name: "Xurreria La Family",
+            city: "Palafrugell",
+            note: "Para churros deliciosos a qualquer hora",
+            url: maps("Xurreria La Family Palafrugell"),
+          },
+          {
+            name: "És! Carxofa",
+            city: "Púbol",
+            note: "Restaurante no campo, ideal para paella e petiscos variados",
+            url: maps("Es Carxofa Pubol"),
+          },
+        ],
+      },
+      {
+        label: "Praias e calas",
+        places: [
+          {
+            name: "Cala Sa Tuna",
+            note: "Vila de pescadores muito fofa, com água transparente e bares de frente para a praia",
+            url: maps("Cala Sa Tuna Begur"),
+          },
+          {
+            name: "Platja d'Aiguablava",
+            note: "Praia paradisíaca com um dos melhores restaurantes à beira-mar que já fomos (Toc al Mar)",
+            url: maps("Platja Aiguablava Begur"),
+          },
+          { name: "Platja Fonda", note: "Joia escondida entre falésias, longe das multidões", url: maps("Platja Fonda Begur") },
+          { name: "Aiguafreda", note: "Pequena enseada reservada, protegida pela encosta", url: maps("Aiguafreda Begur") },
+          {
+            name: "Fornells",
+            note: "Enseada linda, conectada às praias vizinhas pelo Camí de Ronda",
+            url: maps("Fornells Begur"),
+          },
+          {
+            name: "El Golfet",
+            note: "Praia paradisíaca com uma trilha linda e fácil (5 min), o Camí de Ronda — dá para percorrer toda a Costa Brava por ela",
+            url: maps("El Golfet Calella de Palafrugell"),
+          },
+          {
+            name: "Llafranc",
+            note: "Areia linda em frente a uma vila encantadora. Chegamos pelo Camí de Ronda desde Calella. Para comer, o Isabella's é ótimo, com bons vinhos e de frente para a praia",
+            url: maps("Llafranc Palafrugell"),
+          },
+          {
+            name: "El Canadell",
+            note: "Praia charmosa e familiar, a essência da Costa Brava · Calella de Palafrugell",
+            url: maps("El Canadell Calella de Palafrugell"),
+          },
+        ],
+      },
+      {
+        label: "Cidades por perto",
+        places: [
+          { name: "Pals", note: "Cidade medieval preservada e charmosa", url: maps("Pals Girona") },
+          {
+            name: "Calella de Palafrugell",
+            note: "Parece a Grécia: praia bonita e vila para almoçar e ver as lojinhas",
+            url: maps("Calella de Palafrugell"),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "cadaques",
+    kicker: "Costa Brava",
+    name: "Cadaqués",
+    note:
+      "Cidade do Salvador Dalí — conhecida pela arte, arquitetura, gastronomia e lojas de artesanato. Casas brancas encostadas no mar, ao norte da costa.",
+    photo: "/fotos/guia/cadaques.jpg",
+    photoAlt: "Casas brancas e portas azuis de uma vila costeira",
+    groups: [
+      {
+        label: "Onde ficar",
+        variant: "list",
+        places: [
+          { name: "Carpe Cadaqués", url: "https://www.carpediemcadaques.com/en/accommodation/" },
+          { name: "Casa Marquina", url: "https://www.instagram.com/casamarquina/" },
+          { name: "Riba Pitxot Apartments", url: "https://ribapitxot.com/en/cadaques-holiday-apartment/plusinfo-en.php" },
+          { name: "La Casa Verda Cadaqués", url: "https://www.casaverdacadaques.com/" },
+          { name: "Casa Talaia", note: "Casa de temporada espaçosa, perfeita para grupos", url: maps("Casa Talaia Cadaques") },
+          { name: "Casa Nereta", note: "Boutique descolado, com clima descontraído", url: maps("Casa Nereta Cadaques") },
+        ],
+      },
+      {
+        label: "Onde comer e beber",
+        places: [
+          { name: "Narita", city: "Cadaqués", url: maps("Narita Cadaques") },
+          { name: "Oli Bar", city: "Cadaqués", url: maps("Oli Bar Cadaques") },
+          { name: "Casa Dionis", city: "Cadaqués", url: maps("Casa Dionis Cadaques") },
+          {
+            name: "Batalla",
+            city: "Cadaqués",
+            note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak",
+            url: maps("Batalla Cadaques"),
+          },
+          {
+            name: "Bistro Nereta",
+            city: "Cadaqués",
+            note: "Fusão nipo-espanhola, com menu que muda o tempo todo",
+            url: maps("Bistro Nereta Cadaques"),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tossa",
+    kicker: "Costa Brava",
+    name: "Tossa de Mar",
+    note:
+      "Vila murada à beira-mar, com um castelo medieval sobre o Mediterrâneo. Fica mais ao sul da costa, pertinho de onde vamos casar.",
+    photo: "/fotos/guia/tossa.jpg",
+    photoAlt: "Cala rochosa de águas transparentes na Costa Brava",
+    groups: [
+      {
+        label: "Praias e calas",
+        places: [
+          { name: "Cala Bona", url: maps("Cala Bona Tossa de Mar") },
+          { name: "Cala Pola", url: maps("Cala Pola Tossa de Mar") },
+        ],
+      },
+      {
+        label: "Onde comer e beber",
+        places: [
+          {
+            name: "L'Espai",
+            city: "Tossa de Mar",
+            note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
+            url: maps("L'Espai Tossa de Mar"),
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: "outros",
+    kicker: "Para esticar a viagem",
+    name: "Outros locais",
+    note:
+      "Alguns lugares além da costa que valem a viagem — ótimos para esticar uns dias antes ou depois do casamento.",
+    photo: "/fotos/guia/emporda-vinho.jpg",
+    photoAlt: "Vinhedos e campo do Empordà ao entardecer",
+    groups: [
+      {
+        label: "Rota do vinho · Empordà",
+        intro:
+          "Entre os Pirineus e o Mediterrâneo, o Empordà tem uma tradição vinícola única — vale reservar uma tarde de degustação.",
+        places: [
+          {
+            name: "Celler Perelada",
+            note: "Uma vinícola linda, com almoço incrível e um hotel ótimo para descansar depois do casamento",
+            url: "https://perelada.com/en/home",
+          },
+          {
+            name: "Finca Bell-lloc",
+            note: "Degustação completa e experiência gastronômica, com opção de hospedagem · Baix Empordà",
+            url: maps("Finca Bell-lloc Palamos"),
+          },
+          {
+            name: "La Vinyeta",
+            note: "Vinícola renomada, com ampla gama de degustações catalãs · Alt Empordà",
+            url: maps("La Vinyeta Mollet de Peralada"),
+          },
+          {
+            name: "Martin Faixó",
+            note: "Família de Cadaqués com 15 ha de vinhedos; hospedagem no Mas Perafita",
+            url: maps("Martin Faixo Cadaques"),
+          },
+          {
+            name: "Eccocivi",
+            note: "Vinícola jovem e eco-friendly, com degustações numa masia tradicional",
+            url: maps("Eccocivi winery Emporda"),
+          },
+          {
+            name: "Sota els Àngels",
+            note: "Vinhos biodinâmicos de mínima intervenção, na serra de Les Gavarres",
+            url: maps("Sota els Angels winery"),
+          },
+          {
+            name: "Mas Comtal",
+            note: "40 ha de vinhedos orgânicos — vinhos e espumantes artesanais",
+            url: maps("Mas Comtal winery"),
+          },
+        ],
+      },
+      {
+        label: "Girona",
+        intro:
+          "Cidade medieval linda, com o centro histórico super preservado, a catedral e as casas coloridas à beira do rio Onyar. Perfeita para um passeio de um dia.",
+        places: [
+          {
+            name: "Safo Bar",
+            note: "Comida orgânica e sazonal, com ótimos vinhos naturais — no centro de Girona",
+            url: maps("Safo Bar Girona"),
+          },
+        ],
+      },
+      {
+        label: "Calas mais escondidas",
+        intro: "Para quem quiser fugir das multidões — o acesso costuma ser a pé, mas vale cada passo.",
+        places: [
+          { name: "Cala El Crit", note: "Enseada cheia de lendas — a beleza compensa o acesso desafiador", url: maps("Cala El Crit Costa Brava") },
+          {
+            name: "Cala Estreta",
+            note: "Cercada de pinheiros e falésias; o acesso é a pé e vale a caminhada",
+            url: maps("Cala Estreta Costa Brava"),
+          },
+          { name: "Cala Canyers", note: "Pequena praia reservada perto de Palamós", url: maps("Cala Canyers Palamos") },
+          {
+            name: "Platja del Pi",
+            note: "Faixa de 250 m escondida numa enseada · Platja d'Aro",
+            url: maps("Platja del Pi Platja d'Aro"),
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 function PlaceGrid({ places }: { places: Place[] }) {
@@ -97,41 +394,66 @@ function PlaceGrid({ places }: { places: Place[] }) {
     <div className="ij-rest-grid">
       {places.map((p) => (
         <div key={p.name} className="ij-rest-item">
+          {p.city && <span className="ij-guide-area">{p.city}</span>}
           <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-rest-name ij-rest-link">
             {p.name}
           </a>
-          {p.area && <span className="ij-guide-area">{p.area}</span>}
-          <div className="ij-rest-desc">{p.note}</div>
+          {p.note && <div className="ij-rest-desc">{p.note}</div>}
         </div>
       ))}
     </div>
   );
 }
 
-function GuideSection({
-  id,
-  kicker,
-  title,
-  intro,
-  places,
-}: {
-  id: string;
-  kicker: string;
-  title: string;
-  intro: string;
-  places: Place[];
-}) {
+function PlaceList({ places }: { places: Place[] }) {
   return (
-    <ScrollReveal asChild>
-      <section id={id} className="ij-guide-block">
-        <div className="ij-guide-block-head">
-          <span className="ij-section-eyebrow">{kicker}</span>
-          <h2>{title}</h2>
-          <p className="ij-guide-block-intro">{intro}</p>
+    <ul className="ij-hotel-list">
+      {places.map((p) => (
+        <li key={p.name}>
+          <span>
+            {p.city && <span className="ij-guide-area">{p.city}</span>}
+            <a href={p.url} target="_blank" rel="noopener noreferrer" className="ij-hotel-name">
+              {p.name}
+            </a>
+            {p.note && <span className="ij-hotel-note-inline">{p.note}</span>}
+          </span>
+          {p.tier && <span className="ij-hotel-tier">{p.tier}</span>}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function RegionSection({ region, flip }: { region: Region; flip: boolean }) {
+  return (
+    <section id={region.id} className={`ij-section ij-guide-region${flip ? " ij-section-warm" : ""}`}>
+      <ScrollReveal asChild>
+        <div className={`ij-guide-region-head${flip ? " is-flip" : ""}`}>
+          <figure className="ij-guide-region-photo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={region.photo} alt={region.photoAlt} loading="lazy" />
+          </figure>
+          <div className="ij-guide-region-intro">
+            <span className="ij-section-eyebrow">{region.kicker}</span>
+            <h2>{region.name}</h2>
+            <p className="ij-guide-region-note">{region.note}</p>
+          </div>
         </div>
-        <PlaceGrid places={places} />
-      </section>
-    </ScrollReveal>
+      </ScrollReveal>
+
+      <div className="ij-guide-region-groups">
+        {region.groups.map((g) => (
+          <ScrollReveal asChild key={g.label}>
+            <div className="ij-dest-group">
+              <div className="ij-dest-group-label">{g.label}</div>
+              {g.intro && <p className="ij-tip-text">{g.intro}</p>}
+              {g.places.length > 0 &&
+                (g.variant === "list" ? <PlaceList places={g.places} /> : <PlaceGrid places={g.places} />)}
+            </div>
+          </ScrollReveal>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -155,25 +477,28 @@ export default function GuiaCostaBravaPage() {
         </section>
 
         {/* ── Introdução ── */}
-        <section className="ij-section ij-section-warm">
+        <section className="ij-section">
           <ScrollReveal asChild>
             <div className="ij-guide-intro">
               <p>
                 No nordeste da Catalunha, a Costa Brava é famosa pelo litoral acidentado, pelas praias escondidas e
-                pelas vilas de pescadores encantadoras. É um convite a quem busca uma mistura de beleza natural,
-                história e cultura — águas cristalinas, paisagens verdes e vilarejos medievais que convivem com o luxo
-                tranquilo do Mediterrâneo.
+                pelas vilas de pescadores encantadoras. Águas cristalinas, paisagens verdes e vilarejos medievais que
+                convivem com o luxo tranquilo do Mediterrâneo.
               </p>
               <p>
-                Este é o nosso passaporte para a região: as praias que amamos, hotéis lindos, restaurantes queridos e
-                experiências de vinho no famoso Empordà. Vão com calma — a Costa Brava se descobre devagar.
+                Este é o nosso passaporte para a região, organizado por lugar: as praias que amamos, hotéis lindos,
+                restaurantes queridos e a rota do vinho no Empordà. Vão com calma — a Costa Brava se descobre devagar.
               </p>
             </div>
           </ScrollReveal>
         </section>
 
-        {/* ── Dicas ── */}
-        <section className="ij-section">
+        {/* ── Dicas para a alta temporada ── */}
+        <section className="ij-section ij-section-warm">
+          <div className="ij-guide-band">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/fotos/guia/alta-temporada.jpg" alt="Terraço ao sol na Costa Brava" loading="lazy" />
+          </div>
           <ScrollReveal asChild>
             <div className="ij-guide-block-head">
               <span className="ij-section-eyebrow">Antes de sair</span>
@@ -195,42 +520,12 @@ export default function GuiaCostaBravaPage() {
           </ScrollReveal>
         </section>
 
-        <div className="ij-section-warm" style={{ paddingInline: "var(--pad-x)" }}>
-          {/* ── Onde ficar ── */}
-          <GuideSection
-            id="ficar"
-            kicker="Stay"
-            title="Onde ficar"
-            intro="Hotéis boutique e casas para todos os estilos, de Begur a Cadaqués."
-            places={HOTELS}
-          />
-          {/* ── Onde comer ── */}
-          <GuideSection
-            id="comer"
-            kicker="Eat"
-            title="Onde comer e beber"
-            intro="Dos frutos do mar à beira-mar aos vinhos naturais no fim da tarde."
-            places={EATS}
-          />
-          {/* ── Praias ── */}
-          <GuideSection
-            id="praias"
-            kicker="Beach"
-            title="Praias e calas"
-            intro="As enseadas que mais gostamos — algumas famosas, outras escondidas."
-            places={BEACHES}
-          />
-          {/* ── Rota do vinho ── */}
-          <GuideSection
-            id="vinho"
-            kicker="Wine route"
-            title="Rota do vinho · Empordà"
-            intro="Entre os Pirineus e o Mediterrâneo, a região do Empordà tem uma tradição vinícola única."
-            places={WINE}
-          />
-        </div>
+        {/* ── Regiões ── */}
+        {REGIONS.map((region, i) => (
+          <RegionSection key={region.id} region={region} flip={i % 2 === 1} />
+        ))}
 
-        {/* ── Rodapé do guia ── */}
+        {/* ── Fecho (sem rodapé do site) ── */}
         <section className="ij-section">
           <ScrollReveal asChild>
             <div className="ij-guide-outro">
@@ -239,9 +534,6 @@ export default function GuiaCostaBravaPage() {
                 cada praia e cada vila medieval.
               </p>
               <div className="ij-guide-outro-links">
-                <Link href="/#tips" className="ij-btn-solid">
-                  Ver as dicas do casamento
-                </Link>
                 <a
                   href="https://www.instagram.com/ilovecostabrava"
                   target="_blank"
@@ -258,7 +550,6 @@ export default function GuiaCostaBravaPage() {
           </ScrollReveal>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

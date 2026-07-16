@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
+import CostaBravaPanel from "./CostaBravaPanel";
 
 const TABS = [
   { id: "dress", label: "Dress Code" },
@@ -51,153 +52,6 @@ interface Dest {
 function maps(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 }
-
-const COSTA_BRAVA: Dest = {
-  intro:
-    "A costa é longa e vai de Tossa de Mar até Cadaqués. Vamos compartilhar os destaques de cada lugar — se tiverem tempo, cheguem antes ou fiquem mais uns dias: são praias e cidades medievais lindas.",
-  areas: [
-    {
-      title: "Begur",
-      note: "Muito central — pertinho das praias e das cidades medievais.",
-      groups: [
-        {
-          label: "Onde ficar",
-          variant: "list",
-          places: [
-            { name: "La Bionda", tier: "$$$", url: maps("La Bionda Begur") },
-            { name: "Alta House Begur", tier: "$$", url: maps("Alta House Begur") },
-            {
-              name: "Bypillow Begur Centro",
-              tier: "$$",
-              note: "Além do hotel, também têm vários apartamentos",
-              url: maps("Bypillow Begur Centro"),
-            },
-            { name: "Finca Vitòria", tier: "$$$", url: maps("Finca Vitoria Begur") },
-            { name: "Aiguaclara", tier: "$$$", url: maps("Aiguaclara Begur") },
-          ],
-        },
-        {
-          label: "Praias",
-          places: [
-            {
-              name: "Cala Sa Tuna",
-              note: "Vila de pescadores muito fofa, com praia de água transparente e bares de frente para a praia",
-              url: maps("Cala Sa Tuna Begur"),
-            },
-            {
-              name: "Platja d'Aiguablava",
-              note: "Praia paradisíaca com um dos melhores restaurantes à beira-mar que já fomos (Toc al Mar)",
-              url: maps("Platja Aiguablava Begur"),
-            },
-            { name: "Platja Fonda", url: maps("Platja Fonda Begur") },
-            {
-              name: "El Golfet",
-              note: "Praia paradisíaca com uma trilha linda e bem fácil (5 min de caminhada), o Camí de Ronda — dá para percorrer toda a Costa Brava por ela",
-              url: maps("El Golfet Calella de Palafrugell"),
-            },
-            {
-              name: "Llafranc",
-              note: "Praia de areia linda. Chegamos fazendo o Camí de Ronda desde Calella de Palafrugell. Para comer, o Isabella's é ótimo, com bons vinhos e de frente para a praia",
-              url: maps("Llafranc Palafrugell"),
-            },
-          ],
-        },
-        {
-          label: "Onde comer e beber",
-          places: [
-            { name: "Clara Restaurant", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
-            { name: "Begurió", url: maps("Begurio Begur") },
-            { name: "Ocasia", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
-            { name: "Can Kai", note: "Sushi", url: maps("Can Kai Begur") },
-            {
-              name: "360 Rooftop by Gerard Ruiz",
-              note: "Drinks com a melhor vista de Begur",
-              url: maps("360 Rooftop Begur"),
-            },
-          ],
-        },
-        {
-          label: "Cidades por perto",
-          places: [
-            {
-              name: "Pals",
-              note: "Cidade medieval preservada e charmosa",
-              url: maps("Pals Girona"),
-            },
-            {
-              name: "Calella de Palafrugell",
-              note: "Parece a Grécia. Praia bonita e vila para almoçar e ver as lojinhas. Recomendamos o restaurante Margarita",
-              url: maps("Calella de Palafrugell"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Cadaqués",
-      note: "Cidade do Salvador Dalí — conhecida pela arte, arquitetura, gastronomia e lojas de artesanato.",
-      groups: [
-        {
-          label: "Onde dormir",
-          places: [
-            { name: "Carpe Cadaqués", url: "https://www.carpediemcadaques.com/en/accommodation/" },
-            { name: "Casa Marquina", url: "https://www.instagram.com/casamarquina/" },
-            { name: "Riba Pitxot Apartments", url: "https://ribapitxot.com/en/cadaques-holiday-apartment/plusinfo-en.php" },
-            { name: "La Casa Verda Cadaqués", url: "https://www.casaverdacadaques.com/" },
-          ],
-        },
-        {
-          label: "Onde comer",
-          places: [
-            { name: "Narita", url: maps("Narita Cadaques") },
-            { name: "Oli Bar", url: maps("Oli Bar Cadaques") },
-            { name: "Casa Dionis", url: maps("Casa Dionis Cadaques") },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Tossa de Mar",
-      groups: [
-        {
-          label: "Praias",
-          places: [
-            { name: "Cala Bona", url: maps("Cala Bona Tossa de Mar") },
-            { name: "Cala Pola", url: maps("Cala Pola Tossa de Mar") },
-          ],
-        },
-        {
-          label: "Onde comer",
-          places: [
-            {
-              name: "L'Espai",
-              note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
-              url: maps("L'Espai Tossa de Mar"),
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Outros locais",
-      note: "Alguns lugares além da costa que valem muito a visita — ótimos para esticar a viagem antes ou depois do casamento.",
-      groups: [
-        {
-          label: "Girona",
-          intro:
-            "Cidade medieval linda, com o centro histórico super preservado, a catedral e as casas coloridas à beira do rio Onyar. Perfeita para um passeio de um dia.",
-          places: [],
-        },
-        {
-          label: "Celler Perelada",
-          intro:
-            "Uma vinícola linda — e o almoço lá é incrível. Também tem um hotel ótimo para quem quiser descansar depois do casamento.",
-          places: [{ name: "Perelada", url: "https://perelada.com/en/home" }],
-        },
-      ],
-    },
-  ],
-};
 
 const BARCELONA: Dest = {
   intro: "Se passarem por Barcelona, aqui vão algumas dicas para ajudar.",
@@ -716,7 +570,7 @@ export default function Tips() {
 
       {tab === "barcelona" && <DestPanel dest={BARCELONA} />}
 
-      {tab === "costa-brava" && <DestPanel dest={COSTA_BRAVA} />}
+      {tab === "costa-brava" && <CostaBravaPanel />}
     </section>
   );
 }
