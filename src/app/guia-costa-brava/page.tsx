@@ -196,7 +196,6 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "Hotel Sant Roc",
-            city: "Calella de Palafrugell",
             note: "Vistas incríveis sobre o Mediterrâneo",
             url: maps("Hotel Sant Roc Calella de Palafrugell"),
           },
@@ -212,7 +211,6 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "Margarita",
-            city: "Calella de Palafrugell",
             note: "Cozinha inventiva e interior lindo",
             url: maps("Margarita Calella de Palafrugell"),
           },
@@ -223,7 +221,6 @@ const REGIONS: Region[] = [
           },
           {
             name: "Sol i Mar",
-            city: "Calella de Palafrugell",
             note: "Delícia à beira-mar para os amantes de frutos do mar",
             url: maps("Sol i Mar Calella de Palafrugell"),
           },
@@ -239,7 +236,6 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "El Golfet",
-            city: "Calella de Palafrugell",
             note: "Praia paradisíaca com uma trilha linda e fácil (5 min), o Camí de Ronda — dá para percorrer toda a Costa Brava por ela",
             url: maps("El Golfet Calella de Palafrugell"),
           },
@@ -250,7 +246,6 @@ const REGIONS: Region[] = [
           },
           {
             name: "El Canadell",
-            city: "Calella de Palafrugell",
             note: "Praia charmosa e familiar, a essência da Costa Brava",
             url: maps("El Canadell Calella de Palafrugell"),
           },
@@ -264,8 +259,8 @@ const REGIONS: Region[] = [
     name: "Cadaqués",
     note:
       "Cidade do Salvador Dalí — conhecida pela arte, arquitetura, gastronomia e lojas de artesanato. Casas brancas encostadas no mar, ao norte da costa.",
-    photo: "/fotos/guia/cadaques.jpg",
-    photoAlt: "Casas brancas e portas azuis de uma vila costeira",
+    photo: "/fotos/inspiracao/cadaques-baia.jpg",
+    photoAlt: "Baía de Cadaqués ao entardecer, com as casas brancas e a igreja no alto",
     groups: [
       {
         label: "Onde ficar",
@@ -282,18 +277,16 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Narita", city: "Cadaqués", url: maps("Narita Cadaques") },
-          { name: "Oli Bar", city: "Cadaqués", url: maps("Oli Bar Cadaques") },
-          { name: "Casa Dionis", city: "Cadaqués", url: maps("Casa Dionis Cadaques") },
+          { name: "Narita", url: maps("Narita Cadaques") },
+          { name: "Oli Bar", url: maps("Oli Bar Cadaques") },
+          { name: "Casa Dionis", url: maps("Casa Dionis Cadaques") },
           {
             name: "Batalla",
-            city: "Cadaqués",
             note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak",
             url: maps("Batalla Cadaques"),
           },
           {
             name: "Bistro Nereta",
-            city: "Cadaqués",
             note: "Fusão nipo-espanhola, com menu que muda o tempo todo",
             url: maps("Bistro Nereta Cadaques"),
           },
@@ -322,7 +315,6 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "L'Espai",
-            city: "Tossa de Mar",
             note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
             url: maps("L'Espai Tossa de Mar"),
           },
