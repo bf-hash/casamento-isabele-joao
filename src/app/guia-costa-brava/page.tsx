@@ -117,6 +117,12 @@ const REGIONS: Region[] = [
             url: maps("Fitzroy Cafe Begur"),
           },
           {
+            name: "Casa Juanita",
+            note: "Peixe fresco no forno a lenha, tradição desde 1978",
+            url: maps("Casa Juanita Begur"),
+          },
+          { name: "C-Roack", note: "Clima ao ar livre descolado para os drinks da noite", url: maps("C-Roack Begur") },
+          {
             name: "Margarita",
             note: "Cozinha inventiva e interior lindo · Calella de Palafrugell",
             url: maps("Margarita Calella de Palafrugell"),
@@ -141,6 +147,21 @@ const REGIONS: Region[] = [
             name: "Sabana Café",
             note: "Café aconchegante para um brunch tardio · Palafrugell",
             url: maps("Sabana Cafe Palafrugell"),
+          },
+          {
+            name: "Sol i Mar",
+            note: "Delícia à beira-mar para os amantes de frutos do mar · Calella de Palafrugell",
+            url: maps("Sol i Mar Calella de Palafrugell"),
+          },
+          {
+            name: "Xurreria La Family",
+            note: "Para churros deliciosos a qualquer hora · Palafrugell",
+            url: maps("Xurreria La Family Palafrugell"),
+          },
+          {
+            name: "És! Carxofa",
+            note: "Restaurante no campo, ideal para paella e petiscos variados · Púbol",
+            url: maps("Es Carxofa Pubol"),
           },
         ],
       },
@@ -315,22 +336,16 @@ const REGIONS: Region[] = [
         ],
       },
       {
-        label: "Mais para comer e beber pela costa",
-        intro: "Achados espalhados pela região, para quando a fome bater fora das cidades acima.",
-        places: [
-          { name: "Sol i Mar", note: "Uma delícia à beira-mar para os amantes de frutos do mar", url: maps("Sol i Mar Costa Brava restaurant") },
-          { name: "És! Carxofa", note: "Restaurante no campo, ideal para paella e petiscos variados", url: maps("Es Carxofa Costa Brava") },
-          { name: "Casa Juanita", note: "Sabores tradicionais e peixe na brasa", url: maps("Casa Juanita Costa Brava") },
-          { name: "Safo Bar", note: "Comida orgânica e sazonal, com ótimos vinhos naturais", url: maps("Safo Bar Costa Brava") },
-          { name: "C-Roack", note: "Clima ao ar livre descolado para os drinks da noite", url: maps("C-Roack Costa Brava") },
-          { name: "Xurreria La Family", note: "Para churros deliciosos a qualquer hora", url: maps("Xurreria La Family Costa Brava") },
-        ],
-      },
-      {
         label: "Girona",
         intro:
           "Cidade medieval linda, com o centro histórico super preservado, a catedral e as casas coloridas à beira do rio Onyar. Perfeita para um passeio de um dia.",
-        places: [],
+        places: [
+          {
+            name: "Safo Bar",
+            note: "Comida orgânica e sazonal, com ótimos vinhos naturais — no centro de Girona",
+            url: maps("Safo Bar Girona"),
+          },
+        ],
       },
       {
         label: "Calas mais escondidas",
