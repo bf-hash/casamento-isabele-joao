@@ -24,7 +24,8 @@ const EVENTS: EventData[] = [
     day: "30·06",
     weekday: "Quarta-feira",
     title: "Pré-wedding",
-    address: "Detalhes em breve",
+    description:
+      "Tarde no Xilinguito, ao lado do Hotel Santa Marta. Vai ter paella, vinhos e muita festa.",
     art: "/fotos/programacao/pre-wedding.webp",
   },
   {

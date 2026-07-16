@@ -276,7 +276,7 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Narita", note: "Sushi fresquíssimo num pátio escondido — reserve com antecedência", url: maps("Narita Cadaques") },
+          { name: "Narita", note: "Japão e o Mediterrâneo se encontram em Cadaqués, com uma carta simples, informal e fresca", url: maps("Narita Cadaques") },
           { name: "Oli Bar", note: "Bar de vinhos e petiscos, com clima descontraído à beira-mar", url: maps("Oli Bar Cadaques") },
           { name: "Casa Dionis", note: "Cozinha catalã clássica num casarão tradicional do centro", url: maps("Casa Dionis Cadaques") },
           {
