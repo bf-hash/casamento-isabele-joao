@@ -560,6 +560,111 @@ export default function Tips() {
 
             <div className="ij-stay-alt">
               <div className="ij-stay-alt-head">
+                <span className="ij-section-eyebrow ij-section-eyebrow--centered">
+                  Airbnbs e Vilas que gostamos da região
+                </span>
+              </div>
+              <ul className="ij-hotel-list ij-stay-examples">
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/53821739"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Vila de luxo
+                    </a>
+                    <span className="ij-hotel-badge">★4,76 · até 11 pessoas</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/1062064961646738690"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Casa de praia
+                    </a>
+                    <span className="ij-hotel-badge">
+                      ★4,98 · 4 quartos / 6 camas / 3 banheiros · até 10 pessoas
+                    </span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/25061452"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Villa Sta. Cristina
+                    </a>
+                    <span className="ij-hotel-badge">
+                      ★5,0 · 4 quartos / 7 camas / 3 banheiros · até 10 pessoas · em Santa Cristina (a praia do
+                      Hotel que ficaremos)
+                    </span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/1709659091895782539"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Apartamento moderno
+                    </a>
+                    <span className="ij-hotel-badge">5 min a pé da praia</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/1708048142195235015"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Apartamento com terraço
+                    </a>
+                    <span className="ij-hotel-badge">até 4 pessoas · 5 min a pé da praia</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/11331129"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Apto Sta. Cristina
+                    </a>
+                    <span className="ij-hotel-badge">até 4 pessoas</span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.roblesvillage.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Villa los Robles
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="ij-stay-alt">
+              <div className="ij-stay-alt-head">
                 <span className="ij-section-eyebrow ij-section-eyebrow--centered">Outra opção · Tossa de Mar</span>
               </div>
               <p>
