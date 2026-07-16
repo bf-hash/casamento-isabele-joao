@@ -521,6 +521,21 @@ export default function Tips() {
                 <li>
                   <span>
                     <a
+                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Hotel Casa Coco
+                    </a>
+                    <span className="ij-hotel-badge">
+                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
+                    </span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
                       href="https://www.booking.com/hotel/es/albamar-apartaments.html"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -541,21 +556,6 @@ export default function Tips() {
                       Can Terrats
                     </a>
                     <span className="ij-hotel-badge">2 minutos do casamento e 6 de onde será o pre wedding</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Casa Coco
-                    </a>
-                    <span className="ij-hotel-badge">
-                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
-                    </span>
                   </span>
                 </li>
                 <li>
