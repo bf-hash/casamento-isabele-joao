@@ -546,6 +546,9 @@ export default function Tips() {
                     >
                       Casa Coco
                     </a>
+                    <span className="ij-hotel-badge">
+                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
+                    </span>
                   </span>
                 </li>
               </ul>
