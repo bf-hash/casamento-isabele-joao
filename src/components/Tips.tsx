@@ -507,9 +507,16 @@ export default function Tips() {
             <div className="ij-stay-note">
               <p>
                 Circulamos no mapa a região que mais gostamos próximo ao casamento, há{' '}
-                <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser. Alguns
-                exemplos que gostamos:
+                <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser.
               </p>
+            </div>
+
+            <div className="ij-stay-alt">
+              <div className="ij-stay-alt-head">
+                <span className="ij-section-eyebrow ij-section-eyebrow--centered">
+                  Airbnbs e Vilas que gostamos da região
+                </span>
+              </div>
               <ul className="ij-hotel-list ij-stay-examples">
                 <li>
                   <span>
@@ -551,20 +558,6 @@ export default function Tips() {
                     </span>
                   </span>
                 </li>
-              </ul>
-              <p className="ij-stay-obs">
-                <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
-                tão bonito quanto o resto da região.
-              </p>
-            </div>
-
-            <div className="ij-stay-alt">
-              <div className="ij-stay-alt-head">
-                <span className="ij-section-eyebrow ij-section-eyebrow--centered">
-                  Airbnbs e Vilas que gostamos da região
-                </span>
-              </div>
-              <ul className="ij-hotel-list ij-stay-examples">
                 <li>
                   <span>
                     <a
@@ -658,6 +651,10 @@ export default function Tips() {
                   </span>
                 </li>
               </ul>
+              <p className="ij-stay-obs">
+                <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
+                tão bonito quanto o resto da região.
+              </p>
             </div>
 
             <div className="ij-stay-alt">
