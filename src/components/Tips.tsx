@@ -575,7 +575,7 @@ export default function Tips() {
                     >
                       Vila de luxo
                     </a>
-                    <span className="ij-hotel-badge">★4,76 · até 11 pessoas</span>
+                    <span className="ij-hotel-badge">até 11 pessoas</span>
                   </span>
                 </li>
                 <li>
@@ -589,7 +589,7 @@ export default function Tips() {
                       Casa de praia
                     </a>
                     <span className="ij-hotel-badge">
-                      ★4,98 · 4 quartos / 6 camas / 3 banheiros · até 10 pessoas
+                      4 quartos / 6 camas / 3 banheiros · até 10 pessoas
                     </span>
                   </span>
                 </li>
@@ -604,7 +604,7 @@ export default function Tips() {
                       Villa Sta. Cristina
                     </a>
                     <span className="ij-hotel-badge">
-                      ★5,0 · 4 quartos / 7 camas / 3 banheiros · até 10 pessoas · em Santa Cristina (a praia do
+                      4 quartos / 7 camas / 3 banheiros · até 10 pessoas · em Santa Cristina (a praia do
                       Hotel que ficaremos)
                     </span>
                   </span>
