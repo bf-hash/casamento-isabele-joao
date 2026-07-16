@@ -42,14 +42,8 @@ interface Region {
 // ── Dicas para a alta temporada ──
 const TIPS: string[] = [
   "Chegar à praia depois das 10h pode ser complicado — enche bastante.",
-  "Leve um lanche se for almoçar cedo, ou espere passar o pico do almoço para comer nos restaurantes.",
-  "Mantenha-se hidratado — o verão mediterrâneo é quente.",
-  "Não planeje demais. Deixe espaço no roteiro e seja flexível com os horários.",
   "Sempre reserve mesa para o jantar, para não ficar na mão.",
   "As praias mais famosas ficam difíceis de acessar de carro entre 10h e 14h por causa do trânsito.",
-  "Boa paella não se encontra em qualquer lugar — vale procurar as indicadas.",
-  "Visite as praias mais cheias no fim da tarde: sorvete e pôr do sol com bem menos gente.",
-  "Alugar uma bike ou e-bike no verão facilita muito a locomoção entre as calas.",
 ];
 
 // ── Regiões (curadoria por região + guia, sem repetição) ──
@@ -83,96 +77,34 @@ const REGIONS: Region[] = [
             url: maps("Aiguaclara Begur"),
           },
           { name: "Can Bassa", note: "Boutique restaurado com quartos charmosos", url: maps("Can Bassa Begur") },
-          {
-            name: "Arkhé Hotel Boutique",
-            note: "Foco em bem-estar, tranquilo e elegante · Pals",
-            url: maps("Arkhe Hotel Boutique Pals"),
-          },
-          {
-            name: "Hotel Sant Roc",
-            note: "Vistas incríveis sobre o Mediterrâneo · Calella de Palafrugell",
-            url: maps("Hotel Sant Roc Calella de Palafrugell"),
-          },
-          {
-            name: "Can Mascot",
-            note: "Hotel eco-friendly no coração de Palafrugell",
-            url: maps("Can Mascot Palafrugell"),
-          },
         ],
       },
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Clara Restaurant", city: "Begur", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
-          { name: "Begurió", city: "Begur", url: maps("Begurio Begur") },
-          { name: "Ocasia", city: "Begur", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
-          { name: "Can Kai", city: "Begur", note: "Sushi", url: maps("Can Kai Begur") },
+          { name: "Clara Restaurant", note: "Ambiente moderno e comida incrível", url: maps("Clara Restaurant Begur") },
+          { name: "Begurió", url: maps("Begurio Begur") },
+          { name: "Ocasia", note: "Bar de vinhos fofo num rooftop", url: maps("Ocasia Begur") },
+          { name: "Can Kai", note: "Sushi", url: maps("Can Kai Begur") },
           {
             name: "360 Rooftop by Gerard Ruiz",
-            city: "Begur",
             note: "Drinks com a melhor vista de Begur",
             url: maps("360 Rooftop Begur"),
           },
           {
             name: "Fitzroy Café",
-            city: "Begur",
             note: "Café especial, de abril até o fim do verão",
             url: maps("Fitzroy Cafe Begur"),
           },
           {
             name: "Casa Juanita",
-            city: "Begur",
             note: "Peixe fresco no forno a lenha, tradição desde 1978",
             url: maps("Casa Juanita Begur"),
           },
           {
             name: "C-Roack",
-            city: "Begur",
             note: "Clima ao ar livre descolado para os drinks da noite",
             url: maps("C-Roack Begur"),
-          },
-          {
-            name: "Margarita",
-            city: "Calella de Palafrugell",
-            note: "Cozinha inventiva e interior lindo",
-            url: maps("Margarita Calella de Palafrugell"),
-          },
-          {
-            name: "UM Pals",
-            city: "Pals",
-            note: "Peixe e frutos do mar fresquíssimos, à beira-mar na Platja d'el Grau",
-            url: maps("UM Pals Platja del Grau"),
-          },
-          {
-            name: "Sol Blanc",
-            city: "Pals",
-            note: "Casa de fazenda entre os arrozais, com jantar gastronômico",
-            url: maps("Sol Blanc Pals"),
-          },
-          {
-            name: "Funky Pizza",
-            city: "Pals",
-            note: "Pizza de forno a lenha e vinhos naturais",
-            url: maps("Funky Pizza Pals"),
-          },
-          { name: "Grava Pals", city: "Pals", note: "Ótimo para café da manhã e café especial", url: maps("Grava Pals") },
-          {
-            name: "Sabana Café",
-            city: "Palafrugell",
-            note: "Café aconchegante para um brunch tardio",
-            url: maps("Sabana Cafe Palafrugell"),
-          },
-          {
-            name: "Sol i Mar",
-            city: "Calella de Palafrugell",
-            note: "Delícia à beira-mar para os amantes de frutos do mar",
-            url: maps("Sol i Mar Calella de Palafrugell"),
-          },
-          {
-            name: "Xurreria La Family",
-            city: "Palafrugell",
-            note: "Para churros deliciosos a qualquer hora",
-            url: maps("Xurreria La Family Palafrugell"),
           },
           {
             name: "És! Carxofa",
@@ -202,8 +134,112 @@ const REGIONS: Region[] = [
             note: "Enseada linda, conectada às praias vizinhas pelo Camí de Ronda",
             url: maps("Fornells Begur"),
           },
+        ],
+      },
+    ],
+  },
+  {
+    id: "pals",
+    kicker: "Costa Brava",
+    name: "Pals",
+    note:
+      "Cidade medieval preservada e charmosa, entre os arrozais do Baix Empordà — a poucos minutos de Begur.",
+    photo: "/fotos/inspiracao/pals.jpg",
+    photoAlt: "Ruas de pedra da vila medieval de Pals",
+    groups: [
+      {
+        label: "Onde ficar",
+        variant: "list",
+        places: [
+          {
+            name: "Arkhé Hotel Boutique",
+            note: "Foco em bem-estar, tranquilo e elegante",
+            url: maps("Arkhe Hotel Boutique Pals"),
+          },
+        ],
+      },
+      {
+        label: "Onde comer e beber",
+        places: [
+          {
+            name: "UM Pals",
+            note: "Peixe e frutos do mar fresquíssimos, à beira-mar na Platja d'el Grau",
+            url: maps("UM Pals Platja del Grau"),
+          },
+          {
+            name: "Sol Blanc",
+            note: "Casa de fazenda entre os arrozais, com jantar gastronômico",
+            url: maps("Sol Blanc Pals"),
+          },
+          {
+            name: "Funky Pizza",
+            note: "Pizza de forno a lenha e vinhos naturais",
+            url: maps("Funky Pizza Pals"),
+          },
+          { name: "Grava Pals", note: "Ótimo para café da manhã e café especial", url: maps("Grava Pals") },
+        ],
+      },
+    ],
+  },
+  {
+    id: "palafrugell",
+    kicker: "Costa Brava",
+    name: "Palafrugell",
+    note:
+      "Parece a Grécia: praias bonitas em Calella e Llafranc, vilas para almoçar e ver as lojinhas — tudo pertinho de Begur.",
+    photo: "/fotos/inspiracao/calella.jpg",
+    photoAlt: "Casas brancas à beira-mar em Calella de Palafrugell",
+    groups: [
+      {
+        label: "Onde ficar",
+        variant: "list",
+        places: [
+          {
+            name: "Hotel Sant Roc",
+            city: "Calella de Palafrugell",
+            note: "Vistas incríveis sobre o Mediterrâneo",
+            url: maps("Hotel Sant Roc Calella de Palafrugell"),
+          },
+          {
+            name: "Can Mascot",
+            note: "Hotel eco-friendly no coração de Palafrugell",
+            url: maps("Can Mascot Palafrugell"),
+          },
+        ],
+      },
+      {
+        label: "Onde comer e beber",
+        places: [
+          {
+            name: "Margarita",
+            city: "Calella de Palafrugell",
+            note: "Cozinha inventiva e interior lindo",
+            url: maps("Margarita Calella de Palafrugell"),
+          },
+          {
+            name: "Sabana Café",
+            note: "Café aconchegante para um brunch tardio",
+            url: maps("Sabana Cafe Palafrugell"),
+          },
+          {
+            name: "Sol i Mar",
+            city: "Calella de Palafrugell",
+            note: "Delícia à beira-mar para os amantes de frutos do mar",
+            url: maps("Sol i Mar Calella de Palafrugell"),
+          },
+          {
+            name: "Xurreria La Family",
+            note: "Para churros deliciosos a qualquer hora",
+            url: maps("Xurreria La Family Palafrugell"),
+          },
+        ],
+      },
+      {
+        label: "Praias e calas",
+        places: [
           {
             name: "El Golfet",
+            city: "Calella de Palafrugell",
             note: "Praia paradisíaca com uma trilha linda e fácil (5 min), o Camí de Ronda — dá para percorrer toda a Costa Brava por ela",
             url: maps("El Golfet Calella de Palafrugell"),
           },
@@ -214,19 +250,9 @@ const REGIONS: Region[] = [
           },
           {
             name: "El Canadell",
-            note: "Praia charmosa e familiar, a essência da Costa Brava · Calella de Palafrugell",
+            city: "Calella de Palafrugell",
+            note: "Praia charmosa e familiar, a essência da Costa Brava",
             url: maps("El Canadell Calella de Palafrugell"),
-          },
-        ],
-      },
-      {
-        label: "Cidades por perto",
-        places: [
-          { name: "Pals", note: "Cidade medieval preservada e charmosa", url: maps("Pals Girona") },
-          {
-            name: "Calella de Palafrugell",
-            note: "Parece a Grécia: praia bonita e vila para almoçar e ver as lojinhas",
-            url: maps("Calella de Palafrugell"),
           },
         ],
       },
@@ -472,7 +498,6 @@ export default function GuiaCostaBravaPage() {
               Guia de viagem
               <em>Costa Brava</em>
             </h1>
-            <p className="ij-guide-hero-sub">curadoria de Isabele <span className="amp">&amp;</span> João</p>
           </div>
         </section>
 
