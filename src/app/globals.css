@@ -823,6 +823,7 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 14px;
   max-width: 560px;
+  width: min(560px, 100%);
   text-align: left;
   padding: 15px 22px;
   background: var(--paper);

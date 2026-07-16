@@ -76,7 +76,6 @@ const REGIONS: Region[] = [
             note: "Casa do século XIX no centro histórico de Begur",
             url: maps("Aiguaclara Begur"),
           },
-          { name: "Can Bassa", note: "Boutique restaurado com quartos charmosos", url: maps("Can Bassa Begur") },
         ],
       },
       {
@@ -277,9 +276,9 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Narita", url: maps("Narita Cadaques") },
-          { name: "Oli Bar", url: maps("Oli Bar Cadaques") },
-          { name: "Casa Dionis", url: maps("Casa Dionis Cadaques") },
+          { name: "Narita", note: "Sushi fresquíssimo num pátio escondido — reserve com antecedência", url: maps("Narita Cadaques") },
+          { name: "Oli Bar", note: "Bar de vinhos e petiscos, com clima descontraído à beira-mar", url: maps("Oli Bar Cadaques") },
+          { name: "Casa Dionis", note: "Cozinha catalã clássica num casarão tradicional do centro", url: maps("Casa Dionis Cadaques") },
           {
             name: "Batalla",
             note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak",
