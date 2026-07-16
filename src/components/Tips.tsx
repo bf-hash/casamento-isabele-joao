@@ -521,6 +521,21 @@ export default function Tips() {
                 <li>
                   <span>
                     <a
+                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Hotel Casa Coco
+                    </a>
+                    <span className="ij-hotel-badge">
+                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
+                    </span>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
                       href="https://www.booking.com/hotel/es/albamar-apartaments.html"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -541,21 +556,6 @@ export default function Tips() {
                       Can Terrats
                     </a>
                     <span className="ij-hotel-badge">2 minutos do casamento e 6 de onde será o pre wedding</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Casa Coco
-                    </a>
-                    <span className="ij-hotel-badge">
-                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
-                    </span>
                   </span>
                 </li>
                 <li>
@@ -663,7 +663,8 @@ export default function Tips() {
               </div>
               <p>
                 Para quem preferir, Tossa de Mar também é uma ótima opção — recomendamos ficar na região histórica
-                (qualquer hotel por ali). Alguns favoritos:
+                (qualquer hotel por ali). Fica um pouco mais longe do casamento que as outras opções (~30min).
+                Alguns favoritos:
               </p>
               <HotelList hotels={TOSSA_ALT_HOTELS} />
             </div>
@@ -675,7 +676,7 @@ export default function Tips() {
               </div>
               <p>
                 O rolê de sábado será mais ao norte, na região de Begur
-                (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
+                (~1h do Hotel Santa Marta). Para os que quiserem ficar com a gente e no norte entre sexta e domingo, algumas
                 opções:
               </p>
               <HotelList hotels={BEGUR_HOTELS} />
