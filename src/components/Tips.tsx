@@ -675,7 +675,7 @@ export default function Tips() {
               </div>
               <p>
                 O rolê de sábado será mais ao norte, na região de Begur
-                (~1h do Hotel Santa Marta). Para os que quiserem ficar no norte entre sexta e domingo, algumas
+                (~1h do Hotel Santa Marta). Para os que quiserem ficar com a gente e no norte entre sexta e domingo, algumas
                 opções:
               </p>
               <HotelList hotels={BEGUR_HOTELS} />
