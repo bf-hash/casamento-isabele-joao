@@ -796,7 +796,28 @@ a { text-decoration: none; color: inherit; }
   color: var(--ink-soft);
 }
 
-.ij-inspire-ig-wrap { text-align: center; margin-top: clamp(40px, 5.5vh, 64px); }
+/* Card de destaque: link para o guia completo */
+.ij-inspire-guide-wrap { text-align: center; margin-top: clamp(40px, 5.5vh, 64px); }
+.ij-inspire-guide {
+  display: inline-flex; flex-direction: column; align-items: center;
+  max-width: 560px; width: min(560px, 100%);
+  padding: clamp(26px, 3.4vw, 40px) clamp(24px, 3vw, 44px);
+  background: var(--paper); border: 1px solid var(--line); text-align: center;
+  transition: border-color var(--dur-fast) var(--ease), box-shadow var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+.ij-inspire-guide:hover {
+  border-color: var(--coastal-blue);
+  box-shadow: 0 20px 44px -28px rgba(52, 48, 43, 0.55);
+  transform: translateY(-3px);
+}
+.ij-inspire-guide-k { font-family: var(--font-body); font-weight: 400; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--coastal-blue); }
+.ij-inspire-guide-title { font-family: var(--font-display); font-weight: 400; font-size: clamp(26px, 3.4vw, 36px); line-height: 1.1; color: var(--ink); margin-top: 8px; }
+.ij-inspire-guide-desc { font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; margin-top: 10px; max-width: 380px; }
+.ij-inspire-guide-go { font-family: var(--font-body); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--coastal-blue); margin-top: 18px; transition: letter-spacing var(--dur-fast) var(--ease); }
+.ij-inspire-guide:hover .ij-inspire-guide-go { letter-spacing: 0.22em; }
+
+.ij-inspire-ig-wrap { text-align: center; margin-top: clamp(28px, 4vh, 40px); }
 .ij-inspire-ig {
   display: inline-flex;
   align-items: center;
@@ -1062,4 +1083,99 @@ a { text-decoration: none; color: inherit; }
   .ij-beach-item:nth-last-child(-n+4) { border-bottom: 1px solid var(--line-soft); }
   .ij-beach-item:nth-last-child(-n+2) { border-bottom: none; }
   .ij-footer-bar { justify-content: center; text-align: center; }
+}
+
+/* ============================================================
+   GUIA DE VIAGEM · COSTA BRAVA (página /guia-costa-brava)
+   ============================================================ */
+.ij-guide-hero {
+  position: relative;
+  min-height: clamp(420px, 74vh, 640px);
+  display: flex; align-items: flex-end; justify-content: center;
+  overflow: hidden;
+  padding: 0 var(--pad-x) clamp(48px, 8vh, 88px);
+  text-align: center;
+}
+.ij-guide-hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; object-fit: cover;
+  z-index: 0;
+}
+.ij-guide-hero::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(20,28,40,0.28) 0%, rgba(20,28,40,0.12) 42%, rgba(20,28,40,0.62) 100%);
+}
+.ij-guide-hero-inner { position: relative; z-index: 2; color: #fff; }
+.ij-guide-hero-kicker {
+  font-family: var(--font-body); font-weight: 400; font-size: 12px;
+  letter-spacing: 0.34em; text-transform: uppercase; color: rgba(255,255,255,0.9);
+}
+.ij-guide-hero-title {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(44px, 8vw, 92px); line-height: 0.98; letter-spacing: 0.01em;
+  margin: 14px 0 0; color: #fff; text-shadow: 0 2px 24px rgba(10,16,26,0.35);
+}
+.ij-guide-hero-title em {
+  display: block; font-style: italic; font-weight: 400;
+  font-size: clamp(52px, 9vw, 108px); margin-top: 2px;
+}
+.ij-guide-hero-sub {
+  font-family: var(--font-display); font-style: italic;
+  font-size: clamp(18px, 2.4vw, 24px); color: rgba(255,255,255,0.94);
+  margin: 18px 0 0;
+}
+.ij-guide-hero-sub .amp { color: #fff; }
+
+.ij-guide-intro {
+  max-width: 680px; margin: 0 auto; text-align: center;
+}
+.ij-guide-intro p {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(19px, 2.4vw, 25px); line-height: 1.7; color: var(--ink-soft);
+  margin: 0;
+}
+.ij-guide-intro p + p { margin-top: 22px; }
+
+.ij-guide-block { max-width: var(--maxw); margin-inline: auto; padding-block: clamp(52px, 8vh, 96px); }
+.ij-guide-block + .ij-guide-block { border-top: 1px solid var(--line); }
+.ij-guide-block-head { text-align: center; max-width: 640px; margin: 0 auto clamp(32px, 5vh, 52px); display: flex; flex-direction: column; align-items: center; }
+.ij-guide-block-head .ij-section-eyebrow { justify-content: center; }
+.ij-guide-block-head h2 {
+  font-family: var(--font-display); font-weight: 300;
+  font-size: clamp(32px, 4.4vw, 54px); line-height: 1.04; letter-spacing: 0.01em;
+  color: var(--ink); margin: 12px 0 0;
+}
+.ij-guide-block-intro { color: var(--ink-soft); font-size: 16px; line-height: 1.8; margin: 16px 0 0; }
+
+/* área (bairro/cidade) do lugar, entre o nome e a descrição */
+.ij-guide-area {
+  display: block; font-family: var(--font-body); font-weight: 400;
+  font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--coastal-blue); margin: 2px 0 4px;
+}
+
+/* Dicas numeradas */
+.ij-guide-tips { list-style: none; margin: 0 auto; padding: 0; max-width: 760px; }
+.ij-guide-tips li {
+  display: flex; gap: 18px; align-items: baseline;
+  padding: 18px 0; border-bottom: 1px solid var(--line-soft);
+  color: var(--ink-soft); font-size: 16px; line-height: 1.7;
+}
+.ij-guide-tips li:last-child { border-bottom: none; }
+.ij-guide-tips-n {
+  font-family: var(--font-display); font-style: italic; font-weight: 400;
+  font-size: 22px; color: var(--coastal-blue); flex: none; min-width: 34px;
+}
+
+/* Rodapé do guia */
+.ij-guide-outro { text-align: center; max-width: 620px; margin: 0 auto; }
+.ij-guide-outro-note { font-family: var(--font-display); font-style: italic; font-size: clamp(18px, 2.3vw, 23px); line-height: 1.6; color: var(--ink-soft); margin: 0 0 28px; }
+.ij-guide-outro-links { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; align-items: center; margin-bottom: 28px; }
+.ij-guide-back { font-family: var(--font-body); font-size: 13px; letter-spacing: 0.06em; color: var(--ink-quiet); transition: color var(--dur-fast); }
+.ij-guide-back:hover { color: var(--coastal-blue); }
+
+@media (max-width: 640px) {
+  .ij-guide-tips li { gap: 12px; }
+  .ij-guide-outro-links { flex-direction: column; }
+  .ij-guide-outro-links > * { width: 100%; max-width: 280px; }
 }
