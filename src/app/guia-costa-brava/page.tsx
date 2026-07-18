@@ -211,7 +211,7 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "Margarita",
-            note: "Cozinha inventiva e interior lindo",
+            note: "Lugar lindo na beira da praia. Para amantes de vinho e crudos",
             url: maps("Margarita Calella de Palafrugell"),
           },
           {
