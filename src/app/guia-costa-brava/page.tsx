@@ -44,6 +44,7 @@ const TIPS: string[] = [
   "Chegar à praia depois das 10h pode ser complicado — enche bastante.",
   "Sempre reserve mesa para o jantar, para não ficar na mão.",
   "As praias mais famosas ficam difíceis de acessar de carro entre 10h e 14h por causa do trânsito.",
+  "Leve sapatilha aquática — algumas praias são de pedra.",
 ];
 
 // ── Regiões (curadoria por região + guia, sem repetição) ──
@@ -210,12 +211,12 @@ const REGIONS: Region[] = [
         places: [
           {
             name: "Margarita",
-            note: "Cozinha inventiva e interior lindo",
+            note: "Lugar lindo na beira da praia. Para amantes de vinho e crudos",
             url: maps("Margarita Calella de Palafrugell"),
           },
           {
             name: "Sabana Café",
-            note: "Café aconchegante para um brunch tardio",
+            note: "Café aconchegante para um brunch",
             url: maps("Sabana Cafe Palafrugell"),
           },
           {
@@ -276,12 +277,12 @@ const REGIONS: Region[] = [
       {
         label: "Onde comer e beber",
         places: [
-          { name: "Narita", note: "Japão e o Mediterrâneo se encontram em Cadaqués, com uma carta simples, informal e fresca", url: maps("Narita Cadaques") },
+          { name: "Narita", note: "Nosso favorito. Bons vinhos, crudos e steak tartare", url: maps("Narita Cadaques") },
           { name: "Oli Bar", note: "Bar de vinhos e petiscos, com clima descontraído à beira-mar", url: maps("Oli Bar Cadaques") },
           { name: "Casa Dionis", note: "Cozinha catalã clássica num casarão tradicional do centro", url: maps("Casa Dionis Cadaques") },
           {
             name: "Batalla",
-            note: "Joia à beira-mar, frutos do mar fresquíssimos e tuna steak",
+            note: "Frutos do mar fresquíssimos e tuna steak",
             url: maps("Batalla Cadaques"),
           },
           {
@@ -503,7 +504,7 @@ export default function GuiaCostaBravaPage() {
               </p>
               <p>
                 Este é o nosso passaporte para a região, organizado por lugar: as praias que amamos, hotéis lindos,
-                restaurantes queridos e a rota do vinho no Empordà. Vão com calma — a Costa Brava se descobre devagar.
+                restaurantes queridos e a rota do vinho no Empordà.
               </p>
             </div>
           </ScrollReveal>
