@@ -216,7 +216,7 @@ const REGIONS: Region[] = [
           },
           {
             name: "Sabana Café",
-            note: "Café aconchegante para um brunch tardio",
+            note: "Café aconchegante para um brunch",
             url: maps("Sabana Cafe Palafrugell"),
           },
           {
