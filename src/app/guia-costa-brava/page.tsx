@@ -44,6 +44,7 @@ const TIPS: string[] = [
   "Chegar à praia depois das 10h pode ser complicado — enche bastante.",
   "Sempre reserve mesa para o jantar, para não ficar na mão.",
   "As praias mais famosas ficam difíceis de acessar de carro entre 10h e 14h por causa do trânsito.",
+  "Leve sapatilha aquática — algumas praias são de pedra.",
 ];
 
 // ── Regiões (curadoria por região + guia, sem repetição) ──
