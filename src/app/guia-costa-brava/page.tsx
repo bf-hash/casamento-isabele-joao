@@ -504,7 +504,7 @@ export default function GuiaCostaBravaPage() {
               </p>
               <p>
                 Este é o nosso passaporte para a região, organizado por lugar: as praias que amamos, hotéis lindos,
-                restaurantes queridos e a rota do vinho no Empordà. Vão com calma — a Costa Brava se descobre devagar.
+                restaurantes queridos e a rota do vinho no Empordà.
               </p>
             </div>
           </ScrollReveal>
