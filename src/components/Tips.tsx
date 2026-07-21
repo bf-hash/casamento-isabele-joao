@@ -521,6 +521,56 @@ export default function Tips() {
                 Alguns favoritos:
               </p>
               <HotelList hotels={TOSSA_ALT_HOTELS} />
+              <ul className="ij-hotel-list ij-stay-examples">
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/1451077485558202124"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb em Tossa de Mar
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/47589152"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb em Tossa de Mar
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/19564762"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb em Tossa de Mar
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/726143062595865225"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb em Tossa de Mar
+                    </a>
+                  </span>
+                </li>
+              </ul>
             </div>
 
             <div className="ij-stay-alt">
