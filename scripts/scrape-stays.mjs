@@ -14,10 +14,13 @@
 // O script respeita HTTPS_PROXY automaticamente (usa o proxy da sessão se houver).
 // Usa o Chromium pré-instalado em /opt/pw-browsers quando disponível.
 //
-// REGRA DE PREÇO (definida pela Bele) — preço/noite:
-//   até 700  -> $        700–1200 -> $$        acima de 1200 -> $$$
-// Obs.: a moeda exibida depende da conta/região do Airbnb (R$, US$ ou €).
-// O script mostra a moeda junto; confira antes de aplicar a faixa.
+// REGRA DE PREÇO (definida pela Bele) — em REAIS, PREÇO POR QUARTO
+// (preço/noite da casa ÷ nº de quartos):
+//   até R$700  -> $     R$700–1200 -> $$     acima de R$1200 -> $$$
+// O Airbnb .br com locale pt-BR já exibe em R$. O script mostra a moeda no
+// comentário — confira que veio R$ antes de aplicar a faixa.
+// Sem nº de quartos não dá pra calcular por quarto: o tier fica em branco e
+// o comentário avisa (preencha manualmente).
 
 import { chromium } from 'playwright-core';
 import fs from 'node:fs';
@@ -26,13 +29,15 @@ import fs from 'node:fs';
 const CHECK_IN = '2026-06-30';
 const CHECK_OUT = '2026-07-02';
 
-const TIER_LOW = 700;   // até 700  -> $
-const TIER_MID = 1200;  // 700–1200 -> $$   / acima -> $$$
+const TIER_LOW = 700;   // até 700/quarto  -> $
+const TIER_MID = 1200;  // 700–1200/quarto -> $$   / acima -> $$$
 
-function tierFor(price) {
-  if (price == null) return undefined;
-  if (price <= TIER_LOW) return '$';
-  if (price <= TIER_MID) return '$$';
+// tier a partir do PREÇO POR QUARTO (preço/noite ÷ nº de quartos).
+function tierFor(pricePerNight, bedrooms) {
+  if (pricePerNight == null || !bedrooms) return undefined;
+  const perRoom = pricePerNight / bedrooms;
+  if (perRoom <= TIER_LOW) return '$';
+  if (perRoom <= TIER_MID) return '$$';
   return '$$$';
 }
 
@@ -128,7 +133,7 @@ async function scrapeOne(ctx, item) {
       if (parsed) {
         out.price = parsed.value;
         out.currency = parsed.currency;
-        out.tier = tierFor(parsed.value);
+        out.tier = tierFor(parsed.value, out.bedrooms); // por quarto
       }
     }
     out.ok = true;
@@ -162,7 +167,12 @@ async function scrapeOne(ctx, item) {
       const r = await scrapeOne(ctx, item);
       const guests = r.guests ? `guests: ${r.guests}, ` : '';
       const tier = r.tier ? `tier: "${r.tier}", ` : '';
-      const priceNote = r.price ? `  // ${r.currency}${r.price}/noite${r.bedrooms ? `, ${r.bedrooms} quartos` : ''}` : r.ok ? '  // preço não encontrado' : `  // ERRO: ${r.error}`;
+      const perRoom = r.price && r.bedrooms ? Math.round(r.price / r.bedrooms) : null;
+      const priceNote = r.price
+        ? `  // ${r.currency}${r.price}/noite${r.bedrooms ? ` ÷ ${r.bedrooms} quartos = ${r.currency}${perRoom}/quarto` : ' (nº de quartos não encontrado — tier em branco)'}`
+        : r.ok
+        ? '  // preço não encontrado'
+        : `  // ERRO: ${r.error}`;
       console.log(`  { name: ${JSON.stringify(r.name)}, url: ${JSON.stringify(r.url)}, ${guests}${tier}},${priceNote}`);
     }
   }

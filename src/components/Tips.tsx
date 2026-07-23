@@ -283,7 +283,8 @@ function HotelList({ hotels }: { hotels: Hotel[] }) {
 
 // ---- Airbnbs / vilas próximos (dados para preencher com capacidade + preço) ----
 // guests: "Até X pessoas" (capacidade máx. do anúncio)
-// tier:   faixa de preço/noite  →  "$" (até 700) · "$$" (700–1200) · "$$$" (+1200)
+// tier:   faixa de preço POR QUARTO em R$ (preço/noite ÷ nº de quartos)
+//         → "$" (até 700) · "$$" (700–1200) · "$$$" (+1200)
 // Deixe guests/tier ausentes enquanto não tiver o dado (nada quebrado aparece).
 // O script scripts/scrape-stays.mjs abre cada link e devolve esses números.
 interface Stay {

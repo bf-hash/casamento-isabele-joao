@@ -28,13 +28,14 @@ Saída (exemplo):
 Copie os campos `guests` / `tier` para os objetos correspondentes em
 `Tips.tsx`.
 
-## Regra de preço (preço/noite)
+## Regra de preço (em R$, POR QUARTO = preço/noite ÷ nº de quartos)
 
-| Faixa            | Marcador |
-| ---------------- | -------- |
-| até 700          | `$`      |
-| 700 – 1200       | `$$`     |
-| acima de 1200    | `$$$`    |
+| Faixa por quarto      | Marcador |
+| --------------------- | -------- |
+| até R$ 700            | `$`      |
+| R$ 700 – 1200         | `$$`     |
+| acima de R$ 1200      | `$$$`    |
 
-A moeda exibida depende da conta/região do Airbnb (R$, US$ ou €); o script
-mostra a moeda no comentário — confira antes de aplicar a faixa.
+O Airbnb `.br` com locale pt-BR já exibe em R$; o script mostra a moeda e o
+cálculo por quarto no comentário — confira que veio R$ antes de aplicar a
+faixa. Sem nº de quartos, o `tier` fica em branco (preencha manualmente).
