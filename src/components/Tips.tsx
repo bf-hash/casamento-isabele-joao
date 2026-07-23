@@ -340,38 +340,50 @@ export default function Tips() {
       {tab === "ficar" && (
         <div className="ij-tips-panel">
           <div className="ij-stay">
-            <div className="ij-stay-lead">
-              <span className="ij-section-eyebrow ij-section-eyebrow--centered">Onde ficar</span>
-              <p className="ij-hotel-dates">30 de junho — 2 de julho</p>
-              <p>
-                Vamos ficar no{" "}
-                <a href={SANTA_MARTA_MAPS} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
-                  <strong>Hotel Santa Marta</strong>
-                </a>{" "}
-                e estamos organizando quartos para quem tiver interesse. Como a disponibilidade é difícil, quem
-                quiser pode chamar no WhatsApp que a gente ajuda.
-              </p>
-              <a href={WA_HOSPEDAGEM} target="_blank" rel="noopener noreferrer" className="ij-btn-solid">
-                Falar no WhatsApp
-              </a>
-            </div>
+            {/* ── BLOCO 1: período do casamento (perto de Blanes) ── */}
+            <section className="ij-stay-block">
+              <header className="ij-stay-block-head">
+                <span className="ij-stay-block-kicker">Durante o casamento</span>
+                <span className="ij-stay-block-dates">30 jun — 2 jul</span>
+                <span className="ij-stay-block-place">Perto do casamento</span>
+              </header>
 
-            <StayMap />
+              {/* sub · Santa Marta (onde ficaremos) */}
+              <div className="ij-stay-sub">
+                <div className="ij-stay-sub-head">
+                  <span className="ij-stay-sub-title">Santa Marta, onde ficaremos</span>
+                </div>
+                <div className="ij-stay-lead">
+                  <p>
+                    Vamos ficar no{" "}
+                    <a href={SANTA_MARTA_MAPS} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
+                      <strong>Hotel Santa Marta</strong>
+                    </a>{" "}
+                    e estamos organizando quartos para quem tiver interesse. Como a disponibilidade é difícil, quem
+                    quiser pode chamar no WhatsApp que a gente ajuda.
+                  </p>
+                  <a href={WA_HOSPEDAGEM} target="_blank" rel="noopener noreferrer" className="ij-btn-solid">
+                    Falar no WhatsApp
+                  </a>
+                </div>
 
-            <div className="ij-stay-note">
-              <p>
-                Circulamos no mapa a região que mais gostamos próximo ao casamento, há{' '}
-                <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser.
-              </p>
-            </div>
+                <StayMap />
 
-            <div className="ij-stay-alt">
-              <div className="ij-stay-alt-head">
-                <span className="ij-section-eyebrow ij-section-eyebrow--centered">
-                  Airbnbs e Vilas que gostamos da região
-                </span>
+                <div className="ij-stay-note">
+                  <p>
+                    Circulamos no mapa a região que mais gostamos próximo ao casamento, há{' '}
+                    <strong>bastante Airbnb e apartamentos bons</strong> pela região para quem quiser.
+                  </p>
+                </div>
               </div>
-              <ul className="ij-hotel-list ij-stay-examples">
+
+              {/* sub · Airbnbs e hotéis por perto */}
+              <div className="ij-stay-sub">
+                <div className="ij-stay-sub-head">
+                  <span className="ij-stay-sub-title">Airbnbs e hotéis por perto</span>
+                  <span className="ij-stay-sub-note">Vilas e apartamentos que gostamos</span>
+                </div>
+                <ul className="ij-hotel-list ij-stay-examples">
                 <li>
                   <span>
                     <a
@@ -577,22 +589,24 @@ export default function Tips() {
                   </span>
                 </li>
               </ul>
-              <p className="ij-stay-obs">
-                <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
-                tão bonito quanto o resto da região.
-              </p>
-            </div>
-
-            <div className="ij-stay-alt">
-              <div className="ij-stay-alt-head">
-                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Outra opção · Tossa de Mar</span>
+                <p className="ij-stay-obs">
+                  <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
+                  tão bonito quanto o resto da região.
+                </p>
               </div>
-              <p>
-                Para quem preferir, Tossa de Mar também é uma ótima opção — recomendamos ficar na região histórica
-                (qualquer hotel por ali). Fica um pouco mais longe do casamento que as outras opções (~30min).
-                Alguns favoritos:
-              </p>
-              <HotelList hotels={TOSSA_ALT_HOTELS} />
+
+              {/* sub · Tossa de Mar */}
+              <div className="ij-stay-sub">
+                <div className="ij-stay-sub-head">
+                  <span className="ij-stay-sub-title">Tossa de Mar</span>
+                  <span className="ij-stay-sub-note">Outra opção · ~30min do casamento</span>
+                </div>
+                <p>
+                  Para quem preferir, Tossa de Mar também é uma ótima opção — recomendamos ficar na região histórica
+                  (qualquer hotel por ali). Fica um pouco mais longe do casamento que as outras opções (~30min).
+                  Alguns favoritos:
+                </p>
+                <HotelList hotels={TOSSA_ALT_HOTELS} />
               <ul className="ij-hotel-list ij-stay-examples">
                 <li>
                   <span>
@@ -642,21 +656,27 @@ export default function Tips() {
                     </a>
                   </span>
                 </li>
-              </ul>
-            </div>
-
-            <div className="ij-stay-alt">
-              <div className="ij-stay-alt-head">
-                <span className="ij-section-eyebrow ij-section-eyebrow--centered">Depois · Begur</span>
-                <p className="ij-hotel-dates">2 — 4 de julho</p>
+                </ul>
               </div>
-              <p>
-                O rolê de sábado será mais ao norte, na região de Begur
-                (~1h do Hotel Santa Marta). Para os que quiserem ficar com a gente e no norte entre sexta e domingo, algumas
-                opções:
-              </p>
-              <HotelList hotels={BEGUR_HOTELS} />
-            </div>
+            </section>
+
+            {/* ── BLOCO 2: depois do casamento (Begur, ao norte) ── */}
+            <section className="ij-stay-block">
+              <header className="ij-stay-block-head">
+                <span className="ij-stay-block-kicker">Depois · passeio de barco</span>
+                <span className="ij-stay-block-dates">2 — 4 jul</span>
+                <span className="ij-stay-block-place">Begur · ~1h ao norte</span>
+              </header>
+
+              <div className="ij-stay-sub">
+                <p>
+                  O rolê de sábado será mais ao norte, na região de Begur
+                  (~1h do Hotel Santa Marta). Para os que quiserem ficar com a gente e no norte entre sexta e domingo, algumas
+                  opções:
+                </p>
+                <HotelList hotels={BEGUR_HOTELS} />
+              </div>
+            </section>
           </div>
         </div>
       )}

@@ -625,10 +625,73 @@ a { text-decoration: none; color: inherit; }
 .ij-stay-link:hover { color: var(--coastal-blue); border-color: var(--coastal-blue); }
 .ij-stay-link:hover::after { color: var(--coastal-blue); }
 
-.ij-stay-alt { max-width: 620px; margin: clamp(40px, 6vh, 64px) auto 0; padding-top: clamp(32px, 5vh, 48px); border-top: 1px solid var(--line); }
-.ij-stay-alt-head { text-align: center; margin-bottom: 8px; }
-.ij-stay-alt-head .ij-section-eyebrow { justify-content: center; }
-.ij-stay-alt > p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; text-align: center; margin: 12px 0 24px; }
+/* ── NÍVEL 1 · bloco de período (30–2 · Blanes / 2–4 · Begur) ── */
+.ij-stay-block { max-width: 640px; margin-inline: auto; }
+.ij-stay-block + .ij-stay-block {
+  margin-top: clamp(56px, 8vh, 96px);
+  padding-top: clamp(48px, 7vh, 80px);
+  border-top: 1px solid var(--line);
+}
+.ij-stay-block-head { text-align: center; margin-bottom: clamp(30px, 4.5vh, 48px); }
+.ij-stay-block-kicker {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 11.5px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--coastal-blue);
+  margin-bottom: 12px;
+}
+.ij-stay-block-dates {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(27px, 3.6vw, 40px);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+}
+.ij-stay-block-place {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  margin-top: 14px;
+}
+
+/* ── NÍVEL 2 · sub-quebra dentro de um bloco ── */
+.ij-stay-sub { max-width: 620px; margin-inline: auto; }
+.ij-stay-sub + .ij-stay-sub { margin-top: clamp(40px, 6vh, 64px); }
+.ij-stay-sub-head { text-align: center; margin-bottom: clamp(16px, 2.5vh, 24px); }
+.ij-stay-sub-title {
+  display: block;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(23px, 3.4vw, 30px);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.ij-stay-sub-title::after {
+  content: "";
+  display: block;
+  width: 34px; height: 1px;
+  background: var(--line);
+  margin: 14px auto 0;
+}
+.ij-stay-sub-note {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-quiet);
+  margin-top: 12px;
+}
+.ij-stay-sub > p { color: var(--ink-soft); font-size: 16px; line-height: 1.8; text-align: center; margin: 0 auto 24px; max-width: 560px; }
 
 .ij-hair-tab { text-align: center; max-width: 520px; margin-inline: auto; padding-block: clamp(30px, 5vh, 56px); }
 .ij-hair-tab p { color: var(--ink-soft); font-size: 17px; line-height: 1.8; margin: 0 0 32px; }
