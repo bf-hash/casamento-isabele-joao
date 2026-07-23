@@ -345,7 +345,7 @@ export default function Tips() {
               <header className="ij-stay-block-head">
                 <span className="ij-stay-block-kicker">Durante o casamento</span>
                 <span className="ij-stay-block-dates">30 jun — 2 jul</span>
-                <span className="ij-stay-block-place">Perto do casamento, em Blanes</span>
+                <span className="ij-stay-block-place">Perto do casamento</span>
               </header>
 
               {/* sub · Santa Marta (onde ficaremos) */}
