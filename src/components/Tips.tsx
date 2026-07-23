@@ -281,6 +281,66 @@ function HotelList({ hotels }: { hotels: Hotel[] }) {
   );
 }
 
+// ---- Airbnbs / vilas próximos (dados para preencher com capacidade + preço) ----
+// guests: "Até X pessoas" (capacidade máx. do anúncio)
+// tier:   faixa de preço/noite  →  "$" (até 700) · "$$" (700–1200) · "$$$" (+1200)
+// Deixe guests/tier ausentes enquanto não tiver o dado (nada quebrado aparece).
+// O script scripts/scrape-stays.mjs abre cada link e devolve esses números.
+interface Stay {
+  name: string;
+  url: string;
+  guests?: number;
+  tier?: "$" | "$$" | "$$$";
+  note?: string;
+}
+
+const NEARBY_STAYS: Stay[] = [
+  { name: "Hotel Casa Coco", url: "https://maps.app.goo.gl/RbbxR2FxtyStiCxr8", note: "Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima" },
+  { name: "Albamar Apartaments", url: "https://www.booking.com/hotel/es/albamar-apartaments.html" },
+  { name: "Can Terrats", url: "https://www.booking.com/hotel/es/can-terrats.pt-br.html", note: "2 minutos do casamento e 6 de onde será o pre wedding" },
+  { name: "Vila de luxo", url: "https://www.airbnb.com.br/rooms/53821739", guests: 11 },
+  { name: "Casa de praia", url: "https://www.airbnb.com.br/rooms/1062064961646738690", guests: 10 },
+  { name: "Villa Sta. Cristina", url: "https://www.airbnb.com.br/rooms/25061452", guests: 10, note: "em Santa Cristina (a praia do Hotel que ficaremos)" },
+  { name: "Apartamento moderno", url: "https://www.airbnb.com.br/rooms/1709659091895782539", guests: 4 },
+  { name: "Apartamento com terraço", url: "https://www.airbnb.com.br/rooms/1708048142195235015", guests: 4 },
+  { name: "Apto Sta. Cristina", url: "https://www.airbnb.com.br/rooms/11331129", guests: 4 },
+  { name: "Villa los Robles", url: "https://www.roblesvillage.com" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/24515640" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/18651803" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/7690343" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/931962814468481823" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/32839203" },
+  { name: "Airbnb na região", url: "https://www.airbnb.com.br/rooms/1713699011626743053" },
+];
+
+const TOSSA_STAYS: Stay[] = [
+  { name: "Airbnb em Tossa de Mar", url: "https://www.airbnb.com.br/rooms/1451077485558202124" },
+  { name: "Airbnb em Tossa de Mar", url: "https://www.airbnb.com.br/rooms/47589152" },
+  { name: "Airbnb em Tossa de Mar", url: "https://www.airbnb.com.br/rooms/19564762" },
+  { name: "Airbnb em Tossa de Mar", url: "https://www.airbnb.com.br/rooms/726143062595865225" },
+];
+
+function StayList({ stays }: { stays: Stay[] }) {
+  return (
+    <ul className="ij-hotel-list ij-stay-examples">
+      {stays.map((s) => {
+        const badge = [s.guests ? `até ${s.guests} pessoas` : null, s.note].filter(Boolean).join(" · ");
+        return (
+          <li key={s.url}>
+            <span>
+              <a href={s.url} target="_blank" rel="noopener noreferrer" className="ij-hotel-name">
+                {s.name}
+              </a>
+              {badge && <span className="ij-hotel-badge">{badge}</span>}
+            </span>
+            {s.tier && <span className="ij-hotel-tier">{s.tier}</span>}
+          </li>
+        );
+      })}
+    </ul>
+  );
+}
+
 export default function Tips() {
   const [tab, setTab] = useState<TabId>("dress");
 
@@ -383,212 +443,7 @@ export default function Tips() {
                   <span className="ij-stay-sub-title">Airbnbs e hotéis por perto</span>
                   <span className="ij-stay-sub-note">Vilas e apartamentos que gostamos</span>
                 </div>
-                <ul className="ij-hotel-list ij-stay-examples">
-                <li>
-                  <span>
-                    <a
-                      href="https://maps.app.goo.gl/RbbxR2FxtyStiCxr8"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Hotel Casa Coco
-                    </a>
-                    <span className="ij-hotel-badge">
-                      Fica em Lloret del Mar, cidade mais universitária, mas a estrutura do hotel é ótima
-                    </span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.booking.com/hotel/es/albamar-apartaments.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Albamar Apartaments
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.booking.com/hotel/es/can-terrats.pt-br.html"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Can Terrats
-                    </a>
-                    <span className="ij-hotel-badge">2 minutos do casamento e 6 de onde será o pre wedding</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/53821739"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Vila de luxo
-                    </a>
-                    <span className="ij-hotel-badge">até 11 pessoas</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/1062064961646738690"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Casa de praia
-                    </a>
-                    <span className="ij-hotel-badge">até 10 pessoas</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/25061452"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Villa Sta. Cristina
-                    </a>
-                    <span className="ij-hotel-badge">
-                      até 10 pessoas · em Santa Cristina (a praia do Hotel que ficaremos)
-                    </span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/1709659091895782539"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Apartamento moderno
-                    </a>
-                    <span className="ij-hotel-badge">até 4 pessoas</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/1708048142195235015"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Apartamento com terraço
-                    </a>
-                    <span className="ij-hotel-badge">até 4 pessoas</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/11331129"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Apto Sta. Cristina
-                    </a>
-                    <span className="ij-hotel-badge">até 4 pessoas</span>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.roblesvillage.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Villa los Robles
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/24515640"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/18651803"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/7690343"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/931962814468481823"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/32839203"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/1713699011626743053"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb na região
-                    </a>
-                  </span>
-                </li>
-              </ul>
+                <StayList stays={NEARBY_STAYS} />
                 <p className="ij-stay-obs">
                   <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
                   tão bonito quanto o resto da região.
@@ -607,56 +462,7 @@ export default function Tips() {
                   Alguns favoritos:
                 </p>
                 <HotelList hotels={TOSSA_ALT_HOTELS} />
-              <ul className="ij-hotel-list ij-stay-examples">
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/1451077485558202124"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb em Tossa de Mar
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/47589152"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb em Tossa de Mar
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/19564762"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb em Tossa de Mar
-                    </a>
-                  </span>
-                </li>
-                <li>
-                  <span>
-                    <a
-                      href="https://www.airbnb.com.br/rooms/726143062595865225"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ij-hotel-name"
-                    >
-                      Airbnb em Tossa de Mar
-                    </a>
-                  </span>
-                </li>
-                </ul>
+                <StayList stays={TOSSA_STAYS} />
               </div>
             </section>
 
