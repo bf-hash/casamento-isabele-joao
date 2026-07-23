@@ -528,6 +528,54 @@ export default function Tips() {
                     </a>
                   </span>
                 </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/7690343"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb na região
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/931962814468481823"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb na região
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/32839203"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb na região
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="https://www.airbnb.com.br/rooms/1713699011626743053"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ij-hotel-name"
+                    >
+                      Airbnb na região
+                    </a>
+                  </span>
+                </li>
               </ul>
               <p className="ij-stay-obs">
                 <strong>Observação:</strong> não recomendamos Blanes ou o centro de Lloret de Mar — não é
