@@ -7,9 +7,6 @@ export default function Hero() {
           ISABELE <em className="amp">&amp;</em> JOÃO
         </h1>
         <p className="ij-hero-place">Costa Brava, Espanha</p>
-        <a href="#rsvp" className="ij-hero-cta-mobile">
-          Confirmar presença
-        </a>
       </div>
     </section>
   );
