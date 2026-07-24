@@ -316,9 +316,10 @@ a { text-decoration: none; color: inherit; }
 /* ============================================================
    HERO
    ============================================================ */
-/* Hero + Welcome share one relative wrapper so the watercolour wash can span
-   both — from the very top of the page down past "Sejam muito bem-vindos". */
-.ij-hero-welcome { position: relative; isolation: isolate; overflow: hidden; }
+/* Wrapper that carries the watercolour wash. The wash sizes to this wrapper
+   (height: 100%), so keep a generous min-height here — otherwise the image
+   shrinks to fit only the hero copy. */
+.ij-hero-welcome { position: relative; isolation: isolate; overflow: hidden; min-height: clamp(600px, 88vh, 820px); }
 /* Let the wash show through the welcome section (same colour as the page bg
    underneath, so where it has faded out nothing changes). */
 .ij-hero-welcome .ij-welcome { background: transparent; }
