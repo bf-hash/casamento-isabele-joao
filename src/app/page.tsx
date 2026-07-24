@@ -1,6 +1,5 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Welcome from "@/components/Welcome";
 import Program from "@/components/Program";
 import HowToGet from "@/components/HowToGet";
 import Tips from "@/components/Tips";
@@ -15,7 +14,6 @@ export default function Home() {
         <div className="ij-hero-welcome">
           <div className="ij-hero-art" aria-hidden="true" />
           <Hero />
-          <Welcome />
         </div>
         <Program />
         <HowToGet />
