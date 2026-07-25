@@ -384,7 +384,6 @@ a { text-decoration: none; color: inherit; }
   margin: 34px 0 0; max-width: 460px;
   color: #46413A; font-size: 16px; line-height: 1.8;
 }
-.ij-hero-cta-mobile { display: none; }
 
 /* Countdown */
 .ij-countdown {
@@ -1130,11 +1129,14 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 640px) {
   .ij-section { padding-block: clamp(56px, 9vh, 96px); }
   .ij-section-divider { padding-block: clamp(24px, 5vh, 44px); }
-  .ij-hero { min-height: auto; padding-top: 120px; }
+  .ij-hero { min-height: auto; padding-top: 120px; padding-bottom: clamp(32px, 6vh, 64px); }
   .ij-hero-copy { width: 100%; }
   .ij-countdown { margin-inline: auto; }
-  .ij-hero-art { background-size: cover; background-position: center 8%; opacity: 0.36; }
-  .ij-hero-cta-mobile { display: inline-flex; align-items: center; justify-content: center; margin-top: 30px; height: 46px; padding: 0 30px; background: var(--coastal-blue); color: #fff; font-family: var(--font-body); font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .ij-hero-art {
+    background-size: cover; background-position: center 8%; opacity: 0.36;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
+  }
   .ij-event { grid-template-columns: 1fr auto; grid-template-areas: "date art" "body body"; gap: 6px 14px; }
   .ij-event-date { grid-area: date; }
   .ij-event-body { grid-area: body; }
