@@ -318,6 +318,16 @@ const REGIONS: Region[] = [
             note: "Restaurante incrível de uma ex-chef do Jubany, que fará o catering do casamento",
             url: maps("L'Espai Tossa de Mar"),
           },
+          {
+            name: "Trova",
+            note: "Restaurante charmoso em Tossa de Mar, ótima parada para comer e beber",
+            url: "https://www.instagram.com/trova_restaurant",
+          },
+          {
+            name: "Bar do L'Espai",
+            note: "O bar de drinks do L'Espai, lugar perfeito para um drink após o jantar",
+            url: "https://maps.app.goo.gl/E2LQ6vNERywMTLVL8",
+          },
         ],
       },
     ],
