@@ -1,4 +1,4 @@
-import { getSupabase } from "@/lib/supabase";
+import { getSql } from "@/lib/db";
 import { runKapsoWorkflow } from "@/lib/kapso";
 import { NextResponse } from "next/server";
 
@@ -16,18 +16,22 @@ function toWhatsAppNumber(phone: string | undefined | null) {
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const { data, error } = await getSupabase().from("rsvps").insert({
-    name: body.name,
-    phone: body.phone,
-    attending: body.attending,
-    guest_count: body.guestCount,
-    guests: body.guests,
-    own_dietary: body.ownDietary,
-    message: body.message,
-  });
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  try {
+    await getSql()`
+      insert into rsvps (name, phone, attending, guest_count, guests, own_dietary, message)
+      values (
+        ${body.name},
+        ${body.phone},
+        ${body.attending},
+        ${body.guestCount ?? 0},
+        ${JSON.stringify(body.guests ?? [])}::jsonb,
+        ${body.ownDietary},
+        ${body.message}
+      )
+    `;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "erro ao gravar RSVP";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 
   // Quando a pessoa confirma presença, disparamos o workflow do Kapso para
@@ -61,14 +65,14 @@ export async function POST(request: Request) {
 }
 
 export async function GET() {
-  const { data, error } = await getSupabase()
-    .from("rsvps")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  try {
+    const rows = await getSql()`
+      select * from rsvps
+      order by created_at desc
+    `;
+    return NextResponse.json(rows);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "erro ao ler RSVPs";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
-
-  return NextResponse.json(data);
 }

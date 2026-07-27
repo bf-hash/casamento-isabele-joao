@@ -1,4 +1,4 @@
-import { getSupabase } from "@/lib/supabase";
+import { getSql } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -9,14 +9,18 @@ export async function GET(request: Request) {
     return NextResponse.json({ exists: false });
   }
 
-  const { data } = await getSupabase()
-    .from("rsvps")
-    .select("name, attending")
-    .ilike("name", name)
-    .limit(1);
+  try {
+    const rows = (await getSql()`
+      select name, attending from rsvps
+      where name ilike ${name}
+      limit 1
+    `) as Array<{ name: string; attending: boolean }>;
 
-  if (data && data.length > 0) {
-    return NextResponse.json({ exists: true, attending: data[0].attending });
+    if (rows.length > 0) {
+      return NextResponse.json({ exists: true, attending: rows[0].attending });
+    }
+  } catch {
+    // se a checagem falhar, seguimos como se não existisse
   }
 
   return NextResponse.json({ exists: false });

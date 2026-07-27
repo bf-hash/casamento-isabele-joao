@@ -1,4 +1,4 @@
-import { getSupabase } from "@/lib/supabase";
+import { getSql } from "@/lib/db";
 import { sendWhatsAppMessage } from "@/lib/kapso";
 import { NextResponse } from "next/server";
 
@@ -18,11 +18,10 @@ export async function POST(request: Request) {
   const isSalonRequest = salonKeywords.some((kw) => text.includes(kw));
 
   if (isSalonRequest) {
-    await getSupabase().from("salon_requests").insert({
-      phone: from,
-      name: contactName,
-      message: text,
-    });
+    await getSql()`
+      insert into salon_requests (phone, name, message)
+      values (${from}, ${contactName}, ${text})
+    `;
 
     await sendWhatsAppMessage(
       from,
