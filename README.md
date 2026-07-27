@@ -51,12 +51,27 @@ O site ficará em um URL tipo `casamento-isabele-joao.vercel.app`. Domínio pró
    - **Build Command:** `npm run build` (padrão).
    - **Output Directory:** `.next` (padrão Next.js).
    - **Install Command:** `npm install` (padrão).
-   - Não é preciso configurar **Environment Variables** neste projeto.
+   - **Environment Variables:** a integração do Neon com a Vercel injeta a
+     `DATABASE_URL` automaticamente. Configure também `ABACATEPAY_KEY`,
+     `ABACATEPAY_WEBHOOK_SECRET` e `NEXT_PUBLIC_SITE_URL` (veja
+     `.env.local.example`).
 
 4. Clique em **Deploy**. O Vercel faz o build e publica.
 
 5. **Domínio próprio** (opcional)  
    - No projeto no Vercel: **Settings** → **Domains** → adicione `isabeleejoao.com.br` (ou outro) e siga as instruções de DNS.
+
+## Banco de dados (Neon)
+
+RSVPs, presentes e pedidos de salão ficam num Postgres no [Neon](https://neon.tech).
+
+- **Schema:** rode uma vez o arquivo `neon/schema.sql` no **SQL Editor** do Neon
+  Console (ou `psql "$DATABASE_URL" -f neon/schema.sql`). É idempotente.
+- **Conexão:** o código lê a `DATABASE_URL` (a integração Neon ↔ Vercel injeta
+  essa variável automaticamente). Localmente, copie a connection string para o
+  `.env.local`.
+- **Acesso:** o banco é acessado só server-side, nas rotas em `src/app/api/`,
+  através de `src/lib/db.ts` (driver `@neondatabase/serverless`).
 
 ## O que personalizar
 

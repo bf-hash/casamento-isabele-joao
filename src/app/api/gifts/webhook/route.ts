@@ -1,4 +1,4 @@
-import { getSupabase } from "@/lib/supabase";
+import { getSql } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 // O AbacatePay chama esta URL quando o pagamento muda de estado.
@@ -24,10 +24,11 @@ export async function POST(request: Request) {
     const billingId = billing?.id;
 
     if (billingId) {
-      await getSupabase()
-        .from("gift_contributions")
-        .update({ status: "paid", paid_at: new Date().toISOString() })
-        .eq("provider_billing_id", billingId);
+      await getSql()`
+        update gift_contributions
+        set status = 'paid', paid_at = now()
+        where provider_billing_id = ${billingId}
+      `;
     }
   }
 

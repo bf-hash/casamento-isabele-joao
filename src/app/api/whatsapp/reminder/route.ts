@@ -1,16 +1,17 @@
-import { getSupabase } from "@/lib/supabase";
+import { getSql } from "@/lib/db";
 import { sendWhatsAppMessage } from "@/lib/kapso";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const { data: guests, error } = await getSupabase()
-    .from("guests")
-    .select("*")
-    .eq("rsvp_confirmed", false)
-    .not("phone", "is", null);
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  let guests: Array<{ name: string; phone: string }>;
+  try {
+    guests = (await getSql()`
+      select * from guests
+      where rsvp_confirmed = false and phone is not null
+    `) as Array<{ name: string; phone: string }>;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "erro ao ler convidados";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 
   const results = [];
