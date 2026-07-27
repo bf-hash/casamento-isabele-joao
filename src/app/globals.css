@@ -539,6 +539,11 @@ a { text-decoration: none; color: inherit; }
   padding: 13px 0; border-bottom: 1px solid var(--line-soft);
 }
 .ij-hotel-list li:last-child { border-bottom: none; }
+/* Quando uma lista de hotéis é seguida direto por uma lista de stays (ex.: Tossa de Mar),
+   renderiza como uma lista contínua: mantém a linha divisória e remove o vão entre elas. */
+.ij-hotel-list:has(+ .ij-stay-examples) { margin-bottom: 0; }
+.ij-hotel-list:has(+ .ij-stay-examples) li:last-child { border-bottom: 1px solid var(--line-soft); }
+.ij-hotel-list + .ij-stay-examples { margin-top: 0; }
 .ij-hotel-name { font-family: var(--font-display); font-weight: 400; font-size: 20px; line-height: 1.1; transition: color var(--dur-fast); }
 .ij-hotel-name:hover { color: var(--coastal-blue); }
 .ij-hotel-tier { font-family: var(--font-body); font-size: 11px; letter-spacing: 0.16em; color: var(--ink-quiet); flex: none; }
