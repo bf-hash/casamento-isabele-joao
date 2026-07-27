@@ -323,6 +323,11 @@ const REGIONS: Region[] = [
             note: "Restaurante charmoso em Tossa de Mar, ótima parada para comer e beber",
             url: "https://www.instagram.com/trova_restaurant",
           },
+          {
+            name: "Bar do L'Espai",
+            note: "O bar de drinks do L'Espai, lugar perfeito para um drink após o jantar",
+            url: "https://maps.app.goo.gl/E2LQ6vNERywMTLVL8",
+          },
         ],
       },
     ],
