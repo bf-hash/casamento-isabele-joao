@@ -233,11 +233,6 @@ const TOSSA_ALT_HOTELS: Hotel[] = [
   { name: "Casa Granados", price: "$$$", url: maps("Casa Granados Tossa de Mar") },
 ];
 
-// WhatsApp para ajudar com quartos/hospedagem
-const WA_HOSPEDAGEM = `https://wa.me/12028603255?text=${encodeURIComponent(
-  "Olá! Gostaríamos de ajuda com a hospedagem para o casamento da Isabele & João",
-)}`;
-
 // Ponto de referência do Hotel Santa Marta
 const SANTA_MARTA_MAPS = maps("Hotel Santa Marta Lloret de Mar");
 
@@ -419,13 +414,10 @@ export default function Tips() {
                     Vamos ficar no{" "}
                     <a href={SANTA_MARTA_MAPS} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
                       <strong>Hotel Santa Marta</strong>
-                    </a>{" "}
-                    e estamos organizando quartos para quem tiver interesse. Como a disponibilidade é difícil, quem
-                    quiser pode chamar no WhatsApp que a gente ajuda.
+                    </a>
+                    , que é o melhor hotel da região. A diária fica entre EUR 500-600 e costuma ter pouca
+                    disponibilidade. Quem tiver interesse nos avisa que podemos ajudar na reserva.
                   </p>
-                  <a href={WA_HOSPEDAGEM} target="_blank" rel="noopener noreferrer" className="ij-btn-solid">
-                    Falar no WhatsApp
-                  </a>
                 </div>
 
                 <StayMap />
