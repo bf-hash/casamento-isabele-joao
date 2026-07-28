@@ -233,8 +233,8 @@ const TOSSA_ALT_HOTELS: Hotel[] = [
   { name: "Casa Granados", price: "$$$", url: maps("Casa Granados Tossa de Mar") },
 ];
 
-// Ponto de referência do Hotel Santa Marta
-const SANTA_MARTA_MAPS = maps("Hotel Santa Marta Lloret de Mar");
+// Instagram do Hotel Santa Marta
+const SANTA_MARTA_INSTAGRAM = "https://www.instagram.com/h_santamarta";
 
 const GMAP_LINK =
   "https://www.google.com/maps/search/?api=1&query=Hotel%20Santa%20Marta%20Lloret%20de%20Mar";
@@ -412,7 +412,7 @@ export default function Tips() {
                 <div className="ij-stay-lead">
                   <p>
                     Vamos ficar no{" "}
-                    <a href={SANTA_MARTA_MAPS} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
+                    <a href={SANTA_MARTA_INSTAGRAM} target="_blank" rel="noopener noreferrer" className="ij-prose-strong">
                       <strong>Hotel Santa Marta</strong>
                     </a>
                     , que é o melhor hotel da região. A diária fica entre EUR 500-600 e costuma ter pouca
