@@ -11,8 +11,8 @@ export default function Hero() {
         <h1 className="ij-hero-name">
           <img src="/assets/convite-nome.png" alt="Isabele & João" />
         </h1>
-        <p className="ij-hero-dates">01 . 07 . 2027&ensp;|&ensp;17:00</p>
-        <p className="ij-hero-place">El Convent de Blanes · Espanha</p>
+        <p className="ij-hero-dates">30 de junho a 4 de julho de 2027</p>
+        <p className="ij-hero-place">Costa Brava, Espanha</p>
       </div>
       <div className="ij-hero-art" aria-hidden="true" />
     </section>
