@@ -416,8 +416,17 @@ export default function Tips() {
                       <strong>Hotel Santa Marta</strong>
                     </a>
                     , que é o melhor hotel da região. A diária fica entre EUR 500-600 e costuma ter pouca
-                    disponibilidade. Quem tiver interesse nos avisa que podemos ajudar na reserva.
+                    disponibilidade. Quem tiver interesse, a <strong>Danielle Filippozzi</strong> está nos
+                    ajudando nas reservas, só chamar no WhatsApp.
                   </p>
+                  <a
+                    href="https://wa.me/5551981477111?text=Ol%C3%A1!%20Gostaria%20de%20ajuda%20com%20a%20reserva%20no%20Hotel%20Santa%20Marta%20para%20o%20casamento%20da%20Isabele%20%26%20Jo%C3%A3o"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ij-btn-solid"
+                  >
+                    Falar com a Danielle no WhatsApp
+                  </a>
                 </div>
 
                 <StayMap />
