@@ -314,71 +314,81 @@ a { text-decoration: none; color: inherit; }
 .ij-inline-link:hover { color: var(--coastal-blue-deep); }
 
 /* ============================================================
-   HERO
+   HERO — espelha o convite: papel branco em cima com monograma,
+   nome e data; a aquarela da costa preenche só a parte de baixo.
    ============================================================ */
-/* Wrapper that carries the watercolour wash. The wash sizes to this wrapper
-   (height: 100%), so keep a generous min-height here — otherwise the image
-   shrinks to fit only the hero copy. */
-.ij-hero-welcome { position: relative; isolation: isolate; overflow: hidden; min-height: clamp(600px, 88vh, 820px); }
-/* Let the wash show through the welcome section (same colour as the page bg
-   underneath, so where it has faded out nothing changes). */
-.ij-hero-welcome .ij-welcome { background: transparent; }
-/* Warm, invitation-style greeting over the watercolour: coastal blue and
-   italic — ties the welcome into the hero it now sits under. */
-.ij-welcome .ij-section-header h2 {
-  color: var(--coastal-blue);
-  font-style: italic;
-  font-size: clamp(30px, 4vw, 48px);
-}
-
 .ij-hero {
   position: relative;
-  min-height: auto;
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  display: flex; flex-direction: column;
+  min-height: 100svh;
   text-align: center;
-  padding: clamp(120px, 15vh, 180px) var(--pad-x) clamp(90px, 13vh, 170px);
-  isolation: isolate;
+  background: var(--bg);
   overflow: hidden;
 }
 .ij-hero::before, .ij-hero::after { content: none; }
-.ij-hero-copy { width: min(680px, 100%); margin-inline: auto; position: relative; z-index: 1; }
-/* Watercolour coastline: a full-bleed wash that sits BEHIND everything, filling
-   the hero + welcome from the very top of the page down past the welcome
-   heading, fading into the background at the edges — mirrors the invitation. */
-.ij-hero-art {
-  position: absolute;
-  top: 0; left: 50%; transform: translateX(-50%);
-  width: 100vw; height: 100%;
-  z-index: 0;
-  background: url('/assets/el-convent-watercolor.jpg') no-repeat center 12%;
-  background-size: cover;
-  opacity: 0.42;
-  filter: drop-shadow(0 28px 64px rgba(42, 49, 64, 0.34));
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 70%, transparent 85%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 70%, transparent 85%);
-  pointer-events: none;
+.ij-hero-copy {
+  width: min(720px, 100%);
+  margin-inline: auto;
+  /* respiro lateral fixo: com --pad-x (border-box) o bloco de 720px
+     colapsaria em telas largas */
+  padding: clamp(100px, 15vh, 160px) 24px clamp(32px, 5vh, 60px);
+  position: relative; z-index: 1;
+}
+/* Monograma IJ extraído do convite (azul sobre o papel). */
+.ij-hero-monogram {
+  display: block; margin: 0 auto;
+  width: clamp(40px, 4.5vw, 56px); height: auto;
+}
+/* Lettering "ISABELE & JOÃO" recortado do próprio convite. */
+.ij-hero-name { margin: clamp(26px, 4.5vh, 44px) 0 0; }
+.ij-hero-name img {
+  display: block; margin: 0 auto;
+  width: min(400px, 88%); height: auto;
 }
 .ij-hero-dates {
   font-family: var(--font-body); font-weight: 400;
-  font-size: 13px; letter-spacing: 0.32em; text-transform: uppercase;
-  color: var(--ink-soft); margin: 0 0 28px;
-}
-.ij-hero-name {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: clamp(30px, 5vw, 60px);
-  line-height: 1.08; letter-spacing: 0.11em;
-  margin: 0; color: var(--coastal-blue);
-  white-space: nowrap;
-}
-.ij-hero-name-ln { display: block; }
-.ij-hero-name .amp {
-  font-style: italic; font-weight: 400;
-  padding: 0 0.06em; letter-spacing: 0;
+  font-size: clamp(12px, 1.2vw, 14px); letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #5284C4; margin: clamp(24px, 4vh, 40px) 0 0;
 }
 .ij-hero-place {
   font-family: var(--font-display); font-style: italic; font-weight: 400;
-  font-size: clamp(18px, 2vw, 22px); color: var(--coastal-blue);
+  font-size: clamp(17px, 1.8vw, 20px); color: #5284C4;
   letter-spacing: 0.02em; margin: 8px 0 0;
+}
+/* Aquarela do convite ancorada na borda de baixo, preenchendo a tela até a
+   dobra: a quebra para a próxima seção cai sempre no mar/costa, sem faixa
+   clara entre a pintura e a seção seguinte. */
+.ij-hero-art {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: clamp(240px, 38vh, 520px);
+  width: 100%;
+  background: url('/assets/convite-aquarela.jpg') no-repeat center bottom;
+  background-size: cover;
+}
+/* Funde o topo da pintura com o papel, caso o corte fique justo. */
+.ij-hero-art::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 90px;
+  background: linear-gradient(to bottom, var(--bg), rgba(250, 250, 248, 0));
+}
+/* Em telas largas o quadro INTEIRO vira fundo da capa, atrás do texto —
+   nada é cortado. Em cima, onde ficam monograma/nome/data, a aquarela é
+   bem transparente e fraca; vai ganhando força para baixo e chega 100%
+   opaca na borda inferior, encostada na seção seguinte (sem faixa cinza). */
+@media (min-width: 641px) {
+  .ij-hero-art {
+    position: absolute; inset: 0; z-index: 0;
+    flex: none; min-height: 0;
+    background-image: url('/assets/convite-aquarela.jpg');
+    -webkit-mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.14) 58%,
+      rgba(0, 0, 0, 0.55) 80%, #000 95%);
+    mask-image: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.14) 58%,
+      rgba(0, 0, 0, 0.55) 80%, #000 95%);
+  }
+  .ij-hero-art::before { content: none; }
 }
 .ij-hero-meta {
   margin: 34px 0 0; max-width: 460px;
@@ -1134,14 +1144,11 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 640px) {
   .ij-section { padding-block: clamp(56px, 9vh, 96px); }
   .ij-section-divider { padding-block: clamp(24px, 5vh, 44px); }
-  .ij-hero { min-height: auto; padding-top: 120px; padding-bottom: clamp(32px, 6vh, 64px); }
-  .ij-hero-copy { width: 100%; }
+  .ij-hero-copy { width: 100%; padding-top: 96px; }
+  .ij-hero-monogram { width: 44px; }
+  .ij-hero-name img { width: min(300px, 82%); }
+  .ij-hero-art { min-height: 240px; }
   .ij-countdown { margin-inline: auto; }
-  .ij-hero-art {
-    background-size: cover; background-position: center 8%; opacity: 0.36;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
-    mask-image: linear-gradient(to bottom, transparent 0%, #000 8%, #000 88%, transparent 100%);
-  }
   .ij-event { grid-template-columns: 1fr auto; grid-template-areas: "date art" "body body"; gap: 6px 14px; }
   .ij-event-date { grid-area: date; }
   .ij-event-body { grid-area: body; }

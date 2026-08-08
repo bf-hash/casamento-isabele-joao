@@ -110,7 +110,7 @@ export const GIFTS: Gift[] = [
     id: "executiva",
     emoji: "✈️",
     image: "/fotos/presentes/executiva.jpeg",
-    name: "Executiva",
+    name: "Passagem",
     price: 2500,
     cardLink: "https://mpago.la/28cjHsw",
   },
