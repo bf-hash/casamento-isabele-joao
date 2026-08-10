@@ -25,7 +25,7 @@ export default function Gifts() {
           <div className="ij-gift-card" key={gift.id}>
             {gift.image ? (
               <div className="ij-gift-card-image">
-                <Image src={gift.image} alt={gift.name} width={300} height={300} />
+                <Image src={gift.image} alt={gift.name} width={480} height={640} />
               </div>
             ) : (
               <div className="ij-gift-card-emoji">{gift.emoji}</div>
