@@ -120,9 +120,6 @@ export default function RSVP() {
               {step === "name" && (
                 <div className="ij-rsvp-step">
                   <h3 className="ij-rsvp-step-title">{"Qual o seu nome?"}</h3>
-                  <p className="ij-rsvp-step-desc">
-                    {"Informe o nome como está no convite."}
-                  </p>
                   <input
                     type="text"
                     className="ij-rsvp-input"
