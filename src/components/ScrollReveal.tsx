@@ -33,6 +33,11 @@ export default function ScrollReveal({
     const el = ref.current;
     if (!el) return;
 
+    // Elementos mais altos que a viewport nunca atingem um threshold fixo,
+    // então o limite é reduzido proporcionalmente à altura do elemento.
+    const ratio = window.innerHeight / Math.max(el.offsetHeight, 1);
+    const threshold = Math.min(0.12, ratio * 0.3);
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -40,7 +45,7 @@ export default function ScrollReveal({
           observer.unobserve(el);
         }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold, rootMargin: "0px 0px -8% 0px" }
     );
 
     observer.observe(el);
