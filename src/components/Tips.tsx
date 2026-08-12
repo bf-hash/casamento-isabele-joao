@@ -20,6 +20,7 @@ interface Hotel {
   price: string;
   url: string;
   featured?: boolean;
+  note?: string;
 }
 
 // ---- Destination guide model (Barcelona / Costa Brava tabs) ----
@@ -231,6 +232,12 @@ const TOSSA_ALT_HOTELS: Hotel[] = [
   { name: "Elisabeth By The Sea", price: "$$$", url: maps("Elisabeth By The Sea Tossa de Mar") },
   { name: "Hostal Boutique Sa Nansa", price: "$$", url: maps("Hostal Boutique Sa Nansa Tossa de Mar") },
   { name: "Casa Granados", price: "$$$", url: maps("Casa Granados Tossa de Mar") },
+  {
+    name: "Zel Costa Brava",
+    price: "$$",
+    url: maps("Zel Costa Brava Tossa de Mar"),
+    note: "Um pouco mais afastado da cidade, mas bom custo-benefício",
+  },
 ];
 
 // Instagram do Hotel Santa Marta
@@ -268,6 +275,7 @@ function HotelList({ hotels }: { hotels: Hotel[] }) {
               {h.name}
             </a>
             {h.featured && <span className="ij-hotel-badge">onde ficaremos</span>}
+            {h.note && <span className="ij-hotel-note-inline">{h.note}</span>}
           </span>
           <span className="ij-hotel-tier">{h.price}</span>
         </li>
